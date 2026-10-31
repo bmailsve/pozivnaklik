@@ -2871,11 +2871,7 @@ function vHome(){
    <p class="ph-toast">✓ ${L("Marija just replied","Marija je upravo odgovorila")}</p></div></div>
  </div></section>
 
- <section class="xp section"><div class="wrap xp-grid">
-  <div class="xp-stage">${envHTML(TM.e_peony,{...defaultsOf(TM.e_peony)},"xenv")}<p class="env-hint" id="xhint">${L("Tap the seal","Dodirnite pečat")}<small>${L("Try it as a guest","Probajte kao gost")}</small></p></div>
-  <div><p class="kicker">${L("Through your guests' eyes","Iz ugla gosta")}</p><h2>${L(`An invitation that <em>opens</em>, not one that's just read`,`Pozivnica koja se <em>otvara</em>, a ne samo čita`)}</h2>
-   <ol class="xp-list">${xp.map(([h,p],i)=>`<li><span>${String(i+1).padStart(2,"0")}</span><div><b>${h}</b><p>${p}</p></div></li>`).join("")}</ol></div>
- </div></section>
+ 
 
  <section class="section reveal"><div class="rail-wrap"><div class="rail-head"><div><p class="kicker">${L("The collection","Kolekcija")}</p><h2>${L(`Find <em>your</em> design`,`Pronađite <em>svoj</em> dizajn`)}</h2></div>
   <div class="rail-ctl"><button class="rbtn" data-d="-1" aria-label="${L("Scroll back","Nazad")}">${ic("back")}</button><button class="rbtn" data-d="1" aria-label="${L("Scroll forward","Napred")}" style="transform:scaleX(-1)">${ic("back")}</button><a class="tlink" href="#templates" style="margin-left:12px">${L(`All ${SHOW().length} designs`,`Svih ${SHOW().length} dizajna`)} <span aria-hidden="true">→</span></a></div></div>
@@ -2899,7 +2895,7 @@ function vHome(){
  const show=i=>{cur=i;const d=$("#demo");d.classList.add("swap");setTimeout(()=>{d.innerHTML=tiltWrap(renderCard(picks[i],demoName(picks[i],typed),{anim:true}));d.classList.remove("swap");bindTilt($(".compo"));cap()},380)};
  let auto=later(()=>show((cur+1)%picks.length),6500);
  $("#try-name").addEventListener("input",e=>{typed=e.target.value.trim();clearInterval(auto);$("#demo").innerHTML=tiltWrap(renderCard(picks[cur],demoName(picks[cur],typed)));bindTilt($(".compo"))});
- $("#xenv").addEventListener("click",()=>{const env=$("#xenv"),o=env.classList.toggle("open");$("#xhint").innerHTML=o?`${L("Tap again to close","Dodirnite ponovo da zatvorite")}<small>${L("That's what your guests will see","Tako će izgledati vašim gostima")}</small>`:`${L("Tap the seal","Dodirnite pečat")}<small>${L("Try it as a guest","Probajte kao gost")}</small>`});
+ $("#xenv")?.addEventListener("click",()=>{const env=$("#xenv"),o=env.classList.toggle("open");$("#xhint").innerHTML=o?`${L("Tap again to close","Dodirnite ponovo da zatvorite")}<small>${L("That's what your guests will see","Tako će izgledati vašim gostima")}</small>`:`${L("Tap the seal","Dodirnite pečat")}<small>${L("Try it as a guest","Probajte kao gost")}</small>`});
  const rail=$("#rail");bindRail(rail);
  $$(".rbtn").forEach(b=>b.onclick=()=>{const w=rail.firstElementChild.getBoundingClientRect().width+24;rail.scrollBy({left:+b.dataset.d*w*2,behavior:"smooth"})});
  $$("#rail [data-open]").forEach(b=>b.onclick=()=>openLB(SHOW(),SHOW().findIndex(t=>t.id===b.dataset.open)));
