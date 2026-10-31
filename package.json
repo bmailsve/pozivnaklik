@@ -1,0 +1,14 @@
+{
+  "name": "poziv-na-klik",
+  "version": "1.0.0",
+  "description": "Poziv na klik: online pozivnice sa potvrdom dolaska",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

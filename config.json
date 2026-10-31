@@ -1,0 +1,9 @@
+{
+  "payment": {
+    "recipient": "",
+    "account": "",
+    "bank": "",
+    "phone": "",
+    "note": ""
+  }
+}
