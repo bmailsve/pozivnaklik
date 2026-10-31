@@ -8,11 +8,11 @@ Sajt za elektronske pozivnice, na srpskom (latinica) sa prekidačem za engleski.
 
 | Paket | Cena | Šta gost dobija | Dizajni |
 |---|---|---|---|
-| **Osnovna** | 1.190 din · 10 € | Ilustrovana pozivnica koja se otvara odmah, sa animacijom: slova se nežno pojavljuju, ilustracija lagano diše, a preko nje lete latice, zlatne iskre, zvezde, oblaci ili baloni | Bela ruža, Maslinova grana, Zeka i baloni, Leteći balon, Zlatna noć, Golubica |
-| **Koverta** | 2.349 din · 20 € | Koverta sa voštanim pečatom i šarenom postavom, pozivnica izlazi iz koverte, efekat (latice, zvezde, oblaci, baloni, odsjaji disko kugli) | Vrt božura, Ponoć, Oblačak, Medeni piknik, Disko veče, Bela čipka (bordo papir pod belom čipkom: gost lomi pečat i čipka klizi sa pozivnice) |
 | **Premium** | 4.499 din · 40 € | Cela priča na jednoj stranici, sa muzikom | Medeni meda (prvi rođendan: gost meša med da otvori, podaci o rođenju, prva godina, fotografije, odbrojavanje), Naša pesma (venčanje kao ploča), Premijera (rođendan kao filmska premijera, sa fotografijom), Disko jubilej (rođendan i godišnjica firme kao disko noć: dva razloga za slavlje, dress code i muzika), Satenska mašna (venčanje: gost odvezuje mašnu, program dana, mesto sa fotografijom, odbrojavanje i muzička kutija) |
 
 Sve ilustracije su napravljene za ovaj sajt i ugrađene su u `public/index.html`, pa nema spoljnih slika koje mogu da nestanu.
+
+Na sajtu se trenutno prikazuju samo Premium dizajni. Dizajni iz paketa Osnovna i Koverta ostali su u kodu (pozivnice koje su već napravljene i dalje rade), a vraćaju se izmenom jedne linije u `public/index.html`: `const TIER_KEYS=["premium"];` → `["basic","envelope","premium"]`.
 
 ## Pregled i preuzimanje
 
