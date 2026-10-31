@@ -19,13 +19,13 @@ const PAYMENT = Object.assign({ recipient: "", account: "", bank: "", phone: "",
 const SESSION_DAYS = 30;
 // Package of each template that is on sale. Older templates stay valid for existing invitations.
 const TEMPLATE_TIERS = { b_rose: "basic", b_olive: "basic", b_bunny: "basic", b_balloon: "basic", b_gold: "basic", b_dove: "basic",
-  e_peony: "envelope", e_night: "envelope", e_lamb: "envelope", e_picnic: "envelope", e_disco: "envelope", vinyl: "premium", premiere: "premium", p_disco: "premium" };
+  e_peony: "envelope", e_night: "envelope", e_lamb: "envelope", e_picnic: "envelope", e_disco: "envelope", vinyl: "premium", premiere: "premium", p_disco: "premium", p_bow: "premium" };
 const PRICES = { basic: { eur: 10, rsd: 1190 }, envelope: { eur: 20, rsd: 2349 }, premium: { eur: 40, rsd: 4499 } };
 const TEMPLATE_IDS = new Set([...Object.keys(TEMPLATE_TIERS),"storybook","cherry","era","jungle","castle","princess","blossom","cars","noir","champagne","emerald","marble","starlit","garden","olive","ivory","gatsby","dustyblue","christening","celebration"]);
 
 /* ---------- storage (JSON file, atomic writes) ---------- */
 fs.mkdirSync(DATA_DIR, { recursive: true });
-let db = { users: [], sessions: [], invites: [], guests: [] };
+let db = { users: [], sessions: [], invites: [], guests: [], requests: [] };
 try { db = Object.assign(db, JSON.parse(fs.readFileSync(DB_FILE, "utf8"))); } catch (e) { /* first run */ }
 let writing = false, again = false;
 function save() {
@@ -43,6 +43,7 @@ function save() {
 const SR = {
  "Too many attempts. Please wait a minute and try again.": "Previše pokušaja. Sačekajte minut i pokušajte ponovo.",
  "Please enter your name.": "Unesite svoje ime.",
+ "Please fill in your name, email and a short description.": "Upišite ime, imejl i kratak opis.",
  "Please enter a valid email address.": "Unesite ispravnu imejl adresu.",
  "Use at least 8 characters for your password.": "Lozinka mora imati najmanje 8 karaktera.",
  "An account with this email already exists. Sign in instead.": "Nalog sa ovom imejl adresom već postoji. Prijavite se.",
@@ -221,12 +222,35 @@ async function api(req, res, url) {
     return send(res, 200, { token: g.token, guest: { name: g.name, status: g.status, count: g.count, note: g.note, token: g.token, source: g.source } });
   }
 
+  if (p === "/requests" && m === "POST") {
+    if (limited(req, "requests", 6)) return fail(res, 429, M(req, "Too many attempts. Please wait a minute and try again."));
+    const b = await readBody(req);
+    const name = str(b.name, 80), email = str(b.email, 160), message = str(b.message, 3000);
+    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !message) return fail(res, 400, M(req, "Please fill in your name, email and a short description."));
+    const imgs = (Array.isArray(b.images) ? b.images : []).slice(0, 3).filter(u => typeof u === "string" && u.length < 1100000 && /^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(u));
+    const link = /^https?:\/\//.test(String(b.link || "")) ? str(b.link, 500) : "";
+    db.requests = db.requests || [];
+    db.requests.push({ id: rid(10), name, email, phone: str(b.phone, 40), date: str(b.date, 20), occasion: str(b.occasion, 30), tier: str(b.tier, 20), message, link, images: imgs, lang: str(b.lang, 4), status: "new", createdAt: now() });
+    save();
+    return send(res, 201, { ok: true });
+  }
   /* owner routes */
   const user = currentUser(req);
   if (!user) return fail(res, 401, M(req, "Please sign in to continue."));
   const own = id => db.invites.find(i => i.id === id && i.ownerId === user.id);
 
   /* site owner: orders and payments */
+  if (p === "/admin/requests" && m === "GET") {
+    if (!isAdmin(user)) return fail(res, 403, M(req, "Not found."));
+    return send(res, 200, { requests: (db.requests || []).slice().reverse() });
+  }
+  if ((seg = p.match(/^\/admin\/requests\/([A-Za-z0-9]+)\/status$/)) && m === "POST") {
+    if (!isAdmin(user)) return fail(res, 403, M(req, "Not found."));
+    const r = (db.requests || []).find(x => x.id === seg[1]);
+    if (!r) return fail(res, 404, M(req, "Not found."));
+    const b = await readBody(req); r.status = b.status === "done" ? "done" : "new"; save();
+    return send(res, 200, { ok: true });
+  }
   if (p === "/admin/invitations" && m === "GET") {
     if (!isAdmin(user)) return fail(res, 403, M(req, "Not found."));
     const users = Object.fromEntries(db.users.map(u => [u.id, u]));
