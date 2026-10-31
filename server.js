@@ -19,7 +19,7 @@ const PAYMENT = Object.assign({ recipient: "", account: "", bank: "", phone: "",
 const SESSION_DAYS = 30;
 // Package of each template that is on sale. Older templates stay valid for existing invitations.
 const TEMPLATE_TIERS = { b_rose: "basic", b_olive: "basic", b_bunny: "basic", b_balloon: "basic", b_gold: "basic", b_dove: "basic",
-  e_peony: "envelope", e_night: "envelope", e_lamb: "envelope", e_picnic: "envelope", e_lace: "envelope", e_disco: "envelope", vinyl: "premium", premiere: "premium", p_disco: "premium", p_bow: "premium" };
+  e_peony: "envelope", e_night: "envelope", e_lamb: "envelope", e_picnic: "envelope", e_lace: "envelope", e_disco: "envelope", vinyl: "premium", premiere: "premium", p_disco: "premium", p_bow: "premium", p_honey: "premium" };
 const PRICES = { basic: { eur: 10, rsd: 1190 }, envelope: { eur: 20, rsd: 2349 }, premium: { eur: 40, rsd: 4499 } };
 const TEMPLATE_IDS = new Set([...Object.keys(TEMPLATE_TIERS),"storybook","cherry","era","jungle","castle","princess","blossom","cars","noir","champagne","emerald","marble","starlit","garden","olive","ivory","gatsby","dustyblue","christening","celebration"]);
 
