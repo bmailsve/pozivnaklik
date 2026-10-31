@@ -8,11 +8,14 @@ Sajt za elektronske pozivnice, na srpskom (latinica) sa prekidačem za engleski.
 
 | Paket | Cena | Šta gost dobija | Dizajni |
 |---|---|---|---|
+| **Osnovna** | 1.190 din · 10 € | Gotova ilustrovana pozivnica sa animacijom, potvrdom dolaska, odbrojavanjem, kalendarom i mapom | Vrtuljak (prvi rođendan i krštenje: vaša slika pozivnice, nepromenjena, sa animacijom otvaranja, svetlucanjem zvezdica, odsjajem i nežnim pokretom) |
 | **Premium** | 4.499 din · 40 € | Cela priča na jednoj stranici, sa muzikom | Medeni meda (prvi rođendan: gost meša med da otvori, podaci o rođenju, prva godina, fotografije, odbrojavanje), Naša pesma (venčanje kao ploča), Premijera (rođendan kao filmska premijera, sa fotografijom), Disko jubilej (rođendan i godišnjica firme kao disko noć: dva razloga za slavlje, dress code i muzika), Satenska mašna (venčanje: gost odvezuje mašnu, program dana, mesto sa fotografijom, odbrojavanje i muzička kutija) |
 
 Sve ilustracije su napravljene za ovaj sajt i ugrađene su u `public/index.html`, pa nema spoljnih slika koje mogu da nestanu.
 
-Na sajtu se trenutno prikazuju samo Premium dizajni. Dizajni iz paketa Osnovna i Koverta ostali su u kodu (pozivnice koje su već napravljene i dalje rade), a vraćaju se izmenom jedne linije u `public/index.html`: `const TIER_KEYS=["premium"];` → `["basic","envelope","premium"]`.
+Na sajtu se trenutno prikazuju paketi Osnovna (samo dizajn Vrtuljak) i Premium. Stariji dizajni ostali su u kodu (pozivnice koje su već napravljene i dalje rade): paket Koverta se vraća dodavanjem `"envelope"` u `const TIER_KEYS=[...]`, a stari osnovni dizajni brisanjem oznake `off:1` u njihovoj definiciji u `public/index.html`.
+
+Vrtuljak je gotova slika: polja u uređivaču (ime, datum, vreme, mesto, rok za potvrdu) ne menjaju sliku, već služe za odbrojavanje, kalendar, mapu i rok za potvrdu dolaska na stranici za goste.
 
 ## Pregled i preuzimanje
 
