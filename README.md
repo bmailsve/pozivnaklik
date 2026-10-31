@@ -10,7 +10,7 @@ Sajt za elektronske pozivnice, na srpskom (latinica) sa prekidačem za engleski.
 |---|---|---|---|
 | **Osnovna** | 1.190 din · 10 € | Ilustrovana pozivnica sa nežnom animacijom, otvara se odmah | Bela ruža, Maslinova grana, Zeka i baloni, Leteći balon, Zlatna noć, Golubica |
 | **Koverta** | 2.349 din · 20 € | Koverta sa voštanim pečatom i šarenom postavom, pozivnica izlazi iz koverte, efekat (latice, zvezde, oblaci, baloni, odsjaji disko kugli) | Vrt božura, Ponoć, Oblačak, Medeni piknik, Disko veče, Bela čipka (bordo papir pod belom čipkom: gost lomi pečat i čipka klizi sa pozivnice) |
-| **Premium** | 4.499 din · 40 € | Cela priča na jednoj stranici, sa muzikom | Medeni meda (prvi rođendan: gost meša med da otvori, podaci o rođenju, prva godina, fotografije, svećica za duvanje), Naša pesma (venčanje kao ploča), Premijera (rođendan kao filmska premijera, sa fotografijom), Disko jubilej (rođendan i godišnjica firme kao disko noć: dva razloga za slavlje, dress code i muzika), Satenska mašna (venčanje: gost odvezuje mašnu, program dana, mesto sa fotografijom, odbrojavanje i muzička kutija) |
+| **Premium** | 4.499 din · 40 € | Cela priča na jednoj stranici, sa muzikom | Medeni meda (prvi rođendan: gost meša med da otvori, značenje imena, podaci o rođenju, prva godina, fotografije, odbrojavanje), Naša pesma (venčanje kao ploča), Premijera (rođendan kao filmska premijera, sa fotografijom), Disko jubilej (rođendan i godišnjica firme kao disko noć: dva razloga za slavlje, dress code i muzika), Satenska mašna (venčanje: gost odvezuje mašnu, program dana, mesto sa fotografijom, odbrojavanje i muzička kutija) |
 
 Sve ilustracije su napravljene za ovaj sajt i ugrađene su u `public/index.html`, pa nema spoljnih slika koje mogu da nestanu.
 
