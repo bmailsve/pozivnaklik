@@ -8,7 +8,7 @@ Sajt za elektronske pozivnice, na srpskom (latinica) sa prekidačem za engleski.
 
 | Paket | Cena | Šta gost dobija | Dizajni |
 |---|---|---|---|
-| **Osnovna** | 1.190 din · 10 € | Gotova ilustrovana pozivnica sa animacijom, potvrdom dolaska, odbrojavanjem, kalendarom i mapom | Vrtuljak (prvi rođendan i krštenje: vaša slika pozivnice u kojoj se predmeti pokreću: baloni lebde, konjići vrtuljka se podižu i spuštaju, mašne se njišu, zvezdice trepere) |
+| **Osnovna** | 1.190 din · 10 € | Gotova ilustrovana pozivnica sa animacijom, potvrdom dolaska, odbrojavanjem, kalendarom i mapom | Vrtuljak (prvi rođendan i krštenje: vaša slika pozivnice u kojoj se predmeti pokreću: baloni lebde, konjići vrtuljka se podižu i spuštaju, mašne se njišu, zvezdice trepere), Morska bajka (4. rođendan: rep sirene maše, ribice plivaju, kit se ljulja i šiklja vodu, delfini skaču, mehurići se dižu, meduza pulsira, biser sija) |
 | **Premium** | 4.499 din · 40 € | Cela priča na jednoj stranici, sa muzikom | Medeni meda (prvi rođendan: gost meša med da otvori, podaci o rođenju, prva godina, fotografije, odbrojavanje), Naša pesma (venčanje kao ploča), Premijera (rođendan kao filmska premijera, sa fotografijom), Disko jubilej (rođendan i godišnjica firme kao disko noć: dva razloga za slavlje, dress code i muzika), Satenska mašna (venčanje: gost odvezuje mašnu, program dana, mesto sa fotografijom, odbrojavanje i muzička kutija) |
 
 Sve ilustracije su napravljene za ovaj sajt i ugrađene su u `public/index.html`, pa nema spoljnih slika koje mogu da nestanu.
