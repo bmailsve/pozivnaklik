@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Online pozivnice sa potvrdom dolaska za venčanja, rođendane i svaku proslavu. Izaberite dizajn, upišite podatke i pošaljite link.">
 <meta name="theme-color" content="#F8F3EE">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Poziv na klik">
+<meta property="og:title" content="Poziv na klik · online pozivnice">
+<meta property="og:description" content="Online pozivnice sa potvrdom dolaska za venčanja, rođendane i svaku proslavu.">
+<meta property="og:image" content="https://pozivnaklik.com/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light only">
 <meta name="format-detection" content="telephone=no">
 <title>Poziv na klik</title>
@@ -2745,7 +2751,7 @@ function titleOf(t,d){const lg=(d&&d.lang)||LANG;d={...defaultsOf(t,lg),...d};co
  case"wedding":return`${d.partner1||"?"} & ${d.partner2||"?"}`;
  case"vinyl":return`${d.partner1||"?"} & ${d.partner2||"?"}`;
  case"honey":{const a=parseInt(d.age)||1;return S?`${d.childName||""} – ${a}. rođendan`:`${d.childName||""}'s ${ordEn(a)} birthday`}
-  case"picture":{if(d.hName)return [d.hName,d.hAge,d.hOcc].filter(Boolean).join(" ");const tt=t.ttl||["{n}'s first birthday and christening","{n} – prvi rođendan i krštenje"];return (S?tt[1]:tt[0]).replace("{n}",d.childName||"")}
+  case"picture":{if(d.hName)return [d.hName,d.hAge,(d.hOcc||"").toLocaleLowerCase()].filter(Boolean).join(" ");const tt=t.ttl||["{n}'s first birthday and christening","{n} – prvi rođendan i krštenje"];return (S?tt[1]:tt[0]).replace("{n}",d.childName||"")}
   case"estate":return S?`Venčanje – ${d.partner1||""} i ${d.partner2||""}`:`The wedding of ${d.partner1||""} & ${d.partner2||""}`;
   case"bow":case"lace":return`${d.partner1||""} & ${d.partner2||""}`;
   case"disco":case"discop":{const a=parseInt(d.num1)||0;const nm=d.name1||d.brand||"";return S?`${nm}${a?` – ${a}. rođendan`:" – žurka"}`:`${nm}${a?`'s ${ordEn(a)} birthday`:"'s party"}`}
@@ -2868,6 +2874,7 @@ const Remote={
  config(){return this.q("GET","/config")},
  adminList(){return this.q("GET","/admin/invitations").then(j=>j.invitations)},
  adminUsers(){return this.q("GET","/admin/users").then(j=>j.users)},
+ preview(id,b){return this.q("POST",`/invitations/${id}/preview`,b)},
  adminUserPw(id){return this.q("POST",`/admin/users/${id}/password`).then(j=>j.password)},
  sendRequest(r){return this.q("POST","/requests",r)},
  adminRequests(){return this.q("GET","/admin/requests").then(j=>j.requests)},
@@ -3371,8 +3378,8 @@ function basicOverlay(t,d){
  $(".x",ov).onclick=close;ov.tabIndex=-1;ov.focus();
 }
 /* ---------- download the invitation as a JPG ---------- */
-async function cardToJpg(t,d,fname){
- const W=420,S=3;
+async function cardToJpg(t,d,fname,o={}){
+ const W=420,S=o.scale||3;
  const host=document.createElement("div");host.style.cssText=`position:fixed;left:-10000px;top:0;width:${W}px;pointer-events:none`;host.innerHTML=renderCard(t,d,{fixed:true});document.body.appendChild(host);
  try{
   if(document.fonts&&document.fonts.ready)await document.fonts.ready;await new Promise(r=>setTimeout(r,120));
@@ -3412,7 +3419,8 @@ async function cardToJpg(t,d,fname){
   const img=new Image();img.decoding="sync";
   await new Promise((res,rej)=>{img.onload=res;img.onerror=()=>rej(new Error("render"));img.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg)});
   const c=document.createElement("canvas");c.width=W*S;c.height=H*S;const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(img,0,0,c.width,c.height);
-  const blob=await new Promise(r=>c.toBlob(r,"image/jpeg",.93));
+  const blob=await new Promise(r=>c.toBlob(r,"image/jpeg",o.quality||.93));
+  if(o.blob)return blob;
   const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fname;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);
   return true;
  }finally{host.remove()}
@@ -3803,8 +3811,25 @@ async function vPay(r){
  bindTilt(app);
  $("#sim-pay")?.addEventListener("click",async()=>{await API.setStatus(inv.id,"active");toast(L("Marked as paid","Označeno kao plaćeno"));go("manage-"+inv.id)});
 }
+
+/* ---------- picture + title for shared links ---------- */
+const PREV_BUSY=new Set();
+async function sharePreview(inv,t){
+ if(API.kind!=="server"||!API.preview||PREV_BUSY.has(inv.id))return;
+ if(inv.og&&inv.og.v>=(inv.updatedAt||0))return;
+ PREV_BUSY.add(inv.id);
+ try{
+  const lg=inv.data.lang||LANG,d={...defaultsOf(t,lg),...inv.data,lang:lg},dt=pd(d.date,lg),tm=d.time||d.ceremonyTime||"";
+  const place=[d.venue||d.ceremonyVenue||d.church,d.address].filter(Boolean).join(", ");
+  const desc=[dt?dt.full+(tm?(lg==="sr"?` u ${tm}`:` at ${tm}`):""):"",place].filter(Boolean).join(" · ")||(lg==="sr"?"Otvorite pozivnicu i potvrdite dolazak.":"Open the invitation and let the host know if you can come.");
+  const blob=await cardToJpg(t,d,"",{blob:true,scale:1.5,quality:.86});
+  const image=await new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.readAsDataURL(blob)});
+  const r=await API.preview(inv.id,{image,title:titleOf(t,d),desc});inv.og=r.og;
+ }catch(e){console.warn("preview",e)}finally{PREV_BUSY.delete(inv.id)}
+}
 async function vManage(r){
  const res=await API.get(r.a);const inv=res.invitation,t=TM[inv.templateId]||T[0];let gs=res.guests;let filter="all";
+ setTimeout(()=>sharePreview(inv,t),900);
  const lg=inv.data.lang||LANG;const link=API.link(inv.slug);const d={...defaultsOf(t,lg),...inv.data};const dt=pd(d.date);const dtL=pd(d.date,lg);const title=titleOf(t,inv.data);
  const msg=lg==="sr"?`Pozvani ste: ${title}${dtL?" · "+dtL.full:""}`:`You're invited: ${title}${dtL?" · "+dtL.full:""}`;const tgt=API.kind==="local"?"_self":"_blank";
  app.innerHTML=`<div class="view wrap">

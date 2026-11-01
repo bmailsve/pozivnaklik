@@ -8,11 +8,8 @@
   node_bundler = "esbuild"
   included_files = ["config.json"]
 
-# Guest links look like /i/<code>; send them to the app page.
-[[redirects]]
-  from = "/i/*"
-  to = "/index.html"
-  status = 200
+# Guest links (/i/<code>) and their preview pictures (/og/<code>.jpg) are served by
+# netlify/functions/page.mjs, so WhatsApp and Viber show the invitation's title and picture.
 
 # Always load the newest version of the page (no stale copies in browsers)
 [[headers]]

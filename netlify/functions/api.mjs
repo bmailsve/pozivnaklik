@@ -35,6 +35,7 @@ async function handle(request) {
   if (path === "/api/health") return Response.json({ app: "paperlace", ok: true });
 
   const store = getStore({ name: "pozivnaklik", consistency: "strong" });
+  app.hooks.putPreview = (slug, buf) => store.set("og/" + slug, buf);
   const bodyBuf = request.method === "GET" || request.method === "HEAD" ? null : Buffer.from(await request.arrayBuffer());
 
   for (let attempt = 0; attempt < 4; attempt++) {
