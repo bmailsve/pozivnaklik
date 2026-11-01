@@ -1320,6 +1320,7 @@ h1,h2,h3,.why-l h2,.sec-head h2{font-feature-settings:"ccmp" 1,"mark" 1;text-ren
 .animate .pt p{animation:ptIn .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(1.1s + var(--n,0)*.08s)}
 @keyframes ptIn{0%{opacity:0;transform:translateY(1.4cqw)}100%{opacity:1;transform:none}}
 </style>
+<style id="adm-users-css">.newpw{font:600 14px/1 ui-monospace,monospace;background:var(--card,#fff);border:1px dashed var(--line);padding:6px 8px;border-radius:6px;user-select:all}</style>
 <style id="mobile-final">
 @media (max-width:640px){
  :root{--gut-l:max(22px,env(safe-area-inset-left,0px))!important;--gut-r:max(22px,env(safe-area-inset-right,0px))!important}
@@ -2827,6 +2828,8 @@ const Remote={
  remove(id){return this.q("DELETE","/invitations/"+id)},
  config(){return this.q("GET","/config")},
  adminList(){return this.q("GET","/admin/invitations").then(j=>j.invitations)},
+ adminUsers(){return this.q("GET","/admin/users").then(j=>j.users)},
+ adminUserPw(id){return this.q("POST",`/admin/users/${id}/password`).then(j=>j.password)},
  sendRequest(r){return this.q("POST","/requests",r)},
  adminRequests(){return this.q("GET","/admin/requests").then(j=>j.requests)},
  adminRequestSet(id,status){return this.q("POST",`/admin/requests/${id}/status`,{status})},
@@ -3666,7 +3669,7 @@ function vCustom(){
 }
 async function vAdmin(){
  if(!ME||!ME.admin){app.innerHTML=`<div class="wrap view"><div class="empty" style="margin-block:64px"><h2>${L("Not available","Nije dostupno")}</h2><p>${L("This page is only for the site owner.","Ova stranica je samo za vlasnika sajta.")}</p></div></div>`;return}
- const list=await API.adminList();let f="pending";let reqs=[];try{reqs=await API.adminRequests()}catch(e){}
+ const list=await API.adminList();let f=PAYMENTS?"pending":"all";let reqs=[];try{reqs=await API.adminRequests()}catch(e){}let users=[];try{users=API.adminUsers?await API.adminUsers():[]}catch(e){}const newPw={};
  const draw=()=>{const rows=list.filter(x=>f==="all"||x.status===f);
   app.innerHTML=`<div class="view wrap"><div class="dash-head"><div><p class="kicker">${L("Owner","Vlasnik")}</p><h1>${L("Orders and payments","Porudžbine i uplate")}</h1><p>${L("Confirm a payment to activate the guest link.","Potvrdite uplatu da biste aktivirali link za goste.")}</p></div></div>
   <div class="chips" style="margin-bottom:20px">${[["pending",L("Awaiting payment","Čeka uplatu")],["active",L("Active","Aktivne")],["all",L("All","Sve")]].map(([k,l])=>`<button class="chip${f===k?" on":""}" data-f="${k}">${l}<span class="n">${list.filter(x=>k==="all"||x.status===k).length}</span></button>`).join("")}</div>
@@ -3678,6 +3681,13 @@ async function vAdmin(){
   const set=async(id,st)=>{try{await API.adminSet(id,st);list.find(x=>x.id===id).status=st;toast(st==="active"?L("Payment confirmed. The link is live.","Uplata potvrđena. Link je aktivan."):L("Set back to pending","Vraćeno na čekanje"));draw()}catch(e){toast(e.message)}};
   $$("[data-act]").forEach(b=>b.onclick=()=>set(b.dataset.act,"active"));
   $$("[data-pend]").forEach(b=>b.onclick=()=>set(b.dataset.pend,"pending"));
+  const host=$(".view.wrap",app);if(host&&API.adminUsers){const dt=x=>x?new Date(x).toLocaleDateString(LANG==="sr"?"sr-Latn":"en-GB"):"—";
+   host.insertAdjacentHTML("beforeend",`<section class="adm-users" id="nalozi"><h2 style="margin:56px 0 6px">${L("Accounts","Nalozi")} <span class="n" style="font-size:16px;color:var(--muted)">${users.length}</span></h2>
+   <p style="color:var(--muted);margin:0 0 18px;max-width:60ch">${L("Passwords are stored encrypted and can't be viewed. If a client forgets theirs, set a new one here and send it to them.","Lozinke se čuvaju šifrovano i ne mogu da se vide. Ako klijent zaboravi lozinku, ovde mu postavite novu i pošaljite mu je.")}</p>
+   <div class="adm-wrap"><table class="adm-table"><thead><tr><th>${L("Name","Ime")}</th><th>${L("Email","Imejl")}</th><th>${L("Joined","Napravljen")}</th><th>${L("Last sign-in","Poslednja prijava")}</th><th>${L("Invitations","Pozivnice")}</th><th></th></tr></thead><tbody>
+   ${users.length?users.map(u=>`<tr><td><b>${esc(u.name)}</b>${u.admin?` <small style="color:var(--muted)">· ${L("owner","vlasnik")}</small>`:""}</td><td><a href="mailto:${esc(u.email)}">${esc(u.email)}</a></td><td>${dt(u.createdAt)}</td><td>${dt(u.lastLogin)}</td><td>${u.invitations}</td><td>${newPw[u.id]?`<code class="newpw">${esc(newPw[u.id])}</code>`:`<button class="btn btn-line btn-sm" data-pw="${u.id}">${L("Set new password","Nova lozinka")}</button>`}</td></tr>`).join(""):`<tr><td colspan="6" style="color:var(--muted)">${L("No accounts yet.","Još nema naloga.")}</td></tr>`}</tbody></table></div></section>`);
+   $$("[data-pw]",host).forEach(b=>b.onclick=async()=>{const u=users.find(x=>x.id===b.dataset.pw);if(!b.dataset.sure){b.dataset.sure=1;b.textContent=L("Click again to confirm","Kliknite ponovo za potvrdu");return}
+    try{newPw[u.id]=await API.adminUserPw(u.id);toast(L("New password set. Send it to the client.","Nova lozinka je postavljena. Pošaljite je klijentu."));draw()}catch(e){toast(e.message)}});}
  };draw();
 }
 function inactiveHTML(){return`<div class="inactive view"><div><p class="kicker">Poziv na klik</p><h1>${L("This invitation isn't active yet","Ova pozivnica još nije aktivna")}</h1><p>${L("The host is finishing it. Please open the link again a little later.","Domaćin je još priprema. Molimo otvorite link ponovo malo kasnije.")}</p></div></div>`}
