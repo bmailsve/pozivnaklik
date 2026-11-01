@@ -1,7 +1,12 @@
-# Poziv na klik is a single ready-made page: nothing to build, just serve /public.
+# Poziv na klik on Netlify: the page is served from /public, the API runs as a Netlify Function
+# (netlify/functions/api.mjs) and keeps accounts, invitations and replies in Netlify Blobs.
 [build]
   command = "echo 'No build step needed'"
   publish = "public"
+
+[functions]
+  node_bundler = "esbuild"
+  included_files = ["config.json"]
 
 # Guest links look like /i/<code>; send them to the app page.
 [[redirects]]

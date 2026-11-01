@@ -74,13 +74,26 @@ Otvorite http://localhost:3000.
 
 ## Postavljanje na internet
 
-Radi na bilo kom Node hostingu. Primer sa **Render**:
+### Netlify (trenutno)
 
-1. Postavite ovaj folder u GitHub repozitorijum.
-2. Na render.com: **New → Web Service**, povežite repozitorijum.
-3. Build command: *(prazno)* · Start command: `npm start`.
-4. Dodajte **Persistent Disk** na `/var/data` i promenljive `DATA_DIR=/var/data` i `ADMIN_EMAILS=vas@imejl.com`. Bez diska se nalozi i odgovori brišu pri restartu servera.
-5. Linkovi za goste izgledaju ovako: `https://vas-sajt.onrender.com/i/AbC12xyz`.
+Sajt radi na Netlify-ju bez dodatnog servera:
+
+- stranica se objavljuje iz foldera `public`,
+- API (nalozi, pozivnice, odgovori gostiju, uplate) radi kao Netlify funkcija `netlify/functions/api.mjs`,
+- podaci se čuvaju u **Netlify Blobs** (skladište `pozivnaklik`), pa ostaju sačuvani između poseta i na svim uređajima.
+
+Podešavanje u Netlify-ju (**Project configuration → Environment variables**):
+
+| Promenljiva | Primer | Čemu služi |
+|---|---|---|
+| `ADMIN_EMAILS` | `vas@imejl.com` | imejl vlasnika; taj nalog vidi **Porudžbine** i potvrđuje uplate |
+| `PAY_RECIPIENT`, `PAY_ACCOUNT`, `PAY_BANK`, `PAY_PHONE`, `PAY_NOTE` | | podaci za uplatu na stranici za plaćanje |
+
+Posle izmene promenljivih pokrenite novi deploy (**Deploys → Trigger deploy**).
+
+### Bilo koji Node hosting (npr. Render)
+
+`npm start` pokreće `server.js`, koji čuva podatke u `data/db.json`. Na Render-u dodajte **Persistent Disk** na `/var/data` i promenljive `DATA_DIR=/var/data` i `ADMIN_EMAILS=vas@imejl.com`.
 
 ## Linkovi za goste
 
@@ -91,7 +104,10 @@ Radi na bilo kom Node hostingu. Primer sa **Render**:
 
 ```
 paperlace/
-├── server.js          # Node server i API (bez zavisnosti)
+├── server.js          # Node server (lokalno ili na Render-u), podaci u data/db.json
+├── lib/app.js         # API: nalozi, pozivnice, gosti, uplate
+├── netlify/functions/api.mjs  # isti API na Netlify-ju, podaci u Netlify Blobs
+├── netlify.toml       # podešavanja za Netlify
 ├── config.json        # podaci za uplatu
 ├── package.json
 └── public/index.html  # ceo sajt: strane, dizajni, ilustracije, animacije

@@ -3850,7 +3850,7 @@ function confetti(colors){if(matchMedia("(prefers-reduced-motion:reduce)").match
 /* ---------- boot ---------- */
 
 (async()=>{
- try{const ctl=new AbortController();setTimeout(()=>ctl.abort(),1800);const r=await fetch("/api/health",{signal:ctl.signal,credentials:"same-origin"});const j=await r.json();if(j&&j.app==="paperlace")API=Remote}catch(e){}
+ try{const ctl=new AbortController();setTimeout(()=>ctl.abort(),6000);const r=await fetch("/api/health",{signal:ctl.signal,credentials:"same-origin"});const j=await r.json();if(j&&j.app==="paperlace")API=Remote}catch(e){}
  try{ME=await API.me()}catch(e){ME=null}
  if(API.kind==="server"){try{const c=await API.config();PAYCFG=Object.assign(PAYCFG,c.payment||{})}catch(e){}}
  render();
