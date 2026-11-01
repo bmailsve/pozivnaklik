@@ -13,3 +13,9 @@
   from = "/i/*"
   to = "/index.html"
   status = 200
+
+# Always load the newest version of the page (no stale copies in browsers)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
