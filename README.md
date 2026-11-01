@@ -29,6 +29,8 @@ Na stranici **Po želji** (`#custom`) posetioci bez naloga mogu da pošalju opis
 
 ## Kako ide porudžbina i uplata
 
+> **Trenutno su uplate isključene:** svaka pozivnica je aktivna odmah po čuvanju i link za goste odmah radi. Uplate se vraćaju postavljanjem promenljive `PAYMENTS=on` na serveru (Netlify: Environment variables) i promenom `const PAYMENTS=false` u `true` u `public/index.html`.
+
 1. Klijent napravi pozivnicu. Ona se sačuva sa statusom **„Čeka uplatu"**, a klijent vidi iznos, podatke za uplatu i poziv na broj (kod pozivnice).
 2. Dok uplata nije potvrđena, gosti na linku vide poruku da pozivnica još nije aktivna. Klijent može da je pregleda i menja.
 3. Vi (vlasnik) otvorite **Porudžbine** u meniju i kliknete **Potvrdi uplatu**. Link odmah počinje da radi za goste.
