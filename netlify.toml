@@ -1,0 +1,10 @@
+# Poziv na klik is a single ready-made page: nothing to build, just serve /public.
+[build]
+  command = "echo 'No build step needed'"
+  publish = "public"
+
+# Guest links look like /i/<code>; send them to the app page.
+[[redirects]]
+  from = "/i/*"
+  to = "/index.html"
+  status = 200
