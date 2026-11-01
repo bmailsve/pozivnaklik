@@ -3562,6 +3562,10 @@ function vHome(){
  <div class="scrollcue" aria-hidden="true"><span>${L("Scroll","Dalje")}</span><i></i></div>
  <div class="ticker" aria-label="${L("Occasions","Prilike")}"><div class="ticker-track">${[...evts,...evts].map(e=>`<span>${e}</span>`).join("")}</div></div>
 
+ <section class="section reveal"><div class="rail-wrap"><div class="rail-head"><div><p class="kicker">${L("The collection","Kolekcija")}</p><h2>${L(`Find <em>your</em> design`,`Pronađite <em>svoj</em> dizajn`)}</h2></div>
+  <div class="rail-ctl"><button class="rbtn" data-d="-1" aria-label="${L("Scroll back","Nazad")}">${ic("back")}</button><button class="rbtn" data-d="1" aria-label="${L("Scroll forward","Napred")}" style="transform:scaleX(-1)">${ic("back")}</button><a class="tlink" href="#templates" style="margin-left:12px">${L(`All ${SHOW().length} designs`,`Svih ${SHOW().length} dizajna`)} <span aria-hidden="true">→</span></a></div></div>
+  <div class="rail" id="rail">${SHOW().map((t,i)=>designCard(t,Math.min(i,8))).join("")}</div></div></section>
+
  <section class="wrap section reveal why"><div class="why-grid">
   <div class="why-l"><p class="kicker">${L("Why Poziv na klik","Zašto Poziv na klik")}</p><h2>${L(`Less hassle, <em>more</em> celebration`,`Manje brige, <em>više</em> slavlja`)}</h2>
    <ul class="why-list">
@@ -3577,10 +3581,6 @@ function vHome(){
  </div></section>
 
  
-
- <section class="section reveal"><div class="rail-wrap"><div class="rail-head"><div><p class="kicker">${L("The collection","Kolekcija")}</p><h2>${L(`Find <em>your</em> design`,`Pronađite <em>svoj</em> dizajn`)}</h2></div>
-  <div class="rail-ctl"><button class="rbtn" data-d="-1" aria-label="${L("Scroll back","Nazad")}">${ic("back")}</button><button class="rbtn" data-d="1" aria-label="${L("Scroll forward","Napred")}" style="transform:scaleX(-1)">${ic("back")}</button><a class="tlink" href="#templates" style="margin-left:12px">${L(`All ${SHOW().length} designs`,`Svih ${SHOW().length} dizajna`)} <span aria-hidden="true">→</span></a></div></div>
-  <div class="rail" id="rail">${SHOW().map((t,i)=>designCard(t,Math.min(i,8))).join("")}</div></div></section>
 
  <section class="wrap section reveal" id="paketi" style="padding-top:20px"><div class="sec-head"><div><p class="kicker">${L("Packages","Paketi")}</p><h2>${L(`Three ways to <em>invite</em>`,`Tri načina da <em>pozovete</em>`)}</h2><p>${L("Make your invitation first and pay only when it is ready. Prices are per invitation, with unlimited guests.","Prvo napravite pozivnicu, a platite tek kada je gotova. Cena je po pozivnici, za neograničen broj gostiju.")}</p></div></div>${plansHTML()}</section>
  <section class="wrap section reveal" style="padding-top:30px"><div class="sec-head"><div><p class="kicker">${L("How it works","Kako radi")}</p><h2>${L(`From first click to <em>first reply</em>`,`Od prvog klika do <em>prvog odgovora</em>`)}</h2></div></div>
