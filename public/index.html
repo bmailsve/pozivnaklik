@@ -1366,6 +1366,46 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 }
 @media (max-width:380px){.rsvp h2{font-size:20px!important}.rsvp .choice button b{font-size:15px!important}}
 </style>
+<style id="ft2-css">
+.ft{padding-block:64px calc(36px + env(safe-area-inset-bottom,0px))!important;padding-inline:max(22px,env(safe-area-inset-left,0px)) max(22px,env(safe-area-inset-right,0px))}
+.ft2{display:flex;flex-direction:column;align-items:center;text-align:center}
+.ft2 .ft-logo{display:inline-flex!important;width:auto!important;align-self:center;margin:0 0 26px!important;padding:12px 22px!important}
+.ft2 .ft-logo .bl.full{width:200px!important;max-width:56vw;height:auto!important;aspect-ratio:760/405;background-position:center!important}
+.ft2-big{font-family:var(--f-display);font-size:clamp(26px,3vw,36px);line-height:1.15;color:var(--cream);margin:0;max-width:20ch}
+.ft2-big em{color:var(--gold-hi,#e8c9a8)}
+.ft2-sub{margin:14px 0 0;max-width:42ch;font-size:15px;line-height:1.6;color:var(--cream-mute)}
+.ft2-soc{display:flex;gap:12px;justify-content:center;margin-top:28px}
+.ft2-icon{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1px solid rgba(243,236,221,.28);color:var(--cream);transition:background .25s,color .25s,border-color .25s}
+.ft2-icon svg{width:20px;height:20px}
+.ft2-icon:hover{background:var(--cream);color:var(--forest);border-color:var(--cream)}
+.ft2-handle{margin-top:10px;font-size:14px;font-weight:600;color:var(--cream)!important;letter-spacing:.02em}
+.ft2-copy{margin:34px 0 0;padding-top:20px;border-top:1px solid rgba(243,236,221,.12);width:min(100%,520px);font-size:12.5px;color:var(--cream-mute);opacity:.8}
+@media (max-width:640px){.ft{padding-block:52px calc(30px + env(safe-area-inset-bottom,0px))!important}.ft2-big{font-size:24px!important}.ft2-sub{font-size:14px!important}}
+</style>
+<style id="mobile-ios-android">
+html,body{overflow-x:clip}
+img,svg,video,canvas{max-width:100%}
+.save-bar{-webkit-backdrop-filter:blur(10px)}
+.hdr{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+@media (max-width:640px){
+ /* iPhone zooms into any field with text under 16px: keep fields at 16px */
+ input,select,textarea,.rsvp input,.rsvp textarea,.rsvp select{font-size:16px!important}
+ /* iOS date/time fields collapse when empty */
+ input[type=date],input[type=time]{-webkit-appearance:none;appearance:none;display:block;width:100%;min-height:46px;line-height:1.2;text-align:left;background-clip:padding-box}
+ input::-webkit-date-and-time-value{text-align:left}
+ /* comfortable tap targets */
+ .btn,.chip,.lang button,.flip-hint,.forgot-btn{min-height:40px}
+ .btn-sm{min-height:38px}
+ /* no sticky hover look after a tap */
+ .tilt{transform:none!important}
+ /* bottom bars clear the iPhone home bar and Android gesture bar */
+ .save-bar{bottom:calc(10px + env(safe-area-inset-bottom,0px))!important;max-width:calc(100vw - 32px)!important}
+ .panelx{grid-template-columns:minmax(0,1fr)!important}.panelx>*{min-width:0}
+ .dx-btn2{width:100%!important}
+ .toast,#toast{bottom:calc(18px + env(safe-area-inset-bottom,0px))!important}
+}
+@media (hover:none){.tilt .shine{display:none}}
+</style>
 <style id="mobile-final">
 @media (max-width:640px){
  :root{--gut-l:max(22px,env(safe-area-inset-left,0px))!important;--gut-r:max(22px,env(safe-area-inset-right,0px))!important}
@@ -3519,13 +3559,13 @@ function nav(){const r=route();const on=n=>r.name===n?" on":"";
  bindLang($("#nav"));$("#burger").onclick=openMenu;
  $(".hdr").hidden=r.name==="invite";$("#ft").hidden=r.name==="invite";
  
- $("#ft").innerHTML=`<div class="wrap"><div class="ft-grid">
-  <div><a class="logo ft-logo" href="#" aria-label="Poziv na klik"><span class="bl full" role="img" aria-label="Poziv na klik"></span></a><p class="ft-big">${L("Every celebration deserves a <em>beautiful</em> beginning.","Svaka proslava zaslužuje <em>lep</em> početak.")}</p><p class="ft-ig">${L("Follow us for new designs","Pratite nas za nove dizajne")}</p>${igLink("ft-ig-a")}</div>
-  <div><h4>${L("Designs","Dizajni")}</h4><nav>${TIER_KEYS.map(k=>`<a href="#templates-${k}">${tierName(k)} · ${TIERS[k].rsd} din</a>`).join("")}<a href="#templates">${L("All designs","Svi dizajni")}</a><a href="#custom">${L("Design made for you","Dizajn po želji")}</a></nav></div>
-  <div><h4>${L("Account","Nalog")}</h4><nav>${ME?`<a href="#dashboard">${L("My invitations","Moje pozivnice")}</a><a href="#templates">${L("New invitation","Nova pozivnica")}</a><a href="#" class="js-logout">${L("Sign out","Odjava")}</a>`:`<a href="#login">${L("Sign in","Prijava")}</a><a href="#signup">${L("Create an account","Napravi nalog")}</a>`}</nav></div>
-  <div><h4>${L("Language","Jezik")}</h4>${langSwitch()}<p style="margin-top:16px">${L("Online invitations with RSVP for weddings, birthdays and every celebration.","Online pozivnice sa potvrdom dolaska za venčanja, rođendane i svaku proslavu.")}</p></div>
- </div><div class="ft-bottom"><span>© 2026 Poziv na klik</span><span>${API.kind==="local"?L("Preview mode · invitations are saved in this browser only","Probni režim · pozivnice se čuvaju samo u ovom pregledaču"):L("Made with care","Napravljeno s pažnjom")}</span></div></div>`;
- bindLang($("#ft"));
+ $("#ft").innerHTML=`<div class="wrap ft2">
+  <a class="logo ft-logo" href="#" aria-label="Poziv na klik"><span class="bl full" role="img" aria-label="Poziv na klik"></span></a>
+  <p class="ft2-big">${L("Every celebration deserves a <em>beautiful</em> beginning.","Svaka proslava zaslužuje <em>lep</em> početak.")}</p>
+  <p class="ft2-sub">${L("Online invitations with RSVP for weddings, birthdays and every celebration.","Online pozivnice sa potvrdom dolaska za venčanja, rođendane i svaku proslavu.")}</p>
+  <div class="ft2-soc"><a class="ft2-icon" href="${IG_URL}" target="_blank" rel="noopener" aria-label="${L("Poziv na klik on Instagram","Poziv na klik na Instagramu")}">${IG_ICON}</a></div>
+  <a class="ft2-handle" href="${IG_URL}" target="_blank" rel="noopener">@pozivnaklik</a>
+  <p class="ft2-copy">© 2026 Poziv na klik</p></div>`;
  $$(".js-logout").forEach(a=>a.onclick=async e=>{e.preventDefault();closeMenu();await API.logout();ME=null;toast(L("Signed out","Odjavljeni ste"));go("")});
 }
 let MENU=null;
