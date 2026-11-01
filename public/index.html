@@ -1291,6 +1291,20 @@ h1,h2,h3,.why-l h2,.sec-head h2{font-feature-settings:"ccmp" 1,"mark" 1;text-ren
 .dx-count{margin-top:0!important;margin-bottom:56px!important}
 @media (max-width:640px){.dx-two .dx-hl{margin-top:72px!important}.dx-info{margin-bottom:48px!important}.dx-count{margin-bottom:44px!important}}
 </style>
+<style id="pay-css">
+.paypage{padding-top:40px;padding-bottom:80px}
+.pp-steps{display:flex;gap:10px;list-style:none;padding:0;margin:0 0 32px;flex-wrap:wrap;font-size:14px;font-weight:600;color:var(--muted)}
+.pp-steps li{display:flex;align-items:center;gap:8px}
+.pp-steps li+li::before{content:"";width:28px;height:1px;background:var(--line);margin-right:2px}
+.pp-steps b{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);font-size:12px}
+.pp-steps .done b{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pp-steps .on{color:var(--ink)}.pp-steps .on b{border-color:var(--ink)}
+.pp-grid{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:48px;align-items:start}
+.pp-card .tilt{width:100%}.pp-t{text-align:center;margin-top:14px;color:var(--muted);font-size:14px}
+.pp-next{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.pp-hint{margin-top:14px;color:var(--muted);font-size:14px;max-width:46ch}
+@media (max-width:760px){.pp-grid{grid-template-columns:1fr;gap:28px}.pp-card{max-width:240px;margin:0 auto}}
+</style>
 <style id="mobile-final">
 @media (max-width:640px){
  :root{--gut-l:max(22px,env(safe-area-inset-left,0px))!important;--gut-r:max(22px,env(safe-area-inset-right,0px))!important}
@@ -3460,9 +3474,9 @@ function bindRail(rail){
 async function render(){
  timers.forEach(clearInterval);timers=[];closeLB();closeMenu();MBox.stop();$$(".vx-ov").forEach(x=>x.remove());
  const r=route();nav();window.scrollTo(0,0);
- const views={custom:vCustom,admin:vAdmin,home:vHome,templates:vTemplates,login:vAuth,signup:vAuth,dashboard:vDash,create:vCreate,edit:vCreate,manage:vManage,invite:vInvite};
+ const views={custom:vCustom,admin:vAdmin,home:vHome,templates:vTemplates,login:vAuth,signup:vAuth,dashboard:vDash,pay:vPay,create:vCreate,edit:vCreate,manage:vManage,invite:vInvite};
  const fn=views[r.name]||vHome;
- if(["dashboard","create","edit","manage","admin"].includes(r.name)&&!ME){afterAuth=location.hash.slice(1);toast(L("Create an account or sign in first","Prvo napravite nalog ili se prijavite"));return go("signup")}
+ if(["dashboard","create","edit","manage","admin","pay"].includes(r.name)&&!ME){afterAuth=location.hash.slice(1);toast(L("Create an account or sign in first","Prvo napravite nalog ili se prijavite"));return go("signup")}
  try{await fn(r)}catch(e){app.innerHTML=`<div class="wrap view"><div class="empty" style="margin-block:64px"><h2>${L("Something went wrong","Nešto nije u redu")}</h2><p>${esc(e.message)}</p><a class="btn btn-ink" href="#">${L("Back to home","Nazad na početnu")}</a></div></div>`}
  const v=$(".view",app);if(v){v.style.animation="none";void v.offsetWidth;v.style.animation=""}
  bindTilt(app);
@@ -3672,10 +3686,9 @@ function vCreate(r){
    ${t.tier?`<div class="pkg-box"><div><small>${L("Package","Paket")}</small><b>${tierName(t.tier)}</b></div><div class="amt">${priceTxt(t.tier)}<small>${L("You pay once the invitation is ready","Plaćate kada je pozivnica gotova")}</small></div></div>`:""}
    <div class="progress"><span id="pg-t"></span><span class="track"><i id="pg"></i></span></div>
    <div class="tabs-sm" role="tablist"><button class="on" data-tab="form">${L("Details","Detalji")}</button><button data-tab="preview">${L("Preview","Pregled")}</button></div>
-   <div class="switcher" aria-label="${L("Other designs in this category","Drugi dizajni u ovoj kategoriji")}">${sibs.map(s=>`<button class="sw${s.id===t.id?" on":""}" data-t="${s.id}" title="${esc(tName(s))}" aria-label="${esc(tName(s))}">${renderCard(s,null,{fixed:true,lang:data.lang})}</button>`).join("")}</div>
    ${Object.keys(GROUPS).filter(g=>byG[g]).map(g=>{const ks=byG[g];const pair=ks.length>1&&g!=="words";return`<div class="group"><h3>${pick(GROUPS[g])}</h3>${g==="photos"?`<p style="color:var(--muted);font-size:14px;margin-top:-6px">${L("Photos are resized automatically. Use clear, bright pictures.","Fotografije se automatski smanjuju. Izaberite jasne i svetle slike.")}</p>`:""}<div class="${g==="photos"?"ph-grid":pair?"grid2":"form"}">${ks.map(fld).join("")}</div></div>`}).join("")}
    <p class="err" id="c-err"></p>
-   <div class="save-bar"><button class="btn btn-gold" id="save">${inv?L("Save changes","Sačuvaj izmene"):L("Save & get my link","Sačuvaj i preuzmi link")}</button><a class="btn btn-ghost" href="${inv?"#manage-"+inv.id:"#templates"}">${L("Cancel","Otkaži")}</a></div>
+   <div class="save-bar"><button class="btn btn-gold" id="save">${inv?L("Save changes","Sačuvaj izmene"):L("Save & continue to payment","Sačuvaj i nastavi na plaćanje")}</button><a class="btn btn-ghost" href="${inv?"#manage-"+inv.id:"#templates"}">${L("Cancel","Otkaži")}</a></div>
   </div><div class="preview" data-tilt-host><div id="pv" style="width:100%">${tiltWrap(renderCard(t,data,{anim:true}))}</div><p class="tip">${L("Click any text on the card to edit it","Kliknite na tekst na pozivnici da ga izmenite")}</p><button class="btn btn-ink btn-sm" id="gp">👁 ${L("Preview as a guest","Pogledaj kao gost")}</button></div></div></div>`;
   $("#play")?.addEventListener("click",()=>storyOverlay(t,{...data}));
   $("#exp")?.addEventListener("click",()=>expOverlay(t,{...data}));
@@ -3690,9 +3703,22 @@ function vCreate(r){
   $$(".sw").forEach(b=>b.addEventListener("click",()=>{t=TM[b.dataset.t];const y=scrollY;draw();scrollTo(0,y)}));
   $$(".tabs-sm button").forEach(b=>b.addEventListener("click",()=>{$("#bld").dataset.tab=b.dataset.tab;$$(".tabs-sm button").forEach(x=>x.classList.toggle("on",x===b));if(b.dataset.tab==="preview"){$("#pv").innerHTML=tiltWrap(renderCard(t,data,{anim:true}))}}));
   $("#save").addEventListener("click",async e=>{const b=e.currentTarget;b.disabled=true;$("#c-err").textContent="";const clean={lang:data.lang};fieldsOf(t).forEach(k=>clean[k]=(data[k]??"").toString());
-   try{if(inv){await API.update(inv.id,t.id,clean);toast(L("Changes saved","Izmene su sačuvane"));go("manage-"+inv.id)}else{const n=await API.create(t.id,clean);toast(L("Invitation created","Pozivnica je napravljena"));go("manage-"+n.id)}}catch(err){$("#c-err").textContent=err.message;b.disabled=false}});
+   try{if(inv){await API.update(inv.id,t.id,clean);toast(L("Changes saved","Izmene su sačuvane"));go("manage-"+inv.id)}else{const n=await API.create(t.id,clean);toast(L("Invitation saved","Pozivnica je sačuvana"));go("pay-"+n.id)}}catch(err){$("#c-err").textContent=err.message;b.disabled=false}});
   bindTilt(app);
  };draw();})();
+}
+
+async function vPay(r){
+ const res=await API.get(r.a);const inv=res.invitation,t=TM[inv.templateId]||T[0];const k=t.tier||inv.tier;
+ if(!k||inv.status!=="pending"){go("manage-"+inv.id);return}
+ const title=titleOf(t,inv.data);
+ app.innerHTML=`<div class="view wrap paypage"><ol class="pp-steps" aria-label="${L("Steps","Koraci")}"><li class="done"><b>✓</b>${L("Design","Dizajn")}</li><li class="done"><b>✓</b>${L("Your details","Vaši podaci")}</li><li class="on"><b>3</b>${L("Payment","Plaćanje")}</li></ol>
+ <div class="pp-grid"><div class="pp-card" data-tilt-host>${tiltWrap(renderCard(t,inv.data,{fixed:true}))}<p class="pp-t">${esc(title)}</p></div>
+ <div class="pp-main"><div id="pay">${payHTML(inv,t)}</div>
+  <div class="pp-next"><a class="btn btn-gold" href="#manage-${inv.id}">${L("Go to my invitation","Idi na moju pozivnicu")} <span aria-hidden="true">→</span></a><a class="btn btn-ghost" href="#edit-${inv.id}">${ic("edit")} ${L("Edit details","Izmeni podatke")}</a></div>
+  <p class="pp-hint">${L("You can add guests and copy your link right away. Guests can open it as soon as the payment is confirmed.","Goste i link možete pripremiti odmah. Gosti mogu da otvore pozivnicu čim potvrdimo uplatu.")}</p></div></div></div>`;
+ bindTilt(app);
+ $("#sim-pay")?.addEventListener("click",async()=>{await API.setStatus(inv.id,"active");toast(L("Marked as paid","Označeno kao plaćeno"));go("manage-"+inv.id)});
 }
 async function vManage(r){
  const res=await API.get(r.a);const inv=res.invitation,t=TM[inv.templateId]||T[0];let gs=res.guests;let filter="all";
