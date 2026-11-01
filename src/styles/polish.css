@@ -1,0 +1,18 @@
+/* Loaded last: smoothness fixes that apply across all designs. */
+
+/* While a design's pictures and fonts load (see settle() in main.js) it stays invisible and frozen
+   on its first frame, so nothing pops in or swaps fonts in the middle of an animation. */
+.pk-wait>*{opacity:0!important;pointer-events:none!important}
+.pk-wait,.pk-wait *,.pk-wait *::before,.pk-wait *::after{animation-play-state:paused!important}
+.pk-probe{position:absolute!important;left:0;top:0;width:100%;pointer-events:none;contain:layout paint}
+.pk-loader{position:fixed;left:50%;top:50%;z-index:2000;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;
+ border:2px solid rgba(255,255,255,.95);border-right-color:transparent;mix-blend-mode:difference;
+ animation:pkSpin .8s linear infinite,pkFade .3s ease both;pointer-events:none}
+@keyframes pkSpin{to{transform:rotate(360deg)}}
+@keyframes pkFade{from{opacity:0}}
+
+/* The intro envelope on the home page waits (paused, invisible) until its logo, seal and font are ready. */
+html.intro-on:not(.intro-ready) #intro .in-stage,
+html.intro-on:not(.intro-ready) #intro .in-seal,
+html.intro-on:not(.intro-ready) #intro .in-hint{animation-play-state:paused}
+html.intro-on:not(.intro-ready) #intro .in-hint{opacity:0}

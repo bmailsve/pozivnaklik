@@ -2,117 +2,157 @@
 
 *Tvoja pozivnica. Tvoj stil. Jedan klik.*
 
-Sajt za elektronske pozivnice, na srpskom (latinica) sa prekidačem za engleski. Klijent napravi nalog, izabere dizajn, upiše podatke i dobije link. Gosti otvore link, pogledaju pozivnicu i potvrde ili otkažu dolazak. Domaćin na jednoj strani vidi ko je pozvan, ko je otvorio, ko dolazi (i koliko osoba) i ko ne dolazi.
+Online invitations with RSVP (Serbian Latin, with an English switch). Hosts create an account, pick a
+design, fill in the details and share a link; guests open it, see the animated invitation and reply;
+the host sees who opened it, who is coming (and how many) and who isn't.
 
-## Paketi i cene
+## Environments
 
-| Paket | Cena | Šta gost dobija | Dizajni |
-|---|---|---|---|
-| **Osnovna** | 1.190 din · 10 € | Gotova ilustrovana pozivnica sa animacijom, potvrdom dolaska, odbrojavanjem, kalendarom i mapom | Vrtuljak (prvi rođendan i krštenje: vaša slika pozivnice u kojoj se predmeti pokreću: baloni lebde, konjići vrtuljka se podižu i spuštaju, mašne se njišu, zvezdice trepere), Morska bajka (4. rođendan: rep sirene maše, ribice plivaju, kit se ljulja i šiklja vodu, delfini skaču, mehurići se dižu, meduza pulsira, biser sija), Espreso martini (22. rođendan: zrna kafe padaju u čašu i odskaču u peni, mašnice na linijama se njišu) |
-| **Plus** | 2.349 din · 20 € | Gost lomi voštani pečat i otvara kovertu, pozivnica izlazi iz nje; dodirom se okreće (na poleđini fotografija ili poruka), a ispod izlazi druga kartica sa programom dana, dress code-om, smeštajem i poklonima | Imanje (venčanje: lovorov grb sa inicijalima mladenaca, vrt starog imanja, krem koverta sa zlatnim pečatom i postavom od jasmina; svi tekstovi se menjaju u uređivaču), Limunovi (venčanje: plave mediteranske pločice i grane limuna, kobalt koverta), Bordo ruže (večernje venčanje: tamne ruže i zlatne linije na bordo papiru) |
-| **Premium** | 4.499 din · 40 € | Cela priča na jednoj stranici, sa muzikom | Medeni meda (prvi rođendan: gost meša med da otvori, podaci o rođenju, prva godina, fotografije, odbrojavanje), Naša pesma (venčanje kao ploča), Premijera (rođendan kao filmska premijera, sa fotografijom), Disko jubilej (rođendan i godišnjica firme kao disko noć: dva razloga za slavlje, dress code i muzika), Satenska mašna (venčanje: gost odvezuje mašnu, program dana, mesto sa fotografijom, odbrojavanje i muzička kutija) |
+| Branch    | Environment | URL                                   | Database                     |
+|-----------|-------------|---------------------------------------|------------------------------|
+| `main`    | production  | https://pozivnaklik.com               | production Postgres          |
+| `staging` | staging     | `https://staging--<site>.netlify.app` | its own, separate Postgres   |
 
-Sve ilustracije su napravljene za ovaj sajt i ugrađene su u `public/index.html`, pa nema spoljnih slika koje mogu da nestanu.
+**All changes go to `staging` first.** Check them on the staging URL, then merge `staging` into
+`main` (a pull request on GitHub) to publish them. Nothing on `staging` touches the live site or its data:
 
-Na sajtu se trenutno prikazuju paketi Osnovna (Vrtuljak, Morska bajka, Espreso martini), Plus (Imanje, Limunovi, Bordo ruže) i Premium. Stariji dizajni ostali su u kodu (pozivnice koje su već napravljene i dalje rade): stari dizajni (osnovni i koverte) vraćaju se brisanjem oznake `off:1` u njihovoj definiciji u `public/index.html`.
+- staging uses its own database (`DATABASE_URL` set only for branch deploys) and its own photo store
+  (`pk-media-staging` in Netlify Blobs);
+- a database remembers which environment created it, so a staging site accidentally pointed at the
+  production database refuses to start instead of mixing test data with real guests;
+- staging pages carry `noindex` and a blocking `robots.txt`, so they never appear in Google.
 
-Vrtuljak je gotova slika: polja u uređivaču (ime, datum, vreme, mesto, rok za potvrdu) ne menjaju sliku, već služe za odbrojavanje, kalendar, mapu i rok za potvrdu dolaska na stranici za goste.
+One-time setup: see [Setting up staging](#setting-up-staging-one-time) below.
 
-## Pregled i preuzimanje
+## Stack
 
-- Svaki dizajn, u svakom paketu, ima dugme **Pogledaj kao gost** (u galeriji i u uređivaču) koje prikazuje tačno ono što će gosti videti: osnovnu pozivnicu sa animacijom, otvaranje koverte ili ceo premium doživljaj.
-- Kada je uplata potvrđena, na stranici pozivnice pojavljuje se dugme **Preuzmi JPG**: pozivnica se preuzima kao slika visoke rezolucije (oko 1260 px širine), spremna za WhatsApp, Instagram ili štampu.
+- **Page:** the site's own HTML/CSS/JS in `src/`, built with **Vite** into `dist/`. Every built file
+  gets a content hash in its name and is cached by browsers for a year; the page itself is ~2 KB.
+- **Illustrations:** 119 WebP files in `src/art/`, referenced from `src/styles/art.css`. Each one is
+  downloaded only when a design on screen uses it.
+- **Fonts:** self-hosted in `src/fonts/` (generated by `npm run fonts`), no request to Google.
+- **API:** `server/api.js`, standard `Request`/`Response`, running as Netlify Functions
+  (`netlify/functions/`) online and as a Node server locally.
+- **Database:** **Postgres** (Neon / Netlify DB / any Postgres) at `DATABASE_URL`. Schema and
+  migrations in `server/schema.js`, applied automatically. Locally, without `DATABASE_URL`, an
+  embedded Postgres (PGlite) keeps data in `.data/`.
+- **Photos:** uploaded photos and link-preview pictures are files in Netlify Blobs (`.data/media`
+  locally), served from `/media/...` and `/og/<code>.jpg`.
+- **Tests:** `npm test` (API tests against an in-memory Postgres). GitHub Actions runs tests and a
+  build on every push and pull request; Netlify runs them before every deploy.
 
-## Dizajn po želji
+### Smooth, flicker-free designs
 
-Na stranici **Po želji** (`#custom`) posetioci bez naloga mogu da pošalju opis pozivnice koju žele, link (npr. sa Pinteresta) i do 3 slike. Zahtevi se pojavljuju na dnu stranice **Porudžbine** (samo za vlasnika), sa kontaktom, opisom i slikama, i mogu se označiti kao rešeni.
+- A design is shown only once its pictures are downloaded and decoded and its fonts are loaded; until
+  then it is held invisible on its first frame, then fades in and its animations start from the
+  beginning (`settle()` in `src/main.js`). The card inside an envelope is prepared before the guest
+  opens it, so it never pops in. A small spinner appears only if this takes longer than 0.4 s.
+- The home-page envelope waits for its logo, seal and font in the same way.
+- Text justification runs in the same frame the text appears (no visible re-flow).
+- The first API requests start from an inline script in `<head>`, in parallel with the page's
+  styles and code (previously four requests ran one after another before anything was shown).
 
-## Kako ide porudžbina i uplata
+## Working on the site
 
-> **Trenutno su uplate isključene:** svaka pozivnica je aktivna odmah po čuvanju i link za goste odmah radi. Uplate se vraćaju postavljanjem promenljive `PAYMENTS=on` na serveru (Netlify: Environment variables) i promenom `const PAYMENTS=false` u `true` u `public/index.html`.
-
-1. Klijent napravi pozivnicu. Ona se sačuva sa statusom **„Čeka uplatu"**, a klijent vidi iznos, podatke za uplatu i poziv na broj (kod pozivnice).
-2. Dok uplata nije potvrđena, gosti na linku vide poruku da pozivnica još nije aktivna. Klijent može da je pregleda i menja.
-3. Vi (vlasnik) otvorite **Porudžbine** u meniju i kliknete **Potvrdi uplatu**. Link odmah počinje da radi za goste.
-
-### Podešavanje vlasnika
-
-Pokrenite server sa svojim imejlom kao administratorom:
-
-```bash
-ADMIN_EMAILS=vas@imejl.com npm start
-```
-
-Napravite nalog na sajtu sa tim imejlom. U meniju će se pojaviti **Porudžbine**. Više imejlova odvojite zarezom.
-
-### Podaci za uplatu
-
-Upišite ih u `config.json`:
-
-```json
-{
-  "payment": {
-    "recipient": "Ime i prezime ili firma",
-    "account": "160-0000000000000-00",
-    "bank": "Naziv banke",
-    "phone": "+381 6x xxx xxxx",
-    "note": "Uplatu potvrđujemo istog dana."
-  }
-}
-```
-
-Ili kroz promenljive okruženja: `PAY_RECIPIENT`, `PAY_ACCOUNT`, `PAY_BANK`, `PAY_PHONE`, `PAY_NOTE`. Ako polja ostanu prazna, klijent vidi poruku da će podatke dobiti imejlom.
-
-## Pokretanje na računaru
-
-Potreban je Node.js 18 ili noviji. Nema dodatnih paketa.
+Node.js 20 or newer.
 
 ```bash
-cd paperlace
-ADMIN_EMAILS=vas@imejl.com npm start
+npm install
+npm run dev
 ```
 
-Otvorite http://localhost:3000.
+Open http://localhost:5173. The page reloads as you edit `src/`; the API restarts when you edit `server/`.
+Data is kept in `.data/` (delete the folder to start fresh). To make yourself the site owner locally:
 
-## Postavljanje na internet
+```bash
+ADMIN_EMAILS=you@example.com npm run dev
+```
 
-### Netlify (trenutno)
+Other commands:
 
-Sajt radi na Netlify-ju bez dodatnog servera:
+| Command | What it does |
+|---|---|
+| `npm test` | API tests |
+| `npm run build` | builds the site into `dist/` |
+| `npm start` | runs the built site + API on http://localhost:3000 (like production) |
+| `npm run migrate` | creates/updates the tables for `DATABASE_URL` |
+| `npm run import-legacy` | copies data from the old single-file database (see below) |
+| `npm run fonts` | downloads the Google Fonts again (only when adding a font family) |
 
-- stranica se objavljuje iz foldera `public`,
-- API (nalozi, pozivnice, odgovori gostiju, uplate) radi kao Netlify funkcija `netlify/functions/api.mjs`,
-- podaci se čuvaju u **Netlify Blobs** (skladište `pozivnaklik`), pa ostaju sačuvani između poseta i na svim uređajima.
+## Settings (environment variables)
 
-Podešavanje u Netlify-ju (**Project configuration → Environment variables**):
+Set in Netlify: **Project configuration → Environment variables**. Use *"Different value for each
+deploy context"* for anything that differs between production and staging, and make sure the
+**Functions** scope is ticked.
 
-| Promenljiva | Primer | Čemu služi |
+| Variable | Production | Staging (branch deploys) |
 |---|---|---|
-| `ADMIN_EMAILS` | `vas@imejl.com` | imejl vlasnika; taj nalog vidi **Porudžbine** i potvrđuje uplate |
-| `PAY_RECIPIENT`, `PAY_ACCOUNT`, `PAY_BANK`, `PAY_PHONE`, `PAY_NOTE` | | podaci za uplatu na stranici za plaćanje |
+| `DATABASE_URL` | production database | staging database |
+| `ADMIN_EMAILS` | owner's email(s), comma-separated | same or a test email |
+| `APP_ENV` | optional (`production` is automatic) | optional (`staging` is automatic) |
+| `PAYMENTS` | `on` to require payment before a link works | |
+| `PAY_RECIPIENT`, `PAY_ACCOUNT`, `PAY_BANK`, `PAY_PHONE`, `PAY_NOTE` | payment details (or in `config.json`) | |
 
-Posle izmene promenljivih pokrenite novi deploy (**Deploys → Trigger deploy**).
+Payments are currently **off**: every invitation is active as soon as it is saved. To turn them back
+on, set `PAYMENTS=on` and change `const PAYMENTS=false` to `true` in `src/main.js`.
 
-### Bilo koji Node hosting (npr. Render)
+## Setting up staging (one-time)
 
-`npm start` pokreće `server.js`, koji čuva podatke u `data/db.json`. Na Render-u dodajte **Persistent Disk** na `/var/data` i promenljive `DATA_DIR=/var/data` i `ADMIN_EMAILS=vas@imejl.com`.
+1. **Databases.** Create a free project at [neon.tech](https://neon.tech) (region: Frankfurt).
+   Its default branch is the production database. Create a second branch named `staging`.
+   For each branch, copy the **pooled** connection string.
+2. **Netlify branch deploys.** Netlify → the site → **Project configuration → Build & deploy →
+   Branches and deploy contexts → Branch deploys → Let me add individual branches** → add `staging`.
+3. **Staging variables.** **Environment variables → Add a variable**:
+   `DATABASE_URL` → *Different value for each deploy context* → **Branch deploys**: the staging
+   connection string. Leave **Production** empty for now (the live site doesn't use it yet).
+   Add `ADMIN_EMAILS` for all contexts.
+4. Push the `staging` branch. Netlify builds it at `https://staging--<site>.netlify.app`.
+   (Optional: **Domain management → Branch subdomains** gives it `staging.pozivnaklik.com`.)
+5. Optional — test with a copy of real data. Create a personal access token in Netlify (User
+   settings → Applications) and find the Site ID (Project configuration → General). The live data is
+   only read, never changed:
 
-## Linkovi za goste
+   ```bash
+   NETLIFY_SITE_ID=... NETLIFY_AUTH_TOKEN=... DATABASE_URL="<staging connection string>" APP_ENV=staging npm run import-legacy
+   ```
 
-- **Zajednički link** `/i/<kod>`: jedan link za sve; gost upisuje ime kada odgovara.
-- **Lični link** `/i/<kod>?g=<token>`: po jedan za svakog gosta dodatog na strani pozivnice; beleži da je gost otvorio pozivnicu i pozdravlja ga imenom.
+## Going live with the new version
 
-## Šta je u folderu
+When staging looks right:
+
+1. Set `DATABASE_URL` for **Production** to the production connection string.
+2. Copy the live data into it (same command as above, with the production connection string and
+   `APP_ENV=production`).
+3. Merge `staging` into `main`. Netlify publishes it.
+4. Run the import once more right after the deploy: it adds anything created on the old site in the
+   meantime (records that already exist are skipped).
+
+The old data in Netlify Blobs (store `pozivnaklik`) is left untouched, so going back is just
+reverting the merge.
+
+## Guest links
+
+- **Shared link** `/i/<code>`: one link for everyone; the guest types their name when replying.
+- **Personal link** `/i/<code>?g=<token>`: one per guest added on the invitation's page; records that
+  the guest opened it and greets them by name.
+
+Shared links show the invitation's own title, description and picture in WhatsApp, Viber and Instagram.
+
+## Folders
 
 ```
-paperlace/
-├── server.js          # Node server (lokalno ili na Render-u), podaci u data/db.json
-├── lib/app.js         # API: nalozi, pozivnice, gosti, uplate
-├── netlify/functions/api.mjs  # isti API na Netlify-ju, podaci u Netlify Blobs
-├── netlify.toml       # podešavanja za Netlify
-├── config.json        # podaci za uplatu
-├── package.json
-└── public/index.html  # ceo sajt: strane, dizajni, ilustracije, animacije
+src/                 the site
+  index.html         page shell (boot script, meta tags)
+  main.js            all pages, designs and animations
+  styles/            app.css (site + designs), art.css (illustrations), fonts.css, polish.css
+  art/  fonts/       illustrations and self-hosted fonts
+public/              copied as-is (og.jpg, favicon)
+server/              API, database, photo storage, Node server
+netlify/functions/   api (/api), files (/media, /og), page (/i)
+scripts/             dev server, migrations, legacy import, font download
+test/                API tests
 ```
 
-Podaci se čuvaju u `data/db.json` (pravi se automatski). Lozinke su zaštićene scrypt-om, sesije koriste HTTP-only kolačiće. Starije pozivnice napravljene pre uvođenja paketa ostaju aktivne.
+Passwords are hashed with scrypt; sessions are HTTP-only cookies whose values are stored only as
+SHA-256 hashes.

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Online pozivnice sa potvrdom dolaska za venčanja, rođendane i svaku proslavu. Izaberite dizajn, upišite podatke i pošaljite link.">
+<meta name="theme-color" content="#FBF5F0">
+<style id="base">html,body{margin:0;padding:0}body{font:14px system-ui,sans-serif;background:#FBF5F0}img{max-width:100%}[hidden]{display:none!important}
+html.is-invite,html.is-invite body{background:var(--boot-bg,#FBF5F0)}html.is-invite .hdr,html.is-invite #ft{display:none!important}
+html.is-invite #app:empty{min-height:100svh}</style>
+<!--boot-meta-->
+<script>
+/* Runs before anything else: picks the page mode and starts the first API requests right away,
+   so they download in parallel with the styles and the app code instead of after them. */
+(function(){
+ var d=document.documentElement,p=location.pathname;
+ if(p.indexOf("/i/")===0)d.classList.add("is-invite");else if(!location.hash.replace("#","")){d.classList.add("intro-on");setTimeout(function(){d.classList.add("intro-ready")},4000)}
+ if(location.protocol==="file:"||!window.fetch)return;
+ var ls=function(k){try{var v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(e){return null}};
+ var lang=ls("paperlace.lang")==="en"?"en":"sr",pre=window.__pkPre={};
+ var get=function(path){pre[path]=fetch("/api"+path,{headers:{"X-Lang":lang},credentials:"same-origin"})};
+ get("/me");get("/config");
+ var m=p.match(/^\/i\/([A-Za-z0-9]{4,20})\/?$/);
+ if(m){var g=new URLSearchParams(location.search).get("g")||ls("paperlace.rsvp."+m[1]);get("/public/"+m[1]+(g?"?g="+encodeURIComponent(g):""))}
+})();
+</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Poziv na klik">
+<meta property="og:title" content="Poziv na klik · online pozivnice">
+<meta property="og:description" content="Online pozivnice sa potvrdom dolaska za venčanja, rođendane i svaku proslavu.">
+<meta property="og:image" content="https://pozivnaklik.com/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light only">
+<meta name="format-detection" content="telephone=no">
+<title>Poziv na klik</title>
+<link rel="icon" href="/favicon.webp" type="image/webp">
+<link rel="stylesheet" href="/styles/fonts.css">
+<link rel="stylesheet" href="/styles/art.css">
+<link rel="stylesheet" href="/styles/app.css">
+<link rel="stylesheet" href="/styles/polish.css">
+<script type="module" src="/main.js"></script>
+</head>
+<body>
+<div id="intro" role="dialog" aria-label="Poziv na klik">
+ <div class="in-stage"><div class="in-in">
+  <div class="in-back"></div>
+  <div class="in-flap"></div>
+  <div class="in-clip"><div class="in-card"><span class="in-logo"></span><span class="in-line"></span><p>Tvoja pozivnica. Tvoj stil. Jedan klik.</p></div></div>
+  <div class="in-pocket"></div>
+  <button type="button" class="in-seal" aria-label="Otvorite kovertu"><span class="wax-img"></span></button><span class="in-ring"></span>
+ </div></div>
+ <p class="in-hint">Dodirnite pečat da otvorite</p>
+ <button type="button" class="in-skip">Preskoči</button>
+</div>
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="#" aria-label="Poziv na klik"><span class="bl" role="img" aria-label="Poziv na klik"></span></a>
+  <nav class="nav" id="nav"></nav>
+</div></header>
+<main id="app"></main>
+<footer class="ft" id="ft"></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

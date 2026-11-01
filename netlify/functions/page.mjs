@@ -1,24 +1,19 @@
-// Guest links (/i/<code>) with their own title, description and picture for WhatsApp, Viber and Instagram,
-// and the picture itself (/og/<code>.jpg). Data comes from Netlify Blobs, like the API.
-import { getStore } from "@netlify/blobs";
-import app from "../../lib/app.js";
+// Guest links (/i/<code>): the site's page with the invitation's own title, description, picture and
+// background colour, so shared links look right and the page opens on the design's colour.
+import { appFor } from "../../server/netlify.js";
+import { slugOk } from "../../server/api.js";
 
-export default async (request) => {
-  const u = new URL(request.url);
-  const store = getStore({ name: "pozivnaklik", consistency: "strong" });
-  let m = u.pathname.match(/^\/og\/([A-Za-z0-9]+)\.jpg$/);
-  if (m && app.slugOk(m[1])) {
-    const buf = await store.get("og/" + m[1], { type: "arrayBuffer" });
-    if (buf) return new Response(buf, { headers: { "Content-Type": "image/jpeg", "Cache-Control": "public, max-age=300" } });
-    return Response.redirect(new URL("/og.jpg", u.origin), 302);
+let shell = null;
+export default async (req, context) => {
+  const u = new URL(req.url);
+  if (!shell) {
+    const r = await fetch(new URL("/index.html", u.origin));
+    if (!r.ok) return r;
+    shell = await r.text();
   }
-  const page = await fetch(new URL("/index.html", u.origin));
-  let html = await page.text();
-  m = u.pathname.match(/^\/i\/([A-Za-z0-9]+)\/?$/);
-  if (m && app.slugOk(m[1])) {
-    try { app.setDb(await store.get("db", { type: "json" })); html = app.pageWithMeta(html, m[1], u.origin); } catch (e) { console.error(e); }
-  }
-  return new Response(html, { headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "public, max-age=0, must-revalidate" } });
+  const m = u.pathname.match(/^\/i\/([A-Za-z0-9]+)\/?$/);
+  const html = m && slugOk(m[1]) ? await appFor(context).invitePage(shell, m[1], u.origin) : shell;
+  return new Response(html, { headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-cache", "X-Content-Type-Options": "nosniff", "Referrer-Policy": "same-origin" } });
 };
 
-export const config = { path: ["/i/*", "/og/*"] };
+export const config = { path: "/i/*" };

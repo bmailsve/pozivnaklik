@@ -1,2 +1,9 @@
 node_modules/
+dist/
+.data/
 data/
+.netlify/
+.env
+*.log
+legacy-db.json
+.claude/

@@ -1,17 +1,28 @@
 {
   "name": "poziv-na-klik",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Poziv na klik: online pozivnice sa potvrdom dolaska",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "license": "UNLICENSED",
   "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "vite build",
+    "start": "node server/node-server.mjs",
+    "test": "node --test test/api.test.mjs",
+    "migrate": "node scripts/migrate.mjs",
+    "import-legacy": "node scripts/import-legacy.mjs",
+    "fonts": "node scripts/fetch-fonts.mjs"
+  },
   "dependencies": {
-    "@netlify/blobs": "^8.1.0"
+    "@netlify/blobs": "^8.2.0",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.2.17",
+    "vite": "^6.4.5"
   }
 }

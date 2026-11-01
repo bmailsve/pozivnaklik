@@ -1,18 +1,47 @@
-# Poziv na klik on Netlify: the page is served from /public, the API runs as a Netlify Function
-# (netlify/functions/api.mjs) and keeps accounts, invitations and replies in Netlify Blobs.
+# Poziv na klik on Netlify
+#   main    branch → production (pozivnaklik.com)
+#   staging branch → staging (staging--<site>.netlify.app), its own database and photo store
+# The page is built by Vite into dist/. The API (/api), photos (/media, /og) and guest links (/i)
+# are Netlify Functions (netlify/functions). Data: Postgres at DATABASE_URL, set per deploy context.
+
 [build]
-  command = "echo 'No build step needed'"
-  publish = "public"
+  command = "npm test && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
 
 [functions]
   node_bundler = "esbuild"
   included_files = ["config.json"]
+  # pg is loaded from node_modules as-is (it has an optional native part esbuild can't bundle)
+  external_node_modules = ["pg"]
 
-# Guest links (/i/<code>) and their preview pictures (/og/<code>.jpg) are served by
-# netlify/functions/page.mjs, so WhatsApp and Viber show the invitation's title and picture.
+# Built files have a content hash in their name: cache them for a year.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
-# Always load the newest version of the page (no stale copies in browsers)
+# The page itself is always checked for a newer version.
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
 [[headers]]
   for = "/*"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "same-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Strict-Transport-Security = "max-age=31536000"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# APP_ENV (production / staging) follows the deploy context automatically; it can be set
+# per context in the Netlify UI too. Staging pages are marked noindex at build time (vite.config.js).

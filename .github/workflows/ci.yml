@@ -1,0 +1,19 @@
+# Runs the API tests and a production build for every push to main/staging and every pull request,
+# so a broken change is caught before Netlify publishes it.
+name: CI
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
