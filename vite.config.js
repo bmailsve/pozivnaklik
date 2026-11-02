@@ -35,7 +35,8 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    // npm run dev starts the API on 8788 (see scripts/dev.mjs); the page talks to it through here
-    proxy: Object.fromEntries(["/api", "/og", "/media"].map(p => [p, "http://localhost:8788"]))
+    // npm run dev starts the API on 8788 (see scripts/dev.mjs); the page talks to it through here.
+    // The Host header is kept, so the API's same-site check sees the page's own origin.
+    proxy: Object.fromEntries(["/api", "/og", "/media"].map(p => [p, { target: "http://localhost:8788", changeOrigin: false }]))
   }
 });
