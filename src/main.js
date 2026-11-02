@@ -1302,7 +1302,7 @@ function bindBloom(root,t,d,o={}){
  const play=()=>{try{DiscoBeat.stop()}catch(e){}MBox.use(VX_BARS,.26);MBox.start();setPlay(true)};
  mus.addEventListener("click",()=>{if(root.classList.contains("playing")){MBox.stop();setPlay(false)}else play()});
  const top=$(".fw-top",root);let x0=null,done=false;
- const open=withSound=>{if(done)return;done=true;top.style.transform="";root.classList.add("torn");if(withSound)play();setTimeout(()=>root.classList.add("burst"),withSound?350:0);setTimeout(()=>root.classList.add("blooming"),withSound?650:0);setTimeout(()=>{root.classList.add("on");o.onOpen&&o.onOpen();setTimeout(reveal,600);count()},withSound?2500:0)};
+ const open=withSound=>{if(done)return;done=true;top.style.transform="";root.classList.add("torn");if(withSound)play();setTimeout(()=>root.classList.add("burst"),withSound?350:0);setTimeout(()=>root.classList.add("blooming"),withSound?650:0);setTimeout(()=>{root.classList.add("on");o.onOpen&&o.onOpen();setTimeout(reveal,600);count()},withSound?2600:0)};
  top.addEventListener("pointerdown",e=>{if(done)return;x0=e.clientX;try{top.setPointerCapture(e.pointerId)}catch(_){}});
  top.addEventListener("pointermove",e=>{if(x0===null||done)return;const dx=Math.abs(e.clientX-x0);top.style.transform=`rotate(${(-Math.min(dx,120)*.06).toFixed(1)}deg) translateY(${(-Math.min(dx,120)*.08).toFixed(1)}px)`;if(dx>80)open(true)});
  top.addEventListener("pointerup",()=>{if(!done)open(true);x0=null});
