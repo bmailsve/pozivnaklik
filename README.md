@@ -21,7 +21,7 @@ the host sees who opened it, who is coming (and how many) and who isn't.
 - a database remembers which environment created it, so a staging site accidentally pointed at the
   production database refuses to start instead of mixing test data with real guests;
 - staging pages carry `noindex` and a blocking `robots.txt`, so they never appear in Google;
-- staging is private: Netlify asks for a Netlify team login before showing it.
+- staging is private: it asks for a password first (see [Staging password](#staging-password)).
 
 How staging is set up: see [Staging setup](#staging-setup) below.
 
@@ -110,6 +110,21 @@ Already done (November 2026):
   `staging` branch. Production has no value yet, so the live site is unaffected.
 - The staging database is marked as `staging`; the production one will be marked `production` on
   its first use, and neither will ever accept the other environment.
+
+### Staging password
+
+Staging (and deploy previews) show a password page first. It is a small edge function,
+`netlify/staging-gate/staging-gate.js`, that `scripts/prepare-deploy.mjs` adds to non-production
+builds only, so production never runs it. The password is the `STAGING_PASSWORD` environment
+variable (secret, Branch deploys + Deploy previews); a copy is in `.staging-password.txt` on the
+computer that set it up (not in git). After the password is entered once, the browser stays signed
+in for 30 days. To change it:
+
+```bash
+npx netlify-cli env:set STAGING_PASSWORD "<new password>" --context branch-deploy deploy-preview --secret
+```
+
+then redeploy staging (push to `staging`, or Deploys → Trigger deploy).
 
 Optional — test with a copy of real data. With the Netlify CLI logged in (`npx netlify-cli login`),
 the live data is only read, never changed:
