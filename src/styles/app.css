@@ -860,30 +860,48 @@ h1,h2,h3,.why-l h2,.sec-head h2{font-feature-settings:"ccmp" 1,"mark" 1;text-ren
 .hy{--ink:#5A3E1E;--honey:#C98A1B;--gold:#F4B41A;--cream:#FBF4E3;--sage:#9DB58A;position:relative;background:var(--cream);color:var(--ink);font-family:'Quicksand',sans-serif;overflow-x:clip;min-height:100svh}
 .view:has(> .hy){transform:none!important;animation:none!important;opacity:1!important}
 .hy .vx-top{position:absolute;top:12px;right:12px;z-index:61}
-.hy-open{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;background:radial-gradient(circle at 50% 40%,#fffaf0,#fbefd0 55%,#f3dca6);overflow:hidden;touch-action:none;transition:opacity .9s ease,visibility 0s .9s}
+.hy-open{position:fixed;top:0;left:0;width:100vw;height:100svh;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:16px;padding:11svh 0 6svh;box-sizing:border-box;background:radial-gradient(circle at 50% 40%,#fffaf0,#fbefd0 55%,#f3dca6);overflow:hidden;touch-action:none;transition:opacity .9s ease,visibility 0s .9s}
 .hy.pv .hy-open{position:absolute;inset:0 0 auto;width:100%;height:100svh}
 .hy-k{font-family:'Parisienne',cursive;font-size:clamp(34px,9vw,46px);color:#a8701a;margin:0}
-.hy-jar{position:relative;width:min(70vw,300px);aspect-ratio:1;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
-.hy-jar .jar{position:absolute;inset:6%;background:var(--a-hyjar) center/contain no-repeat;filter:drop-shadow(0 18px 24px rgba(120,80,20,.28))}
-.hy-jar .swirl{position:absolute;inset:24%;border-radius:50%;background:conic-gradient(from var(--r,0deg),rgba(255,236,170,.0),rgba(255,240,190,.75),rgba(255,236,170,0) 30%,rgba(255,240,190,.55) 55%,rgba(255,236,170,0) 70%);mix-blend-mode:screen;opacity:.0;transition:opacity .3s}
-.hy.stirring .hy-jar .swirl,.hy.stirred .hy-jar .swirl{opacity:1}
-.hy-jar .ring{position:absolute;inset:-4%;width:108%;height:108%;transform:rotate(-90deg);pointer-events:none}
-.hy-jar .ring circle{fill:none;stroke:rgba(201,138,27,.22);stroke-width:2.4}
-.hy-jar .ring .pr{stroke:var(--honey);stroke-linecap:round;transition:stroke-dashoffset .2s}
-.hy-jar .dip{position:absolute;left:50%;top:50%;width:18%;aspect-ratio:1;margin:-9% 0 0 -9%;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe9a6,#e3a72f 60%,#b0761a);box-shadow:0 6px 14px rgba(120,80,20,.35);pointer-events:none;animation:hyCircle 3.2s linear infinite}
-.hy.stirring .hy-jar .dip,.hy.stirred .hy-jar .dip{animation:none}
-@keyframes hyCircle{0%{transform:rotate(0) translateX(28%) rotate(0)}100%{transform:rotate(360deg) translateX(28%) rotate(-360deg)}}
-.hy-jar.tapped .jar{animation:hyWob .4s ease}
-@keyframes hyWob{30%{transform:scale(.96) rotate(-3deg)}70%{transform:scale(1.03) rotate(2deg)}}
 .hy-go{display:flex;flex-direction:column;align-items:center;gap:4px;margin:0;text-align:center;padding:14px 26px;border-radius:999px;background:#5a3e1e;color:#fff;font-weight:700;font-size:16px;box-shadow:0 14px 30px -14px rgba(90,62,30,.6)}
 .hy-go small{font-weight:500;font-size:12px;opacity:.8}
-.hy-bee{position:absolute;width:42px;animation:hyFly 9s ease-in-out infinite;pointer-events:none}
-.hy-bee svg{width:100%;display:block;animation:hyBuzz .18s ease-in-out infinite alternate}
-.hy-bee.b0{left:8%;top:14%}.hy-bee.b1{right:10%;top:22%;animation-delay:-3s;width:34px}.hy-bee.b2{left:14%;bottom:18%;animation-delay:-5s;width:30px}.hy-bee.b3{right:16%;bottom:12%;animation-delay:-7s}
-@keyframes hyFly{0%,100%{transform:translate(0,0) rotate(-6deg)}25%{transform:translate(30px,-18px) rotate(8deg)}50%{transform:translate(-10px,-34px) rotate(-4deg)}75%{transform:translate(-26px,8px) rotate(6deg)}}
-@keyframes hyBuzz{to{transform:translateY(-2px)}}
+.hy-open .hy-k{margin-bottom:auto}
+.hy-scene{position:relative;width:min(64vw,280px,31svh);aspect-ratio:200/260;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.hy-daisy{position:absolute;inset:0;width:100%;height:100%;overflow:visible;transform-origin:50% 100%;animation:hySway 5s ease-in-out infinite;-webkit-mask:linear-gradient(#000 76%,transparent 99%);mask:linear-gradient(#000 76%,transparent 99%)}
+.hy-daisy .st{fill:none;stroke:#7FA35F;stroke-width:5;stroke-linecap:round}
+.hy-daisy .lf{fill:#8DB26B}.hy-daisy .lv{fill:none;stroke:#6B8F4E;stroke-width:1.6;stroke-linecap:round}
+.hy-daisy .pb{fill:#E6EDF6;stroke:#B9C7DA;stroke-width:1.2}.hy-daisy .pf{fill:url(#hdP);stroke:#B4C3D8;stroke-width:1.2}
+@keyframes hySway{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}}
+.hy.left .hy-daisy{animation:hySpring 1.4s cubic-bezier(.3,.6,.4,1) both}
+@keyframes hySpring{0%{transform:rotate(0)}18%{transform:rotate(-7deg) scale(1.02,.98)}40%{transform:rotate(4deg)}62%{transform:rotate(-2deg)}82%{transform:rotate(1deg)}100%{transform:rotate(0)}}
+.hy-bz{position:absolute;left:31%;top:15%;width:44%;padding:0;border:0;background:none;cursor:pointer;transform-origin:71% 50%;z-index:2;-webkit-tap-highlight-color:transparent}
+.hy-bzi,.hy-bz svg{display:block;width:100%;overflow:visible}
+.hy-bzi{transform-origin:50% 90%;animation:hyNap 3.2s ease-in-out infinite}
+@keyframes hyNap{50%{transform:scale(1.035,.975) translateY(1px)}}
+.hy-bz .wg{transform-box:view-box;transform-origin:54px 46px;animation:hyFlap 1.8s ease-in-out infinite alternate}
+.hy-bz .wg ellipse{fill:rgba(228,237,249,.92);stroke:#A9BCD6;stroke-width:1.4}
+.hy-bz .wg path{fill:none;stroke:rgba(169,188,214,.8);stroke-width:1.1;stroke-linecap:round}
+@keyframes hyFlap{to{transform:rotate(-6deg) scaleY(.82)}}
+.hy.awake .hy-bz{will-change:transform}
+.hy.awake .hy-bzi{animation:hyWake .38s ease-out}
+@keyframes hyWake{40%{transform:translateY(-5%) rotate(-6deg) scale(1.05)}}
+.hy.awake .hy-bz .wg{animation:hyBuzz .07s linear infinite alternate}
+@keyframes hyBuzz{from{transform:rotate(4deg) scaleY(1)}to{transform:rotate(-12deg) scaleY(.45)}}
+.hy.zoom .hy-bz .wg{animation-play-state:paused}
+.hy.zoom .hy-open{transition:opacity .6s ease,visibility 0s .6s}
+.hy.zoom .hy-daisy{opacity:0;transition:opacity .45s ease}
+.hy-z{position:absolute;left:70%;top:7%;font:700 22px/1 'Quicksand',sans-serif;font-style:normal;color:#C98A1B;opacity:0;pointer-events:none;animation:hyZz 3s ease-out infinite}
+.hy-z.z2{left:77%;font-size:15px;animation-delay:1.5s}
+@keyframes hyZz{0%{opacity:0;transform:translate(0,0) scale(.6)}20%{opacity:.9}100%{opacity:0;transform:translate(14px,-34px) scale(1.1)}}
+.hy.awake .hy-z{animation:none;opacity:0}
+.hy-trail{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
+.hy-trail .t{fill:none;stroke:#3A2E22;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:.1 8;opacity:.7}
+.hy-trail .m{fill:none;stroke:#fff;stroke-width:14;stroke-linecap:round}
+.hy.zoom .hy-k,.hy.zoom .hy-go,.hy.awake .hy-go{transition:opacity .5s ease;opacity:0}
+.hy:not(.on) .bd-cardwrap{transform:scale(.7) rotate(-6deg)}
+.hy .bd-cardwrap{transition-delay:.15s}
 .hy.on .hy-open{opacity:0;visibility:hidden;pointer-events:none}
-.hy:not(.on) .hy-rest{display:none}.hy:not(.on){height:100svh;overflow:hidden}
+.hy:not(.on) .hy-rest{visibility:hidden}.hy:not(.on){height:100svh;overflow:hidden}
 .hy-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;overflow:hidden}
 .hy-hero-t{position:relative;z-index:1;text-align:center;padding:clamp(70px,13vh,130px) 20px 0;opacity:0;transform:translateY(16px);transition:opacity 1s ease .6s,transform 1s cubic-bezier(.2,.7,.2,1) .6s}
 .hy.on .hy-hero-t{opacity:1;transform:none}
@@ -966,7 +984,7 @@ h1,h2,h3,.why-l h2,.sec-head h2{font-feature-settings:"ccmp" 1,"mark" 1;text-ren
 .hy-music .d{width:12px;height:12px;border-radius:50%;background:var(--gold)}
 .hy.playing .hy-music .d{animation:bwBeat 1s ease-in-out infinite}
 .hy:not(.on) .hy-music{display:none}.hy.pv .hy-music{position:absolute;top:14px;bottom:auto}
-@media (prefers-reduced-motion:reduce){.hy-bee,.hy-bee svg,.hy-jar .dip,.hy-fin .wave,.hy-cue,.hy-cake .flame{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.hy-daisy,.hy-bzi,.hy-bz .wg,.hy-z,.hy-fin .wave,.hy-cue,.hy-cake .flame{animation:none!important}}
 
 /* ===== honey2-css ===== */
 .hy-inv{font-size:clamp(20px,5vw,24px)!important;line-height:1.55!important;text-align:center!important}
