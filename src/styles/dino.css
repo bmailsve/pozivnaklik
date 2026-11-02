@@ -148,7 +148,7 @@
 .k-bas .pd-fp svg{width:4.6cqw;fill:currentColor}
 .k-bas .pd-fp svg:nth-child(odd){transform:translateY(1.2cqw) rotate(16deg)}.k-bas .pd-fp svg:nth-child(even){transform:rotate(-16deg)}
 .tid-p_dino .inv-body{justify-content:flex-start!important}
-.k-bas .pd-d{font:600 3.4cqw/1.2 'Quicksand',sans-serif;color:#4c5a46}
+.k-bas .pd-d{margin-top:4.5cqw!important;font:600 3.4cqw/1.2 'Quicksand',sans-serif;color:#4c5a46}
 .k-bas .pd-d b{font:600 6cqw/1 'Fredoka',sans-serif;color:#4f7a45;margin:0 .6cqw}
 /* the details sit on the right, across from the dino; the signature runs along the bottom */
 .k-bas .pd-side{position:absolute;right:7cqw;top:84cqw;width:38cqw;display:flex;flex-direction:column;align-items:flex-end;gap:.6cqw;text-align:right!important;font:500 2.7cqw/1.3 'Quicksand',sans-serif;color:#4c5a46}
