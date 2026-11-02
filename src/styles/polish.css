@@ -42,8 +42,6 @@ html.intro-on:not(.intro-ready) #intro .in-hint{opacity:0}
 
 /* Long names and venues never get cut off */
 .bw-btn small,.dx-btn2 small{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
-/* Premijera: a long name shrinks to fit the cinema marquee */
-.pm-board b{font-size:calc(clamp(22px,7.4vw,40px) * var(--k,1))}
 /* Disko card: a long venue wraps, and its column gets more room than the date and time */
 .tid-p_disco .dz-info>div[data-f="venue"] span:first-of-type{white-space:normal;text-wrap:balance}
 .tid-p_disco .dz-info:has(>div:nth-child(3)){grid-template-columns:minmax(0,.85fr) minmax(0,.85fr) minmax(0,1.5fr)}
