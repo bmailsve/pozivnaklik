@@ -787,6 +787,7 @@ const DiscoBeat=(()=>{let ctx,master,timer,step=0,next=0,on=false,noise;const bp
   get on(){return on}}})();
 window.addEventListener("hashchange",()=>DiscoBeat.stop());
 
+const loadMirrorBall=()=>loadMirrorBall.p||(loadMirrorBall.p=import("./designs/mirrorball.js").catch(e=>{loadMirrorBall.p=null;throw e}));
 function discoBall(cls=""){return`<span class="dx-ball ${cls}" aria-hidden="true"><i class="tx"></i><i class="sh"></i></span>`}
 function discoHTML(t,d,o={}){
  const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const v=k=>(d[k]??"").toString().trim();
@@ -802,6 +803,7 @@ function discoHTML(t,d,o={}){
  seed=97;const conf=Array.from({length:26},()=>`<i style="left:${f1(rnd()*100)}%;--d:${f1(rnd()*6)}s;--t:${f1(5+rnd()*5)}s;--x:${f1(rnd()*80-40)}px;--r:${f1(rnd()*720-360)}deg;--s:${f1(5+rnd()*7)}px"></i>`).join("");
  const specks=`<span class="dx-specks" aria-hidden="true"></span>`;
  return`<div class="dx${o.preview?" pv":""}" lang="${cl==="sr"?"sr-Latn":"en"}">
+ <span class="dx-room" aria-hidden="true"></span><canvas class="dx-cv" aria-hidden="true"></canvas>
  ${o.preview?"":`<div class="vx-top">${langSwitch()}</div>`}
  <section class="dx-open" role="button" tabindex="0" aria-label="${C("Start the party","Pokreni žurku")}">${specks}<span class="dx-cord" aria-hidden="true"></span><span class="dx-bw">${discoBall("big")}<span class="dx-hit" aria-hidden="true"><i></i><i></i><i></i><b class="dx-tap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V10m0-.5V4a1.5 1.5 0 0 1 3 0v6m0-1.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1.2a5 5 0 0 1-4.1-2.1L4.3 14.4a1.6 1.6 0 0 1 2.4-2.1L9 14.5"/></svg></b></span></span>
   <div class="dx-open-in"><p class="dx-k">${g?`${C("For","Za:")} ${esc(g.name)}`:C("A private invitation","Lična pozivnica")}</p><h2 class="dx-script">${brand||who}</h2><span class="dx-go">${C("Tap the disco ball to open","Dodirnite disko kuglu da otvorite")}<i aria-hidden="true">✦</i></span><p class="dx-cap">${C("the invitation opens with music","pozivnica se otvara uz muziku")}</p></div><span class="dx-flash" aria-hidden="true"></span></section>
@@ -827,13 +829,23 @@ function bindDisco(root,t,d,o={}){
  const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const mus=$(".dx-music",root);
  const setPlay=on=>{root.classList.toggle("playing",on);mus.setAttribute("aria-pressed",on);mus.setAttribute("aria-label",on?C("Pause the music","Pauziraj muziku"):C("Play the music","Pusti muziku"))};
  const play=()=>{try{MBox.stop()}catch(e){}DiscoBeat.start();setPlay(true)};
- const open=withSound=>{if(root.classList.contains("on"))return;root.classList.add("on");if(withSound)play();else setPlay(false);o.onOpen&&o.onOpen();setTimeout(reveal,withSound?900:0);count()};
+ const open=withSound=>{if(root.classList.contains("on"))return;root.classList.add("on");root.dispatchEvent(new Event("dx-open"));if(withSound)play();else setPlay(false);o.onOpen&&o.onOpen();setTimeout(reveal,withSound?900:0);count()};
  const op=$(".dx-open",root);op.addEventListener("click",()=>open(true));op.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open(true)}});
  mus.addEventListener("click",()=>{if(DiscoBeat.on){DiscoBeat.stop();setPlay(false)}else play()});
+ // the 3D mirror ball and its light, behind the whole page
+ let mb=null;
+ const anchors=()=>root.classList.contains("on")?[$(".dx-fin .dx-ball",root)]:[$(".dx-open .dx-bw",root)];
+ loadMirrorBall().then(m=>m.mountMirrorBall($(".dx-cv",root),{anchors,small:matchMedia("(max-width:700px)").matches})).then(b=>{
+  if(!b){root.classList.add("no3d");return}
+  if(!root.isConnected){b.destroy();return}
+  mb=b;root.classList.add("has3d");if(root.classList.contains("on"))mb.setGain(.6);
+ }).catch(()=>root.classList.add("no3d"));
+ $(".dx-cv",root).addEventListener("ball-lost",()=>root.classList.replace("has3d","no3d"));
+ root.addEventListener("dx-open",()=>{if(mb){mb.burst();setTimeout(()=>mb&&mb.setGain(.6),1800)}});
  const countUp=el=>{const to=+el.dataset.to;const t0=performance.now(),dur=1600+to*20;const step=now=>{const k=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-k,3);el.textContent=Math.round(to*e);if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)};
  function reveal(){const els=$$(".rv",root);if(!("IntersectionObserver" in window)){els.forEach(e=>e.classList.add("in"));$$(".dx-chrome",root).forEach(e=>e.textContent=e.dataset.to);return}root.classList.add("io");const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");$$(".dx-chrome",e.target).forEach(countUp);io.unobserve(e.target)}}),{threshold:.14});els.forEach(el=>io.observe(el))}
  function count(){const el=$(".dx-count",root);if(!el)return;const w=+el.dataset.w;const tick=()=>{if(!el.isConnected)return;const ms=w-Date.now();if(ms<=0){el.innerHTML="";return}const a=[[Math.floor(ms/864e5),C("Days","Dana")],[Math.floor(ms/36e5)%24,C("Hours","Sati")],[Math.floor(ms/6e4)%60,C("Min","Min")],[Math.floor(ms/1e3)%60,C("Sec","Sek")]];el.innerHTML=a.map(([n,l])=>`<div><b>${String(n).padStart(2,"0")}</b><span>${l}</span></div>`).join("");setTimeout(tick,1000)};tick()}
- const obs=new MutationObserver(()=>{if(!root.isConnected){DiscoBeat.stop();obs.disconnect()}});obs.observe(document.body,{childList:true,subtree:true});
+ const obs=new MutationObserver(()=>{if(!root.isConnected){DiscoBeat.stop();if(mb){mb.destroy();mb=null}obs.disconnect()}});obs.observe(document.body,{childList:true,subtree:true});
  if(o.opened)open(false);
 }
 
@@ -1452,7 +1464,7 @@ function detailsHTML(t,d){if(t.tier!=="envelope")return"";const cl=d.lang||LANG,
  return`<article class="kdcard" style="--c-bg:${p.bg};--c-ink:${p.ink};--c-accent:${p.accent};--f-d:${t.font.d};--f-s:${t.font.s};--f-b:${t.font.b}" aria-label="${C("Details","Detalji")}"><div class="dc-in"><p class="dc-k">${C("Good to know","Dobro je znati")}</p><h3 class="dc-h">${C("Details","Detalji")}</h3>
   ${sec.map(([,h,b],i)=>`${i?`<span class="dc-orn" aria-hidden="true"><i></i>◆<i></i></span>`:""}<section><h4>${h}</h4>${b}</section>`).join("")}</div></article>`}
 /* ---------- one "preview as guest" for every design ---------- */
-function guestPreview(t,d){if(t.exp==="sky")loadSky().catch(()=>{});if(t.exp==="balloon")loadBalloons().catch(()=>{});if(t.exp==="gold")loadRecord().catch(()=>{});d={...defaultsOf(t,d.lang||LANG),...d};if(t.exp)return expOverlay(t,d);if(t.liner||t.opener)return envOverlay(t,d);if(t.story)return storyOverlay(t,d);return basicOverlay(t,d)}
+function guestPreview(t,d){if(t.exp==="sky")loadSky().catch(()=>{});if(t.exp==="balloon")loadBalloons().catch(()=>{});if(t.exp==="gold")loadRecord().catch(()=>{});if(t.exp==="disco")loadMirrorBall().catch(()=>{});d={...defaultsOf(t,d.lang||LANG),...d};if(t.exp)return expOverlay(t,d);if(t.liner||t.opener)return envOverlay(t,d);if(t.story)return storyOverlay(t,d);return basicOverlay(t,d)}
 function basicOverlay(t,d){
  const ov=document.createElement("div");ov.className="story-ov env-ov gp-ov";ov.setAttribute("role","dialog");ov.setAttribute("aria-modal","true");
  const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const dt=pd(d.date,cl);
@@ -2043,7 +2055,7 @@ async function vInvite(r){
  let res;try{res=await API.pub(slug,token)}catch(e){if(r.b)throw e;token=null;res=await API.pub(slug,null)}
  if(res.inactive){app.innerHTML=inactiveHTML();return}
  if(token&&!res.guest&&!r.b){token=null;LS.del("paperlace.rsvp."+slug)}
- const t=TM[res.invitation.templateId]||T[0];if(t.exp==="sky")loadSky().catch(()=>{});if(t.exp==="balloon")loadBalloons().catch(()=>{});if(t.exp==="gold")loadRecord().catch(()=>{});const cardLang=res.invitation.data.lang||"sr";
+ const t=TM[res.invitation.templateId]||T[0];if(t.exp==="sky")loadSky().catch(()=>{});if(t.exp==="balloon")loadBalloons().catch(()=>{});if(t.exp==="gold")loadRecord().catch(()=>{});if(t.exp==="disco")loadMirrorBall().catch(()=>{});const cardLang=res.invitation.data.lang||"sr";
  {const bg=EXP_BG[t.exp]||"#FBF5F0";document.documentElement.style.setProperty("--boot-bg",bg);document.querySelector('meta[name="theme-color"]')?.setAttribute("content",bg)}
  if(!LANG_PICKED&&!vInvite.done&&cardLang!==LANG){setLang(cardLang);LS.del("paperlace.lang")}vInvite.done=1;
  const data={...defaultsOf(t,cardLang),...res.invitation.data,lang:cardLang};let guest=res.guest;

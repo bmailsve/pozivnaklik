@@ -415,7 +415,7 @@ export function createApp(cfg) {
   const PAGE_BG = { p_gold: "#1C0D10", p_balloon: "#FFF3F0", p_sky: "#060914", p_rip: "#0B0A0A", p_bloom: "#FBF3EE", p_plane: "#E3EEF6", p_letter: "#E9DFD0", p_disco: "#09090A", premiere: "#0E0B0C", vinyl: "#F1E8D8", p_bow: "#F3EFE7", p_honey: "#FBF4E3" };
   const escAttr = v => String(v ?? "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   // designs whose 3D code (three.js) the guest page should start downloading straight away
-  const DESIGN_CODE = { p_sky: "designs/sky.js", p_balloon: "designs/balloons.js", p_gold: "designs/record.js" };
+  const DESIGN_CODE = { p_sky: "designs/sky.js", p_balloon: "designs/balloons.js", p_gold: "designs/record.js", p_disco: "designs/mirrorball.js" };
   function preloads(manifest, templateId) {
     const out = new Set(), walk = key => { const e = manifest && manifest[key]; if (!e || out.has(e.file)) return; out.add(e.file); (e.imports || []).forEach(walk); };
     walk(DESIGN_CODE[templateId]);

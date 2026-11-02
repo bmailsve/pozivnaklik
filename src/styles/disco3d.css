@@ -1,0 +1,14 @@
+/* ===== Disko: the 3D mirror ball and its light (src/designs/mirrorball.js) ===== */
+/* the old rotating dot layers (one per section, colliding at the seams) are gone */
+.dx-specks{display:none!important}
+/* one dark club backdrop and one light layer for the whole page, so there are no seams */
+.dx-room{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 40%,#232327 0,#0b0b0c 58%,#050505 100%)}
+.dx-cv{position:fixed;inset:0;z-index:1;width:100%;height:100%;display:block;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+.dx.has3d .dx-cv{opacity:1}
+.dx.has3d .dx-open,.dx.has3d .dx-hero,.dx.has3d .dx-fin{background:transparent!important}
+.dx.has3d :is(.dx-hero,.dx-rest){position:relative;z-index:2}
+/* the painted balls keep their place (the 3D ball sits exactly there) but are not drawn */
+.dx.has3d .dx-ball{visibility:hidden}
+.dx.has3d .dx-fin .dx-cord{opacity:.7}
+/* without 3D the page keeps its painted ball on a calm backdrop */
+.dx.no3d .dx-cv{display:none}
