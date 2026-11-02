@@ -101,4 +101,85 @@
 .k-bas.animate .bg-hero b::after{animation:bgGlint 5.5s ease-in-out 1.4s infinite}
 @keyframes bgGlint{0%{-webkit-mask-position:130% 0;mask-position:130% 0}55%,100%{-webkit-mask-position:-30% 0;mask-position:-30% 0}}
 
-@media (prefers-reduced-motion:reduce){.k-bas.animate .bb-age,.k-bas.animate .bg-hero b::after{animation:none!important}}
+/* --- Lavanda: lilac italics among the lavender --- */
+.k-bas .bl-k{font:500 2.4cqw/1.5 'Jost',sans-serif;letter-spacing:.3em!important;text-transform:uppercase;color:#8a7bb0}
+.k-bas .bl-n{display:flex;flex-direction:column;align-items:center;margin:2cqw 0 1.4cqw!important;font:italic 500 12.5cqw/1 'Cormorant Garamond',serif;color:#4e4762}
+.k-bas .bl-n em{font:400 8cqw/1 'Great Vibes',cursive;color:#8a7bb0;margin:-.8cqw 0 -.6cqw}
+.k-bas .bl-m{font:italic 500 3.5cqw/1.4 'Cormorant Garamond',serif;color:#5b5470;max-width:62cqw}
+.k-bas .bl-d{display:flex;flex-direction:column;align-items:center;gap:.8cqw;margin:2.8cqw 0 2.4cqw!important}
+.k-bas .bl-d small{font:500 2.3cqw/1 'Jost',sans-serif;letter-spacing:.32em;text-transform:uppercase;color:#8a7bb0}
+.k-bas .bl-d b{font:500 7.4cqw/1 'Cormorant Garamond',serif;color:#4e4762;letter-spacing:.06em}
+.k-bas .bl-d i{font-style:normal;color:#8a7bb0;margin:0 1.4cqw}
+.k-bas .bl-ev{display:grid;grid-template-columns:1fr 1fr;gap:4cqw;width:62cqw}
+.k-bas .bl-ev.one{grid-template-columns:1fr;width:46cqw}
+.k-bas .bl-ev h4{font:400 5.6cqw/1.1 'Great Vibes',cursive;color:#8a7bb0}
+.k-bas .bl-ev b{display:block;font:600 3.2cqw/1.3 'Cormorant Garamond',serif;color:#4e4762}
+.k-bas .bl-ev span{display:block;font:500 3cqw/1.3 'Cormorant Garamond',serif;color:#5b5470}
+.k-bas .bl-a{font:500 2.9cqw/1.35 'Cormorant Garamond',serif;color:#5b5470;margin-top:2.4cqw!important}
+.k-bas .bl-s{font:400 2.3cqw/1.5 'Jost',sans-serif;color:#7b7192}
+.k-bas .bl-a+.bl-s{margin-top:1.2cqw!important}
+
+/* --- Eukaliptus: modern capitals inside the gold arch --- */
+.k-bas .be-k{font:400 2.3cqw/1.5 'Jost',sans-serif;letter-spacing:.34em!important;text-transform:uppercase;color:#6f7d72;max-width:50cqw}
+.k-bas .be-n{display:flex;flex-direction:column;align-items:center;margin:2.6cqw 0 1.6cqw!important;font:400 8.6cqw/1.08 'Gilda Display',serif;letter-spacing:.14em;text-transform:uppercase;color:#2f3a34}
+.k-bas .be-n em{font:400 9cqw/.9 'Mrs Saint Delafield',cursive;letter-spacing:0;text-transform:none;color:#b59650;margin:.4cqw 0 -.4cqw}
+.k-bas .be-m{font:400 3cqw/1.45 'Jost',sans-serif;color:#4a564e;max-width:54cqw}
+.k-bas .be-d{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2.6cqw;width:56cqw;margin:2.8cqw 0 2.6cqw!important}
+.k-bas .be-d span{font:400 2.2cqw/1.3 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#4a564e;padding:1cqw 0;border-block:.2cqw solid #c9ad6c}
+.k-bas .be-d b{font:400 11cqw/1 'Gilda Display',serif;color:#b59650}
+.k-bas .be-ev{display:flex;flex-direction:column;gap:1.8cqw}
+.k-bas .be-ev p{font:400 3.3cqw/1.25 'Gilda Display',serif;color:#2f3a34}
+.k-bas .be-ev small{display:block;font:500 2.2cqw/1.5 'Jost',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#b59650}
+.k-bas .be-a{font:400 2.7cqw/1.4 'Jost',sans-serif;color:#4a564e;margin-top:2.4cqw!important;max-width:56cqw}
+.k-bas .be-s{font:400 2.2cqw/1.5 'Jost',sans-serif;letter-spacing:.04em!important;color:#6f7d72;max-width:44cqw}
+.k-bas .be-a+.be-s{margin-top:1.2cqw!important}
+
+/* --- Blagoslov: a serene christening under the wreath --- */
+.k-bas .bs-k{font:500 2.4cqw/1.5 'Jost',sans-serif;letter-spacing:.3em!important;text-transform:uppercase;color:#6f86a0}
+.k-bas .bs-n{font-family:'Great Vibes',cursive!important;color:#34465a;margin:1.6cqw 0 1cqw!important;line-height:1.1!important}
+.k-bas .bs-m{font:italic 500 3.4cqw/1.42 'Cormorant Garamond',serif;color:#46586c;max-width:62cqw}
+.k-bas .bs-d{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2.6cqw;width:62cqw;margin:3.2cqw 0 2.6cqw!important}
+.k-bas .bs-d span{font:500 2.3cqw/1.3 'Jost',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#46586c;padding:1cqw 0;border-block:.2cqw solid #c8b07a}
+.k-bas .bs-d b{font:500 6.4cqw/1 'Cormorant Garamond',serif;color:#b39556;white-space:nowrap}
+.k-bas .bs-ev{display:grid;grid-template-columns:1fr 1fr;gap:4cqw;width:62cqw}
+.k-bas .bs-ev.one{grid-template-columns:1fr;width:46cqw}
+.k-bas .bs-ev>div+div{border-left:.2cqw solid #d6c497}
+.k-bas .bs-ev h4{font:500 2.3cqw/1.5 'Jost',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:#b39556}
+.k-bas .bs-ev b{display:block;font:500 4.2cqw/1.2 'Cormorant Garamond',serif;color:#34465a}
+.k-bas .bs-ev span{display:block;font:500 3.2cqw/1.3 'Cormorant Garamond',serif;color:#46586c}
+.k-bas .bs-a{font:500 2.9cqw/1.35 'Cormorant Garamond',serif;color:#46586c;margin-top:2.4cqw!important}
+.k-bas .bs-h{font:400 5.6cqw/1.2 'Great Vibes',cursive;color:#6f86a0;margin-top:1.6cqw!important}
+.k-bas .bs-s{font:400 2.3cqw/1.5 'Jost',sans-serif;color:#6f86a0;margin-top:.8cqw!important}
+
+/* --- Dino žurka: chunky, cheerful and an egg with the age --- */
+.k-bas .bn-k{font:600 3cqw/1.3 'Baloo 2',sans-serif;color:#e28a3a;letter-spacing:.02em}
+.k-bas .bn-n{font:800 16cqw/1 'Baloo 2',sans-serif!important;color:#3d7a45;margin:.6cqw 0 0!important;text-shadow:0 .6cqw 0 #d8ebc8!important}
+.k-bas .bn-age{position:relative;display:flex;align-items:center;gap:2.4cqw;margin:1.2cqw 0 2.2cqw!important}
+.k-bas .bn-egg{position:absolute;left:-1cqw;top:50%;left:-.5cqw;width:12cqw;height:15cqw;margin-top:-8.2cqw;border-radius:50% 50% 46% 46%/60% 60% 40% 40%;border:.35cqw solid #9fc283;background:radial-gradient(circle at 28% 24%,rgba(255,255,255,.9) 0 7%,transparent 16%),radial-gradient(circle at 66% 60%,#9fc283 0 10%,transparent 11%),radial-gradient(circle at 30% 70%,#9fc283 0 8%,transparent 9%),radial-gradient(circle at 70% 26%,#9fc283 0 7%,transparent 8%),radial-gradient(circle at 46% 44%,#fffbea,#efe7c6 80%);box-shadow:inset -.8cqw -1cqw 1.6cqw rgba(80,100,60,.14),0 .8cqw 1.4cqw rgba(80,100,60,.2)}
+.k-bas .bn-age b{position:relative;width:11cqw;padding-top:1.4cqw!important;text-align:center;font:800 9cqw/1 'Baloo 2',sans-serif;color:#e28a3a}
+.k-bas .bn-t{font:700 5.4cqw/1 'Baloo 2',sans-serif;color:#2f4a33}
+.k-bas .bn-d{font:600 3.4cqw/1.35 'Baloo 2',sans-serif;color:#2f4a33}
+.k-bas .bn-v{margin-top:1.4cqw!important;font:500 3cqw/1.3 'Baloo 2',sans-serif;color:#3f5a43}
+.k-bas .bn-v b{display:block;font:700 3.6cqw/1.25 'Baloo 2',sans-serif;color:#2f4a33}
+.k-bas .bn-m{font:500 3cqw/1.38 'Baloo 2',sans-serif;color:#3f5a43;margin-top:1.6cqw!important;max-width:70cqw}
+.k-bas .bn-h{font:700 5.4cqw/1.1 'Caveat',cursive;color:#e28a3a;margin-top:1cqw!important}
+.k-bas .bn-s{font:500 2.5cqw/1.4 'Baloo 2',sans-serif;color:#5b7560;margin-top:.4cqw!important}
+.k-bas.animate .bn-egg{animation:bnWobble 3.4s ease-in-out 1.6s infinite;transform-origin:50% 90%}
+@keyframes bnWobble{0%,70%,100%{transform:rotate(0)}76%{transform:rotate(-8deg)}82%{transform:rotate(7deg)}88%{transform:rotate(-4deg)}94%{transform:rotate(2deg)}}
+
+/* --- Šampanjac: left aligned, a big gold age beside the glasses --- */
+.tid-b_champ .inv-body{align-items:flex-start!important;text-align:left!important}
+.k-bas .bc-k{font:500 2.4cqw/1.5 'Jost',sans-serif;letter-spacing:.3em!important;text-transform:uppercase;color:#a77f5c}
+.k-bas .bc-n{font-family:'Pinyon Script',cursive!important;color:#4a2f2c;margin:1cqw 0 0!important;line-height:1.1!important}
+.k-bas .bc-age{display:flex;align-items:center;gap:3cqw;margin:.4cqw 0 2.8cqw!important}
+.k-bas .bc-age b{font:400 26cqw/.86 'Bodoni Moda',serif;letter-spacing:-.03em;color:#c29a52}
+.k-bas .bc-age span{font:500 2.6cqw/1.5 'Jost',sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#6a4a44;padding-left:3cqw!important;border-left:.3cqw solid #d4b27a}
+.k-bas .bc-d{font:400 2.5cqw/1.45 'Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#6a4a44}
+.k-bas .bc-d b{display:block;font:400 6cqw/1.1 'Bodoni Moda',serif;letter-spacing:0;text-transform:none;color:#4a2f2c}
+.k-bas .bc-v{margin-top:2.4cqw!important;font:400 2.8cqw/1.4 'Jost',sans-serif;color:#6a4a44}
+.k-bas .bc-v b{display:block;font:500 3.8cqw/1.25 'Bodoni Moda',serif;color:#4a2f2c}
+.k-bas .bc-m{font:italic 400 3.2cqw/1.45 'Bodoni Moda',serif;color:#5c3f3a;margin-top:2cqw!important;max-width:50cqw}
+.k-bas .bc-s{font:400 2.3cqw/1.5 'Jost',sans-serif;color:#8a6a62;max-width:48cqw}
+.k-bas .bc-m+.bc-s{margin-top:2cqw!important}
+
+@media (prefers-reduced-motion:reduce){.k-bas.animate .bb-age,.k-bas.animate .bn-egg,.k-bas.animate .bg-hero b::after{animation:none!important}}

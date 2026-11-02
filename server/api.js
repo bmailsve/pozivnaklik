@@ -7,7 +7,7 @@ import { mediaStore, keyOk } from "./media.js";
 
 /* ---------- catalogue ---------- */
 // Package of each template that is on sale. Older templates stay valid for existing invitations.
-export const TEMPLATE_TIERS = { b_rose: "basic", b_olive: "basic", b_bunny: "basic", b_balloon: "basic", b_gold: "basic", b_dove: "basic",
+export const TEMPLATE_TIERS = { b_rose: "basic", b_olive: "basic", b_bunny: "basic", b_balloon: "basic", b_gold: "basic", b_dove: "basic", b_lav: "basic", b_euca: "basic", b_bless: "basic", b_dino: "basic", b_champ: "basic",
   e_peony: "envelope", e_night: "envelope", e_lamb: "envelope", e_picnic: "envelope", e_lace: "envelope", e_disco: "envelope", vinyl: "premium", premiere: "premium", p_disco: "premium", p_bow: "premium", p_honey: "premium", p_plane: "premium", p_bloom: "premium", p_rip: "premium", b_ilija: "basic", b_sea: "basic", b_esp: "basic", e_estate: "envelope", e_lemon: "envelope", e_rouge: "envelope", p_letter: "premium", p_sky: "premium", p_balloon: "premium", p_gold: "premium" };
 export const PRICES = { basic: { eur: 10, rsd: 1190 }, envelope: { eur: 20, rsd: 2349 }, premium: { eur: 40, rsd: 4499 } };
 const TEMPLATE_IDS = new Set([...Object.keys(TEMPLATE_TIERS), "storybook", "cherry", "era", "jungle", "castle", "princess", "blossom", "cars", "noir", "champagne", "emerald", "marble", "starlit", "garden", "olive", "ivory", "gatsby", "dustyblue", "christening", "celebration"]);
