@@ -14,12 +14,17 @@ async function loadShell(req) {
   return r.text();
 }
 
-let shell = null;
+async function loadManifest() {
+  try { return JSON.parse(await readFile(join(process.cwd(), "dist", ".vite", "manifest.json"), "utf8")); } catch (e) { return null; }
+}
+
+let shell = null, manifest;
 export default async (req, context) => {
   if (!shell) shell = await loadShell(req);
+  if (manifest === undefined) manifest = await loadManifest();
   if (!shell) return new Response("Page not available", { status: 502, headers: { "Content-Type": "text/plain; charset=utf-8" } });
   const m = new URL(req.url).pathname.match(/^\/i\/([A-Za-z0-9]+)\/?$/);
-  const html = m && slugOk(m[1]) ? await appFor(context).invitePage(shell, m[1], new URL(req.url).origin) : shell;
+  const html = m && slugOk(m[1]) ? await appFor(context).invitePage(shell, m[1], new URL(req.url).origin, manifest) : shell;
   return new Response(html, { headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-cache", "X-Content-Type-Options": "nosniff", "Referrer-Policy": "same-origin" } });
 };
 

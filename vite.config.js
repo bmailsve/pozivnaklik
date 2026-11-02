@@ -24,6 +24,8 @@ export default defineConfig({
     cssCodeSplit: false,
     assetsInlineLimit: 2048,
     reportCompressedSize: false,
+    // dist/.vite/manifest.json: lets guest links preload the 3D code of their design (server/api.js)
+    manifest: true,
     rollupOptions: {
       output: {
         entryFileNames: "assets/app-[hash].js",

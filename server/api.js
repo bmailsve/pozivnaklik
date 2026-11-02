@@ -414,7 +414,14 @@ export function createApp(cfg) {
   // page colour of each premium design, so a guest link opens straight on the invitation's own background
   const PAGE_BG = { p_balloon: "#FFF3F0", p_sky: "#060914", p_rip: "#0B0A0A", p_bloom: "#FBF3EE", p_plane: "#E3EEF6", p_letter: "#E9DFD0", p_disco: "#09090A", premiere: "#0E0B0C", vinyl: "#F1E8D8", p_bow: "#F3EFE7", p_honey: "#FBF4E3" };
   const escAttr = v => String(v ?? "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  async function invitePage(html, slug, origin) {
+  // designs whose 3D code (three.js) the guest page should start downloading straight away
+  const DESIGN_CODE = { p_sky: "designs/sky.js", p_balloon: "designs/balloons.js" };
+  function preloads(manifest, templateId) {
+    const out = new Set(), walk = key => { const e = manifest && manifest[key]; if (!e || out.has(e.file)) return; out.add(e.file); (e.imports || []).forEach(walk); };
+    walk(DESIGN_CODE[templateId]);
+    return [...out].map(f => `<link rel="modulepreload" href="/${escAttr(f)}">`).join("\n");
+  }
+  async function invitePage(html, slug, origin, manifest = null) {
     let inv = null;
     try { const db = await connect(cfg); inv = (await db.query("SELECT template_id, og FROM invites WHERE slug = $1", [slug]))[0] || null; }
     catch (e) { console.error("invite page:", e.message); }
@@ -435,7 +442,7 @@ export function createApp(cfg) {
 <meta property="og:image:secure_url" content="${escAttr(img)}">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:alt" content="${escAttr(title)}">
-<meta name="twitter:card" content="summary_large_image">`;
+<meta name="twitter:card" content="summary_large_image">${inv ? "\n" + preloads(manifest, inv.template_id) : ""}`;
     return html.replace(/<meta name="theme-color" content="[^"]*">/, `<meta name="theme-color" content="${bg}">`)
       .replace(/<title>[\s\S]*?<\/title>\n?/, "").replace(/<meta name="description"[^>]*>\n?/, "")
       .replace(/<meta property="og:[^>]*>\n?/g, "").replace(/<meta name="twitter:[^>]*>\n?/g, "")

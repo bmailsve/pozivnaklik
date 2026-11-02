@@ -139,6 +139,14 @@ test("guest link page gets the invitation's title and colour", async () => {
   assert.equal((html.match(/og:title/g) || []).length, 1);
   const og = await host("GET", `/og/${inv.slug}.jpg`);
   assert.equal(og.headers.get("content-type"), "image/jpeg");
+
+  // 3D designs: the page starts downloading their code (and three.js) right away
+  const manifest = { "designs/balloons.js": { file: "assets/balloons-x.js", imports: ["_three.js"] }, "_three.js": { file: "assets/three-y.js" } };
+  const bal = (await host("POST", "/api/invitations", { templateId: "p_balloon", data: {} })).body.invitation;
+  const page3d = await app.invitePage(shell, bal.slug, "https://pozivnaklik.com", manifest);
+  assert.match(page3d, /<link rel="modulepreload" href="\/assets\/balloons-x\.js">/);
+  assert.match(page3d, /<link rel="modulepreload" href="\/assets\/three-y\.js">/);
+  assert.doesNotMatch(await app.invitePage(shell, inv.slug, "https://pozivnaklik.com", manifest), /modulepreload/);
 });
 
 test("a database made for one environment refuses another", async () => {

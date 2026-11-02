@@ -51,7 +51,11 @@ http.createServer(async (req, res) => {
     if (req.method !== "GET" && req.method !== "HEAD") { res.writeHead(405); return res.end(); }
     let html = await readFile(join(DIST, "index.html"), "utf8");
     const m = path.match(/^\/i\/([A-Za-z0-9]+)\/?$/);
-    if (m && slugOk(m[1])) html = await app.invitePage(html, m[1], `${req.headers["x-forwarded-proto"] || "http"}://${req.headers.host}`);
+    if (m && slugOk(m[1])) {
+      let manifest = null;
+      try { manifest = JSON.parse(await readFile(join(DIST, ".vite", "manifest.json"), "utf8")); } catch (e) { /* not built with a manifest */ }
+      html = await app.invitePage(html, m[1], `${req.headers["x-forwarded-proto"] || "http"}://${req.headers.host}`, manifest);
+    }
     res.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-cache", "X-Content-Type-Options": "nosniff", "Referrer-Policy": "same-origin" });
     res.end(html);
   } catch (e) {
