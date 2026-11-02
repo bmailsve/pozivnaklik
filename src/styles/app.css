@@ -535,8 +535,8 @@ a,button,[role=button]{touch-action:manipulation}
 .cust-steps b{flex:0 0 auto;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--gold-btn);color:var(--forest);font-family:var(--f-display);font-size:19px}
 .cust-form{padding:30px;display:flex;flex-direction:column;gap:16px}
 .cust-form .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.cust-form select{width:100%;appearance:none;-webkit-appearance:none;font:inherit;font-size:16px;color:var(--ink);padding:13px 40px 13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238B746B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 12px center/18px no-repeat;cursor:pointer}
-.cust-form select:focus{outline:2px solid var(--gold);outline-offset:1px}
+.cust-form select,.gedit select{width:100%;appearance:none;-webkit-appearance:none;font:inherit;font-size:16px;color:var(--ink);padding:13px 40px 13px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238B746B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 12px center/18px no-repeat;cursor:pointer}
+.cust-form select:focus,.gedit select:focus{outline:2px solid var(--gold);outline-offset:1px}
 .cust-drop,.cust-drop b,.cust-drop small{text-transform:none!important;letter-spacing:normal!important}
 .cust-drop b{font-size:16px;font-weight:600;color:var(--ink)}
 .cust-drop small{font-size:13px;font-weight:400}
@@ -2335,6 +2335,17 @@ main{min-height:calc(100vh - 76px);overflow-x:clip}
 .gsub{color:var(--muted);font-size:13px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:3px}
 .gnote{font-family:var(--f-display);font-style:italic;font-size:18px;margin-top:6px;overflow-wrap:anywhere}
 .gact{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+/* editing a guest in place */
+.gedit{align-items:start;grid-template-columns:44px minmax(0,1fr)!important}
+.ge-f{display:flex;flex-direction:column;gap:12px;min-width:0}
+.ge-f .fld{margin:0}
+.ge-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end}
+.ge-step{display:flex;align-items:center;gap:6px}
+.ge-step input{width:64px;text-align:center;-moz-appearance:textfield}
+.ge-step input::-webkit-inner-spin-button,.ge-step input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.ge-act{display:flex;gap:8px;flex-wrap:wrap}
+@media (max-width:540px){.ge-row{grid-template-columns:1fr}}
+.cust-help{margin:-2px 0 8px;font-size:14px;line-height:1.5;color:var(--muted)}
 .icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;cursor:pointer;transition:border-color .25s,color .25s;color:var(--ink-2);text-decoration:none}
 .icon-btn:hover{color:var(--ink);border-color:var(--ink)}
 .icon-btn .ic{width:16px;height:16px}

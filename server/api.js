@@ -387,6 +387,21 @@ export function createApp(cfg) {
         VALUES ($1,$2,$3,$4,$5,'personal','pending',1,'',$6) RETURNING *`, [rid(10), inv.id, rid(12), name, str(b.contact, 80), now()]))[0]);
       return json(201, { guest: g });
     }
+    // the host corrects a guest by hand: name, reply and how many people are coming
+    if ((seg = p.match(/^\/invitations\/([A-Za-z0-9]+)\/guests\/([A-Za-z0-9]+)$/)) && m === "PATCH") {
+      const inv = await own(seg[1]);
+      if (!inv) return fail(404, "We couldn't find that invitation.");
+      const g = (await db.query("SELECT * FROM guests WHERE id = $1 AND invitation_id = $2", [seg[2], inv.id]))[0];
+      if (!g) return fail(404, "We couldn't find that guest.");
+      const b = await readJson(req, 20000);
+      const name = b.name === undefined ? g.name : str(b.name, 80);
+      if (!name) return fail(400, "Please enter the guest's name.");
+      const status = ["yes", "no", "pending"].includes(b.status) ? b.status : g.status;
+      const count = status === "yes" ? Math.max(1, Math.min(50, parseInt(b.count ?? g.count) || 1)) : status === "no" ? 0 : 1;
+      const responded = status === "pending" ? null : (g.responded_at || now());
+      const row = (await db.query("UPDATE guests SET name = $1, status = $2, count = $3, responded_at = $4 WHERE id = $5 RETURNING *", [name, status, count, responded, g.id]))[0];
+      return json(200, { guest: guestOut(row) });
+    }
     if ((seg = p.match(/^\/invitations\/([A-Za-z0-9]+)\/guests\/([A-Za-z0-9]+)$/)) && m === "DELETE") {
       const inv = await own(seg[1]);
       if (!inv) return fail(404, "We couldn't find that invitation.");
