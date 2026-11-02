@@ -8,7 +8,7 @@ import { mediaStore, keyOk } from "./media.js";
 /* ---------- catalogue ---------- */
 // Package of each template that is on sale. Older templates stay valid for existing invitations.
 export const TEMPLATE_TIERS = { b_rose: "basic", b_olive: "basic", b_bunny: "basic", b_balloon: "basic", b_gold: "basic", b_dove: "basic",
-  e_peony: "envelope", e_night: "envelope", e_lamb: "envelope", e_picnic: "envelope", e_lace: "envelope", e_disco: "envelope", vinyl: "premium", premiere: "premium", p_disco: "premium", p_bow: "premium", p_honey: "premium", p_plane: "premium", p_bloom: "premium", p_rip: "premium", b_ilija: "basic", b_sea: "basic", b_esp: "basic", e_estate: "envelope", e_lemon: "envelope", e_rouge: "envelope", p_letter: "premium", p_sky: "premium" };
+  e_peony: "envelope", e_night: "envelope", e_lamb: "envelope", e_picnic: "envelope", e_lace: "envelope", e_disco: "envelope", vinyl: "premium", premiere: "premium", p_disco: "premium", p_bow: "premium", p_honey: "premium", p_plane: "premium", p_bloom: "premium", p_rip: "premium", b_ilija: "basic", b_sea: "basic", b_esp: "basic", e_estate: "envelope", e_lemon: "envelope", e_rouge: "envelope", p_letter: "premium", p_sky: "premium", p_balloon: "premium" };
 export const PRICES = { basic: { eur: 10, rsd: 1190 }, envelope: { eur: 20, rsd: 2349 }, premium: { eur: 40, rsd: 4499 } };
 const TEMPLATE_IDS = new Set([...Object.keys(TEMPLATE_TIERS), "storybook", "cherry", "era", "jungle", "castle", "princess", "blossom", "cars", "noir", "champagne", "emerald", "marble", "starlit", "garden", "olive", "ivory", "gatsby", "dustyblue", "christening", "celebration"]);
 const SESSION_DAYS = 30;
@@ -412,7 +412,7 @@ export function createApp(cfg) {
 
   /* ---------- guest links: the page with the invitation's own title, picture and colour ---------- */
   // page colour of each premium design, so a guest link opens straight on the invitation's own background
-  const PAGE_BG = { p_sky: "#060914", p_rip: "#0B0A0A", p_bloom: "#FBF3EE", p_plane: "#E3EEF6", p_letter: "#E9DFD0", p_disco: "#09090A", premiere: "#0E0B0C", vinyl: "#F1E8D8", p_bow: "#F3EFE7", p_honey: "#FBF4E3" };
+  const PAGE_BG = { p_balloon: "#FFF3F0", p_sky: "#060914", p_rip: "#0B0A0A", p_bloom: "#FBF3EE", p_plane: "#E3EEF6", p_letter: "#E9DFD0", p_disco: "#09090A", premiere: "#0E0B0C", vinyl: "#F1E8D8", p_bow: "#F3EFE7", p_honey: "#FBF4E3" };
   const escAttr = v => String(v ?? "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   async function invitePage(html, slug, origin) {
     let inv = null;
