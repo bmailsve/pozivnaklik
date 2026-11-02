@@ -1178,7 +1178,7 @@ function ripCard(d,cl,Q){
  const fs=Math.min(15,64/Math.max(1,v("name").length*.5)).toFixed(1);
  return`<div class="rpc-st"><p class="rpc-rip">R.I.P.</p><p ${Q("rpc-my","age")}>${C("My","Moje")}<br>${esc(I.word)}</p><p class="rpc-y">${I.yrs}</p><p class="rpc-ep">${C("forever young","zauvek mlade")}</p></div>
  <div class="rpc-main"><p ${Q("rpc-k")}>${C("Join us as we say goodbye to","Pridružite nam se na ispraćaju")}</p><p class="rpc-k2">${C(`my ${esc(I.word)}`,`mojih ${esc(I.word.endsWith("godine")?"tinejdžerskih godina":I.word.replace(/e$/,"ih"))}`)}</p>
- <h2 ${Q("rpc-name","name")}><span style="font-size:${fs}cqw">${nm}</span></h2><p ${Q("rpc-age","age")}>${C(`turns ${I.age}`,`puni ${I.age}`)}</p>
+ <h2 ${Q("rpc-name","name")}><span style="font-size:${fs}cqw">${nm}</span></h2><p ${Q("rpc-age","age")}>${C("turns","puni")} <b style="font-size:${fs}cqw">${I.age}</b></p>
  ${dt?`<p ${Q("rpc-date","date")}><span>${esc(dt.wd).toUpperCase()}</span><i></i><b>${String(dt.d).padStart(2,"0")}.${String(dt.m).padStart(2,"0")}.</b><i></i><span>${v("time")?esc(v("time")):dt.y}</span></p>`:""}
  ${v("venue")?`<p ${Q("rpc-ven","venue")}>${esc(v("venue"))}${v("address")?`<small>${esc(v("address"))}</small>`:""}</p>`:""}
  ${v("dressCode")?`<p ${Q("rpc-dc","dressCode")}>Dress code: ${esc(v("dressCode"))}</p>`:""}</div>`}

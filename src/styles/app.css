@@ -1605,7 +1605,8 @@ h1,h2,h3,.why-l h2,.sec-head h2{font-feature-settings:"ccmp" 1,"mark" 1;text-ren
 .tid-p_rip .rpc-k{margin:0;font:600 2.3cqw 'Cinzel',serif;letter-spacing:.26em;text-transform:uppercase;color:var(--bn)!important}
 .tid-p_rip .rpc-k2{margin:.8cqw 0 0;font:700 3.6cqw 'Cinzel',serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gd)!important}
 .tid-p_rip .rpc-name{margin:1.2cqw 0 0;font-family:'Pinyon Script',cursive;font-weight:400;line-height:1.05;color:var(--bn)!important;white-space:nowrap}
-.tid-p_rip .rpc-age{margin:.2cqw 0 .6cqw;font:italic 500 6.2cqw/1.1 'Cormorant Garamond',serif;color:var(--gd)!important}
+.tid-p_rip .rpc-age{margin:-1.6cqw 0 -1.4cqw;font:italic 500 6.2cqw/1.1 'Cormorant Garamond',serif;color:var(--gd)!important}
+.tid-p_rip .rpc-age b{font-family:'Pinyon Script',cursive;font-style:normal;font-weight:400;line-height:.86;margin-left:.15em}
 .tid-p_rip .rpc-date{margin:2.6cqw 0 0;display:flex;align-items:center;gap:2.4cqw;font:600 2.5cqw 'Cinzel',serif;letter-spacing:.14em;color:var(--bn)!important}
 .tid-p_rip .rpc-date b{font:600 4.6cqw 'Cinzel',serif;color:var(--gd)}
 .tid-p_rip .rpc-date i{width:1px;height:5cqw;background:var(--gd);opacity:.7}
