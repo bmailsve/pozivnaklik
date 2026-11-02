@@ -2341,6 +2341,26 @@ main{min-height:calc(100vh - 76px);overflow-x:clip}
 .dc-media .inv-c{transform:rotate(-3deg);transition:transform .6s var(--ease)}
 .dc-media .inv{box-shadow:0 26px 40px -22px rgba(59,35,28,.55)}
 .dcard:hover .dc-media .inv-c{transform:rotate(0) translateY(-6px)}
+/* R.I.P. dvadesete cover: the card slides out of a black, gold-edged envelope on velvet, among candles and roses */
+.dc-media.cv-p_rip{background:#0b0a0a var(--a-ripcov) center/cover no-repeat}
+.dc-media.cv-p_rip::after{background:radial-gradient(75% 65% at 50% 58%,transparent 40%,rgba(0,0,0,.32))}
+.cvr{position:absolute;inset:0;container-type:size}
+.cvr-env{position:absolute;left:50%;bottom:7cqh;width:min(74cqw,58cqh);aspect-ratio:1.42;transform:translateX(-50%) rotate(-5deg);container-type:inline-size;filter:drop-shadow(0 3cqw 4cqw rgba(0,0,0,.55))}
+.cvr-env>*{position:absolute;display:block}
+.cvr-env .back{inset:0;border-radius:1.4cqw;background:linear-gradient(160deg,#2b2625,#110f0f);box-shadow:inset 0 0 0 .5cqw #b8924c}
+.cvr-env .flapg,.cvr-env .flap{left:0;right:0;bottom:calc(100% - 1px);height:64%;clip-path:polygon(0 100%,50% 0,100% 100%)}
+.cvr-env .flapg{background:linear-gradient(90deg,#8a6a2c,#e9cf8a 30%,#c99a4b 52%,#f3dc9c 72%,#a87a35)}
+.cvr-env .flap{left:1.2cqw;right:1.2cqw;height:calc(64% - 1.2cqw);background:linear-gradient(#1a1716,#2b2625)}
+.cvr-card{left:15%;width:70%;bottom:58%;transition:transform .7s var(--ease)}
+.cvr-card .inv-c{width:100%}
+.dc-media.cv .inv-c{transform:none!important}
+.cvr-card .inv{box-shadow:0 2cqw 4cqw rgba(0,0,0,.55)!important}
+.dcard:hover .cvr-card{transform:translateY(-9%)}
+.cvr-env .frontg,.cvr-env .front{inset:0;border-radius:0 0 1.4cqw 1.4cqw;clip-path:polygon(0 0,50% 50%,100% 0,100% 100%,0 100%)}
+.cvr-env .frontg{background:linear-gradient(90deg,#8a6a2c,#e9cf8a 30%,#c99a4b 52%,#f3dc9c 72%,#a87a35)}
+.cvr-env .front{inset:2.2% .5cqw .5cqw;clip-path:polygon(0 0,50% 50%,100% 0,100% 100%,0 100%);background:radial-gradient(120% 90% at 50% 100%,#2a2423,#121010)}
+.cvr-env .seal{left:50%;top:51%;width:19cqw;aspect-ratio:1;translate:-50% -50%;display:grid;place-items:center;background:var(--a-laceseal) center/contain no-repeat;filter:drop-shadow(0 1cqw 1.2cqw rgba(0,0,0,.55))}
+.cvr-env .seal b{font:600 3.1cqw/1 'Cinzel',serif;letter-spacing:.05em;color:#efd796;text-shadow:0 .25cqw .3cqw rgba(0,0,0,.45)}
 .dc-top{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .dc-top .no{color:var(--gold-lo)}
 .dc-name{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-family:var(--f-display);font-size:27px;line-height:1.1}
