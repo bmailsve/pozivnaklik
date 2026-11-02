@@ -885,8 +885,6 @@ h1,h2,h3,.why-l h2,.sec-head h2{font-feature-settings:"ccmp" 1,"mark" 1;text-ren
 .hy.on .hy-open{opacity:0;visibility:hidden;pointer-events:none}
 .hy:not(.on) .hy-rest{display:none}.hy:not(.on){height:100svh;overflow:hidden}
 .hy-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;overflow:hidden}
-.hy-art{position:absolute;inset:0;background:var(--a-hyhero) center bottom/cover no-repeat;transform:scale(1.06);transition:transform 2.4s cubic-bezier(.2,.7,.2,1) .3s}
-.hy.on .hy-art{transform:scale(1)}
 .hy-hero-t{position:relative;z-index:1;text-align:center;padding:clamp(70px,13vh,130px) 20px 0;opacity:0;transform:translateY(16px);transition:opacity 1s ease .6s,transform 1s cubic-bezier(.2,.7,.2,1) .6s}
 .hy.on .hy-hero-t{opacity:1;transform:none}
 .hy-tagl{font-family:'Parisienne',cursive;font-size:clamp(30px,8vw,46px);color:#a8701a;margin:0}
@@ -957,8 +955,8 @@ h1,h2,h3,.why-l h2,.sec-head h2{font-feature-settings:"ccmp" 1,"mark" 1;text-ren
 .hy .hy-rsvp .btn,.hy .hy-rsvp .btn-ink,.hy .hy-rsvp button[type=submit]{background:#5a3e1e!important;color:#fff!important}
 .hy .hy-rsvp .choice button.on,.hy .hy-rsvp .choice button.on.y{background:#f6e3b0;border-color:var(--honey);color:#5a3e1e}
 .hy-fin{padding:20px 22px 80px;text-align:center}
-.hy-fin .wave{width:min(56vw,240px);aspect-ratio:1;margin:0 auto 6px;background:var(--a-hywave) center/contain no-repeat;animation:hyWave 2.4s ease-in-out infinite;transform-origin:50% 90%}
-@keyframes hyWave{50%{transform:rotate(-4deg)}}
+.hy-fin .wave{width:min(46vw,200px);aspect-ratio:1.1;margin:0 auto 10px;background:var(--a-hybee) center/contain no-repeat;mix-blend-mode:multiply;-webkit-mask:radial-gradient(closest-side,#000 72%,transparent);mask:radial-gradient(closest-side,#000 72%,transparent);animation:hyHover 2.6s ease-in-out infinite}
+@keyframes hyHover{50%{transform:translateY(-10px) rotate(-3deg)}}
 .hy-sign{font-family:'Parisienne',cursive;font-size:30px;color:#a8701a;margin:0}
 .hy .vx-by{margin-top:36px;color:#7a5a2c}.hy .vx-by a{color:#5a3e1e}
 .hy.io .rv{opacity:0;transform:translateY(16px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
