@@ -352,7 +352,7 @@ const T=[
  {id:"p_gold",tier:"premium",cat:"other",layout:"gold",exp:"gold",motif:"art",kind:"gold",name:["Gold Record","Zlatna ploča"],tag:["An anniversary on a gold record: guests drop the needle on a 3D turntable and your years together spin up, with your story as side A","Godišnjica na zlatnoj ploči: gost spusti iglu na 3D gramofon i vaše godine zajedno se zavrte, uz vašu priču kao stranu A"],pt:8,pb:8,pl:10,pr:10,pal:{bg:"#1C0D10",bg2:"#3A1520",ink:"#F3E3BC",accent:"#E8C77E",soft:"#4E0F1B",x1:"#E8C77E",x2:"#FFFFFF",x3:"#000000"},font:fnt("'Bodoni Moda',serif","'Pinyon Script',cursive","'Jost',sans-serif")},
  {id:"p_balloon",tier:"premium",cat:"birthday",layout:"balloon",exp:"balloon",motif:"art",kind:"balloon",name:["Balloon Party","Baloni"],tag:["Guests pop 3D balloons to open the invitation, with confetti, music, the party plan and a countdown","Gost pucka 3D balone da otvori pozivnicu, uz konfete, muziku, plan žurke i odbrojavanje"],pt:8,pb:8,pl:10,pr:10,pal:{bg:"#FFF6F1",bg2:"#FCE3EA",ink:"#3D3355",accent:"#F07A98",soft:"#FCE3EA",x1:"#FFCB6B",x2:"#8FD3C1",x3:"#9EC2F7"},font:fnt("'Fredoka',sans-serif","'Fredoka',sans-serif","'Nunito',sans-serif")},
  {id:"p_sky",tier:"premium",cat:"wedding",layout:"sky",exp:"sky",motif:"art",kind:"sky",name:["Starry Night","Zvezdana noć"],tag:["A live night sky: guests touch the stars and they gather into your initials, with your story, programme and music","Živo noćno nebo: gost dodirne zvezde i one se slože u vaše inicijale, uz vašu priču, program i muziku"],pt:8,pb:8,pl:10,pr:10,pal:{bg:"#070B1A",bg2:"#151C3D",ink:"#EEF0FF",accent:"#E8C77E",soft:"#1B2347",x1:"#E8C77E",x2:"#FFFFFF",x3:"#000000"},font:fnt("'Cormorant Garamond',serif","'Pinyon Script',cursive","'Jost',sans-serif")},
- {id:"p_bow",tier:"premium",cat:"wedding",layout:"bow",exp:"bow",art:"mcover",motif:"art",kind:"bow",name:["Satin Bow","Satenska mašna"],tag:["A wedding tied with a satin bow: untie it to open the day, with programme, venue and music","Venčanje vezano satenskom mašnom: odvežite je i otvorite dan, uz program, mesto i muziku"],pt:4,pb:6,pl:10,pr:10,pal:{bg:"#F3EFE7",bg2:"#E6DDCD",ink:"#2B2622",accent:"#9C8158",soft:"#EDE5D8",x1:"#9C8158",x2:"#FFFFFF",x3:"#000000"},font:fnt("'Cormorant Garamond',serif","'Pinyon Script',cursive","'Jost',sans-serif")},
+ {id:"p_bow",tier:"premium",cat:"wedding",layout:"bow",exp:"bow",art:"sbcard",motif:"art",kind:"bas",name:["Satin Bow","Satenska mašna"],tag:["A wedding that arrives in a gift box tied with a satin bow: guests pull the ribbon, lift the lid and the invitation rises from the tissue paper, then the day unrolls along a satin ribbon","Venčanje koje stiže u poklon kutiji vezanoj satenskom mašnom: gost povuče traku, podigne poklopac i pozivnica izranja iz svilenog papira, a zatim se dan odmotava duž satenske trake"],pt:21,pb:13,pl:14,pr:14,pal:{bg:"#F3EFE7",bg2:"#E6DDCD",ink:"#2B2622",accent:"#9C8158",soft:"#EDE5D8",x1:"#9C8158",x2:"#FFFFFF",x3:"#000000"},font:fnt("'Cormorant Garamond',serif","'Pinyon Script',cursive","'Jost',sans-serif")},
  {id:"p_disco",tier:"premium",cat:"birthday",layout:"discop",exp:"disco",photos:true,art:"pdimg",motif:"art",kind:"disco",name:["Disco Jubilee","Disko jubilej"],tag:["36 & 5: a birthday and an anniversary as one disco night, with a photo and music","36 & 5: rođendan i jubilej kao jedna disko noć, sa fotografijom i muzikom"],pt:8,pb:7,pl:15,pr:15,pal:{bg:"#EFEFEF",bg2:"#1A1A1C",ink:"#111111",accent:"#3A3A3D",soft:"#E6E4E0",x1:"#9A9CA1",x2:"#FFFFFF",x3:"#000000"},font:fnt("'Bodoni Moda',serif","'Great Vibes',cursive","'Playfair Display',serif")},
  {id:"storybook",cat:"first",layout:"first",story:true,name:["Fairytale Storybook","Bajkovita knjiga"],tag:["An animated storybook that opens for your guests","Animirana knjiga bajki koja se otvara pred gostima"],motif:"storybook",kind:"story",pt:27,pb:28,pal:{bg:"#F4E9D6",bg2:"#E9D8BC",ink:"#34405F",accent:"#5A78AE",soft:"#DCE6F3",x1:"#C6A15B",x2:"#FFFFFF",x3:"#C9DAF0"},font:fnt("'Cinzel Decorative','Cinzel',serif","'Pinyon Script',cursive","'Cormorant Garamond',serif"),def:{en:{childName:"Sofia",time:"18:00",venue:"The Royal Ballroom",message:"Put on your finest gown and your sparkliest crown, and join us for a royal celebration.",hosts:"With love, Ana & Marko"},sr:{childName:"Sofija",time:"18:00",venue:"Kraljevska balska dvorana",message:"Obucite najlepšu haljinu, stavite najsjajniju krunu i pridružite nam se na kraljevskoj proslavi.",hosts:"S ljubavlju, Ana i Marko"}}},
  {id:"jungle",cat:"first",layout:"first",name:["Wild One","Džungla"],tag:["Jungle leaves and a friendly lion","Tropsko lišće i veseli lavić"],motif:"jungle",kind:"play",pt:31,pb:36,pal:{bg:"#F4ECD6",bg2:"#F3C873",ink:"#24412F",accent:"#D48A2A",soft:"#86A86F",x1:"#3E6B47",x2:"#AFC890",x3:"#FFFFFF"},font:fnt("'Fredoka',sans-serif","'Fredoka',sans-serif","'Quicksand',sans-serif"),def:{en:{childName:"Leo"},sr:{childName:"Vuk"}}},
@@ -450,6 +450,13 @@ const BAS={
   ${v("message")?`<p ${Q("bb-m","message")}>${br(v("message"))}</p>`:""}
   ${v("hosts")?`<p ${Q("bb-h","hosts")}>${esc(v("hosts"))}</p>`:""}
   ${rs?`<p ${Q("bb-s","rsvpBy")}>${C("Kindly reply by","Molimo potvrdite dolazak do")} ${esc(rs.short)}</p>`:""}`,
+ p_bow:({v,dt,rs,cl,C,Q,S})=>{const one=(v("partner1")+v("partner2")).length<=12;
+  return`<p ${Q("sc-k")}>${C("We're getting married","Venčavamo se")}</p>
+  ${one?`<h2 ${S("sc-n one","partner1",`font-size:${bsFit(13,150,v("partner1")+v("partner2")+"xxx")}cqw`)}><span>${esc(v("partner1"))}</span><em>&amp;</em><span>${esc(v("partner2"))}</span></h2>`:`<h2 ${Q("sc-n","partner1")}><span style="font-size:${bsFit(12.5,150,v("partner1"))}cqw">${esc(v("partner1"))}</span><em>&amp;</em><span style="font-size:${bsFit(12.5,150,v("partner2"))}cqw">${esc(v("partner2"))}</span></h2>`}
+  ${v("message")?`<p ${Q("sc-m","message")}>${br(v("message"))}</p>`:""}
+  ${dt?`<div ${Q("sc-d","date")}><small>${esc(dt.wd)}</small><b>${String(dt.d).padStart(2,"0")}<i></i>${String(dt.m).padStart(2,"0")}<i></i>${dt.y}</b>${v("ceremonyTime")?`<small data-f="ceremonyTime">${C("at","u")} ${esc(v("ceremonyTime"))}${cl==="sr"?" časova":""}</small>`:""}</div>`:""}
+  ${v("venue")||v("address")?`<p ${Q("sc-v","venue")}>${v("venue")?`<b>${esc(v("venue"))}</b>`:""}${v("address")?`<span data-f="address">${esc(v("address"))}</span>`:""}</p>`:""}
+  ${rs?`<p ${Q("sc-s","rsvpBy")}>${C("Kindly reply by","Molimo potvrdite dolazak do")} ${esc(rs.short)}</p>`:""}`},
  b_lav:({v,dt,rs,cl,C,Q,S})=>{const ev=bsEv(v,C);
   return`${v("hosts")?`<p ${Q("bl-k","hosts")}>${esc(v("hosts"))}</p>`:""}
   <h2 ${Q("bl-n","partner1")}><span style="font-size:${bsFit(12.5,72,v("partner1"))}cqw">${esc(v("partner1"))}</span><em>&amp;</em><span style="font-size:${bsFit(12.5,72,v("partner2"))}cqw">${esc(v("partner2"))}</span></h2>
@@ -558,8 +565,6 @@ function renderCard(t,d,o={}){
    body=`<span class="bc-b b1" aria-hidden="true"></span><span class="bc-b b2" aria-hidden="true"></span><span class="bc-b b3" aria-hidden="true"></span><span class="bc-b b4" aria-hidden="true"></span><p class="bc-k r" style="--n:0">${C("Birthday party","Rođendanska žurka")}</p><h2 class="bc-name r" data-f="childName" style="--n:1">${esc(v("childName"))}</h2>${age?`<p class="bc-age r" data-f="age" style="--n:2">${age}</p>`:""}${dt?`<p class="bc-date r" data-f="date" style="--n:3">${dt.d}. ${esc(dt.mon)}${v("time")?` · ${esc(v("time"))}`:""}</p>`:""}${v("venue")?`<p class="bc-ven r" data-f="venue" style="--n:4">${esc(v("venue"))}</p>`:""}`;break}
   case"sky":{const n1=esc(v("partner1")),n2=esc(v("partner2"));const dots=dt?`${String(dt.d).padStart(2,"0")} · ${String(dt.m).padStart(2,"0")} · ${dt.y}`:"";
    body=`<span class="zc-stars" aria-hidden="true"></span><p class="zc-ini r" style="--n:0">${esc(skyInitials(d))}</p><p class="zc-k r" style="--n:1">${C("We're getting married","Venčavamo se")}</p><h2 class="zc-names r" data-f="partner1" style="--n:2">${n1}<em>&amp;</em>${n2}</h2>${dots?`<p class="zc-date r" data-f="date" style="--n:3">${dots}</p>`:""}${v("venue")?`<p class="zc-ven r" data-f="venue" style="--n:4">${esc(v("venue"))}</p>`:""}`;break}
-  case"bow":{const n1=esc(v("partner1")),n2=esc(v("partner2"));const dots=dt?`${String(dt.d).padStart(2,"0")} · ${String(dt.m).padStart(2,"0")} · ${dt.y}`:"";
-   body=`<span class="bw-cardpad" aria-hidden="true"></span>`;break}
   case"disco":case"discop":{const lines=v("title").split(/\n+/).map(x=>x.trim()).filter(Boolean);const lw=Math.max(1,...lines.map(x=>x.length));const tfs=Math.min(11,86/lw);
    const two=!!(v("num2")||v("name2"));const ns=Math.min(two?23:30,(two?46:60)/Math.max(1,v("num1").length,v("num2").length));
    const col=(nu,na,la,k)=>`<div class="dz-col">${v(nu)?`<b class="dz-num" data-f="${nu}">${esc(v(nu))}</b>`:""}${v(na)?`<em class="dz-name" data-f="${na}" style="font-size:${f1(Math.min(8.6,(two?30:62)/(Math.max(v(na).length,1)*.43)))}cqw">${esc(v(na))}</em>`:""}${v(la)?`<span class="dz-lab" data-f="${la}">${br(v(la))}</span>`:""}</div>`;
@@ -837,7 +842,7 @@ async function expOverlay(t,d){
  const close=()=>{MBox.stop();ov.remove();if(!LB)document.body.style.overflow=""};
  $(".vx-close",ov).onclick=close;ov.addEventListener("keydown",e=>{if(e.key==="Escape")close()});ov.tabIndex=-1;ov.focus();
  await settle(ov);if(!ov.isConnected)return;
- expOf(t)[1]($(".vx,.dx,.bw,.hy,.ps,.pq,.sk,.fw,.rp,.zv,.bn,.zp,.dn",ov),t,d,{});
+ expOf(t)[1]($(".vx,.dx,.sb,.hy,.ps,.pq,.sk,.fw,.rp,.zv,.bn,.zp,.dn",ov),t,d,{});
 }
 
 /* ---------- animated layers for envelope designs ---------- */
@@ -994,6 +999,8 @@ function envHandoff(env,render){
 }
 
 /* ---------- Satenska mašna · premium wedding experience ---------- */
+/* ---------- Satenska mašna · premium wedding: a gift box tied with a satin bow ---------- */
+const SB_BOW='<svg viewBox="0 0 40 26" aria-hidden="true"><path d="M20 12C14 4 4 1.5 4 9s10 7 16 3zM20 12c6-8 16-10.5 16-3s-10 7-16 3z" fill="currentColor"/><path d="M19 13l-5 10 3.2-.6 2 2.6.8-12zM21 13l5 10-3.2-.6-2 2.6-.8-12z" fill="currentColor" opacity=".75"/><circle cx="20" cy="12" r="2.8" fill="currentColor"/></svg>';
 function bowHTML(t,d,o={}){
  const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const v=k=>(d[k]??"").toString().trim();
  const dt=pd(v("date"),cl),rsH=pd(v("rsvpBy"),cl);const n1=esc(v("partner1")),n2=esc(v("partner2"));
@@ -1001,56 +1008,56 @@ function bowHTML(t,d,o={}){
  const gcal=calLink(titleOf(t,d),w,place),maps=place?`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`:"";
  const plan=[1,2,3,4].map(i=>({tm:v(`plan${i}Time`),t:v(`plan${i}Title`)})).filter(p=>p.tm||p.t);
  const dots=dt?`${String(dt.d).padStart(2,"0")} · ${String(dt.m).padStart(2,"0")} · ${dt.y}`:"";
- const CAL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4M12 12.5v5M9.5 15h5"/></svg>';
- const PIN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>';
- return`<div class="bw${o.preview?" pv":""}" lang="${cl==="sr"?"sr-Latn":"en"}">
+ const who=g&&g.source==="personal"?esc(g.name):"";
+ const petals=Array.from({length:10},(_,i)=>`<i style="left:${(i*9.7+4)%100}%;--t:${(13+(i*1.9)%8).toFixed(1)}s;--d:${(-(i*2.3)%13).toFixed(1)}s;--s:${(10+(i*3)%9)}px;--w:${(i%2?1:-1)*(16+i%4*6)}px"></i>`).join("");
+ return`<div class="sb${o.preview?" pv":""}" lang="${cl==="sr"?"sr-Latn":"en"}">
  ${o.preview?"":`<div class="vx-top">${langSwitch()}</div>`}
- <section class="bw-open" role="button" tabindex="0" aria-label="${C("Untie the bow","Odvežite mašnu")}">
-  <span class="bw-pane l" aria-hidden="true"></span><span class="bw-pane r" aria-hidden="true"></span>
-  <span class="bw-band v t" aria-hidden="true"></span><span class="bw-band v b" aria-hidden="true"></span><span class="bw-band h l" aria-hidden="true"></span><span class="bw-band h r" aria-hidden="true"></span>
-  <div class="bw-open-in">${g?`<p class="bw-for">${C("For","Za:")} ${esc(g.name)}</p>`:`<p class="bw-for">${C("An invitation for you","Pozivnica za vas")}</p>`}
-   <span class="bw-bowwrap"><svg class="bw-svg" viewBox="0 0 240 220" aria-hidden="true"><defs>
-<linearGradient id="bwS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset=".35" stop-color="#ead9b6"/><stop offset=".55" stop-color="#fffdf7"/><stop offset=".8" stop-color="#d6bf93"/><stop offset="1" stop-color="#bfa577"/></linearGradient>
-<linearGradient id="bwD" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c3a978"/><stop offset=".5" stop-color="#e6d6b4"/><stop offset="1" stop-color="#b0955f"/></linearGradient>
-<linearGradient id="bwT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2e5cb"/><stop offset=".5" stop-color="#fffbf3"/><stop offset="1" stop-color="#d2bb8f"/></linearGradient>
-<filter id="bwSh" x="-30%" y="-30%" width="160%" height="190%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#6b5434" flood-opacity=".3"/></filter></defs>
-<g class="bw-all" filter="url(#bwSh)">
-<path class="tl" fill="url(#bwT)" d="M114 96 C104 130 88 168 66 206 L88 214 C106 176 118 138 124 100 Z"><animate class="ut" data-d="0" attributeName="d" begin="indefinite" dur="2s" fill="freeze" calcMode="spline" keyTimes="0;0.55;1" keySplines=".45 0 .25 1;.45 0 .25 1" values="M114 96 C104 130 88 168 66 206 L88 214 C106 176 118 138 124 100 Z;M114 96 C104 130 88 168 66 206 L88 214 C106 176 118 138 124 100 Z;M112 98 C110 140 104 180 98 222 L116 224 C120 182 122 140 122 100 Z"/></path>
-<path class="tr" fill="url(#bwT)" d="M126 96 C136 130 152 168 174 206 L152 214 C134 176 122 138 116 100 Z"><animate class="ut" data-d="0" attributeName="d" begin="indefinite" dur="2s" fill="freeze" calcMode="spline" keyTimes="0;0.45;1" keySplines=".45 0 .25 1;.45 0 .25 1" values="M126 96 C136 130 152 168 174 206 L152 214 C134 176 122 138 116 100 Z;M126 96 C140 140 162 192 190 246 L168 254 C142 202 122 146 116 100 Z;M126 98 C138 152 156 214 178 282 L158 288 C136 222 120 156 116 100 Z"/></path>
-<path class="ll" fill="url(#bwS)" d="M118 92 C96 58 50 34 28 52 C8 70 30 110 70 108 C92 107 108 100 118 92 Z"><animate class="ut" data-d="0" attributeName="d" begin="indefinite" dur="2s" fill="freeze" calcMode="spline" keyTimes="0;0.5;1" keySplines=".45 0 .25 1;.45 0 .25 1" values="M118 92 C96 58 50 34 28 52 C8 70 30 110 70 108 C92 107 108 100 118 92 Z;M118 92 C104 70 78 62 66 72 C54 82 70 104 92 104 C106 104 114 98 118 92 Z;M118 94 C116 128 112 160 106 200 C104 206 96 206 96 200 C100 160 108 126 112 94 Z"/></path>
-<path class="lld" fill="url(#bwD)" opacity=".8" d="M118 92 C98 74 64 62 46 70 C62 74 92 84 112 96 Z"><animate class="ut" data-d="0" attributeName="d" begin="indefinite" dur="2s" fill="freeze" calcMode="spline" keyTimes="0;0.5;1" keySplines=".45 0 .25 1;.45 0 .25 1" values="M118 92 C98 74 64 62 46 70 C62 74 92 84 112 96 Z;M118 92 C104 80 86 74 76 78 C86 82 102 88 114 96 Z;M118 94 C116 120 112 150 108 180 C108 150 110 120 114 96 Z"/></path>
-<path class="lr" fill="url(#bwS)" d="M122 92 C144 58 190 34 212 52 C232 70 210 110 170 108 C148 107 132 100 122 92 Z"><animate class="ut" data-d="0" attributeName="d" begin="indefinite" dur="1.0s" fill="freeze" calcMode="spline" keyTimes="0;0.45;1" keySplines=".45 0 .25 1;.45 0 .25 1" values="M122 92 C144 58 190 34 212 52 C232 70 210 110 170 108 C148 107 132 100 122 92 Z;M122 92 C132 78 150 72 158 78 C166 84 156 100 140 100 C130 100 125 96 122 92 Z;M122 92 C123 90 125 90 126 91 C127 92 126 94 124 94 C123 94 122 93 122 92 Z"/></path>
-<path class="lrd" fill="url(#bwD)" opacity=".8" d="M122 92 C142 74 176 62 194 70 C178 74 148 84 128 96 Z"><animate class="ut" data-d="0" attributeName="d" begin="indefinite" dur="1.0s" fill="freeze" calcMode="spline" keyTimes="0;0.45;1" keySplines=".45 0 .25 1;.45 0 .25 1" values="M122 92 C142 74 176 62 194 70 C178 74 148 84 128 96 Z;M122 92 C132 84 144 80 150 82 C142 86 132 90 126 96 Z;M122 92 C123 91 124 91 125 92 C124 93 123 93 122 94 Z"/></path>
-<g class="kn"><rect x="106" y="80" width="28" height="26" rx="10" fill="url(#bwD)"/><path d="M110 86 Q120 82 130 86" stroke="#fffaf0" stroke-width="2" fill="none" opacity=".8"/></g>
-</g></svg><span class="bw-pulse" aria-hidden="true"><i></i><i></i></span></span>
-   <p class="bw-initials">${esc((v("partner1")[0]||"")+" & "+(v("partner2")[0]||""))}</p>
-   <span class="bw-go">${C("Tap the bow to open","Dodirnite mašnu da otvorite")}</span></div></section>
- <section class="bw-hero"><div class="bw-cover"></div><div class="bw-hero-txt"><p class="bw-k">${C("We're getting married","Venčavamo se")}</p><h1 class="bw-names">${n1}<em>&amp;</em>${n2}</h1>${dots?`<p class="bw-date">${dots}</p>`:""}<span class="bw-cue" aria-hidden="true"></span></div></section>
- <div class="bw-rest">
-  <section class="bw-sec bw-inv"><p class="bw-k rv">${C("The invitation","Pozivnica")}</p>${v("message")?`<p class="bw-lead rv">${br(v("message"))}</p>`:""}
-   ${dt?`<div class="bw-big rv"><span>${esc(dt.wd)}</span><b>${dt.d}</b><span>${esc(dt.mon)} ${dt.y}${cl==="sr"?".":""}</span></div>`:""}${v("ceremonyTime")?`<p class="bw-at rv">${C("at","u")} ${esc(v("ceremonyTime"))}</p>`:""}</section>
-  ${place?`<section class="bw-sec"><p class="bw-k rv">${C("Where","Gde")}</p><div class="bw-venue rv"><div class="ph"></div><div class="tx"><h3>${esc(v("venue"))}</h3>${v("address")?`<p>${esc(v("address"))}</p>`:""}${v("venueNote")?`<p class="note">${esc(v("venueNote"))}</p>`:""}${v("dressCode")?`<p class="dc">Dress code · ${esc(v("dressCode"))}</p>`:""}</div></div></section>`:""}
-  ${plan.length?`<section class="bw-sec"><h2 class="bw-h rv">${C("The <em>programme</em>","Program <em>dana</em>")}</h2>
-   <ol class="bw-plan">${plan.map((p,i)=>`<li class="rv" style="--i:${i}"><time>${esc(p.tm)}</time><span class="dot" aria-hidden="true"></span><p>${esc(p.t)}</p></li>`).join("")}</ol></section>`:""}
-  ${w&&w>Date.now()?`<section class="bw-sec bw-cd"><p class="bw-k bw-k1 rv">${C("Until our “yes”","Do našeg „da“")}</p><div class="bw-count rv" data-w="${w.getTime()}"></div></section>`:""}
-  ${(gcal||maps)?`<section class="bw-sec bw-lsec"><div class="bw-links rv">${gcal?`<a class="bw-btn" href="${gcal}" target="_blank" rel="noopener"><span class="ic">${CAL}</span><span class="t"><b>${C("Add to calendar","Dodajte u kalendar")}</b><small>${dots}</small></span><i aria-hidden="true">→</i></a>`:""}${maps?`<a class="bw-btn" href="${maps}" target="_blank" rel="noopener"><span class="ic">${PIN}</span><span class="t"><b>${C("Directions","Kako stići")}</b><small>${esc(v("venue"))}</small></span><i aria-hidden="true">→</i></a>`:""}</div></section>`:""}
-  <section class="bw-sec">${o.preview?`<div class="rsvp vx-rsvp bw-rsvp"><p class="kicker">${C("RSVP","Potvrda dolaska")}</p><h2>${C("Will you join us?","Da li dolazite?")}</h2><p class="sub">${rsH?C(`Please reply by ${rsH.short}`,`Molimo odgovorite do ${rsH.short}`):""}</p><p class="note-box" style="text-align:center">${L("This is a preview. Your guests will see the reply form here.","Ovo je pregled. Ovde će vaši gosti videti formular za odgovor.")}</p></div>`:`<div class="rsvp vx-rsvp bw-rsvp" id="rsvp"></div>`}</section>
-  <section class="bw-fin"><div class="ph rv"></div><p class="bw-k rv">${esc(v("signoff")||C("We can't wait to celebrate with you","Radujemo se što ćemo slaviti sa vama"))}</p><h2 class="bw-names rv">${n1}<em>&amp;</em>${n2}</h2>${dots?`<p class="bw-date rv">${dots}</p>`:""}
+ <section class="sb-open">
+  <p class="sb-for">${who?`${C("For","Za")} ${who}`:C("A gift for you","Poklon za vas")}</p>
+  <div class="sb-box">
+   <span class="sb-in" aria-hidden="true"></span>
+   <span class="sb-card" aria-hidden="true">${renderCard(t,d,{fixed:true,lang:cl})}</span>
+   <span class="sb-lid" aria-hidden="true"><span class="sb-rb v t"><i></i></span><span class="sb-rb v b"><i></i></span><span class="sb-rb h l"><i></i></span><span class="sb-rb h r"><i></i></span></span>
+   <button class="sb-bow" type="button" aria-label="${C("Untie the bow","Odvežite mašnu")}"><i></i></button>
+  </div>
+  <p class="sb-go">${C("Pull the bow","Povucite mašnu")}<small>${C("or just tap it","ili je samo dodirnite")}</small></p>
+ </section>
+ <section class="sb-hero"><div class="sb-silk"></div><div class="sb-petals" aria-hidden="true">${petals}</div><div class="sb-cardwrap">${renderCard(t,d,{anim:true,fixed:true})}</div><span class="sb-cue">${C("Scroll","Skrolujte")}</span></section>
+ <div class="sb-rest">
+  <section class="sb-sec"><p class="sb-k rv">${C("The invitation","Pozivnica")}</p>${v("message")?`<p class="sb-lead rv">${br(v("message"))}</p>`:""}
+   ${dt?`<div class="sb-day rv"><span>${esc(dt.wd)}</span><b>${dt.d}</b><span>${esc(dt.mon)} ${dt.y}${cl==="sr"?".":""}</span></div>`:""}${v("ceremonyTime")?`<p class="sb-at rv">${C("at","u")} ${esc(v("ceremonyTime"))}${cl==="sr"?" časova":""}</p>`:""}</section>
+  ${place?`<section class="sb-sec"><p class="sb-k rv">${C("Where","Gde")}</p><div class="sb-venue rv"><div class="ph"></div><div class="tx"><h3>${esc(v("venue"))}</h3>${v("address")?`<p>${esc(v("address"))}</p>`:""}${v("venueNote")?`<p class="note">${esc(v("venueNote"))}</p>`:""}${v("dressCode")?`<p class="dc">Dress code · ${esc(v("dressCode"))}</p>`:""}
+   <div class="sb-links">${gcal?`<a class="sb-btn" href="${gcal}" target="_blank" rel="noopener">${C("Add to calendar","Dodajte u kalendar")}</a>`:""}${maps?`<a class="sb-btn ghost" href="${maps}" target="_blank" rel="noopener">${C("Directions","Kako stići")}</a>`:""}</div></div></div></section>`:""}
+  ${plan.length?`<section class="sb-sec"><p class="sb-k rv">${C("The day","Dan")}</p><h2 class="sb-h rv">${C("Our <em>programme</em>","Naš <em>program</em>")}</h2>
+   <ol class="sb-tl">${plan.map((p,i)=>`<li class="rv" style="--i:${i}"><span class="mk">${SB_BOW}</span><div><time>${esc(p.tm)}</time><p>${esc(p.t)}</p></div></li>`).join("")}</ol></section>`:""}
+  ${w&&w>Date.now()?`<section class="sb-sec"><p class="sb-k rv">${C("Until our “yes”","Do našeg „da“")}</p><div class="sb-count rv" data-w="${w.getTime()}"></div></section>`:""}
+  <section class="sb-sec">${o.preview?`<div class="rsvp vx-rsvp sb-rsvp"><p class="kicker">${C("RSVP","Potvrda dolaska")}</p><h2>${C("Will you join us?","Da li dolazite?")}</h2><p class="sub">${rsH?C(`Please reply by ${rsH.short}`,`Molimo odgovorite do ${rsH.short}`):""}</p><p class="note-box" style="text-align:center">${L("This is a preview. Your guests will see the reply form here.","Ovo je pregled. Ovde će vaši gosti videti formular za odgovor.")}</p></div>`:`<div class="rsvp vx-rsvp sb-rsvp" id="rsvp"></div>`}</section>
+  <section class="sb-fin"><div class="ph rv"></div><p class="sb-k rv">${esc(v("signoff")||C("We can't wait to celebrate with you","Radujemo se što ćemo slaviti sa vama"))}</p><h2 class="sb-names rv">${n1}<em>&amp;</em>${n2}</h2>${dots?`<p class="sb-date rv">${dots}</p>`:""}
    ${o.preview?"":`<p class="vx-by">${L("Sent with","Poslato preko")} <a href="${API.kind==="local"?"#":"/"}">Poziv na klik</a></p>`}</section>
  </div>
- <button class="vx-music bw-music" type="button" aria-pressed="false"><span class="d" aria-hidden="true"></span><span>${C("Music","Muzika")}</span></button>
+ <button class="vx-music sb-music" type="button" aria-pressed="false"><span class="d" aria-hidden="true"></span><span>${C("Music","Muzika")}</span></button>
 </div>`;
 }
 function bindBow(root,t,d,o={}){
- const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const mus=$(".bw-music",root);
+ const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const mus=$(".sb-music",root);const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
  const setPlay=on=>{root.classList.toggle("playing",on);mus.setAttribute("aria-pressed",on);mus.setAttribute("aria-label",on?C("Pause the music","Pauziraj muziku"):C("Play the music","Pusti muziku"))};
  const play=()=>{try{DiscoBeat.stop()}catch(e){}MBox.use(VX_BARS,.27);MBox.start();setPlay(true)};
- const untie=()=>{const sv=$(".bw-svg",root);if(!sv)return 0;if(matchMedia("(prefers-reduced-motion:reduce)").matches)return 0;root.classList.add("untie");$$(".ut",sv).forEach(a=>{try{a.beginElement()}catch(e){}});return 1950};
- const open=withSound=>{if(root.classList.contains("on")||root.classList.contains("untie"))return;if(withSound)play();else setPlay(false);const go=()=>{root.classList.add("on");o.onOpen&&o.onOpen();setTimeout(reveal,withSound?1500:0);count()};const t=withSound?untie():0;t?setTimeout(go,t):go()};
- const op=$(".bw-open",root);op.addEventListener("click",()=>open(true));op.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open(true)}});
  mus.addEventListener("click",()=>{if(root.classList.contains("playing")){MBox.stop();setPlay(false)}else play()});
+ const show=()=>{root.classList.add("on");o.onOpen&&o.onOpen();setTimeout(reveal,700);count()};
+ // the bow unties and the ribbon slides off, the lid lifts away, and the card rises from the tissue to where it sits on the page
+ const rise=()=>{const card=$(".sb-card",root),hc=$(".sb-cardwrap",root);const a=card.getBoundingClientRect(),b=hc.getBoundingClientRect();
+  const k=hc.offsetWidth/card.offsetWidth,dx=(b.left+b.width/2)-(a.left+a.width/2),dy=(b.top+b.height/2)-(a.top+a.height/2);root.classList.add("rise");
+  card.animate([{transform:"rotate(-4deg)"},{transform:`translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px) scale(${k.toFixed(3)}) rotate(-2deg)`}],{duration:1000,easing:"cubic-bezier(.45,.05,.25,1)",fill:"forwards"}).finished.then(()=>{if(root.isConnected)show()})};
+ const open=withSound=>{if(root.classList.contains("on")||root.classList.contains("untie"))return;if(withSound)play();else setPlay(false);
+  if(!withSound||RM)return show();root.classList.add("untie");setTimeout(()=>root.classList.add("lift"),950);setTimeout(rise,2050)};
+ const bow=$(".sb-bow",root);let y0=null;
+ bow.addEventListener("pointerdown",e=>{y0=[e.clientX,e.clientY];try{bow.setPointerCapture(e.pointerId)}catch(_){}});
+ bow.addEventListener("pointermove",e=>{if(!y0)return;const dx=e.clientX-y0[0],dy=e.clientY-y0[1];bow.style.transform=`translate(${(dx*.25).toFixed(1)}px,${(dy*.25).toFixed(1)}px)`;if(Math.hypot(dx,dy)>60){y0=null;bow.style.transform="";open(true)}});
+ bow.addEventListener("pointerup",()=>{if(y0){y0=null;bow.style.transform="";open(true)}});
+ bow.addEventListener("pointercancel",()=>{y0=null;bow.style.transform=""});
+ const tl=$(".sb-tl",root);let raf=0;const grow=()=>{raf=0;if(!tl||!tl.isConnected){removeEventListener("scroll",onS,true);return}const r=tl.getBoundingClientRect();tl.style.setProperty("--g",Math.max(0,Math.min(1,(innerHeight*.8-r.top)/r.height)).toFixed(3))};const onS=()=>{if(!raf)raf=requestAnimationFrame(grow)};if(tl){addEventListener("scroll",onS,{passive:true,capture:true});grow()}
  function reveal(){const els=$$(".rv",root);if(!("IntersectionObserver" in window)){els.forEach(e=>e.classList.add("in"));return}root.classList.add("io");const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.14});els.forEach(el=>io.observe(el))}
- function count(){const el=$(".bw-count",root);if(!el)return;const w=+el.dataset.w;const tick=()=>{if(!el.isConnected)return;const ms=w-Date.now();if(ms<=0){el.innerHTML="";return}const a=[[Math.floor(ms/864e5),C("Days","Dana")],[Math.floor(ms/36e5)%24,C("Hours","Sati")],[Math.floor(ms/6e4)%60,C("Min","Min")],[Math.floor(ms/1e3)%60,C("Sec","Sek")]];el.innerHTML=a.map(([n,l])=>`<div><b>${String(n).padStart(2,"0")}</b><span>${l}</span></div>`).join("");setTimeout(tick,1000)};tick()}
+ function count(){const el=$(".sb-count",root);if(!el)return;const w=+el.dataset.w;const tick=()=>{if(!el.isConnected)return;const ms=w-Date.now();if(ms<=0){el.innerHTML="";return}const a=[[Math.floor(ms/864e5),C("Days","Dana")],[Math.floor(ms/36e5)%24,C("Hours","Sati")],[Math.floor(ms/6e4)%60,C("Min","Min")],[Math.floor(ms/1e3)%60,C("Sec","Sek")]];el.innerHTML=a.map(([n,l])=>`<div><b>${String(n).padStart(2,"0")}</b><span>${l}</span></div>`).join("");setTimeout(tick,1000)};tick()}
  if(o.opened)open(false);
 }
 
@@ -2347,7 +2354,7 @@ async function vInvite(r){
  const initial=(t.layout==="wedding"?(data.partner1||"").charAt(0)+(data.partner2||"").charAt(0):(data.childName||data.name||data.occasion||"P").charAt(0))||"P";
  const style=`--c-bg:${p.bg};--c-bg2:${p.bg2};--c-ink:${p.ink};--c-accent:${p.accent};--f-s:${t.font.s}`;
  const top=`<div class="guest-top">${langSwitch()}</div>`;
- if(t.exp){app.innerHTML=`<div class="view exp-view">${expOf(t)[0](t,data,{guest})}</div>`;const rt=RT;await settle(app);if(rt!==RT)return;bindLang($(".vx-top"));expOf(t)[1]($(".vx,.dx,.bw,.hy,.ps,.pq,.sk,.fw,.rp,.zv,.bn,.zp,.dn"),t,data,{opened:vInvite.opened===slug,onOpen:()=>{vInvite.opened=slug}});drawRsvp();return}
+ if(t.exp){app.innerHTML=`<div class="view exp-view">${expOf(t)[0](t,data,{guest})}</div>`;const rt=RT;await settle(app);if(rt!==RT)return;bindLang($(".vx-top"));expOf(t)[1]($(".vx,.dx,.sb,.hy,.ps,.pq,.sk,.fw,.rp,.zv,.bn,.zp,.dn"),t,data,{opened:vInvite.opened===slug,onOpen:()=>{vInvite.opened=slug}});drawRsvp();return}
  app.innerHTML=`<div class="guest view">${top}<div class="env-stage">${guest?`<p class="to-line">${L("For","Za:")} ${esc(guest.name)}</p>`:`<p class="to-line">${L("You've received an invitation","Stigla vam je pozivnica")}</p>`}
   ${t.story?`<div class="story-host" id="sth"></div>`:`${envHTML(t,data,"env")}
   <p class="env-hint">${L("Tap the seal to open","Dodirnite pečat da otvorite")}<small>${esc(title)}</small></p>`}</div></div>`;

@@ -41,7 +41,7 @@ html.intro-on:not(.intro-ready) #intro .in-hint{opacity:0}
 .view.exp-view{animation:none}
 
 /* Long names and venues never get cut off */
-.bw-btn small,.dx-btn2 small{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
+.dx-btn2 small{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
 /* Disko card: a long venue wraps, and its column gets more room than the date and time */
 .tid-p_disco .dz-info>div[data-f="venue"] span:first-of-type{white-space:normal;text-wrap:balance}
 .tid-p_disco .dz-info:has(>div:nth-child(3)){grid-template-columns:minmax(0,.85fr) minmax(0,.85fr) minmax(0,1.5fr)}
