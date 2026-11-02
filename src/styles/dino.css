@@ -150,8 +150,7 @@
 .tid-p_dino .inv-body{justify-content:flex-start!important}
 .k-bas .pd-d{margin-top:4.5cqw!important;font:600 3.4cqw/1.2 'Quicksand',sans-serif;color:#4c5a46}
 .k-bas .pd-d b{font:600 6cqw/1 'Fredoka',sans-serif;color:#4f7a45;margin:0 .6cqw}
-/* the details sit on the right, across from the dino; the signature runs along the bottom */
+/* the details sit on the right, across from the dino */
 .k-bas .pd-side{position:absolute;right:7cqw;top:84cqw;width:38cqw;display:flex;flex-direction:column;align-items:flex-end;gap:.6cqw;text-align:right!important;font:500 2.7cqw/1.3 'Quicksand',sans-serif;color:#4c5a46}
 .k-bas .pd-side b{font:600 3.6cqw/1.2 'Fredoka',sans-serif;color:#34452f}
 .k-bas .pd-side small{margin-top:1.2cqw;padding-top:1.2cqw;border-top:.28cqw dashed #a9c79a;font:500 2.3cqw/1.35 'Quicksand',sans-serif;color:#7d8b74}
-.k-bas .pd-h{position:absolute;left:0;right:0;bottom:0;padding:2.4cqw 0 2.8cqw!important;font:600 6.2cqw/1 'Caveat',cursive;color:#3f6b3c;background:linear-gradient(transparent,rgba(250,247,234,.92) 38%);text-shadow:0 0 1.4cqw #fbf8ec,0 0 .6cqw #fbf8ec!important}
