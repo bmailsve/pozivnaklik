@@ -11,7 +11,7 @@
 .pq-t-bloom{--wash:rgba(251,245,241,.7)}
 .pq-t-clock{--wash:rgba(5,8,22,.3);--pgc:#0b1024}
 .pq-t-clouds{--wash:rgba(244,249,255,.5)}
-.pq-t-basket{--wash:rgba(253,249,238,.72)}
+.pq-t-napkin{--wash:rgba(253,249,238,.72)}
 .pq-t-lace{--pat:var(--a-lace);--patsz:420px;--wash:rgba(72,17,28,.86);--pgc:#4E1420}
 .pq-t-tinsel{--wash:rgba(13,13,15,.88);--pgc:#0d0d0f;--on:#eceef2}
 .pq-t-tinsel :is(.pq-hint,.pq-kk,.pq-orn,.pq-plan b,.vx-by a){color:#c9ccd3}
@@ -150,22 +150,70 @@
 .pq-clouds.open .k-rays{opacity:1}
 .pq-clouds.open .k-moon{opacity:0}
 
-/* Medeni piknik: a wicker picnic basket and its balloons */
-.pq-basket{--ar:.95;perspective:900px}
-.pq-basket .k-handle{left:24%;right:24%;top:16%;height:36%;border:2.6cqw solid #a8794a;border-bottom:0;border-radius:50% 50% 0 0/90% 90% 0 0;box-shadow:inset 0 .6cqw 0 rgba(255,230,190,.35)}
-.pq-basket .k-body{left:7%;right:7%;top:47%;bottom:4%;z-index:2;clip-path:polygon(0 0,100% 0,93% 100%,7% 100%);background:repeating-linear-gradient(90deg,rgba(90,55,25,.28) 0 .5cqw,transparent .5cqw 5.5cqw),repeating-linear-gradient(0deg,#c99a63 0 2.6cqw,#a87a46 2.6cqw 3.2cqw,#d8ad75 3.2cqw 5.4cqw),#c99a63}
-.pq-basket .k-cloth{left:10%;right:10%;top:41%;height:12%;z-index:1;background:repeating-linear-gradient(0deg,rgba(140,155,107,.6) 0 2.6cqw,transparent 2.6cqw 5.2cqw),repeating-linear-gradient(90deg,rgba(140,155,107,.6) 0 2.6cqw,transparent 2.6cqw 5.2cqw),#fbf3e6;clip-path:polygon(0 35%,12% 0,30% 40%,50% 6%,70% 38%,88% 0,100% 32%,100% 100%,0 100%);transition:transform 1s ease .7s}
-.pq-basket .k-lid{left:4%;right:4%;top:40%;height:11%;z-index:3;border-radius:2cqw;background:repeating-linear-gradient(90deg,rgba(90,55,25,.3) 0 .5cqw,transparent .5cqw 5cqw),linear-gradient(#d8ad75,#a87a46);box-shadow:0 1.2cqw 1.6cqw rgba(0,0,0,.3);transform-origin:50% 0;transition:transform 1s cubic-bezier(.5,.05,.25,1) .35s}
-.pq-basket .k-strap{left:50%;top:39%;z-index:4;width:16cqw;aspect-ratio:1;translate:-50% 0;background:var(--s) center/contain no-repeat;filter:drop-shadow(0 .8cqw 1cqw rgba(0,0,0,.35));transition:transform .45s ease,opacity .35s}
-.pq-basket .k-bal{left:calc(24% + var(--i) * 11%);top:calc(2% + (var(--i) * 3%));width:13cqw;aspect-ratio:.82;border-radius:50% 50% 48% 48%/56% 56% 44% 44%;background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.75),transparent 34%),var(--c);box-shadow:inset -1cqw -1.4cqw 2cqw rgba(0,0,0,.12);animation:pqBob 3s ease-in-out calc(var(--i) * -.6s) infinite alternate}
-.pq-basket .k-bal:nth-child(2n){top:-4%}
-.pq-basket .k-bal i{position:absolute;left:50%;top:100%;width:1px;height:28cqw;background:rgba(90,70,50,.45);transform-origin:50% 0;rotate:calc((2 - var(--i)) * 9deg)}
-@keyframes pqBob{to{transform:translateY(-1.6cqw) rotate(3deg)}}
-.pq-basket.open .k-strap{transform:translate(0,-6cqw) scale(1.3);opacity:0}
-.pq-basket.open .k-lid{transform:rotateX(135deg)}
-.pq-basket.open .k-cloth{transform:translateY(-4cqw)}
-.pq-basket.open .k-bal{animation:pqAway 1.8s cubic-bezier(.4,0,.7,.6) calc(.5s + var(--i) * .08s) both}
-@keyframes pqAway{to{transform:translate(calc((var(--i) - 2) * 9cqw),-150cqw) rotate(calc((var(--i) - 2) * 8deg))}}
+/* Medeni piknik: the invitation arrives wrapped in a gingham napkin, sealed with wax */
+.pq-napkin{--ar:.667;perspective:1300px;--gh:rgba(140,155,107,.5)}
+.pq-napkin::before{content:"";position:absolute;inset:3% 1% -1%;border-radius:2cqw;box-shadow:0 34px 50px -22px rgba(70,55,30,.5);transition:opacity .6s ease 1s}
+.pq-napkin.open::before{opacity:0}
+.pq-napkin .n-card{inset:0;transition:transform 1.1s cubic-bezier(.2,.8,.2,1) 1.25s}
+.pq-napkin .n-card .inv-c{width:100%}
+.pq-napkin .n-card .inv{box-shadow:0 30px 50px -24px rgba(70,55,30,.55),0 3px 8px rgba(70,55,30,.18)}
+.pq-napkin .n-flap{inset:-2%;z-index:3;background:repeating-linear-gradient(0deg,var(--gh) 0 5cqw,transparent 5cqw 10cqw),repeating-linear-gradient(90deg,var(--gh) 0 5cqw,transparent 5cqw 10cqw),#fbf6ea;backface-visibility:visible;transition:transform 1s cubic-bezier(.55,.05,.3,1)}
+.pq-napkin .n-flap::after{content:"";position:absolute;inset:0}
+.pq-napkin .n-flap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.pq-napkin .n-flap path{fill:none;stroke:#7b8a58;stroke-width:1.5;stroke-dasharray:4 4;vector-effect:non-scaling-stroke;opacity:.85}
+.pq-napkin .n-flap.t{clip-path:polygon(0 0,100% 0,50% 51%);transform-origin:50% 0;z-index:6}
+.pq-napkin .n-flap:is(.t,.b){background:repeating-linear-gradient(45deg,var(--gh) 0 3.6cqw,transparent 3.6cqw 7.2cqw),repeating-linear-gradient(-45deg,var(--gh) 0 3.6cqw,transparent 3.6cqw 7.2cqw),#fbf6ea}
+.pq-napkin .n-flap.t::after{background:linear-gradient(180deg,transparent 30%,rgba(90,80,50,.16))}
+.pq-napkin .n-flap.l{clip-path:polygon(0 0,51% 50%,0 100%);transform-origin:0 50%;z-index:5}
+.pq-napkin .n-flap.l::after{background:linear-gradient(90deg,transparent 30%,rgba(90,80,50,.14))}
+.pq-napkin .n-flap.r{clip-path:polygon(100% 0,100% 100%,49% 50%);transform-origin:100% 50%;z-index:5}
+.pq-napkin .n-flap.r::after{background:linear-gradient(270deg,transparent 30%,rgba(90,80,50,.14))}
+.pq-napkin .n-flap.b{clip-path:polygon(0 100%,50% 49%,100% 100%);transform-origin:50% 100%;z-index:4}
+.pq-napkin .n-flap.b::after{background:linear-gradient(0deg,transparent 30%,rgba(90,80,50,.12))}
+.pq-napkin .n-seal{left:50%;top:50%;z-index:8;width:24cqw;aspect-ratio:228/240;translate:-50% -50%;background:var(--s) center/contain no-repeat;filter:drop-shadow(0 .8cqw 1.2cqw rgba(50,40,20,.35));animation:nkSeal 2.6s ease-in-out 1.6s infinite;transition:transform .5s cubic-bezier(.3,1.4,.5,1),opacity .4s ease .1s}
+@keyframes nkSeal{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.pq-napkin .n-fly{z-index:9;width:14cqw;animation:var(--fl) var(--ft) ease-in-out infinite}
+.pq-napkin .n-fly svg{display:block;width:100%;overflow:visible}
+.pq-napkin .n-fly .a{fill:var(--w1)}.pq-napkin .n-fly .b{fill:var(--w2)}
+.pq-napkin .n-fly .w{transform-box:fill-box;animation:nkWing .16s ease-in-out infinite alternate}
+.pq-napkin .n-fly .w.l{transform-origin:100% 50%}.pq-napkin .n-fly .w.r{transform-origin:0 50%}
+@keyframes nkWing{to{transform:scaleX(.3)}}
+.pq-napkin .n-flee{display:block;transition:transform 1.6s cubic-bezier(.5,0,.75,.4),opacity 1.2s ease .4s}
+.pq-napkin .n-fly.f0{left:-8%;top:8%;--w1:#F2B23E;--w2:#E39A2E;--fl:nkF0;--ft:7s}
+.pq-napkin .n-fly.f1{right:-9%;top:36%;width:11.5cqw;--w1:#A9CBE5;--w2:#86AFD3;--fl:nkF1;--ft:8.5s}
+.pq-napkin .n-fly.f2{left:2%;bottom:6%;width:10cqw;--w1:#F4C65A;--w2:#E8A93C;--fl:nkF2;--ft:9.5s}
+@keyframes nkF0{0%,100%{transform:translate(0,0) rotate(-8deg)}30%{transform:translate(14cqw,-8cqw) rotate(10deg)}60%{transform:translate(6cqw,6cqw) rotate(-4deg)}}
+@keyframes nkF1{0%,100%{transform:translate(0,0) rotate(12deg) scaleX(-1)}35%{transform:translate(-12cqw,-10cqw) rotate(-6deg) scaleX(-1)}70%{transform:translate(-4cqw,8cqw) rotate(8deg) scaleX(-1)}}
+@keyframes nkF2{0%,100%{transform:translate(0,0) rotate(6deg)}40%{transform:translate(10cqw,-12cqw) rotate(-10deg)}75%{transform:translate(-4cqw,-4cqw) rotate(4deg)}}
+.pq-napkin.open .n-seal{animation:none;transform:scale(1.3) translateY(-4cqw);opacity:0}
+.pq-napkin.open .n-flap.t{transform:rotateX(180deg);transition-delay:.3s}
+.pq-napkin.open .n-flap.l{transform:rotateY(-180deg);transition-delay:.55s}
+.pq-napkin.open .n-flap.r{transform:rotateY(180deg);transition-delay:.7s}
+.pq-napkin.open .n-flap.b{transform:rotateX(-180deg);transition-delay:.9s}
+.pq-napkin.open .n-flap{opacity:0;transition:transform 1s cubic-bezier(.55,.05,.3,1),opacity .3s ease}
+.pq-napkin.open .n-flap.t{transition-delay:.3s,.95s}.pq-napkin.open .n-flap.l{transition-delay:.55s,1.2s}.pq-napkin.open .n-flap.r{transition-delay:.7s,1.35s}.pq-napkin.open .n-flap.b{transition-delay:.9s,1.55s}
+.pq-napkin.open .n-card{transform:translateY(-2cqw) scale(1.03)}
+.pq-napkin.open .n-fly.f0 .n-flee{transform:translate(-30cqw,-150cqw) rotate(-20deg);opacity:0}
+.pq-napkin.open .n-fly.f1 .n-flee{transform:translate(40cqw,-140cqw) rotate(20deg);opacity:0}
+.pq-napkin.open .n-fly.f2 .n-flee{transform:translate(-20cqw,-170cqw);opacity:0}
+.pq-card:has(.tid-e_picnic){width:min(88vw,420px,calc(64svh * .667))}
+@media (prefers-reduced-motion:reduce){.pq-napkin .n-seal,.pq-napkin .n-fly,.pq-napkin .n-fly .w{animation:none!important}}
+
+/* Medeni piknik card: a storybook layout in the sky above the picnic */
+.k-bas .pk-k{font:600 2.4cqw/1.4 'Quicksand',sans-serif;letter-spacing:.26em!important;text-transform:uppercase;color:#7d8a5c}
+.k-bas .pk-n{font-family:'Parisienne',cursive!important;color:#7a5636;margin:1cqw 0 0!important;line-height:1.05!important}
+.k-bas .pk-age{display:flex;align-items:center;gap:2.2cqw;margin:.2cqw 0 1.8cqw!important}
+.k-bas .pk-badge{display:grid;place-items:center;width:10.6cqw;aspect-ratio:1;border-radius:50%;background:repeating-linear-gradient(0deg,rgba(232,186,84,.6) 0 1.5cqw,transparent 1.5cqw 3cqw),repeating-linear-gradient(90deg,rgba(232,186,84,.6) 0 1.5cqw,transparent 1.5cqw 3cqw),#fff6df;box-shadow:0 .6cqw 1.4cqw rgba(122,86,54,.25)}
+.k-bas .pk-badge b{display:grid;place-items:center;width:7.4cqw;aspect-ratio:1;border-radius:50%;background:#fffaf0;font:700 5.3cqw/1 'Playfair Display',serif;color:#7a5636}
+.k-bas .pk-age>span:last-child{font:400 6cqw/1 'Parisienne',cursive;color:#7d8a5c}
+.k-bas .pk-d{display:flex;align-items:center;justify-content:center;gap:2cqw;font:600 2.5cqw/1 'Quicksand',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#5a4632}
+.k-bas .pk-d i{width:5cqw;border-top:.3cqw dashed #9aa874}
+.k-bas .pk-d b{font:600 4.6cqw/1 'Playfair Display',serif;letter-spacing:0;text-transform:none;color:#7a5636}
+.k-bas .pk-v{margin-top:1.6cqw!important;font:500 2.8cqw/1.35 'Quicksand',sans-serif;color:#5a4632}
+.k-bas .pk-v b{display:block;font:700 3.3cqw/1.3 'Quicksand',sans-serif}
+.k-bas .pk-m{font:500 2.6cqw/1.38 'Quicksand',sans-serif;color:#5a4632;margin-top:1.4cqw!important;max-width:66cqw}
+.k-bas .pk-h{font:400 4.3cqw/1.2 'Parisienne',cursive;color:#7a5636;margin-top:.8cqw!important}
+.k-bas .pk-s{font:500 2.3cqw/1.4 'Quicksand',sans-serif;color:#7d6a55;margin-top:.8cqw!important}
 
 /* Disko veče: a silver tinsel curtain parts under the mirror ball */
 .pq-tinsel{--ar:.8;overflow:hidden;border-radius:2cqw;background:radial-gradient(circle at 50% 30%,#3a3a40,#121214 70%)}
@@ -186,7 +234,9 @@
 
 /* ---------- the invitation page ---------- */
 .pq-main{position:relative;z-index:2}
-.pq:not(.read) .pq-main{display:none}
+/* the page is laid out (hidden) while the opening plays, so it appears without a stall */
+.pq:not(.read) .pq-main{visibility:hidden}
+.pq:not(.read){height:100svh;overflow:hidden}
 .pq-hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:70px 16px 44px}
 .pq-k{margin:0;font:600 12px var(--fb);letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;color:var(--on);text-align:center}
 .pq-card{width:min(88vw,440px,calc(64svh * .714))}
