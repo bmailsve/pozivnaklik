@@ -5,8 +5,10 @@
 # are Netlify Functions (netlify/functions). Data: Postgres at DATABASE_URL, set per deploy context.
 
 [build]
-  command = "npm test && npm run build"
+  command = "node scripts/prepare-deploy.mjs && npm test && npm run build"
   publish = "dist"
+  # the staging password page (only in non-production builds, see scripts/prepare-deploy.mjs)
+  edge_functions = ".netlify-edge"
 
 [build.environment]
   NODE_VERSION = "22"

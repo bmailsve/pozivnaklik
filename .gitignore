@@ -7,3 +7,5 @@ data/
 *.log
 legacy-db.json
 .claude/
+.staging-password.txt
+.netlify-edge/
