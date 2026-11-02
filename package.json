@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "@netlify/blobs": "^8.2.0",
-    "pg": "^8.23.1"
+    "pg": "^8.23.1",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.2.17",

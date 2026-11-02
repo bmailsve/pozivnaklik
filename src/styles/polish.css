@@ -16,3 +16,26 @@ html.intro-on:not(.intro-ready) #intro .in-stage,
 html.intro-on:not(.intro-ready) #intro .in-seal,
 html.intro-on:not(.intro-ready) #intro .in-hint{animation-play-state:paused}
 html.intro-on:not(.intro-ready) #intro .in-hint{opacity:0}
+
+/* Animations that used to move things by changing their size or position (which makes the browser
+   re-lay-out the page on every frame) now use transforms, which the graphics card handles alone. */
+/* Disko: light beams sweeping across the card */
+.fx-disco .beam{left:0;will-change:translate}
+@keyframes dzBeam{0%{translate:-154% 0}50%{translate:423% 0}100%{translate:-154% 0}}
+/* story progress bars */
+.st-prog i b{width:100%;transform:scaleX(0);transform-origin:left center}
+.st-prog i.done b{transform:none}
+@keyframes prog{to{transform:scaleX(1)}}
+/* People who turned on "reduce motion" on their phone: looping decorations play once and rest. */
+@media (prefers-reduced-motion:reduce){
+ #app *,#app *::before,#app *::after,.vx-ov *,.story-ov *{animation-iteration-count:1!important}
+}
+/* Naša pesma: equalizer bars while the music plays */
+.eq i{height:100%;transform:scaleY(.3);transform-origin:center bottom}
+@keyframes eq{from{transform:scaleY(.2)}to{transform:scaleY(1)}}
+
+/* The page's entrance animation must not leave a transform behind: an element with one becomes the
+   frame of reference for everything "fixed" inside it (openers, skies, music buttons), which then
+   stretch to the full page height instead of the screen. Premium experiences fade in via settle(). */
+.view{animation-fill-mode:backwards}
+.view.exp-view{animation:none}

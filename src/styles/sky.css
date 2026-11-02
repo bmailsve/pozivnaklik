@@ -1,0 +1,130 @@
+/* ===== Zvezdana noć · premium wedding under a live night sky ===== */
+.zv{--ink:#EEF0FF;--mut:#AAB2D9;--gold:#E8C77E;--vx-dark:rgba(12,17,44,.92);position:relative;min-height:100svh;overflow-x:clip;background:#060914;color:var(--ink);font-family:'Jost',sans-serif;font-weight:300}
+.zv em{font-style:normal}
+
+/* the sky: a painted gradient with CSS stars underneath, the live WebGL sky fading in on top */
+.zv-sky{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(120% 75% at 50% 0%,#1b2453 0%,#0c1233 46%,#060914 100%)}
+.zv-sky::before{content:"";position:absolute;inset:0;opacity:.75;transition:opacity 1.6s ease;
+ background-image:radial-gradient(1.2px 1.2px at 12% 18%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 72% 12%,#fff 50%,transparent 51%),radial-gradient(1.4px 1.4px at 38% 42%,#ffe9bf 50%,transparent 51%),radial-gradient(1px 1px at 86% 58%,#dfe6ff 50%,transparent 51%),radial-gradient(1.2px 1.2px at 22% 76%,#fff 50%,transparent 51%),radial-gradient(1px 1px at 58% 88%,#fff 50%,transparent 51%);
+ background-size:260px 260px,330px 330px,410px 410px,290px 290px,370px 370px,230px 230px}
+.zv.has3d .zv-sky::before{opacity:.25}
+.zv-cv{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.8s ease}
+.zv.has3d .zv-cv{opacity:1}
+/* without WebGL the initials are written in gold instead */
+.zv-ini{position:absolute;left:0;right:0;top:15svh;margin:0;text-align:center;font-family:'Pinyon Script',cursive;font-size:clamp(70px,22vw,170px);line-height:1;color:var(--gold);text-shadow:0 0 18px rgba(232,199,126,.55),0 0 50px rgba(232,199,126,.25);opacity:0;transition:opacity 1.6s ease}
+.zv.no3d.on .zv-ini,.zv.no3d.forming .zv-ini{opacity:1}
+
+.zv .vx-top{position:fixed;z-index:60}
+.zv .vx-top .lang{background:rgba(255,255,255,.08)}
+.zv .vx-top .lang button{color:#AAB2D9}
+.zv .vx-top .lang button.on{background:#EEF0FF;color:#0b1030}
+
+/* opening screen */
+.zv-open{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;padding:0 24px calc(15svh + env(safe-area-inset-bottom,0px));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.zv-open:focus-visible{outline:none}
+.zv-open:focus-visible .zv-go{outline:2px solid var(--gold);outline-offset:6px}
+.zv-open-in{text-align:center;transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1);animation:zvUp 1.4s cubic-bezier(.2,.7,.2,1) .3s both}
+.zv-for{margin:0 0 14px;font-size:12px;letter-spacing:.36em;text-transform:uppercase;color:var(--mut)}
+.zv-q{margin:0 0 30px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(34px,9vw,52px);line-height:1.1;color:var(--ink)}
+.zv-q em{font-family:'Pinyon Script',cursive;font-size:1.25em;color:var(--gold);padding:0 .06em}
+.zv-go{position:relative;display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;border:1px solid rgba(232,199,126,.55);color:var(--gold);font-size:13px;letter-spacing:.24em;text-transform:uppercase;background:rgba(10,14,38,.55)}
+.zv-go svg{width:16px;height:16px;animation:zvTwinkle 2.4s ease-in-out infinite}
+.zv-go::after{content:"";position:absolute;inset:-1px;border-radius:inherit;border:1px solid rgba(232,199,126,.6);animation:zvRing 2.6s ease-out 1.2s infinite;pointer-events:none}
+.zv.forming .zv-open-in,.zv.on .zv-open-in{animation:zvOut .7s ease forwards}
+.zv.forming .zv-open,.zv.on .zv-open{pointer-events:none}
+.zv.on .zv-open{visibility:hidden;transition:visibility 0s .8s}
+.zv:not(.on){height:100svh;overflow:hidden}
+.zv:not(.on) .zv-hero,.zv:not(.on) .zv-rest{display:none}
+
+/* hero: the initials shine in the sky above, the names below */
+.zv-hero{position:relative;z-index:1;height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 22px calc(12svh + env(safe-area-inset-bottom,0px));text-align:center;opacity:calc(1 - var(--zs,0) * 1.5)}
+.zv-hero-txt{animation:zvUp 1.4s cubic-bezier(.2,.7,.2,1) .2s both}
+.zv-k{margin:0 0 12px;font-size:12px;letter-spacing:.38em;text-transform:uppercase;color:var(--gold)}
+.zv-names{margin:0;font-family:'Pinyon Script',cursive;font-weight:400;font-size:clamp(50px,14vw,92px);line-height:1.05;color:var(--ink);text-shadow:0 0 24px rgba(160,180,255,.25)}
+.zv-names em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.5em;color:var(--gold);padding:0 .35em}
+.zv-date{margin:14px 0 0;font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.32em;color:var(--mut)}
+.zv-cue{position:absolute;left:50%;bottom:calc(3svh + env(safe-area-inset-bottom,0px));width:1px;height:46px;background:linear-gradient(var(--gold),transparent);transform-origin:top;animation:zvCue 2.2s ease-in-out 2s infinite}
+
+/* the rest of the page */
+.zv-rest{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:6svh 18px 0}
+.zv-sec{padding:5svh 0;text-align:center}
+.zv-card{background:linear-gradient(180deg,rgba(23,31,68,.84),rgba(9,13,34,.9));border:1px solid rgba(232,199,126,.22);border-radius:24px;padding:38px 24px;box-shadow:0 40px 70px -40px #000,inset 0 1px 0 rgba(255,255,255,.06)}
+.zv-lead{margin:0 0 26px;font-family:'Cormorant Garamond',serif;font-size:21px;line-height:1.6;color:#DCE1FA}
+.zv-big{display:flex;align-items:center;justify-content:center;gap:16px;font-family:'Cormorant Garamond',serif;color:var(--mut);font-size:15px;letter-spacing:.24em;text-transform:uppercase}
+.zv-big b{font-size:86px;font-weight:400;line-height:1;color:var(--gold);letter-spacing:0;text-shadow:0 0 30px rgba(232,199,126,.35)}
+.zv-at{margin:10px 0 0;font-family:'Cormorant Garamond',serif;font-size:20px;letter-spacing:.12em;color:var(--ink)}
+.zv-h{margin:0 0 30px;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(32px,8vw,44px);line-height:1.15}
+.zv-h em{font-family:'Pinyon Script',cursive;color:var(--gold);font-size:1.15em}
+.zv-venue{margin:0;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:30px}
+.zv-addr{margin:8px 0 0;color:var(--mut);font-size:15px}
+.zv-dc{display:inline-block;margin:20px 0 0;padding:8px 16px;border-radius:999px;border:1px solid rgba(232,199,126,.3);color:var(--gold);font-size:13px;letter-spacing:.08em}
+
+/* our story: a line of stars */
+.zv-story{list-style:none;margin:0 auto;padding:0;max-width:460px;text-align:left;position:relative}
+.zv-story::before{content:"";position:absolute;left:15px;top:8px;bottom:8px;width:1px;background:linear-gradient(transparent,rgba(232,199,126,.55) 12%,rgba(232,199,126,.55) 88%,transparent)}
+.zv-story li{position:relative;padding:0 0 34px 52px}
+.zv-dot{position:absolute;left:4px;top:0;width:24px;height:24px;color:var(--gold);filter:drop-shadow(0 0 8px rgba(232,199,126,.7))}
+.zv-dot svg{width:100%;height:100%;display:block;animation:zvTwinkle 3.2s ease-in-out calc(var(--i) * .7s) infinite}
+.zv-story time{display:block;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.zv-story h3{margin:6px 0 6px;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:26px;color:var(--ink)}
+.zv-story p{margin:0;color:#C4CAE8;font-size:15px;line-height:1.6}
+
+.zv-plan{list-style:none;margin:0 auto;padding:0;max-width:440px}
+.zv-plan li{display:grid;grid-template-columns:72px 18px 1fr;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid rgba(170,178,217,.14);text-align:left}
+.zv-plan time{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold)}
+.zv-plan i{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);justify-self:center}
+.zv-plan p{margin:0;font-size:16px;color:var(--ink)}
+
+.zv-count{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:440px;margin:0 auto}
+.zv-count div{padding:18px 4px;border-radius:16px;background:rgba(18,25,58,.8);border:1px solid rgba(232,199,126,.18)}
+.zv-count b{display:block;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:40px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.zv-count span{display:block;margin-top:6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.zv-links{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.zv-btn{display:flex;flex-direction:column;gap:4px;padding:18px 16px;border-radius:18px;border:1px solid rgba(232,199,126,.3);background:rgba(14,20,50,.75);color:var(--ink);text-decoration:none;transition:border-color .3s,transform .3s}
+.zv-btn:hover{border-color:var(--gold);transform:translateY(-2px)}
+.zv-btn b{font-weight:500;font-size:15px}
+.zv-btn small{color:var(--mut);font-size:12px;letter-spacing:.06em}
+@media (max-width:420px){.zv-links{grid-template-columns:1fr}}
+
+/* reply form: an ivory card under the night sky */
+.zv .zv-rsvp{background:#F4F1EA;color:#141A33;border:0;border-radius:24px;padding:32px 22px;text-align:left;box-shadow:0 40px 80px -40px #000}
+.zv .zv-rsvp>.kicker{color:#9A7A3C}
+.zv .zv-rsvp h2{font-family:'Cormorant Garamond',serif;font-weight:500;color:#141A33}
+.zv .zv-rsvp .sub,.zv .zv-rsvp label{color:#5B6180}
+.zv .zv-rsvp input,.zv .zv-rsvp textarea{background:#fff;border-color:#DCD8CE;color:#141A33}
+.zv .zv-rsvp .choice button{background:#fff;border-color:#DCD8CE;color:#141A33}
+.zv .zv-rsvp .choice button.on,.zv .zv-rsvp .choice button.on.y{background:#141A33;border-color:#141A33;color:#F4F1EA}
+.zv .zv-rsvp .btn-ink,.zv .zv-rsvp button[type=submit]{background:linear-gradient(180deg,#1E2754,#0B1030);color:#F4E6C4;border:0}
+.zv .zv-rsvp .vx-stamp{border-color:#9A7A3C;color:#9A7A3C}
+.zv .zv-rsvp .thanks .big{font-family:'Cormorant Garamond',serif;color:#141A33}
+
+.zv-fin{padding:12svh 0 calc(18svh + env(safe-area-inset-bottom,0px));text-align:center}
+.zv-fin .vx-by{color:var(--mut)}
+.zv-fin .vx-by a{color:var(--gold)}
+.zv.on .zv-music{display:inline-flex;border:1px solid rgba(232,199,126,.35);animation:fade .6s .6s both}
+
+/* sections rise into view as the guest scrolls */
+.zv.io .rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0) * 90ms)}
+.zv.io .rv.in{opacity:1;transform:none}
+
+@keyframes zvOut{to{opacity:0;transform:translateY(14px)}}
+@keyframes zvUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes zvTwinkle{0%,100%{transform:scale(1) rotate(0);opacity:.85}50%{transform:scale(1.25) rotate(20deg);opacity:1}}
+@keyframes zvRing{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.35,1.7);opacity:0}}
+@keyframes zvCue{0%,100%{transform:scaleY(.35);opacity:.5}50%{transform:scaleY(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.zv-open-in,.zv-hero-txt{animation:none}.zv-cv{transition:none}}
+
+/* ===== the card in the gallery and the editor ===== */
+.k-sky{background:radial-gradient(120% 90% at 50% 0%,#1d2656 0%,#0b1030 52%,#060914 100%)!important;color:#EEF0FF}
+.k-sky .inv-body{justify-content:center!important;align-items:center;text-align:center;gap:1.2cqw!important;background:none!important}
+.k-sky .zc-stars{position:absolute;inset:0;pointer-events:none;opacity:.9;
+ background-image:radial-gradient(.35cqw .35cqw at 14% 12%,#fff 50%,transparent 51%),radial-gradient(.25cqw .25cqw at 82% 18%,#fff 50%,transparent 51%),radial-gradient(.4cqw .4cqw at 30% 38%,#ffe9bf 50%,transparent 51%),radial-gradient(.25cqw .25cqw at 68% 44%,#dfe6ff 50%,transparent 51%),radial-gradient(.3cqw .3cqw at 20% 70%,#fff 50%,transparent 51%),radial-gradient(.25cqw .25cqw at 76% 82%,#fff 50%,transparent 51%);
+ background-size:38cqw 38cqw,46cqw 46cqw,58cqw 58cqw,41cqw 41cqw,52cqw 52cqw,33cqw 33cqw}
+.animate .k-sky .zc-stars,.k-sky.animate .zc-stars{animation:zcTw 4s ease-in-out infinite alternate}
+@keyframes zcTw{from{opacity:.55}to{opacity:1}}
+.k-sky .zc-ini{position:relative;margin:0 0 2cqw;font-family:'Pinyon Script',cursive;font-size:25cqw!important;line-height:1;color:#E8C77E;text-shadow:0 0 2.4cqw rgba(232,199,126,.6),0 0 7cqw rgba(232,199,126,.25)}
+.k-sky .zc-k{position:relative;margin:0;font-size:2.3cqw!important;letter-spacing:.42em;text-transform:uppercase;color:#E8C77E}
+.k-sky .zc-names{position:relative;margin:0;font-family:'Pinyon Script',cursive;font-weight:400;font-size:10.5cqw;line-height:1.1;color:#EEF0FF}
+.k-sky .zc-names em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.5em;color:#E8C77E;padding:0 .3em}
+.k-sky .zc-date{position:relative;margin:1cqw 0 0;font-family:'Cormorant Garamond',serif;font-size:3.6cqw!important;letter-spacing:.3em;color:#AAB2D9}
+.k-sky .zc-ven{position:relative;margin:.4cqw 0 0;font-family:'Cormorant Garamond',serif;font-size:3.2cqw!important;color:#C4CAE8}
