@@ -1,8 +1,5 @@
 /* Illustrations used by the designs. Each file only downloads when a design on screen uses it. */
 :root{
---a-rpcard:url(../art/rpcard.webp);
---a-rpbg:url(../art/rpbg.webp);
---a-rpstone:url(../art/rpstone.webp);
 --a-blcard:url(../art/blcard.webp);
 --a-blbg:url(../art/blbg.webp);
 --a-blq:url(../art/blq.webp);
