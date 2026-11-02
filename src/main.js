@@ -2128,7 +2128,7 @@ function vHome(){
   c&&c.addEventListener("animationiteration",()=>{k=(k+1)%ids.length;c.innerHTML=renderCard(TM[ids[k]],null,{fixed:true})})}
  $("#xenv")?.addEventListener("click",()=>{const env=$("#xenv"),o=env.classList.toggle("open");$("#xhint").innerHTML=o?`${L("Tap again to close","Dodirnite ponovo da zatvorite")}<small>${L("That's what your guests will see","Tako će izgledati vašim gostima")}</small>`:`${L("Tap the seal","Dodirnite pečat")}<small>${L("Try it as a guest","Probajte kao gost")}</small>`});
  const rail=$("#rail");bindRail(rail);
- $$(".rbtn").forEach(b=>b.onclick=()=>{const w=rail.firstElementChild.getBoundingClientRect().width+24;rail.scrollBy({left:+b.dataset.d*w*2,behavior:"smooth"})});
+ $$(".rbtn").forEach(b=>b.onclick=()=>{const w=rail.firstElementChild.getBoundingClientRect().width+parseFloat(getComputedStyle(rail).columnGap||24),cs=getComputedStyle(rail),vis=rail.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);rail.scrollBy({left:+b.dataset.d*w*Math.max(1,Math.round(vis/w)),behavior:"smooth"})});
  $$("#rail [data-open]").forEach(b=>b.onclick=()=>openLB(RAIL(),RAIL().findIndex(t=>t.id===b.dataset.open)));
 }
 // a design can have its own cover scene in the gallery instead of the bare card

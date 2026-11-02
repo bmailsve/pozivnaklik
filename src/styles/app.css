@@ -2126,6 +2126,9 @@ main{min-height:calc(100vh - 76px);overflow-x:clip}
 .rail::-webkit-scrollbar{display:none}
 .rail.drag{cursor:grabbing;scroll-snap-type:none}
 .rail>*{scroll-snap-align:start}
+/* on wider screens the row shows only whole cards: four, or three on a tablet */
+@media (min-width:1100px){.rail{grid-auto-columns:calc((100% - 72px) / 4)}}
+@media (min-width:641px) and (max-width:1099px){.rail{grid-auto-columns:calc((100% - 48px) / 3)}}
 .rail-wrap{max-width:1240px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
 
 /* design card */
