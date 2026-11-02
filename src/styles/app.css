@@ -2855,6 +2855,13 @@ canvas.confetti{position:fixed;inset:0;pointer-events:none;z-index:70;width:100%
 .tier-chip.premium{background:var(--forest);color:var(--gold-hi)}
 .dc-price{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--ink);margin-top:-4px}
 .dc-price span{font-weight:500;color:var(--muted);font-size:13px}
+/* sale: the old price struck through, the new one in red */
+.dc-price s,.plan .pr s,s.was{font-weight:500;color:var(--muted);text-decoration-thickness:1px;opacity:.8}
+.dc-price.sale{color:#b3261e}
+.plan .pr s.was{font-family:var(--f-display);font-size:28px;line-height:1}
+.plan .badge-top.sale{left:auto;right:30px;background:#b3261e;color:#fff}
+.now{color:#b3261e;font-weight:700}
+s.was,.now{white-space:nowrap}
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
 .plan{position:relative;display:flex;flex-direction:column;gap:18px;padding:34px 30px;background:var(--card);border:1px solid var(--line);border-radius:18px;transition:transform .4s var(--ease),box-shadow .4s}
 .plan:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
