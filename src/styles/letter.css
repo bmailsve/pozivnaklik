@@ -1,0 +1,253 @@
+/* "Ljubavno pismo": a wedding told as old-century correspondence on a candlelit writing desk */
+.ps{
+ --ink:#2b1b10;--wet:#0b0503;--sep:#6b4a2b;--wine:#7a1e22;--on:#ead8b2;--gold:#cfa862;
+ /* aged paper: mottling, fine grain, foxing and darkened edges (the base colour comes after, per piece) */
+ --aged:radial-gradient(circle at 14% 22%,rgba(150,95,35,.16) 0 .6%,transparent 2.6%),radial-gradient(circle at 86% 71%,rgba(150,95,35,.13) 0 .5%,transparent 2.2%),radial-gradient(circle at 62% 12%,rgba(150,95,35,.1) 0 1%,transparent 4%),radial-gradient(130% 100% at 50% 45%,transparent 50%,rgba(125,78,28,.36) 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .2 0 0 0 0 .1 0 0 0 .4 -.1'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23b)'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600' preserveAspectRatio='none'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.008' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .3 0 0 0 0 .1 0 0 0 .9 -.33'/%3E%3C/filter%3E%3Crect width='600' height='600' filter='url(%23a)'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+ --dk-t:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='7'%3E%3Cpath d='M0 7L0 3L2 4.3L5.2 1.8L10.1 2.9L13.4 3.7L18.4 3L23.2 3.3L28.4 1.9L31.9 3.5L36.7 1.2L41.4 2.7L47.1 3.9L49.6 2.8L55.3 3.5L59.9 3.1L65.5 4.3L69 2.2L74.4 2.2L77 2.1L80.7 2.1L86.4 3L91.4 4.2L93.6 2L97.8 2.8L101.5 1.7L107.2 1.2L110.6 2.2L115.3 4.3L119.3 1.6L123 2L126.4 2.5L129.8 2.9L134.2 1.8L140 3L140 7Z'/%3E%3C/svg%3E");
+ --dk-b:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='7'%3E%3Cpath d='M0 0L0 4.0L2 2.7L5.2 5.2L10.1 4.1L13.4 3.3L18.4 4.0L23.2 3.7L28.4 5.1L31.9 3.5L36.7 5.8L41.4 4.3L47.1 3.1L49.6 4.2L55.3 3.5L59.9 3.9L65.5 2.7L69 4.8L74.4 4.8L77 4.9L80.7 4.9L86.4 4.0L91.4 2.8L93.6 5.0L97.8 4.2L101.5 5.3L107.2 5.8L110.6 4.8L115.3 2.7L119.3 5.4L123 5.0L126.4 4.5L129.8 4.1L134.2 5.2L140 4.0L140 0Z'/%3E%3C/svg%3E");
+ --dk-l:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='140'%3E%3Cpath d='M7 0L3 0L4.3 2L1.8 5.2L2.9 10.1L3.7 13.4L3 18.4L3.3 23.2L1.9 28.4L3.5 31.9L1.2 36.7L2.7 41.4L3.9 47.1L2.8 49.6L3.5 55.3L3.1 59.9L4.3 65.5L2.2 69L2.2 74.4L2.1 77L2.1 80.7L3 86.4L4.2 91.4L2 93.6L2.8 97.8L1.7 101.5L1.2 107.2L2.2 110.6L4.3 115.3L1.6 119.3L2 123L2.5 126.4L2.9 129.8L1.8 134.2L3 140L7 140Z'/%3E%3C/svg%3E");
+ --dk-r:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='7' height='140'%3E%3Cpath d='M0 0L4.0 0L2.7 2L5.2 5.2L4.1 10.1L3.3 13.4L4.0 18.4L3.7 23.2L5.1 28.4L3.5 31.9L5.8 36.7L4.3 41.4L3.1 47.1L4.2 49.6L3.5 55.3L3.9 59.9L2.7 65.5L4.8 69L4.8 74.4L4.9 77L4.9 80.7L4.0 86.4L2.8 91.4L5.0 93.6L4.2 97.8L5.3 101.5L5.8 107.2L4.8 110.6L2.7 115.3L5.4 119.3L5.0 123L4.5 126.4L4.1 129.8L5.2 134.2L4.0 140L0 140Z'/%3E%3C/svg%3E");
+ --wood:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='600' viewBox='0 0 900 600'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.0035 .16' numOctaves='4' seed='9' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .06 0 0 0 0 .03 0 0 0 0 .01 0 0 0 1.1 -.42'/%3E%3C/filter%3E%3Cfilter id='v'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.006 .3' numOctaves='2' seed='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .55 0 0 0 0 .34 0 0 0 0 .18 0 0 0 .7 -.36'/%3E%3C/filter%3E%3Crect width='900' height='600' filter='url(%23w)'/%3E%3Crect width='900' height='600' filter='url(%23v)'/%3E%3C/svg%3E") center/cover no-repeat;
+ position:relative;min-height:100svh;overflow-x:clip;background:#1b120c;color:var(--on);font-family:'Cormorant Garamond',serif}
+.ps-desk,.ps-candle{position:fixed;inset:0;z-index:0;pointer-events:none}
+.ps-desk{background:radial-gradient(70% 55% at 20% 4%,rgba(255,170,80,.2),transparent 70%),radial-gradient(150% 110% at 50% 38%,transparent 34%,rgba(0,0,0,.74) 100%),var(--wood),linear-gradient(180deg,#3d2618,#22150c)}
+.ps-candle{background:radial-gradient(48% 36% at 18% 2%,rgba(255,186,104,.17),transparent 72%);animation:psFlame 4.6s ease-in-out infinite alternate}
+@keyframes psFlame{0%{opacity:.55}30%{opacity:.85}55%{opacity:.68}100%{opacity:1}}
+.ps .vx-top{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:12px;z-index:60}
+
+/* a piece of paper with torn edges; the shadow sits on its own layer so the mask can't cut it */
+.ps-pp{position:relative;isolation:isolate;--pc:#ecdcb8}
+.ps-pp::before{content:"";position:absolute;inset:0;z-index:-1;clip-path:polygon(9px 0,calc(100% - 9px) 0,100% 9px,100% calc(100% - 9px),calc(100% - 9px) 100%,9px 100%,0 calc(100% - 9px),0 9px);background:var(--aged),var(--pc);
+ -webkit-mask:var(--dk-t) top left/140px 7px repeat-x,var(--dk-b) bottom left/140px 7px repeat-x,var(--dk-l) top left/7px 140px repeat-y,var(--dk-r) top right/7px 140px repeat-y,linear-gradient(#000 0 0) center/calc(100% - 12px) calc(100% - 12px) no-repeat;
+ mask:var(--dk-t) top left/140px 7px repeat-x,var(--dk-b) bottom left/140px 7px repeat-x,var(--dk-l) top left/7px 140px repeat-y,var(--dk-r) top right/7px 140px repeat-y,linear-gradient(#000 0 0) center/calc(100% - 12px) calc(100% - 12px) no-repeat}
+.ps-pp::after{content:"";position:absolute;inset:5px;z-index:-2;box-shadow:0 26px 44px -16px rgba(0,0,0,.75),0 3px 8px rgba(0,0,0,.35)}
+/* the folds of a letter that travelled in an envelope */
+.ps-fold::before{background:linear-gradient(180deg,transparent calc(33.3% - 1px),rgba(110,70,25,.14) 33.3%,rgba(255,248,230,.3) calc(33.3% + 1px),transparent calc(33.3% + 3px),transparent calc(66.6% - 1px),rgba(110,70,25,.14) 66.6%,rgba(255,248,230,.3) calc(66.6% + 1px),transparent calc(66.6% + 3px)),var(--aged),var(--pc)}
+
+/* ---------- the bundle of letters ---------- */
+.ps-hero{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:76px 0 40px}
+.ps-stage{position:absolute;left:0;right:0;top:0;height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(22px,5svh,40px);padding:0 16px}
+.ps-kick{display:flex;align-items:center;gap:12px;margin:0;font:500 12px 'Cinzel',serif;letter-spacing:.34em;text-transform:uppercase;color:var(--on);text-indent:.34em;animation:psFadeUp 1s ease-out .2s both}
+.ps-kick::before,.ps-kick::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.ps-kick::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.ps-hint{margin:0;font:italic 500 19px 'Cormorant Garamond',serif;color:var(--on);animation:psFadeUp 1s ease-out .9s both,psHint 2.8s ease-in-out 2s infinite}
+@keyframes psHint{0%,100%{opacity:1}50%{opacity:.55}}
+@keyframes psFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.ps.on :is(.ps-kick,.ps-hint){animation:none;opacity:0;transition:opacity .4s}
+
+.ps-bundle{position:relative;width:min(84vw,430px);aspect-ratio:1.5;border:0;padding:0;background:none;cursor:pointer;container-type:inline-size;-webkit-tap-highlight-color:transparent;animation:psDrop 1.1s cubic-bezier(.2,.8,.25,1) both}
+@keyframes psDrop{from{opacity:0;transform:translateY(-34px) rotate(-5deg) scale(1.04)}to{opacity:1;transform:none}}
+.ps-bundle:focus-visible{outline:2px solid var(--gold);outline-offset:10px}
+.ps-under{position:absolute;inset:0;background:var(--aged),#d9c39a;box-shadow:0 14px 26px -12px rgba(0,0,0,.7);transition:opacity .5s ease .2s,transform .8s cubic-bezier(.5,0,.7,.4) .2s}
+.ps-under.u1{rotate:-7deg;translate:-4% 5%}
+.ps-under.u2{rotate:5deg;translate:4% -4%;background:var(--aged),#e2cfa8}
+.ps.on .ps-under.u1{opacity:0;transform:translate(-30px,40px)}
+.ps.on .ps-under.u2{opacity:0;transform:translate(30px,40px)}
+.ps-env{position:absolute;inset:0;perspective:1400px}
+.ps-front,.ps-back{position:absolute;inset:0}
+.ps-front{background:var(--aged),#efe1c2;box-shadow:0 18px 34px -12px rgba(0,0,0,.75),0 2px 4px rgba(0,0,0,.3);transition:transform .38s cubic-bezier(.55,0,.9,.45) .5s}
+.ps.on .ps-front{transform:rotateY(90deg)}
+.ps-back{transform:rotateY(-90deg);transition:transform .4s cubic-bezier(.1,.55,.45,1) .88s}
+.ps.on .ps-back{transform:none}
+
+/* the front: the address in copperplate, an engraved stamp and its postmark */
+.ps-stamp{position:absolute;right:6%;top:8%;width:15cqw;aspect-ratio:.82;background:#efe4cc;color:#8a2a2a;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:1.5cqw 1cqw 1.2cqw;box-sizing:border-box;rotate:2deg;filter:drop-shadow(0 1px 1px rgba(0,0,0,.3));
+ -webkit-mask:radial-gradient(circle,transparent 1.5px,#000 1.9px) -3px -3px/6px 6px round,linear-gradient(#000 0 0) center/calc(100% - 6px) calc(100% - 6px) no-repeat;mask:radial-gradient(circle,transparent 1.5px,#000 1.9px) -3px -3px/6px 6px round,linear-gradient(#000 0 0) center/calc(100% - 6px) calc(100% - 6px) no-repeat}
+.ps-stamp::before{content:"";position:absolute;inset:1.3cqw;border:1px solid currentColor;opacity:.75}
+.ps-stamp small,.ps-stamp b{position:relative;font:600 1.25cqw/1.1 'Cinzel',serif;letter-spacing:.06em;text-align:center}
+.ps-stamp i{position:relative;display:grid;place-items:center;width:8.4cqw;aspect-ratio:.82;border:1px solid currentColor;border-radius:50%;font:700 2.8cqw 'Cinzel',serif;font-style:normal;background:radial-gradient(circle at 50% 40%,rgba(138,42,42,.12),transparent 70%)}
+.ps-pm{position:absolute;right:13%;top:9%;width:26cqw;color:rgba(46,30,32,.62);rotate:-13deg;overflow:visible}
+.ps-pm text{font-family:'Cinzel',serif;font-weight:600;fill:currentColor}
+.ps-addr{position:absolute;left:31%;right:7%;top:49%;text-align:left}
+.ps-addr small{display:block;font:italic 500 3.6cqw 'Cormorant Garamond',serif;color:var(--sep)}
+.ps-addr b{display:block;font:400 var(--fs,8.6cqw)/1.3 'Pinyon Script',cursive;color:var(--ink);white-space:nowrap;border-bottom:1px solid rgba(90,60,30,.28)}
+.ps-addr em{display:block;font:italic 500 3.7cqw/1.6 'Cormorant Garamond',serif;color:var(--sep);padding-left:7cqw;border-bottom:1px solid rgba(90,60,30,.28);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ps-addr em:empty{min-height:5.9cqw}
+
+/* twine around the bundle, tied in a bow */
+.ps-twine{position:absolute;z-index:6;background:repeating-linear-gradient(118deg,#c7a874 0 2px,#8f7046 2px 3.4px,#b39060 3.4px 5px);box-shadow:0 2px 2px rgba(0,0,0,.35);transition:transform .5s cubic-bezier(.5,0,.75,.4),opacity .45s ease}
+.ps-twine.h{left:-5%;right:-5%;top:34%;height:1.25cqw}
+.ps-twine.v{top:-7%;bottom:-7%;left:23%;width:1.25cqw;background:repeating-linear-gradient(28deg,#c7a874 0 2px,#8f7046 2px 3.4px,#b39060 3.4px 5px)}
+.ps-bow{position:absolute;z-index:7;left:23.6%;top:34.6%;width:22cqw;translate:-50% -42%;filter:drop-shadow(0 2px 2px rgba(0,0,0,.4));transition:transform .45s cubic-bezier(.5,0,.75,.4),opacity .4s ease}
+.ps.on .ps-twine.h{transform:translateY(16cqw);opacity:0}
+.ps.on .ps-twine.v{transform:translateX(-14cqw) rotate(-8deg);opacity:0}
+.ps.on .ps-bow{transform:translate(-8cqw,14cqw) rotate(-30deg) scale(.7);opacity:0}
+
+/* the back: flap, wax seal and the letter inside */
+.ps-bk{position:absolute;inset:0;background:var(--aged),#e3d1ac;box-shadow:0 18px 34px -12px rgba(0,0,0,.75)}
+.ps-sheet{position:absolute;left:5%;right:5%;top:5%;height:88%;z-index:2;background:var(--aged),#f0e3c6;box-shadow:0 1px 3px rgba(0,0,0,.22);transition:transform .75s cubic-bezier(.3,.7,.2,1) 2.05s}
+.ps.on .ps-sheet{transform:translateY(-58%)}
+.ps-pocket{position:absolute;inset:0;z-index:3;filter:drop-shadow(0 -1px 1.5px rgba(50,30,10,.4))}
+.ps-pocket::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(80,50,20,.12),transparent 32% 68%,rgba(80,50,20,.12)),var(--aged),#ead9b6;clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%)}
+.ps-flap{position:absolute;left:0;right:0;top:0;height:60%;z-index:4;transform-origin:50% 0;filter:drop-shadow(0 2px 2px rgba(50,30,10,.4));transition:transform .62s cubic-bezier(.5,.1,.3,1) 1.5s,z-index 0s 1.82s}
+.ps-flap::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,250,235,.16),rgba(80,50,20,.14)),var(--aged),#e7d5b0;clip-path:polygon(0 0,100% 0,53% 96%,50% 100%,47% 96%)}
+.ps.on .ps-flap{transform:perspective(900px) rotateX(180deg);z-index:1}
+.ps-seal{position:absolute;left:50%;top:57%;width:19cqw;aspect-ratio:1;translate:-50% -50%;z-index:5;filter:drop-shadow(0 2px 2px rgba(30,5,5,.55))}
+.ps-seal .h,.ps-wax{border-radius:47% 53% 50% 50%/52% 46% 54% 48%;background:radial-gradient(circle at 36% 30%,#b8473e 0,#8c2626 34%,#651717 72%,#4a0f0f 100%);display:grid;place-items:center}
+.ps-seal .h{position:absolute;inset:0;transition:transform .6s cubic-bezier(.4,0,.6,1) 1.2s,opacity .4s ease 1.38s}
+.ps-seal .h::before,.ps-wax::before{content:"";position:absolute;inset:17%;border-radius:50%;border:1px solid rgba(40,5,5,.45);box-shadow:inset 0 1px 0 rgba(255,170,150,.22),0 1px 0 rgba(255,170,150,.18)}
+.ps-seal b,.ps-wax b{position:relative;font:700 4.6cqw 'Cinzel',serif;letter-spacing:.02em;color:#5a1010;text-shadow:0 1px 0 rgba(255,160,140,.32),0 -1px 0 rgba(0,0,0,.35)}
+.ps-seal .l{clip-path:polygon(0 0,53% 0,47% 22%,56% 41%,45% 62%,53% 80%,48% 100%,0 100%)}
+.ps-seal .r{clip-path:polygon(53% 0,100% 0,100% 100%,48% 100%,53% 80%,45% 62%,56% 41%,47% 22%)}
+.ps.on .ps-seal .l{transform:translate(-22%,46%) rotate(-32deg);opacity:0}
+.ps.on .ps-seal .r{transform:translate(24%,52%) rotate(26deg);opacity:0}
+.ps.read .ps-stage{pointer-events:none;animation:psAway .8s ease-in both}
+.ps.read .ps-sheet{visibility:hidden}
+@keyframes psAway{to{opacity:0;transform:translateY(70px)}}
+
+/* ---------- the letter itself, written in ink ---------- */
+.ps-letter{display:none;width:min(92vw,600px);padding:clamp(36px,9vw,64px) clamp(26px,7.5vw,60px) clamp(42px,10vw,70px);color:var(--ink);text-align:left;--pc:#efe2c5}
+.ps.read .ps-letter{display:block}
+.ps .w{display:inline-block;text-indent:0}
+.ps-crest{display:flex;flex-direction:column;align-items:center;margin:0 auto clamp(18px,5vw,28px);color:var(--sep)}
+.ps-crest b{display:grid;place-items:center;width:78px;height:58px;border:1px solid currentColor;border-radius:50%;outline:1px solid rgba(107,74,43,.55);outline-offset:3px;font:600 16px 'Cinzel',serif;letter-spacing:.14em;text-indent:.14em}
+.ps-crest svg{width:120px;margin-top:10px}
+.ps-dateline{margin:0 0 clamp(18px,5vw,26px);text-align:right;font:italic 500 clamp(16px,4.2vw,19px)/1.45 'Cormorant Garamond',serif;color:var(--sep)}
+.ps-dear{margin:0 0 12px;font:400 clamp(34px,9.5vw,48px)/1.2 'Pinyon Script',cursive;color:var(--ink)}
+.ps-p{margin:0 0 14px;font:italic 500 clamp(18.5px,4.8vw,21px)/1.72 'Cormorant Garamond',serif;color:var(--ink);text-indent:1.6em;text-wrap:pretty}
+.ps-p.first{text-indent:0}
+.ps-cap{float:left;font:700 3.6em/.8 'Cinzel Decorative','Cinzel',serif;font-style:normal;color:var(--wine);margin:.1em .12em 0 0}
+.ps-sigw{display:flex;flex-direction:column;align-items:flex-end;margin-top:clamp(20px,5vw,30px);text-align:right}
+.ps-close{margin:0;font:italic 500 clamp(17px,4.4vw,20px) 'Cormorant Garamond',serif;color:var(--sep)}
+.ps-sign{margin:2px 0 0;font:400 clamp(36px,10vw,52px)/1.15 'Pinyon Script',cursive;color:var(--ink)}
+.ps-wax{position:relative;width:58px;aspect-ratio:1;margin:12px 10% 0 0;rotate:-8deg;filter:drop-shadow(0 2px 2px rgba(30,5,5,.5))}
+.ps-wax b{font-size:15px}
+
+/* ink: each word is written by the pen, then the ink dries from wet black to brown */
+.ps .ink .w{animation:psWrite var(--du,.3s) linear var(--d,0s) both,psDry 2.6s ease var(--d,0s) both}
+.ps .ink .ps-cap{animation:psWrite var(--du,.3s) linear var(--d,0s) both}
+.ps .ink .ps-fade{animation:psFade .7s ease var(--d,0s) both}
+.ps .ink .ps-wax{animation:psStamp .5s cubic-bezier(.3,1.5,.5,1) var(--d,0s) both}
+@keyframes psWrite{from{clip-path:inset(-60% 100% -60% 0)}to{clip-path:inset(-60% -40% -60% -40%)}}
+@keyframes psDry{0%,25%{color:var(--wet)}100%{color:var(--ink)}}
+@keyframes psFade{from{opacity:0}to{opacity:1}}
+@keyframes psStamp{from{opacity:0;transform:scale(1.9)}to{opacity:1;transform:none}}
+
+/* ---------- the rest of the story ---------- */
+.ps-rest{display:none;position:relative;z-index:1;padding-bottom:10px}
+.ps.read .ps-rest{display:block}
+.ps-sec{width:min(92vw,620px);margin:0 auto;padding-top:clamp(66px,15vw,100px);text-align:center}
+.ps-k{margin:0;font:500 12px 'Cinzel',serif;letter-spacing:.32em;text-indent:.32em;text-transform:uppercase;color:var(--gold)}
+.ps-h{margin:10px 0 8px;font:500 clamp(30px,7.6vw,44px)/1.15 'Cormorant Garamond',serif;color:var(--on)}
+.ps-h em{font:400 1.18em 'Pinyon Script',cursive;color:var(--gold);font-style:normal}
+.ps-orn{display:block;width:150px;margin:0 auto clamp(22px,5vw,30px);color:var(--gold);opacity:.8}
+
+/* the formal announcement card */
+.ps-card{padding:12px;color:var(--ink)}
+.ps-card-in{border:1px solid rgba(107,74,43,.55);outline:1px solid rgba(107,74,43,.35);outline-offset:-7px;padding:clamp(30px,8vw,46px) 16px}
+.ps-card .ps-k{color:var(--sep)}
+.ps-card h1{margin:10px 0 6px;font:400 clamp(48px,13vw,76px)/1.12 'Pinyon Script',cursive;color:var(--ink)}
+.ps-card h1 em{display:block;font:italic 500 .42em 'Cormorant Garamond',serif;color:var(--wine);margin:.05em 0}
+.ps-big{margin:14px 0 0;font:600 clamp(14px,3.6vw,17px)/1.5 'Cinzel',serif;letter-spacing:.12em;color:var(--ink)}
+.ps-mut{margin:6px 0 0;font:italic 500 clamp(17px,4.4vw,19px)/1.45 'Cormorant Garamond',serif;color:var(--sep)}
+
+/* our story, one old letter at a time */
+.ps-ltrs{display:flex;flex-direction:column;gap:clamp(26px,6vw,40px)}
+.ps-ltr{width:min(100%,520px);padding:30px clamp(22px,6vw,34px) 34px;color:var(--ink);text-align:left;rotate:var(--r)}
+.ps-ltr:nth-child(even){align-self:flex-end}
+.ps-ltr-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.ps-ltr-h b{font:600 13px 'Cinzel',serif;letter-spacing:.2em;color:var(--wine)}
+.ps-ltr-h span{font:italic 500 clamp(15px,4vw,17px) 'Cormorant Garamond',serif;color:var(--sep);text-align:right}
+.ps-ltr h3{margin:12px 0 8px;font:400 clamp(30px,8vw,38px)/1.2 'Pinyon Script',cursive;color:var(--ink)}
+.ps-ltr p{margin:0;font:italic 500 clamp(17.5px,4.6vw,19.5px)/1.65 'Cormorant Garamond',serif;color:var(--ink)}
+.ps-ltr .ps-pmk{position:absolute;right:-8px;bottom:-16px;width:86px;color:rgba(122,30,34,.55);rotate:-14deg;pointer-events:none}
+.ps-ltr .ps-pmk text{font-family:'Cinzel',serif;font-weight:600;fill:currentColor}
+
+/* the programme, printed like an old order of the day */
+.ps-prog{padding:12px;color:var(--ink)}
+.ps-prog-in{border:1.5px solid rgba(107,74,43,.55);outline:1px solid rgba(107,74,43,.35);outline-offset:-7px;padding:clamp(28px,7vw,40px) clamp(18px,6vw,40px) clamp(24px,6vw,34px)}
+.ps-prog h3{margin:0;font:600 clamp(17px,4.4vw,21px) 'Cinzel',serif;letter-spacing:.24em;text-indent:.24em;color:var(--ink)}
+.ps-prog ol{list-style:none;margin:20px 0 0;padding:0;text-align:left}
+.ps-prog li{display:flex;align-items:baseline;gap:8px;padding:9px 0}
+.ps-prog li span{font:italic 500 clamp(18px,4.7vw,21px)/1.3 'Cormorant Garamond',serif}
+.ps-prog li i{flex:1 1 18px;min-width:18px;border-bottom:2px dotted rgba(107,74,43,.5);translate:0 -5px}
+.ps-prog li b{font:600 clamp(15px,3.9vw,17px) 'Cinzel',serif;letter-spacing:.06em;color:var(--wine);white-space:nowrap}
+
+/* the details arrive by telegram */
+.ps-tele{--pc:#e4dabe;padding:24px clamp(16px,5vw,30px) 28px;color:#2c2920;text-align:left}
+.ps-tele-h{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;border-bottom:2px solid rgba(44,41,32,.7);padding-bottom:8px}
+.ps-tele-h b{font:700 clamp(25px,7vw,36px)/1 'Cinzel',serif;letter-spacing:.16em}
+.ps-tele-h small{font:500 10px/1.5 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;text-align:right;color:rgba(44,41,32,.75)}
+.ps-tele-m{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid rgba(44,41,32,.45)}
+.ps-tele-m div{padding:6px 6px 6px 0;font:500 9.5px/1.4 'IBM Plex Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:rgba(44,41,32,.7)}
+.ps-tele-m div+div{padding-left:8px;border-left:1px solid rgba(44,41,32,.35)}
+.ps-tele-m b{display:block;font-size:11.5px;color:#2c2920}
+.ps-tapes{display:flex;flex-direction:column;align-items:flex-start;gap:9px;margin:22px 0 4px}
+.ps-tape{max-width:100%;background:#f7efd8;padding:5px 9px 4px;box-shadow:0 1px 2px rgba(0,0,0,.22);rotate:var(--r);transform-origin:0 50%}
+.ps-tape span{display:block;font:500 clamp(13px,3.7vw,15px)/1.35 'IBM Plex Mono',monospace;letter-spacing:.03em;white-space:pre;text-transform:uppercase;overflow:hidden}
+.ps-tele.ink .ps-tape{animation:psTape .26s ease-out var(--d,0s) both}
+.ps-tele.ink .ps-tape span{animation:psType var(--du,.6s) steps(var(--c,10),end) calc(var(--d,0s) + .22s) both}
+@keyframes psTape{from{opacity:0;transform:scaleX(.2)}to{opacity:1;transform:none}}
+@keyframes psType{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+.ps-urgent{position:absolute;right:18px;bottom:20px;border:2px solid rgba(122,30,34,.7);color:rgba(122,30,34,.75);padding:3px 10px;font:700 13px 'Cinzel',serif;letter-spacing:.2em;rotate:-9deg;pointer-events:none}
+.ps-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.ps-btn{display:inline-flex;align-items:center;padding:12px 22px;border-radius:999px;background:var(--wine);color:#f6e6cf!important;text-decoration:none!important;font:600 13px 'Cinzel',serif;letter-spacing:.12em;box-shadow:0 10px 22px -12px rgba(0,0,0,.8)}
+.ps-btn+.ps-btn{background:transparent;color:var(--on)!important;border:1px solid rgba(207,168,98,.55)}
+
+/* countdown on little paper tags */
+.ps-count{display:flex;justify-content:center;gap:10px}
+.ps-count div{flex:1;max-width:96px;padding:14px 4px 12px;background:var(--aged),#ecdcb8;color:var(--ink);box-shadow:0 14px 24px -14px rgba(0,0,0,.8)}
+.ps-count div:nth-child(odd){rotate:-1.5deg}.ps-count div:nth-child(even){rotate:1.2deg}
+.ps-count b{display:block;font:600 clamp(26px,7vw,34px)/1 'Cinzel',serif}
+.ps-count span{display:block;margin-top:6px;font:600 10px 'Cinzel',serif;letter-spacing:.14em;text-transform:uppercase;color:var(--sep)}
+
+/* the reply, written on letter paper */
+.ps .ps-reply{padding:clamp(30px,8vw,44px) clamp(22px,6vw,40px);color:var(--ink);text-align:left;background:none;border:0;border-radius:0;box-shadow:none}
+.ps .ps-reply>.kicker,.ps .ps-reply .kicker{display:block;text-align:center;font:500 12px 'Cinzel',serif;letter-spacing:.3em;color:var(--sep)}
+.ps .ps-reply h2{text-align:center;font:400 clamp(36px,10vw,48px)/1.15 'Pinyon Script',cursive!important;color:var(--ink);margin:6px 0 4px!important}
+.ps .ps-reply .sub{display:block;text-align:center;font:italic 500 18px 'Cormorant Garamond',serif;color:var(--sep)}
+.ps .ps-reply label{font:600 11px 'Cinzel',serif;letter-spacing:.16em;text-transform:uppercase;color:var(--sep)}
+.ps .ps-reply :is(input,textarea){background:transparent!important;border:0!important;border-bottom:1px solid rgba(80,52,25,.45)!important;border-radius:0!important;box-shadow:none!important;font:italic 500 20px 'Cormorant Garamond',serif!important;color:var(--ink)!important;padding:6px 2px!important}
+.ps .ps-reply textarea{border-bottom:0!important;line-height:32px!important;min-height:98px;background:repeating-linear-gradient(180deg,transparent 0 31px,rgba(80,52,25,.3) 31px 32px)!important}
+.ps .ps-reply :is(input,textarea)::placeholder{color:rgba(107,74,43,.55)}
+.ps .ps-reply .choice button{background:rgba(255,250,235,.35);border:1px solid rgba(80,52,25,.45);border-radius:2px;color:var(--ink)}
+.ps .ps-reply .choice button b{font:italic 600 19px 'Cormorant Garamond',serif}
+.ps .ps-reply .choice button.on,.ps .ps-reply .choice button.on.y{background:var(--ink);border-color:var(--ink);color:#f1e3c6}
+.ps .ps-reply .stepper button{background:transparent;border:1px solid rgba(80,52,25,.45);color:var(--ink)}
+.ps .ps-reply .stepper output{font:600 22px 'Cinzel',serif;color:var(--ink)}
+.ps .ps-reply :is(.btn-ink,button[type=submit]){background:var(--wine);border:0;color:#f6e6cf;font:600 14px 'Cinzel',serif;letter-spacing:.14em}
+.ps .ps-reply .vx-stamp{border-color:var(--wine);color:var(--wine)}
+.ps .ps-reply .thanks{text-align:center}
+.ps .ps-reply .thanks .big{font:400 40px/1.2 'Pinyon Script',cursive;color:var(--ink)}
+.ps .ps-reply .thanks p{color:var(--sep)!important}
+.ps .ps-reply .note-box{background:rgba(255,250,235,.4);border-color:rgba(80,52,25,.3);color:var(--sep)}
+
+.ps-end{padding:clamp(80px,18vw,110px) 20px 64px;text-align:center}
+.ps-ps{margin:0;font:italic 500 clamp(20px,5.2vw,24px)/1.4 'Cormorant Garamond',serif;color:var(--on)}
+.ps-ps b{font:600 .8em 'Cinzel',serif;color:var(--gold);margin-right:.35em;font-style:normal}
+.ps-sig2{margin:10px 0 0;font:400 clamp(42px,11vw,58px)/1.2 'Pinyon Script',cursive;color:var(--on)}
+.ps .vx-by{margin-top:26px;color:rgba(234,216,178,.6)}
+.ps .vx-by a{color:var(--gold)}
+.ps-music{z-index:60}
+.ps.on .ps-music{display:inline-flex;border:1px solid rgba(207,168,98,.4);background:rgba(27,18,12,.88);animation:fade .6s 3s both}
+
+.ps .rv{opacity:1}
+.ps.io .rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.ps.io .ps-ltr.rv{transform:translate(var(--fx,0),30px) rotate(calc(var(--r) * 3))}
+.ps.io .rv.in{opacity:1;transform:none}
+.view:has(> .ps){transform:none!important;animation:none!important;opacity:1!important}
+
+@media (max-width:640px){.ps-tele-m div{font-size:8.5px}.ps-tele-m b{font-size:10.5px}.ps-urgent{font-size:11px;right:12px;bottom:14px}}
+@media (prefers-reduced-motion:reduce){.ps *,.ps *::before{animation:none!important;transition:none!important}}
+
+/* ---------- gallery card: the bundle on the desk ---------- */
+.k-letter{background:radial-gradient(70% 55% at 22% 4%,rgba(255,170,80,.22),transparent 70%),radial-gradient(150% 110% at 50% 40%,transparent 36%,rgba(0,0,0,.7) 100%),linear-gradient(180deg,#3d2618,#22150c)!important;color:#ead8b2;
+ --aged:radial-gradient(130% 100% at 50% 45%,transparent 50%,rgba(125,78,28,.36) 100%),radial-gradient(circle at 16% 24%,rgba(150,95,35,.16) 0 .8%,transparent 3%)}
+.k-letter .inv-body{justify-content:center!important;align-items:center;text-align:center;gap:4cqw!important;background:none!important}
+.k-letter .pc-k{position:relative;margin:0;font:500 2.6cqw/1.5 'Cinzel',serif!important;letter-spacing:.32em;text-indent:.32em;text-transform:uppercase;color:#ead8b2}
+.k-letter .pc-env{position:relative;width:78cqw;aspect-ratio:1.5;rotate:-3deg;background:var(--aged),#efe1c2;box-shadow:0 3cqw 5cqw -2cqw rgba(0,0,0,.8);text-align:left}
+.k-letter .pc-env::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--aged),#d9c39a;rotate:8deg;translate:3% 6%;box-shadow:0 2cqw 4cqw -2cqw rgba(0,0,0,.7)}
+.k-letter .pc-stamp{position:absolute;right:6%;top:9%;width:12cqw;aspect-ratio:.82;background:#efe4cc;color:#8a2a2a;display:grid;place-items:center;font:700 2.6cqw 'Cinzel',serif;box-shadow:inset 0 0 0 .8cqw #efe4cc,inset 0 0 0 1cqw rgba(138,42,42,.7);
+ -webkit-mask:radial-gradient(circle,transparent 1.2px,#000 1.6px) -2.5px -2.5px/5px 5px round,linear-gradient(#000 0 0) center/calc(100% - 5px) calc(100% - 5px) no-repeat;mask:radial-gradient(circle,transparent 1.2px,#000 1.6px) -2.5px -2.5px/5px 5px round,linear-gradient(#000 0 0) center/calc(100% - 5px) calc(100% - 5px) no-repeat}
+.k-letter .pc-pm{position:absolute;right:13%;top:10%;width:21cqw;color:rgba(46,30,32,.6);rotate:-13deg}
+.k-letter .pc-pm text{font-family:'Cinzel',serif;font-weight:600;fill:currentColor}
+.k-letter .pc-names{position:absolute;left:31%;right:6%;top:46%;margin:0;font:400 var(--fs,8.4cqw)/1.25 'Pinyon Script',cursive!important;color:#2b1b10!important;white-space:nowrap;border-bottom:1px solid rgba(90,60,30,.3)}
+.k-letter .pc-names em{font-style:normal;color:#7a1e22;padding:0 .12em}
+.k-letter .pc-place{position:absolute;left:31%;right:6%;top:68%;margin:0;font:italic 500 3.2cqw/1.6 'Cormorant Garamond',serif!important;color:#6b4a2b!important;padding-left:5cqw;border-bottom:1px solid rgba(90,60,30,.3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.k-letter .pc-tw{position:absolute;background:repeating-linear-gradient(118deg,#c7a874 0 2px,#8f7046 2px 3.4px,#b39060 3.4px 5px);box-shadow:0 1px 1px rgba(0,0,0,.35)}
+.k-letter .pc-tw.h{left:-4%;right:-4%;top:32%;height:1.1cqw}
+.k-letter .pc-tw.v{top:-6%;bottom:-6%;left:22%;width:1.1cqw;background:repeating-linear-gradient(28deg,#c7a874 0 2px,#8f7046 2px 3.4px,#b39060 3.4px 5px)}
+.k-letter .pc-bow{position:absolute;left:22.6%;top:32.6%;width:17cqw;translate:-50% -42%;filter:drop-shadow(0 1px 1px rgba(0,0,0,.4))}
+.k-letter .pc-date{position:relative;margin:0;font:600 3.2cqw 'Cinzel',serif!important;letter-spacing:.3em;text-indent:.3em;color:#cfa862}
+.animate .k-letter .pc-env,.k-letter.animate .pc-env{animation:pcDrop 1.2s cubic-bezier(.2,.8,.25,1) both}
+@keyframes pcDrop{from{opacity:0;transform:translateY(-4cqw) rotate(-4deg)}to{opacity:1;transform:none}}

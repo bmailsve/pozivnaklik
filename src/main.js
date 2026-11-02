@@ -338,7 +338,7 @@ const T=[
  {id:"e_picnic",tier:"envelope",off:1,cat:"first",layout:"first",art:"e4",liner:"l4",seal:"seal4",fx:"balloons",env:"#E6E1CB",motif:"art",kind:"soft",name:["Teddy Picnic","Medeni piknik"],tag:["A teddy bear and bunny picnic with a sage wax seal","Piknik medveda i zeke uz zeleni voštani pečat"],pt:11,pb:47,pl:10,pr:10,pal:{bg:"#FBF5E6",bg2:"#E6E1CB",ink:"#5A4632",accent:"#8C9B6B",soft:"#E4E8D5",x1:"#C99A55",x2:"#FFFFFF",x3:"#FFFFFF"},font:fnt("'Playfair Display',serif","'Parisienne',cursive","'Quicksand',sans-serif")},
  {id:"e_lace",tier:"envelope",off:1,cat:"wedding",layout:"lace",opener:"lace",art:"lacecard",motif:"art",kind:"lace",name:["White Lace","Bela čipka"],tag:["Burgundy paper under white lace: guests break the seal and the lace slides away to reveal gold calligraphy","Bordo papir pod belom čipkom: gost lomi pečat, čipka klizi i otkriva zlatnu kaligrafiju"],pt:15,pb:13,pl:15,pr:15,pal:{bg:"#6E1E2A",bg2:"#4E1420",ink:"#F1DDA8",accent:"#D9B26A",soft:"#8A2E3B",x1:"#D9B26A",x2:"#FFFFFF",x3:"#000000"},font:fnt("'Cormorant Garamond',serif","'Pinyon Script',cursive","'Cormorant Garamond',serif")},
  {id:"e_disco",tier:"envelope",off:1,cat:"birthday",layout:"disco",art:"dc",liner:"l5",seal:"seal5",fx:"disco",env:"#D8D9DC",motif:"art",kind:"disco",name:["Disco Night","Disko veče"],tag:["Mirror balls, silver tinsel and chrome numbers, for birthdays and anniversaries","Disko kugle, srebrne rese i hromirani brojevi, za rođendane i jubileje"],pt:8,pb:7,pl:15,pr:15,pal:{bg:"#F4F1EC",bg2:"#DCDBD8",ink:"#141414",accent:"#3A3A3D",soft:"#E6E4E0",x1:"#9A9CA1",x2:"#FFFFFF",x3:"#000000"},font:fnt("'Bodoni Moda',serif","'Great Vibes',cursive","'Playfair Display',serif")},
- {id:"p_letter",tier:"premium",cat:"wedding",layout:"letter",exp:"letter",art:"lenv",motif:"art",kind:"letter",name:["Love Letter","Ljubavno pismo"],tag:["A wedding told in letters: guests break the wax seal, read your letter, postcards of your story, programme and music","Venčanje ispričano kroz pisma: gost lomi voštani pečat, čita vaše pismo, razglednice vaše priče, program i muziku"],pt:16,pb:15,pl:15,pr:15,pal:{bg:"#F4EBDD",bg2:"#E8DAC4",ink:"#3A2A22",accent:"#7D2A35",soft:"#EADCC8",x1:"#7D2A35",x2:"#FFFFFF",x3:"#FFFFFF"},font:fnt("'Cormorant Garamond',serif","'Parisienne',cursive","'Cormorant Garamond',serif")},
+ {id:"p_letter",tier:"premium",cat:"wedding",layout:"letter",exp:"letter",motif:"art",kind:"letter",name:["Love Letter","Ljubavno pismo"],tag:["A wedding told as old-century letters: guests untie the bundle, break the wax seal and watch your letter being written in ink, then your story in letters, the programme and a telegram with the details","Venčanje ispričano kao prepiska iz prošlog veka: gost odvezuje svežanj pisama, lomi voštani pečat i gleda kako se vaše pismo ispisuje mastilom, a zatim vaša priča u pismima, program i telegram sa detaljima"],pt:8,pb:8,pl:8,pr:8,pal:{bg:"#1B120C",bg2:"#3D2618",ink:"#2B1B10",accent:"#7A1E22",soft:"#ECDCB8",x1:"#7A1E22",x2:"#ECDCB8",x3:"#CFA862"},font:fnt("'Cormorant Garamond',serif","'Parisienne',cursive","'Cormorant Garamond',serif")},
  {id:"p_rip",tier:"premium",cat:"birthday",layout:"rip",exp:"rip",photos:true,art:"rpcard",motif:"art",kind:"rip",name:["RIP Twenties","R.I.P. dvadesete"],tag:["A darkly funny 30th: guests light a candle at the grave of your twenties, read the obituary, remember the best years, and the party ends in gold confetti","Duhovit 30. rođendan: gost pali sveću na grobu vaših dvadesetih, čita čitulju, seća se najboljih godina, a sve se završava zlatnim konfetama"],pt:9,pb:9,pl:13,pr:13,pal:{bg:"#0F0E0E",bg2:"#1A1717",ink:"#EDE6DA",accent:"#C9A45C",soft:"#221E1D",x1:"#C9A45C",x2:"#FFFFFF",x3:"#000000"},font:fnt("'Cinzel',serif","'Pinyon Script',cursive","'Cormorant Garamond',serif")},
  {id:"p_bloom",tier:"premium",cat:"first",layout:"bloom",exp:"bloom",photos:true,art:"blcard",motif:"art",kind:"bloom",name:["Little Bloom","Mali cvet"],tag:["A first birthday in blush flowers: guests open a seed packet and petals burst out, how she grew on garden tags, her first year as a blooming stem, photos in arched frames and a countdown","Prvi rođendan u nežnom cveću: gost otvara kesicu semena i iz nje izleti latice, kako je rasla na baštenskim etiketama, prva godina kao stabljika koja cveta, fotografije u lučnim ramovima i odbrojavanje"],pt:9,pb:9,pl:13,pr:13,pal:{bg:"#FBF3EE",bg2:"#F3DCD8",ink:"#7E5258",accent:"#C98B92",soft:"#F7E6E3",x1:"#C98B92",x2:"#FFFFFF",x3:"#000000"},font:fnt("'Playfair Display',serif","'Parisienne',cursive","'Quicksand',sans-serif")},
  {id:"p_plane",tier:"premium",cat:"first",layout:"plane",exp:"plane",photos:true,art:"plcard",motif:"art",kind:"plane",name:["First Flight","Prvi let"],tag:["A first birthday for a little pilot: guests tear their boarding pass to take off, flight details of the birth, first-year route, photos in plane windows and a countdown to take-off","Prvi rođendan za malog pilota: gost otkida kartu za ukrcavanje i poleće, podaci o letu od rođenja, ruta prve godine, fotografije u prozorima aviona i odbrojavanje do poletanja"],pt:9,pb:9,pl:13,pr:13,pal:{bg:"#FBF6EC",bg2:"#DCE8F2",ink:"#3E5A78",accent:"#B5643C",soft:"#E8F0F6",x1:"#B5643C",x2:"#FFFFFF",x3:"#000000"},font:fnt("'Fredoka',sans-serif","'Caveat',cursive","'Quicksand',sans-serif")},
@@ -431,7 +431,7 @@ function renderCard(t,d,o={}){
    <span ${Q("es-orn")}><svg viewBox="0 0 120 12" aria-hidden="true"><path d="M2 6H46M74 6H118" stroke="currentColor" stroke-width=".8"/><path d="M60 1.2 63.6 6 60 10.8 56.4 6Z" fill="currentColor"/><path d="M48 6c3-3.2 6-3.2 8.4 0-2.4 3.2-5.4 3.2-8.4 0ZM72 6c-3-3.2-6-3.2-8.4 0 2.4 3.2 5.4 3.2 8.4 0Z" fill="none" stroke="currentColor" stroke-width=".8"/></svg></span>
    ${v("ceremonyVenue")?`<p ${Q("es-v","ceremonyVenue")}>${esc(v("ceremonyVenue"))}</p>`:""}${v("address")?`<p ${Q("es-a","address")}>${esc(v("address"))}</p>`:""}
    ${v("estLine")?`<p ${Q("es-sc","estLine")}>${esc(v("estLine"))}</p>`:""}`;break}
-  case"letter":{const Q=(c,k)=>R(k).replace('class="r"','class="r '+c+'"');body=lcCover(d,cl,Q);break}
+  case"letter":{const Q=(c,k)=>R(k).replace('class="r"','class="r '+c+'"');body=letterCard(d,cl,Q);break}
   case"picture":{body=`<div class="pic-layers" aria-hidden="true">${PICL[t.id]||""}</div>${PIC_TXT[t.id]?PIC_TXT[t.id](v,dt,cl,R):""}<span class="pic-shine" aria-hidden="true"></span>`;break}
   case"rip":{const Q=(c,k)=>R(k).replace('class="r"','class="r '+c+'"');body=ripCard(d,cl,Q);break}
   case"bloom":{const Q=(c,k)=>R(k).replace('class="r"','class="r '+c+'"');body=bloomCard(d,cl,Q);break}
@@ -732,7 +732,7 @@ async function expOverlay(t,d){
  const close=()=>{MBox.stop();ov.remove();if(!LB)document.body.style.overflow=""};
  $(".vx-close",ov).onclick=close;ov.addEventListener("keydown",e=>{if(e.key==="Escape")close()});ov.tabIndex=-1;ov.focus();
  await settle(ov);if(!ov.isConnected)return;
- expOf(t)[1]($(".vx,.pm,.dx,.bw,.hy,.lt,.sk,.fw,.rp,.zv,.bn,.zp",ov),t,d,{});
+ expOf(t)[1]($(".vx,.pm,.dx,.bw,.hy,.ps,.sk,.fw,.rp,.zv,.bn,.zp",ov),t,d,{});
 }
 
 /* ---------- animated layers for envelope designs ---------- */
@@ -1551,75 +1551,126 @@ const PIC_TXT={
  </div>`}
 };
 const PICL={b_esp:`<i class="es-spl es-spl-b0" style="left:77.686%;top:16.901%;width:5.908%"></i><i class="es-spl es-spl-b1" style="left:82.276%;top:17.239%;width:8.272%"></i><i class="es-spl es-spl-b2" style="left:90.088%;top:15.964%;width:10.849%"></i><i class="es-spl es-spl-b3" style="left:97.168%;top:16.836%;width:6.230%"></i><i class="pl es-bean es-b0" style="left:75.0%;top:14.193%;width:5.371%;height:3.385%;background-image:var(--a-esp-b0)"></i><i class="pl es-bean es-b1" style="left:78.516%;top:14.583%;width:7.52%;height:3.32%;background-image:var(--a-esp-b1)"></i><i class="pl es-bean es-b2" style="left:85.156%;top:12.63%;width:9.863%;height:4.167%;background-image:var(--a-esp-b2)"></i><i class="pl es-bean es-b3" style="left:94.336%;top:13.867%;width:5.664%;height:3.711%;background-image:var(--a-esp-b3)"></i><i class="pl es-bw es-bw0" style="left:26.367%;top:34.115%;width:7.812%;height:3.776%;background-image:var(--a-esp-bw0)"></i><i class="pl es-bw es-bw1" style="left:29.395%;top:61.849%;width:7.715%;height:3.711%;background-image:var(--a-esp-bw1)"></i>`,b_ilija:`<i class="pl pl-bal pl-balL" style="left:0.0%;top:40.683%;width:12.917%;height:18.517%;background-image:var(--a-il-balL)"></i><i class="pl pl-bal pl-balR" style="left:86.645%;top:41.77%;width:13.355%;height:19.759%;background-image:var(--a-il-balR)"></i><i class="pl pl-hor pl-horL" style="left:0.712%;top:69.41%;width:25.835%;height:25.854%;background-image:var(--a-il-horL)"></i><i class="pl pl-hor pl-horR" style="left:73.892%;top:68.595%;width:26.108%;height:27.873%;background-image:var(--a-il-horR)"></i><i class="pl pl-bow pl-bowL" style="left:4.16%;top:4.193%;width:12.753%;height:4.62%;background-image:var(--a-il-bowL)"></i><i class="pl pl-bow pl-bowR" style="left:82.759%;top:4.037%;width:13.355%;height:4.969%;background-image:var(--a-il-bowR)"></i><i class="pl pl-bow pl-bowB" style="left:44.061%;top:96.39%;width:10.619%;height:3.61%;background-image:var(--a-il-bowB)"></i><i class="pl pl-st pl-st0" style="left:19.759%;top:1.048%;width:5.364%;height:3.96%;background-image:var(--a-il-st0)"></i><i class="pl pl-st pl-st1" style="left:31.637%;top:3.339%;width:3.886%;height:2.756%;background-image:var(--a-il-st1)"></i><i class="pl pl-st pl-st2" style="left:62.945%;top:1.825%;width:4.215%;height:3.028%;background-image:var(--a-il-st2)"></i><i class="pl pl-st pl-st3" style="left:5.911%;top:22.787%;width:4.16%;height:3.067%;background-image:var(--a-il-st3)"></i><i class="pl pl-st pl-st4" style="left:88.615%;top:22.981%;width:4.324%;height:3.183%;background-image:var(--a-il-st4)"></i><i class="pl pl-st pl-st5" style="left:87.356%;top:18.362%;width:2.573%;height:1.863%;background-image:var(--a-il-st5)"></i><i class="pl pl-st pl-st6" style="left:0.657%;top:59.006%;width:3.339%;height:2.484%;background-image:var(--a-il-st6)"></i><i class="pl pl-st pl-st7" style="left:0.985%;top:72.05%;width:3.394%;height:2.523%;background-image:var(--a-il-st7)"></i><i class="pl pl-st pl-st8" style="left:95.293%;top:76.242%;width:3.503%;height:2.562%;background-image:var(--a-il-st8)"></i><i class="pl pl-st pl-st9" style="left:62.835%;top:95.07%;width:3.448%;height:2.484%;background-image:var(--a-il-st9)"></i>`,b_sea:`<i class="pl sl-fish sl-fish0" style="left:17.505%;top:0.0%;width:6.729%;height:3.261%;background-image:var(--a-sea-fish0)"></i><i class="pl sl-fish sl-fish1" style="left:10.284%;top:0.194%;width:5.525%;height:4.93%;background-image:var(--a-sea-fish1)"></i><i class="pl sl-fish sl-fish2" style="left:18.709%;top:2.096%;width:6.674%;height:6.328%;background-image:var(--a-sea-fish2)"></i><i class="pl sl-fish sl-fish3" style="left:12.473%;top:4.231%;width:5.361%;height:6.522%;background-image:var(--a-sea-fish3)"></i><i class="pl sl-fish sl-fish4" style="left:2.407%;top:4.464%;width:7.385%;height:3.377%;background-image:var(--a-sea-fish4)"></i><i class="pl sl-fish sl-fish5" style="left:3.829%;top:7.259%;width:6.783%;height:5.823%;background-image:var(--a-sea-fish5)"></i><i class="pl sl-fish sl-fish6" style="left:13.512%;top:9.783%;width:7.057%;height:6.211%;background-image:var(--a-sea-fish6)"></i><i class="pl sl-fish sl-fish7" style="left:6.893%;top:11.646%;width:5.361%;height:6.483%;background-image:var(--a-sea-fish7)"></i><i class="pl sl-fish sl-fish8" style="left:0.0%;top:14.752%;width:5.744%;height:4.697%;background-image:var(--a-sea-fish8)"></i><i class="pl sl-starf sl-starf" style="left:82.44%;top:1.825%;width:6.893%;height:5.435%;background-image:var(--a-sea-starf)"></i><i class="pl sl-spk sl-spk0" style="left:91.193%;top:5.318%;width:5.306%;height:4.736%;background-image:var(--a-sea-spk0)"></i><i class="pl sl-spk sl-spk1" style="left:88.457%;top:8.696%;width:5.525%;height:4.464%;background-image:var(--a-sea-spk1)"></i><i class="pl sl-spk sl-spk2" style="left:92.505%;top:11.646%;width:3.939%;height:3.067%;background-image:var(--a-sea-spk2)"></i><i class="pl sl-bub sl-bub0" style="left:89.825%;top:42.974%;width:6.018%;height:4.231%;background-image:var(--a-sea-bub0)"></i><i class="pl sl-bub sl-bub1" style="left:93.162%;top:47.904%;width:6.018%;height:4.193%;background-image:var(--a-sea-bub1)"></i><i class="pl sl-bub sl-bub2" style="left:87.09%;top:50.97%;width:6.018%;height:4.231%;background-image:var(--a-sea-bub2)"></i><i class="pl sl-bub sl-bub3" style="left:95.35%;top:53.61%;width:4.65%;height:6.172%;background-image:var(--a-sea-bub3)"></i><i class="pl sl-bub sl-bub4" style="left:75.821%;top:65.761%;width:9.081%;height:5.629%;background-image:var(--a-sea-bub4)"></i><i class="pl sl-jel sl-jel" style="left:88.184%;top:58.269%;width:9.081%;height:9.821%;background-image:var(--a-sea-jel)"></i><i class="pl sl-dol sl-dol0" style="left:5.197%;top:56.444%;width:10.941%;height:5.978%;background-image:var(--a-sea-dol0)"></i><i class="pl sl-dol sl-dol1" style="left:3.009%;top:64.169%;width:15.7%;height:6.328%;background-image:var(--a-sea-dol1)"></i><i class="pl sl-spo sl-spout" style="left:22.538%;top:75.66%;width:11.05%;height:5.707%;background-image:var(--a-sea-spout);transform-origin:50% 100%"></i><i class="pl sl-wha sl-whale" style="left:0.0%;top:78.998%;width:48.906%;height:21.002%;background-image:var(--a-sea-whale);transform-origin:45% 100%"></i><i class="pl sl-prl sl-pearl" style="left:74.179%;top:84.084%;width:12.691%;height:7.842%;background-image:var(--a-sea-pearl)"></i><i class="pl sl-fin sl-fin" style="left:45.842%;top:7.22%;width:44.803%;height:26.825%;background-image:var(--a-sea-fin);transform-origin:25.5% 4.9%"></i>`};
-const EXP_BG={gold:"#1C0D10",balloon:"#FFF3F0",sky:"#060914",rip:"#0B0A0A",bloom:"#FBF3EE",plane:"#E3EEF6",letter:"#E9DFD0",disco:"#09090A",premiere:"#0E0B0C",vinyl:"#F1E8D8",bow:"#F3EFE7",honey:"#FBF4E3"};
+const EXP_BG={gold:"#1C0D10",balloon:"#FFF3F0",sky:"#060914",rip:"#0B0A0A",bloom:"#FBF3EE",plane:"#E3EEF6",letter:"#1B120C",disco:"#09090A",premiere:"#0E0B0C",vinyl:"#F1E8D8",bow:"#F3EFE7",honey:"#FBF4E3"};
 
-/* ---------- "Ljubavno pismo" · premium wedding told in letters ---------- */
+/* ---------- "Ljubavno pismo" · premium wedding told as old-century letters ---------- */
 const LT_BARS=[[53,57,60,72],[50,53,57,69],[46,50,53,70],[48,52,55,67],[53,57,60,77],[45,48,52,76],[46,50,53,74],[48,52,55,72]];
-function lcCover(d,cl,Q){
- const C=(en,sr)=>cl==="sr"?sr:en;const v=k=>(d[k]??"").toString().trim();Q=Q||((c)=>`class="${c}"`);
+const ROMAN=["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"];
+// every word becomes its own span, so the pen can write them one after another
+const inkw=s=>esc(s).split(/(\s+)/).map(w=>!w?"":/^\s+$/.test(w)?" ":`<span class="w">${w}</span>`).join("");
+const psBow=`<svg viewBox="0 0 80 50" aria-hidden="true"><g fill="none" stroke-linecap="round"><path d="M40 25c-9-15-32-19-31-6 1 11 23 10 31 6zM40 25c9-15 32-19 31-6-1 11-23 10-31 6z" stroke="#8f7046" stroke-width="3.6"/><path d="M40 25c-9-15-32-19-31-6 1 11 23 10 31 6zM40 25c9-15 32-19 31-6-1 11-23 10-31 6z" stroke="#c7a874" stroke-width="1.6" stroke-dasharray="2 2.4"/><path d="M38 27c-5 8-10 14-17 21M42 27c5 8 9 14 15 20" stroke="#8f7046" stroke-width="3.4"/><path d="M38 27c-5 8-10 14-17 21M42 27c5 8 9 14 15 20" stroke="#c7a874" stroke-width="1.4" stroke-dasharray="2 2.4"/></g><ellipse cx="40" cy="25.5" rx="5" ry="4.2" fill="#8a6a3e"/><ellipse cx="39" cy="24.5" rx="2.2" ry="1.6" fill="#c7a874" opacity=".6"/></svg>`;
+// a round postmark with the date in old style (day, month in Roman numerals, year)
+const psPostmark=(cls,top,mid,bot)=>`<svg class="${cls}" viewBox="0 0 150 110" aria-hidden="true"><circle cx="48" cy="55" r="44" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="48" cy="55" r="32" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="48" y="30" font-size="8.5" text-anchor="middle" letter-spacing="1.5">${esc(top)}</text><text x="48" y="61" font-size="15" text-anchor="middle">${esc(mid)}</text><text x="48" y="85" font-size="10" text-anchor="middle" letter-spacing="1">${esc(bot)}</text><path d="M96 34q9-7 18 0t18 0 18 0M96 48q9-7 18 0t18 0 18 0M96 62q9-7 18 0t18 0 18 0M96 76q9-7 18 0t18 0 18 0" fill="none" stroke="currentColor" stroke-width="2"/></svg>`;
+const psPost=cl=>cl==="sr"?"LJUBAVNA POŠTA":"LOVE POST";
+function letterCard(d,cl,Q){
+ const C=(en,sr)=>cl==="sr"?sr:en;const v=k=>(d[k]??"").toString().trim();
  const n1=esc(v("partner1")),n2=esc(v("partner2")),ini=esc(((v("partner1")[0]||"")+(v("partner2")[0]||"")).toUpperCase());const dt=pd(v("date"),cl);
- const dd=dt?`${String(dt.d).padStart(2,"0")} · ${String(dt.m).padStart(2,"0")} · ${dt.y}`:"";const pl=v("venue");
- // long names go on two lines and shrink to fit the envelope
- const two=(v("partner1")+v("partner2")).length>18,nfs=Math.min(9,(two?64:150)/Math.max(1,(two?Math.max(v("partner1").length,v("partner2").length):(v("partner1")+v("partner2")).length+2)*(two?.5:1))).toFixed(2);
- return`<div class="lc-top"><span class="lc-orn" aria-hidden="true"><i>❦</i></span><p ${Q("lc-k")}>${C("Wedding<br>invitation","Pozivnica<br>za venčanje")}</p><span class="lc-orn" aria-hidden="true"><i>✦</i></span></div>
-   <span class="lc-ini" aria-hidden="true">${ini.split("").join("&thinsp;")}</span>
-   <div class="lc-mid"><h2 ${Q("lc-names"+(two?" two":""),"partner1")} style="font-size:${nfs}cqw">${n1}<em>&amp;</em>${n2}</h2>${dd||pl?`<p ${Q("lc-date","date")}>${pl?esc(pl)+(dd?" · ":""):""}${dd}</p>`:""}</div>
-   <div class="lc-bot"><p class="lc-tap">${C("Touch the seal","Dodirnite pečat")}</p><p class="lc-tap2">${C("and open the letter","i otvorite pismo")}</p><span class="lc-orn" aria-hidden="true"><i>✦</i></span></div>`}
+ const fs=Math.min(8.4,105/Math.max(1,v("partner1").length+v("partner2").length+3)).toFixed(2);
+ return`<p ${Q("pc-k")}>${C("Wedding invitation","Pozivnica za venčanje")}</p>
+  <div class="pc-env"><span class="pc-stamp" aria-hidden="true">${ini}</span>${dt?psPostmark("pc-pm",psPost(cl),`${dt.d} ${ROMAN[dt.m-1]}`,dt.y):""}
+   <h2 ${Q("pc-names","partner1")} style="--fs:${fs}cqw">${n1}<em>&amp;</em>${n2}</h2>${v("venue")?`<p ${Q("pc-place","venue")}>${esc(v("venue"))}</p>`:""}
+   <span class="pc-tw h" aria-hidden="true"></span><span class="pc-tw v" aria-hidden="true"></span><span class="pc-bow" aria-hidden="true">${psBow}</span></div>
+  ${dt?`<p ${Q("pc-date","date")}>${dt.d} · ${ROMAN[dt.m-1]} · ${dt.y}</p>`:""}`}
+// splits a telegram line into paper tapes of up to `max` characters
+const tapes=(s,max=24)=>{const out=[];let cur="";for(const w of s.split(/\s+/).filter(Boolean)){if(cur&&(cur+" "+w).length>max){out.push(cur);cur=w}else cur=cur?cur+" "+w:w}if(cur)out.push(cur);return out};
 function letterHTML(t,d,o={}){
  const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const v=k=>(d[k]??"").toString().trim();
  const dt=pd(v("date"),cl);const n1=esc(v("partner1")),n2=esc(v("partner2"));
  const ini=esc(((v("partner1")[0]||"")+(v("partner2")[0]||"")).toUpperCase());
  const stories=[1,2,3].map(i=>({y:v(`story${i}Year`),t:v(`story${i}Title`),x:v(`story${i}Text`)})).filter(x=>x.y||x.t||x.x);
  const plan=[1,2,3,4].map(i=>({tm:v(`plan${i}Time`),t:v(`plan${i}Title`)})).filter(p=>p.tm||p.t);
- const g=o.guest;const to=g&&g.source==="personal"?esc(g.name):C("Our dear guests","Naši dragi gosti");
+ const g=o.guest,personal=g&&g.source==="personal";const to=personal?g.name:C("Our dear guests","Naši dragi gosti");
  const place=[v("venue"),v("address")].filter(Boolean).join(", ");const w=eventWhen(d,dt);
  const gcal=calLink(titleOf(t,d),w,place),maps=place?`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`:"";
- const rsH=pd(v("rsvpBy"),cl);const dd=dt?`${dt.d}. ${cl==="sr"?DATES.sr.monG[dt.m-1]:DATES.en.mon[dt.m-1]} ${dt.y}.`:"";
+ const town=(v("address").split(",").pop()||v("venue")).trim();
+ const dd=dt?(cl==="sr"?`${dt.d}. ${DATES.sr.monG[dt.m-1]} ${dt.y}.`:`${dt.d} ${DATES.en.mon[dt.m-1]} ${dt.y}`):"";
  const paras=v("message").split(/\n+/).filter(Boolean);
- return`<div class="lt${o.preview?" pv":""}" lang="${cl==="sr"?"sr-Latn":"en"}">
+ const fs=Math.min(8.6,125/Math.max(1,to.length)).toFixed(2);
+ const first=paras[0]||"";const capL=first.match(/^[\p{L}\p{N}]/u)?first[0]:"";
+ // the telegram: short typed lines that end in STOP
+ const tl=[dt?(cl==="sr"?`${dt.wd} ${dt.d}. ${DATES.sr.monG[dt.m-1]} ${dt.y}.`:`${dt.wd} ${dt.d} ${DATES.en.mon[dt.m-1]} ${dt.y}`):"",plan[0]&&plan[0].tm?C(`starts at ${plan[0].tm}`,`početak u ${plan[0].tm}`):"",v("venue"),v("address"),v("dressCode")?`dress code ${v("dressCode")}`:"",C("we can't wait to see you","radujemo se vama")].filter(Boolean);
+ const tp=[...tl.flatMap(l=>{const o=tapes(l);if((o[o.length-1]+" stop").length<=29)o[o.length-1]+=" stop";else o.push("stop");return o}),...tapes(`${v("partner1")} ${C("&","i")} ${v("partner2")}`)];
+ const words=tl.join(" ").split(/\s+/).length+tl.length;
+ return`<div class="ps${o.preview?" pv":""}" lang="${cl==="sr"?"sr-Latn":"en"}">
+ <span class="ps-desk" aria-hidden="true"></span><span class="ps-candle" aria-hidden="true"></span>
  ${o.preview?"":`<div class="vx-top">${langSwitch()}</div>`}
- <section class="lt-hero">
-  <div class="lt-envwrap">
-   <button class="lt-env lt-cov tid-p_letter animate" type="button" aria-label="${C("Touch the seal and open the letter","Dodirnite pečat i otvorite pismo")}">${lcCover(d,cl)}<span class="lt-glow" aria-hidden="true"></span></button>
+ <section class="ps-hero">
+  <div class="ps-stage">
+   <p class="ps-kick">${C("A letter for you","Pismo za vas")}</p>
+   <button class="ps-bundle" type="button" aria-label="${C("Untie the letters and open the envelope","Odvežite pisma i otvorite koverat")}">
+    <span class="ps-under u1" aria-hidden="true"></span><span class="ps-under u2" aria-hidden="true"></span>
+    <span class="ps-env" aria-hidden="true">
+     <span class="ps-front">
+      <span class="ps-stamp"><small>${psPost(cl)}</small><i>${ini}</i><b>${dt?dt.y:""}</b></span>
+      ${dt?psPostmark("ps-pm",town.toUpperCase().slice(0,18)||psPost(cl),`${dt.d} ${ROMAN[dt.m-1]}`,dt.y):""}
+      <span class="ps-addr"><small>${C("To","Za")}</small><b style="--fs:${fs}cqw">${esc(to)}</b><em>${esc(town)}</em></span>
+     </span>
+     <span class="ps-back"><span class="ps-bk"></span><span class="ps-sheet"></span><span class="ps-pocket"></span><span class="ps-flap"></span>
+      <span class="ps-seal"><span class="h l"><b>${ini}</b></span><span class="h r"><b>${ini}</b></span></span></span>
+    </span>
+    <span class="ps-twine h" aria-hidden="true"></span><span class="ps-twine v" aria-hidden="true"></span><span class="ps-bow" aria-hidden="true">${psBow}</span>
+   </button>
+   <p class="ps-hint">${C("Touch to untie the letters","Dodirnite da odvežete pisma")}</p>
   </div>
-  <article class="lt-letter" aria-label="${C("Letter","Pismo")}">
-   <p class="lt-k">${dd}</p>
-   <p class="lt-dear">${g&&g.source==="personal"?`${C("Dear","Dragi")} ${esc(g.name)},`:C("Dear friends,","Dragi naši,")}</p>
-   ${paras.map(p=>`<p class="lt-p">${esc(p)}</p>`).join("")}
-   <p class="lt-sig"><small>${C("With love,","S ljubavlju,")}</small>${n1} ${C("&","i")} ${n2}</p>
-   <span class="vx-cue lt-cue" aria-hidden="true"></span>
+  <article class="ps-letter ps-pp ps-fold" aria-label="${C("Letter","Pismo")}">
+   <div class="ps-crest ps-fade" aria-hidden="true"><b>${ini.split("").join("·")}</b><svg viewBox="0 0 120 14"><path d="M4 7h40M76 7h40" stroke="currentColor" stroke-width=".7"/><path d="M60 2c-5 0-8 5-13 5 5 0 8 5 13 5s8-5 13-5c-5 0-8-5-13-5z" fill="none" stroke="currentColor" stroke-width=".8"/><circle cx="60" cy="7" r="1.4" fill="currentColor"/></svg></div>
+   ${dd||town?`<p class="ps-dateline">${inkw([town,dd].filter(Boolean).join(", "))}</p>`:""}
+   <p class="ps-dear">${inkw(personal?`${C("Dear","Dragi")} ${g.name},`:C("Dear friends,","Dragi naši,"))}</p>
+   ${paras.map((p,i)=>i===0&&capL?`<p class="ps-p first"><span class="ps-cap w">${esc(capL)}</span>${inkw(p.slice(capL.length))}</p>`:`<p class="ps-p">${inkw(p)}</p>`).join("")}
+   <div class="ps-sigw"><p class="ps-close">${inkw(C("With love,","S ljubavlju,"))}</p><p class="ps-sign">${inkw(`${v("partner1")} ${C("&","i")} ${v("partner2")}`)}</p><span class="ps-wax" aria-hidden="true"><b>${ini}</b></span></div>
   </article>
  </section>
- <div class="lt-rest">
-  <section class="lt-sec lt-names"><p class="lt-k rv">${C("We are getting married","Venčavamo se")}</p><h1 class="rv">${n1}<em>&amp;</em>${n2}</h1>${dt?`<p class="lt-big rv">${esc(dt.full)}</p>`:""}${v("venue")?`<p class="lt-mut rv">${esc(v("venue"))}${v("address")?` · ${esc(v("address"))}`:""}</p>`:""}</section>
-  ${stories.length?`<section class="lt-sec"><h2 class="rv">${C(`Our story in <em>${stories.length===1?"one letter":stories.length===2?"two letters":"three letters"}</em>`,`Naša priča u <em>${stories.length===1?"jednom pismu":stories.length===2?"dva pisma":"tri pisma"}</em>`)}</h2>
-   <div class="lt-cards">${stories.map((x,i)=>`<div class="lt-card rv" style="--r:${[-2.2,1.8,-1.4][i]}deg"><span class="lt-pm"><b>${esc(x.y)}</b></span><h3>${esc(x.t)}</h3><p>${esc(x.x)}</p></div>`).join("")}</div></section>`:""}
-  ${plan.length?`<section class="lt-sec"><p class="lt-k rv">${C("The day","Dan venčanja")}</p><h2 class="rv">${C("Programme","Program <em>dana</em>")}</h2>
-   <div class="lt-note rv"><ol>${plan.map(p=>`<li><b>${esc(p.tm)}</b><span>${esc(p.t)}</span></li>`).join("")}</ol></div></section>`:""}
-  <section class="lt-sec"><p class="lt-k rv">${C("Where and when","Gde i kada")}</p>
-   <div class="lt-pass rv"><div class="lt-pass-in"><dl>
-    <div><dt>${C("Date","Datum")}</dt><dd>${dt?esc(dt.full):"—"}</dd></div>
-    ${plan[0]?`<div><dt>${C("Start","Početak")}</dt><dd>${esc(plan[0].tm)}${cl==="sr"?" h":""}</dd></div>`:""}
-    <div class="w"><dt>${C("Place","Mesto")}</dt><dd>${esc(v("venue"))}${v("address")?`<small>${esc(v("address"))}</small>`:""}</dd></div>
-    ${v("dressCode")?`<div class="w"><dt>Dress code</dt><dd>${esc(v("dressCode"))}</dd></div>`:""}
-   </dl></div></div>
-   <div class="lt-links rv">${gcal?`<a class="lt-btn" href="${gcal}" target="_blank" rel="noopener">${C("Add to calendar","Dodajte u kalendar")}</a>`:""}${maps?`<a class="lt-btn" href="${maps}" target="_blank" rel="noopener">${C("Directions","Kako stići")}</a>`:""}</div></section>
-  ${w&&w>Date.now()?`<section class="lt-sec"><p class="lt-k rv">${C("Until our yes","Do našeg „da“")}</p><div class="lt-count rv" data-w="${w.getTime()}"></div></section>`:""}
-  <section class="lt-sec">${o.preview?`<div class="rsvp lt-rsvp"><p class="kicker">${C("RSVP","Potvrda dolaska")}</p><h2>${C("Write back to us","Odgovorite nam")}</h2><p class="sub">${rsH?C(`Please reply by ${rsH.short}`,`Molimo odgovorite do ${rsH.short}`):""}</p><p class="note-box" style="text-align:center">${L("This is a preview. Your guests will see the reply form here.","Ovo je pregled. Ovde će vaši gosti videti formular za odgovor.")}</p></div>`:`<div class="rsvp lt-rsvp" id="rsvp"></div>`}</section>
-  <section class="lt-end"><p class="lt-ps">P.S. ${C("We can't wait to see you.","Jedva čekamo da vas vidimo.")}</p><p class="lt-sig2">${n1} ${C("&","i")} ${n2}</p>${o.preview?"":`<p class="vx-by">${L("Sent with","Poslato preko")} <a href="${API.kind==="local"?"#":"/"}">Poziv na klik</a></p>`}</section>
+ <div class="ps-rest">
+  <section class="ps-sec"><div class="ps-card ps-pp rv"><div class="ps-card-in"><p class="ps-k">${C("We are getting married","Venčavamo se")}</p><h1>${n1}<em>${C("and","i")}</em>${n2}</h1>${dt?`<p class="ps-big">${esc(dt.full)}</p>`:""}${v("venue")?`<p class="ps-mut">${esc(v("venue"))}${v("address")?`, ${esc(v("address"))}`:""}</p>`:""}</div></div></section>
+  ${stories.length?`<section class="ps-sec"><p class="ps-k rv">${C("Our correspondence","Naša prepiska")}</p><h2 class="ps-h rv">${C(`Our story in <em>${stories.length===1?"one letter":stories.length===2?"two letters":"three letters"}</em>`,`Naša priča u <em>${stories.length===1?"jednom pismu":stories.length===2?"dva pisma":"tri pisma"}</em>`)}</h2><svg class="ps-orn rv" viewBox="0 0 150 14" aria-hidden="true"><path d="M4 7h52M94 7h52" stroke="currentColor" stroke-width=".8"/><path d="M75 2c-6 0-9 5-15 5 6 0 9 5 15 5s9-5 15-5c-6 0-9-5-15-5z" fill="none" stroke="currentColor"/><circle cx="75" cy="7" r="1.6" fill="currentColor"/></svg>
+   <div class="ps-ltrs">${stories.map((x,i)=>{const yr=(x.y.match(/\d{4}/)||[""])[0];return`<article class="ps-ltr ps-pp ps-fold rv" style="--r:${[-1.6,1.3,-.9][i]}deg;--fx:${i%2?"40px":"-40px"};--pc:${["#e3cc9d","#e9d5ac","#eedfbe"][i]}"><div class="ps-ltr-h"><b>${ROMAN[i]}.</b>${x.y?`<span>${inkw(x.y)}</span>`:""}</div>${x.t?`<h3>${inkw(x.t)}</h3>`:""}${x.x?`<p>${inkw(x.x)}</p>`:""}${yr?psPostmark("ps-pmk",psPost(cl),"✦",yr):""}</article>`}).join("")}</div></section>`:""}
+  ${plan.length?`<section class="ps-sec"><p class="ps-k rv">${C("The day","Dan venčanja")}</p><h2 class="ps-h rv">${C("Order of <em>the day</em>","Red <em>venčanja</em>")}</h2><svg class="ps-orn rv" viewBox="0 0 150 14" aria-hidden="true"><path d="M4 7h52M94 7h52" stroke="currentColor" stroke-width=".8"/><path d="M75 2c-6 0-9 5-15 5 6 0 9 5 15 5s9-5 15-5c-6 0-9-5-15-5z" fill="none" stroke="currentColor"/><circle cx="75" cy="7" r="1.6" fill="currentColor"/></svg>
+   <div class="ps-prog ps-pp rv"><div class="ps-prog-in"><h3>${C("Programme","Program")}</h3><ol>${plan.map(p=>`<li><span>${esc(p.t)}</span><i aria-hidden="true"></i><b>${esc(p.tm)}</b></li>`).join("")}</ol></div></div></section>`:""}
+  <section class="ps-sec"><p class="ps-k rv">${C("Where and when","Gde i kada")}</p><h2 class="ps-h rv">${C("A <em>telegram</em> has arrived","Stigao je <em>telegram</em>")}</h2>
+   <div class="ps-tele ps-pp rv" aria-label="${esc(tl.join(". "))}"><div class="ps-tele-h"><b>${C("Telegram","Telegram")}</b><small>${psPost(cl)}<br>${esc(town)}</small></div>
+    <div class="ps-tele-m"><div>${C("No.","Br.")}<b>${dt?String(dt.m).padStart(2,"0")+String(dt.d).padStart(2,"0"):"0001"}</b></div><div>${C("Words","Reči")}<b>${words}</b></div><div>${C("To","Za")}<b>${esc(personal?g.name:C("Guests","Goste"))}</b></div></div>
+    <div class="ps-tapes" aria-hidden="true">${tp.map((s,i)=>`<span class="ps-tape" style="--r:${[-.6,.4,-.3,.7,-.5,.2,-.7,.5][i%8]}deg"><span style="--c:${s.length}">${esc(s)}</span></span>`).join("")}</div>
+    <span class="ps-urgent" aria-hidden="true">${C("Urgent","Hitno")}</span></div>
+   <div class="ps-links rv">${gcal?`<a class="ps-btn" href="${gcal}" target="_blank" rel="noopener">${C("Add to calendar","Dodajte u kalendar")}</a>`:""}${maps?`<a class="ps-btn" href="${maps}" target="_blank" rel="noopener">${C("Directions","Kako stići")}</a>`:""}</div></section>
+  ${w&&w>Date.now()?`<section class="ps-sec"><p class="ps-k rv">${C("Until our yes","Do našeg „da“")}</p><div class="ps-count rv" data-w="${w.getTime()}" style="margin-top:22px"></div></section>`:""}
+  <section class="ps-sec">${o.preview?`<div class="rsvp ps-reply ps-pp"><p class="kicker">${C("RSVP","Potvrda dolaska")}</p><h2>${C("Write back to us","Odgovorite nam")}</h2><p class="note-box" style="text-align:center">${L("This is a preview. Your guests will see the reply form here.","Ovo je pregled. Ovde će vaši gosti videti formular za odgovor.")}</p></div>`:`<div class="rsvp ps-reply ps-pp" id="rsvp"></div>`}</section>
+  <section class="ps-end"><p class="ps-ps"><b>P.S.</b>${C("We can't wait to see you.","Jedva čekamo da vas vidimo.")}</p><p class="ps-sig2">${n1} ${C("&","i")} ${n2}</p>${o.preview?"":`<p class="vx-by">${L("Sent with","Poslato preko")} <a href="${API.kind==="local"?"#":"/"}">Poziv na klik</a></p>`}</section>
  </div>
- <button class="vx-music lt-music" type="button" aria-pressed="false"><span class="d" aria-hidden="true"></span><span>${C("Music","Muzika")}</span></button>
+ <button class="vx-music ps-music" type="button" aria-pressed="false"><span class="d" aria-hidden="true"></span><span>${C("Music","Muzika")}</span></button>
 </div>`;
 }
 function bindLetter(root,t,d,o={}){
- const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const mus=$(".lt-music",root);
+ const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const mus=$(".ps-music",root),art=$(".ps-letter",root);
+ const RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
  const setPlay=on=>{root.classList.toggle("playing",on);mus.setAttribute("aria-pressed",on);mus.setAttribute("aria-label",on?C("Pause the music","Pauziraj muziku"):C("Play the music","Pusti muziku"))};
  const play=()=>{MBox.use(LT_BARS,.34);MBox.start();setPlay(true)};
- const open=withSound=>{if(root.classList.contains("on"))return;root.classList.add("on");if(withSound)play();else setPlay(false);o.onOpen&&o.onOpen();setTimeout(reveal,50);count()};
- $(".lt-env",root).addEventListener("click",()=>open(true));
+ // the pen writes word after word at a hand's pace, faster when there is a lot to write
+ function ink(el,start,cap){
+  const ws=$$(".w,.ps-fade,.ps-wax",el);const du=ws.map(w=>w.classList.contains("w")?Math.max(140,w.textContent.length*62):520);
+  const total=du.reduce((a,b)=>a+b,0),k=Math.min(1,cap/total);let at=start,prev=null;
+  ws.forEach((w,i)=>{if(prev&&w.parentElement!==prev)at+=260*k;prev=w.parentElement;w.style.setProperty("--d",at+"ms");w.style.setProperty("--du",du[i]*k+"ms");at+=du[i]*k});
+  el.classList.add("ink");setTimeout(()=>{if(el.isConnected){el.classList.remove("ink");el.classList.add("inked")}},at+2800);
+ }
+ function type(el){
+  let at=200;$$(".ps-tape",el).forEach(tp=>{const s=tp.firstElementChild,n=s.textContent.length,du=n*24;tp.style.setProperty("--d",at+"ms");s.style.setProperty("--du",du+"ms");at+=du+160});
+  el.classList.add("ink");
+ }
+ function read(anim){
+  const s=$(".ps-sheet",root).getBoundingClientRect();
+  root.classList.add("read");
+  if(anim){
+   const a=art.getBoundingClientRect();
+   art.animate([{transformOrigin:"0 0",transform:`translate(${s.left-a.left}px,${s.top-a.top}px) scale(${s.width/a.width},${s.height/a.height})`},{transformOrigin:"0 0",transform:"none"}],{duration:1000,easing:"cubic-bezier(.3,.7,.2,1)"});
+   ink(art,900,6000);
+  }
+  reveal();count();
+ }
+ const open=withSound=>{if(root.classList.contains("on"))return;root.classList.add("on");if(withSound)play();else setPlay(false);o.onOpen&&o.onOpen();
+  if(RM||!withSound)read(false);else setTimeout(()=>{if(root.isConnected)read(true)},2850)};
+ $(".ps-bundle",root).addEventListener("click",()=>open(true));
  mus.addEventListener("click",()=>{if(root.classList.contains("playing")){MBox.stop();setPlay(false)}else play()});
- function reveal(){if(!("IntersectionObserver" in window))return;root.classList.add("io");const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});$$(".rv",root).forEach(el=>io.observe(el))}
- function count(){const el=$(".lt-count",root);if(!el)return;const w=+el.dataset.w;const tick=()=>{if(!el.isConnected)return;const ms=w-Date.now();if(ms<=0){el.innerHTML="";return}const a=[[Math.floor(ms/864e5),C("Days","Dana")],[Math.floor(ms/36e5)%24,C("Hours","Sati")],[Math.floor(ms/6e4)%60,C("Minutes","Minuta")],[Math.floor(ms/1e3)%60,C("Seconds","Sekundi")]];el.innerHTML=a.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("");setTimeout(tick,1000)};tick()}
+ function reveal(){if(!("IntersectionObserver" in window))return;root.classList.add("io");const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add("in");io.unobserve(el);if(RM)return;if(el.classList.contains("ps-ltr"))ink(el,550,3600);if(el.classList.contains("ps-tele"))type(el)}),{threshold:.18});$$(".rv",root).forEach(el=>io.observe(el))}
+ function count(){const el=$(".ps-count",root);if(!el)return;const w=+el.dataset.w;const tick=()=>{if(!el.isConnected)return;const ms=w-Date.now();if(ms<=0){el.innerHTML="";return}const a=[[Math.floor(ms/864e5),C("Days","Dana")],[Math.floor(ms/36e5)%24,C("Hours","Sati")],[Math.floor(ms/6e4)%60,C("Minutes","Minuta")],[Math.floor(ms/1e3)%60,C("Seconds","Sekundi")]];el.innerHTML=a.map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("");setTimeout(tick,1000)};tick()}
  if(o.opened)open(false);
 }
 const EXPS={gold:()=>[recordHTML,bindRecord],balloon:()=>[balloonHTML,bindBalloon],sky:()=>[skyHTML,bindSky],rip:()=>[ripHTML,bindRip],bloom:()=>[bloomHTML,bindBloom],plane:()=>[planeHTML,bindPlane],letter:()=>[letterHTML,bindLetter],honey:()=>[honeyHTML,bindHoney],bow:()=>[bowHTML,bindBow],premiere:()=>[premiereHTML,bindPremiere],vinyl:()=>[vinylHTML,bindVinyl],disco:()=>[discoHTML,bindDisco]};const expOf=t=>(EXPS[t.exp]||EXPS.vinyl)();
@@ -2064,7 +2115,7 @@ async function vInvite(r){
  const initial=(t.layout==="wedding"?(data.partner1||"").charAt(0)+(data.partner2||"").charAt(0):(data.childName||data.name||data.occasion||"P").charAt(0))||"P";
  const style=`--c-bg:${p.bg};--c-bg2:${p.bg2};--c-ink:${p.ink};--c-accent:${p.accent};--f-s:${t.font.s}`;
  const top=`<div class="guest-top">${langSwitch()}</div>`;
- if(t.exp){app.innerHTML=`<div class="view exp-view">${expOf(t)[0](t,data,{guest})}</div>`;const rt=RT;await settle(app);if(rt!==RT)return;bindLang($(".vx-top"));expOf(t)[1]($(".vx,.pm,.dx,.bw,.hy,.lt,.sk,.fw,.rp,.zv,.bn,.zp"),t,data,{opened:vInvite.opened===slug,onOpen:()=>{vInvite.opened=slug}});drawRsvp();return}
+ if(t.exp){app.innerHTML=`<div class="view exp-view">${expOf(t)[0](t,data,{guest})}</div>`;const rt=RT;await settle(app);if(rt!==RT)return;bindLang($(".vx-top"));expOf(t)[1]($(".vx,.pm,.dx,.bw,.hy,.ps,.sk,.fw,.rp,.zv,.bn,.zp"),t,data,{opened:vInvite.opened===slug,onOpen:()=>{vInvite.opened=slug}});drawRsvp();return}
  app.innerHTML=`<div class="guest view">${top}<div class="env-stage">${guest?`<p class="to-line">${L("For","Za:")} ${esc(guest.name)}</p>`:`<p class="to-line">${L("You've received an invitation","Stigla vam je pozivnica")}</p>`}
   ${t.story?`<div class="story-host" id="sth"></div>`:`${envHTML(t,data,"env")}
   <p class="env-hint">${L("Tap the seal to open","Dodirnite pečat da otvorite")}<small>${esc(title)}</small></p>`}</div></div>`;
@@ -2109,7 +2160,7 @@ function confetti(colors){if(matchMedia("(prefers-reduced-motion:reduce)").match
 
 /* ---------- justify running text everywhere (not the invitation designs themselves) ---------- */
 (function(){
- const SKIP=".rp,.sk,.fw,.ft3-big,.ft3-sub,.h3-row,.h3-stage,.ft2-big,.ft2-copy,.inv,.inv-c,.bd-hero,.btn,button,nav,.hdr,.kicker,.chips,.choice,label,.pk-sig,.p2-n,.dx-k,.dx-open,.lang,.toast,.mock,.h2-fan,.ticker,.cb-in,.newpw,.st-pill";
+ const SKIP=".ps,.rp,.sk,.fw,.ft3-big,.ft3-sub,.h3-row,.h3-stage,.ft2-big,.ft2-copy,.inv,.inv-c,.bd-hero,.btn,button,nav,.hdr,.kicker,.chips,.choice,label,.pk-sig,.p2-n,.dx-k,.dx-open,.lang,.toast,.mock,.h2-fan,.ticker,.cb-in,.newpw,.st-pill";
  const SEL="#app p,#app li,#ft p,.story-ov p";
  const fix=el=>{if(el.classList.contains("jt")||el.closest(SKIP))return;const ta=getComputedStyle(el).textAlign;if(ta==="center")el.style.textAlignLast="center";else if(ta==="right"||ta==="end")el.style.textAlignLast="right";el.classList.add("jt")};
  // Runs in the same frame the text is added (observer callbacks run before the browser paints),
