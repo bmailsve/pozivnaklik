@@ -412,7 +412,7 @@ export function createApp(cfg) {
 
   /* ---------- guest links: the page with the invitation's own title, picture and colour ---------- */
   // page colour of each premium design, so a guest link opens straight on the invitation's own background
-  const PAGE_BG = { p_gold: "#1C0D10", p_balloon: "#FFF3F0", p_sky: "#060914", p_rip: "#0B0A0A", p_bloom: "#FBF3EE", p_plane: "#E3EEF6", p_letter: "#1B120C", p_disco: "#09090A", premiere: "#0E0B0C", vinyl: "#F1E8D8", p_bow: "#F3EFE7", p_honey: "#FBF4E3" };
+  const PAGE_BG = { e_estate: "#F3EEE1", e_lemon: "#F7F8FA", e_rouge: "#3A0C16", e_peony: "#F8F1EC", e_night: "#0B1024", e_lamb: "#EAF2FA", e_picnic: "#FBF5E6", e_lace: "#4E1420", e_disco: "#0D0D0F", p_gold: "#1C0D10", p_balloon: "#FFF3F0", p_sky: "#060914", p_rip: "#0B0A0A", p_bloom: "#FBF3EE", p_plane: "#E3EEF6", p_letter: "#1B120C", p_disco: "#09090A", premiere: "#0E0B0C", vinyl: "#F1E8D8", p_bow: "#F3EFE7", p_honey: "#FBF4E3" };
   const escAttr = v => String(v ?? "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   // designs whose 3D code (three.js) the guest page should start downloading straight away
   const DESIGN_CODE = { p_sky: "designs/sky.js", p_balloon: "designs/balloons.js", p_gold: "designs/record.js", p_disco: "designs/mirrorball.js" };

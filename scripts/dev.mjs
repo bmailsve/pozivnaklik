@@ -3,7 +3,7 @@
 import { spawn } from "node:child_process";
 
 const run = (args, env = {}) => spawn(process.execPath, args, { stdio: "inherit", env: { ...process.env, ...env } });
-const api = run(["--watch-path=server", "server/node-server.mjs", "--api-only"], { APP_ENV: process.env.APP_ENV || "development" });
+const api = run(["--watch-path=server", "server/node-server.mjs", "--api-only"], { APP_ENV: process.env.APP_ENV || "development", PORT: "8788" }); // a PORT meant for Vite must not move the API
 const vite = run(["node_modules/vite/bin/vite.js"]);
 const stop = () => { api.kill(); vite.kill(); process.exit(); };
 process.on("SIGINT", stop);
