@@ -481,7 +481,7 @@ const BAS={
   ${a?`<div ${Q("jg-sign","age")}><i class="jg-a jg-board"><b>${a}</b></i></div>`:""}
   <p ${Q("jg-k")}>${C("You're invited to a jungle party","Pozivamo te na žurku u džungli")}</p>
   <h2 ${S("jg-n","childName",`font-size:${bsFit(15,108,v("childName"))}cqw`)}>${esc(v("childName"))}</h2>
-  <p ${Q("jg-t")}>${C("birthday","rođendan")}</p>
+  <p ${Q("jg-t","age")}>${a?C(`is turning ${a}`,`slavi ${a}. rođendan`):C("is having a birthday","slavi rođendan")}</p>
   ${dt?`<p ${Q("jg-d","date")}>${esc(dt.wd)}, ${cl==="sr"?`${dt.d}. ${esc(DATES.sr.mon[dt.m-1])} ${dt.y}.`:`${esc(dt.mon)} ${dt.d}, ${dt.y}`}${v("time")?` · <span data-f="time">${esc(v("time"))}${cl==="sr"?"h":""}</span>`:""}</p>`:""}
   ${v("venue")||v("address")?`<p ${Q("jg-v","venue")}>${v("venue")?`<b>${esc(v("venue"))}</b>`:""}${v("address")?`<span data-f="address">${esc(v("address"))}</span>`:""}</p>`:""}
   ${v("message")?`<p ${Q("jg-m","message")}>${br(v("message"))}</p>`:""}

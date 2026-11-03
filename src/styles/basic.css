@@ -228,6 +228,7 @@
 .tid-b_jungle .inv-body.fit>:is(.jg-a,.jg-sign,.jg-fall,.jg-k,.jg-h,.jg-s){zoom:1}
 .tid-b_jungle .ru-spark{background:radial-gradient(circle,#fff 0 20%,rgba(240,190,70,.95) 45%,transparent 70%)!important}
 /* leaves drift down through the clearing */
+.tid-b_jungle .inv-body>:is(.jg-n,.jg-t,.jg-d,.jg-v,.jg-m){position:relative}
 .tid-b_jungle .jg-fall{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .tid-b_jungle .jg-fall i{position:absolute;top:-6cqw;left:var(--l);width:3.4cqw;height:2cqw;border-radius:0 100% 0 100%;background:linear-gradient(135deg,#8DBB5A,#4E8C3F);opacity:0}
 .tid-b_jungle.animate .jg-fall i{animation:jgFall var(--t) linear var(--d) infinite}
