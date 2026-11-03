@@ -493,3 +493,116 @@
 @keyframes zfSpin{0%,74%{transform:none}92%,100%{transform:rotate(360deg)}}
 .zf .vx-by{margin:4px 0 0}
 @media (prefers-reduced-motion:reduce){.zf-card .zf-in,.zf-turn span{animation:none!important}}
+
+/* ---------- Smaragd i zlato: an ivory gatefold on emerald velvet, tied with silk under a gold wax seal ---------- */
+.pq-t-gatefold{--pat:var(--a-smlining);--patsz:360px;--wash:rgba(7,28,21,.88);--pgc:#0F2A22;--on:#EFE6D2}
+.pq-t-gatefold .pq-open{background:radial-gradient(90% 60% at 50% 48%,rgba(10,40,30,0),rgba(3,14,10,.55)),var(--a-smvelvet) center/cover no-repeat,#0F2A22}
+.pq-t-gatefold .pq-open .pq-to{color:#E9DDBF;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.pq-t-gatefold .pq-open .pq-hint{font-family:'Pinyon Script',cursive;font-size:clamp(28px,7.4vw,38px);color:#E8CF8A;text-shadow:0 2px 14px rgba(0,0,0,.75)}
+.pq-gatefold{--ar:.664;perspective:640px;perspective-origin:50% 45%}
+.pq-gatefold .gf-sh{inset:3% 2% -2%;background:rgba(0,0,0,.6);filter:blur(4cqw);transform:translateY(3cqw)}
+.pq-gatefold .gf-card{inset:0;z-index:1;transition:transform 1.4s cubic-bezier(.2,.7,.2,1) 1.6s}
+.pq-gatefold .gf-card .inv-c{width:100%}
+.pq-gatefold .gf-card .inv{box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.pq-gatefold .gf-p{top:0;bottom:0;width:50%;z-index:3;transform-style:preserve-3d;transition:transform 2.3s cubic-bezier(.42,.04,.22,1) .5s}
+.pq-gatefold .gf-p.l{left:0;transform-origin:0 50%}
+.pq-gatefold .gf-p.r{right:0;transform-origin:100% 50%}
+.pq-gatefold .gf-p>i{position:absolute;display:block;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.pq-gatefold :is(.gf-o,.gf-i){inset:0}
+.pq-gatefold .gf-o{background:var(--a-smgate) 0 0/200% 100% no-repeat,#F4EEE2}
+.pq-gatefold .gf-p.l .gf-o{box-shadow:inset -1.2cqw 0 1.6cqw -1cqw rgba(90,70,40,.35)}
+.pq-gatefold .gf-p.r .gf-o{background-position:100% 0;box-shadow:inset 1.2cqw 0 1.6cqw -1cqw rgba(90,70,40,.35)}
+/* the inside of the panels: emerald damask paper framed in gold */
+.pq-gatefold .gf-i{transform:rotateY(180deg);background:linear-gradient(rgba(4,24,17,.42),rgba(4,24,17,.42)),var(--a-smlining) center/34cqw,#0F2A22;outline:.35cqw solid #C9A457;outline-offset:-2.6cqw}
+.pq-gatefold .gf-rib{left:0;right:0;top:calc(50% - 4.6cqw);height:9.2cqw;transform:translateZ(.4px);background:linear-gradient(180deg,#0a3024,#1b5641 26%,#3a8a6b 44%,#1e5c46 58%,#0b3528 86%,#082a1f);box-shadow:inset 0 .55cqw 0 -.2cqw #D4B36A,inset 0 -.55cqw 0 -.2cqw #D4B36A,0 .9cqw 1.4cqw -.6cqw rgba(0,0,0,.55);overflow:hidden}
+.pq-gatefold .gf-rib::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 30%,rgba(255,255,255,.22) 48%,transparent 62%) -100% 0/200% 100% no-repeat;animation:gfSheen 4.8s ease-in-out 1.4s infinite}
+@keyframes gfSheen{0%,55%{background-position:-100% 0}85%,100%{background-position:200% 0}}
+/* the seal sits on the seam: each panel carries one half, so it breaks in two as they open */
+.pq-gatefold .gf-seal{top:calc(50% - 16cqw);width:32cqw;aspect-ratio:1;transform:translateZ(.8px);background:var(--a-smseal) center/contain no-repeat;filter:drop-shadow(0 1.2cqw 1.2cqw rgba(0,0,0,.45))}
+.pq-gatefold .gf-p.l .gf-seal{right:-16cqw;clip-path:inset(-20% 50% -20% -20%)}
+.pq-gatefold .gf-p.r .gf-seal{left:-16cqw;clip-path:inset(-20% -20% -20% 50%)}
+.pq-gatefold .gf-seal b{position:absolute;inset:0;display:grid;grid-auto-flow:column;place-content:center;align-items:center;padding-top:.6cqw;font:600 6.4cqw/1 'Cinzel',serif;letter-spacing:.02em;color:#8C6A2C;text-shadow:0 .18cqw 0 rgba(255,244,214,.75),0 -.12cqw 0 rgba(80,55,15,.55)}
+.pq-gatefold .gf-seal b i{font:400 4.6cqw/1 'Pinyon Script',cursive;margin:0 .3cqw}
+.pq-gatefold:not(.open):hover .gf-seal{scale:1.04;transition:scale .3s}
+.pq-gatefold.open .gf-seal{animation:gfPress .45s ease-out}
+@keyframes gfPress{40%{scale:.93}100%{scale:1}}
+.pq-gatefold.open .gf-p.l{transform:rotateY(-152deg)}
+.pq-gatefold.open .gf-p.r{transform:rotateY(152deg)}
+.pq-gatefold.open .gf-card{transform:scale(1.04)}
+.pq-gatefold .gf-sp{left:50%;top:50%;z-index:4;width:0;height:0}
+.pq-gatefold .gf-sp i{position:absolute;left:-1cqw;top:-1cqw;width:2cqw;height:2cqw;border-radius:50%;background:radial-gradient(circle,#fff 0 18%,rgba(240,210,140,.9) 40%,transparent 70%);opacity:0}
+.pq-gatefold.open .gf-sp i{animation:gfSpark 1.3s cubic-bezier(.2,.7,.3,1) calc(.3s + var(--d)) both}
+@keyframes gfSpark{0%{opacity:0;transform:rotate(var(--a)) translateX(0) scale(.4)}20%{opacity:1}100%{opacity:0;transform:rotate(var(--a)) translateX(var(--r)) scale(1)}}
+@media (prefers-reduced-motion:reduce){.pq-gatefold .gf-rib::after{animation:none}}
+
+/* the page: emerald damask, ivory panels framed in gold, headings in gold foil */
+.pq-card:has(.tid-e_emerald){width:min(88vw,420px,calc(64svh * .664))}
+.pq-d-e_emerald{--acc:#C9A457}
+.pq-d-e_emerald :is(.pq-k,.pq-kk){font-family:'Cinzel',serif;font-weight:400;letter-spacing:.34em;color:#D9BD78}
+.pq-d-e_emerald :is(.pq-h,.pq-sig2){background:linear-gradient(115deg,#a07a34,#e9d08e 30%,#fff2c4 45%,#c39b4b 62%,#e7cd88 82%,#a07a34) 0 0/220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;padding:0 .15em .1em;animation:emFoil 7s ease-in-out infinite alternate}
+.pq-d-e_emerald .pq-orn{color:#C9A457}
+.pq-d-e_emerald .pq-panel{background:linear-gradient(rgba(255,255,255,.35),rgba(255,255,255,0)),#F7F1E6;border-radius:2px;outline:1px solid #C9A457;outline-offset:-9px;box-shadow:0 0 0 1px rgba(201,164,87,.5),0 30px 60px -30px rgba(0,0,0,.75)}
+.pq-d-e_emerald .pq-panel::after{content:"";position:absolute;inset:13px;border:1px solid rgba(201,164,87,.45);pointer-events:none}
+.pq-d-e_emerald :is(.pq-wd,.pq-stop small,.pq-info h3){font-family:'Cinzel',serif;font-weight:400;color:#9A7630}
+.pq-d-e_emerald .pq-date{font-family:'Cinzel',serif;font-weight:400;color:#1E3A2F}
+.pq-d-e_emerald .pq-date span{font-family:'Cinzel',serif;font-weight:400;color:#9A7630}
+.pq-d-e_emerald .pq-stop b{font:500 25px 'Cormorant Garamond',serif;color:#1E3A2F}
+.pq-d-e_emerald .pq-sig{font-size:clamp(38px,10vw,50px);color:#9A7630}
+.pq-d-e_emerald .pq-btn{border-radius:0;background:linear-gradient(115deg,#a8823a,#e6cc88 45%,#b8913f);color:#0F2A22!important;font:600 12px 'Cinzel',serif;letter-spacing:.2em;box-shadow:0 12px 24px -14px rgba(0,0,0,.7)}
+.pq-d-e_emerald .pq-btn.ln{background:transparent;color:#1E3A2F!important;border:1px solid #B8913F}
+.pq-d-e_emerald .pq-plan::before{background:rgba(201,164,87,.45)}
+.pq-d-e_emerald .pq-plan li::before{border-radius:0;transform:rotate(45deg) scale(.8);background:#C9A457;box-shadow:0 0 0 4px rgba(201,164,87,.18)}
+.pq-d-e_emerald .pq-plan b{font:400 17px 'Cinzel',serif;color:#D9BD78}
+.pq-d-e_emerald .pq-plan span{font-family:'Cormorant Garamond',serif;font-size:clamp(19px,4.8vw,22px)}
+.pq-d-e_emerald .pq-count div{border-radius:0;background:#F7F1E6;outline:1px solid #C9A457;outline-offset:-5px}
+.pq-d-e_emerald .pq-count b{font-family:'Cinzel',serif;font-weight:400;color:#1E3A2F}
+.pq-d-e_emerald .pq-count span{color:#9A7630}
+.pq-d-e_emerald .pq-rsvp h2{color:#1E3A2F}
+.pq-d-e_emerald .pq-rsvp :is(input,textarea),.pq-d-e_emerald .pq-rsvp .choice button{border-radius:0}
+.pq-d-e_emerald .pq-rsvp :is(.btn-ink,button[type=submit]){border-radius:0;background:#1E3A2F;color:#F0DFAE;font-family:'Cinzel',serif;letter-spacing:.18em}
+.pq-d-e_emerald .pq-rsvp .choice button.on{background:#1E3A2F!important;border-color:#1E3A2F!important;color:#F0DFAE!important}
+.pq-d-e_emerald .pq-ph{border-radius:2px;box-shadow:0 0 0 6px #F7F1E6,0 0 0 7px #C9A457,0 18px 30px -16px rgba(0,0,0,.5)}
+.pq-d-e_emerald .vx-by a{color:#D9BD78}
+
+/* ---------- Smaragd i zlato card: ivory cotton paper, a formal script and the day in gold foil ---------- */
+.tid-e_emerald.has-art::before{background-size:cover!important}
+.inv.tid-e_emerald .inv-body{padding:17cqw 14cqw 14cqw!important;justify-content:center!important;gap:0!important;background:none!important;color:#1E3A2F}
+.inv.tid-e_emerald .inv-body :is(p,span,b,i,em,h2,small,div){text-shadow:none!important}
+.tid-e_emerald .em-g{background:linear-gradient(115deg,#7d5c22 0%,#c9a457 18%,#f5e4ab 31%,#b48a3a 45%,#e6cb85 60%,#8f6a28 76%,#d7b766 90%,#7d5c22 100%) 0 0/240% 100%;-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;filter:drop-shadow(0 .12cqw .08cqw rgba(70,48,12,.3))}
+.tid-e_emerald .em-k{margin:0 0 3cqw!important;font:400 2.2cqw/1.5 'Cinzel',serif;letter-spacing:.3em!important;text-transform:uppercase;color:#56665a;max-width:58cqw}
+.tid-e_emerald .em-n{display:flex;flex-direction:column;align-items:center;margin:0!important;font-family:'Pinyon Script',cursive;font-weight:400;line-height:1.08!important}
+.tid-e_emerald .em-n span{display:block;padding:0 .2em .08em}
+.tid-e_emerald .em-n em{display:block;font:400 11cqw/.9 'Pinyon Script',cursive;margin:-.6cqw 0 -1.4cqw;padding:0 .25em .12em}
+.tid-e_emerald .em-m{margin-top:2.8cqw!important;font:italic 500 3.5cqw/1.38 'Cormorant Garamond',serif;color:#3D4C42;max-width:56cqw}
+.tid-e_emerald .em-d{display:flex;flex-direction:column;align-items:center;gap:1.4cqw;margin:4.2cqw 0 3.6cqw!important}
+.tid-e_emerald .em-d span{font:400 2.3cqw/1 'Cinzel',serif;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;color:#56665a}
+.tid-e_emerald .em-d b{display:grid;place-items:center;width:15.5cqw;aspect-ratio:1;border-radius:50%;border:.28cqw solid #C9A457;outline:.14cqw solid rgba(201,164,87,.7);outline-offset:.9cqw}
+.tid-e_emerald .em-d b i{font:400 8cqw/1 'Cinzel',serif;font-style:normal;padding:.6cqw .1em 0}
+.tid-e_emerald .em-ev{display:grid;grid-template-columns:1fr 1fr;width:64cqw}
+.tid-e_emerald .em-ev.one{grid-template-columns:1fr;width:44cqw}
+.tid-e_emerald .em-ev>div{display:flex;flex-direction:column;align-items:center;gap:.9cqw;padding:0 2cqw}
+.tid-e_emerald .em-ev>div+div{border-left:.18cqw solid rgba(201,164,87,.75)}
+.tid-e_emerald .em-ev small{font:400 2cqw/1.3 'Cinzel',serif;letter-spacing:.2em;text-transform:uppercase;color:#9A7630}
+.tid-e_emerald .em-ev span{font:600 3.3cqw/1.25 'Cormorant Garamond',serif;color:#1E3A2F}
+.tid-e_emerald .em-a{margin-top:3cqw!important;font:500 2.9cqw/1.35 'Cormorant Garamond',serif;color:#4A5A50;max-width:60cqw}
+.tid-e_emerald .em-s{margin-top:1.4cqw!important;font:italic 500 2.7cqw/1.4 'Cormorant Garamond',serif;color:#6B776D}
+/* tiny glints on the gold foil */
+.tid-e_emerald .em-tw{position:absolute;inset:0;pointer-events:none}
+.tid-e_emerald .em-tw i{position:absolute;width:5cqw;height:5cqw;margin:-2.5cqw;background:radial-gradient(circle,#fff 0 8%,rgba(255,240,200,.75) 22%,transparent 60%);opacity:0}
+.tid-e_emerald .em-tw i::before,.tid-e_emerald .em-tw i::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:.25cqw;margin-left:-.125cqw;background:linear-gradient(transparent,#fff,transparent)}
+.tid-e_emerald .em-tw i::after{transform:rotate(90deg)}
+.tid-e_emerald .em-tw i:nth-child(1){left:50%;top:5.4%}
+.tid-e_emerald .em-tw i:nth-child(2){left:9%;top:6%}
+.tid-e_emerald .em-tw i:nth-child(3){left:92%;top:93%}
+.tid-e_emerald .em-tw i:nth-child(4){left:90%;top:4.5%}
+/* motion: the names are written in gold, the foil keeps catching the light */
+:is(.pq.read .tid-e_emerald,.tid-e_emerald.animate) .em-g{animation:emFoil 7s ease-in-out 1s infinite alternate}
+@keyframes emFoil{from{background-position:100% 0}to{background-position:0 0}}
+:is(.pq.read .tid-e_emerald,.tid-e_emerald.animate) .em-n{-webkit-mask:linear-gradient(100deg,#000 45%,transparent 55%) 100% 0/220% 100% no-repeat;mask:linear-gradient(100deg,#000 45%,transparent 55%) 100% 0/220% 100% no-repeat;animation:emWrite 2.2s cubic-bezier(.45,.05,.55,.95) .5s forwards}
+@keyframes emWrite{to{-webkit-mask-position:0 0;mask-position:0 0}}
+:is(.pq .tid-e_emerald,.tid-e_emerald.animate) .em-tw i{animation:emTw 5.2s ease-in-out infinite}
+.tid-e_emerald .em-tw i:nth-child(2){animation-delay:1.3s!important}
+.tid-e_emerald .em-tw i:nth-child(3){animation-delay:2.6s!important}
+.tid-e_emerald .em-tw i:nth-child(4){animation-delay:3.9s!important}
+@keyframes emTw{0%,70%,100%{opacity:0;transform:scale(.3) rotate(0)}82%{opacity:1;transform:scale(1) rotate(45deg)}}
+@media (prefers-reduced-motion:reduce){.tid-e_emerald *{animation:none!important;-webkit-mask:none!important;mask:none!important}}
