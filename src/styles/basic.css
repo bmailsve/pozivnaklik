@@ -213,11 +213,11 @@
 .tid-b_jungle .jg-ele{--x:var(--a-jgele);right:0;bottom:2cqw;width:36cqw;aspect-ratio:1.04;transform-origin:50% 100%}
 .tid-b_jungle .inv-body>.jg-sign{position:absolute;left:calc(50% - 8.5cqw);top:-1cqw;width:17cqw}
 .tid-b_jungle .jg-board{--x:var(--a-jgsign);position:relative;width:100%;aspect-ratio:.612;transform-origin:50% 0}
-.tid-b_jungle .jg-board b{position:absolute;left:0;right:0;top:45%;bottom:2%;display:grid;place-items:center;font:400 9.4cqw/1 'Lilita One',sans-serif;color:#7A4A1E;text-shadow:0 .25cqw 0 rgba(255,236,200,.8)}
+.tid-b_jungle .jg-board b{position:absolute;left:0;right:0;top:45%;bottom:2%;display:grid;place-items:center;font:600 9.4cqw/1 'Fredoka',sans-serif;color:#7A4A1E;text-shadow:0 .25cqw 0 rgba(255,236,200,.8)}
 .tid-b_jungle .inv-body>:is(.jg-k,.jg-h,.jg-s){position:absolute;margin:0!important;text-align:center!important;text-align-last:center!important}
 .tid-b_jungle .jg-k{left:24cqw;right:22cqw;top:27.5cqw;font:600 2.7cqw/1.25 'Cormorant Garamond',serif;letter-spacing:.16em!important;text-transform:uppercase;color:#C8611A}
-.tid-b_jungle .jg-n{margin:0!important;font-family:'Lilita One',sans-serif!important;line-height:1.05!important;color:#2F7A44;text-shadow:0 .5cqw 0 #FFFBEA,0 1cqw 1.4cqw rgba(60,110,60,.25)!important}
-.tid-b_jungle .jg-t{margin-top:.6cqw!important;font:400 6.2cqw/1.1 'Lilita One',sans-serif;color:#E07B2C}
+.tid-b_jungle .jg-n{margin:0!important;font-family:'Fredoka',sans-serif!important;font-weight:600!important;line-height:1.05!important;color:#2F7A44;text-shadow:0 .5cqw 0 #FFFBEA,0 1cqw 1.4cqw rgba(60,110,60,.25)!important}
+.tid-b_jungle .jg-t{margin-top:.6cqw!important;font:500 6cqw/1.1 'Fredoka',sans-serif;color:#E07B2C}
 .tid-b_jungle .jg-d{margin-top:3.8cqw!important;font:600 4.1cqw/1.25 'Cormorant Garamond',serif;font-variant-numeric:lining-nums;color:#2F4A2F}
 .tid-b_jungle .jg-v{margin-top:3.2cqw!important;font:600 3.6cqw/1.25 'Cormorant Garamond',serif;font-variant-numeric:lining-nums;color:#4A6348}
 .tid-b_jungle .jg-v b{display:block;font:600 5cqw/1.15 'Cormorant Garamond',serif;color:#2F7A44}
