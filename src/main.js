@@ -1,4 +1,5 @@
 "use strict";
+import { PageFlip } from "page-flip";
 /* ---------- utils ---------- */
 const $=(s,el=document)=>el.querySelector(s), $$=(s,el=document)=>[...el.querySelectorAll(s)];
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -1743,67 +1744,99 @@ function bindDino(root,t,d,o={}){
  if(o.opened){done=true;root.dataset.crack=3;root.classList.add("hatched");show()}
 }
 
-/* ---------- Bila jednom: a storybook whose pages turn like paper ---------- */
+/* ---------- Bila jednom: a royal storybook whose pages bend and turn like real paper ---------- */
+// a gold corner flourish for the page frames (turned for each corner)
+const TL_CRN=`<svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true"><path d="M3 57V14Q3 3 14 3H57"/><path d="M9 57V18Q9 9 18 9H57" stroke-width=".7"/><path d="M14 22c0-6 4-8 8-8M22 14c-1 5 1 8 5 8 3 0 4-3 2-5"/><circle cx="15" cy="15" r="2.2" fill="currentColor"/><path d="M27 6c5 3 9 3 14 0M6 27c3 5 3 9 0 14" stroke-width=".8"/></svg>`;
+const TL_CREST=`<svg viewBox="0 0 80 64" aria-hidden="true"><path d="M14 50 8 18l16 13L40 6l16 25 16-13-6 32z" fill="url(#tlg)" stroke="#7A5420" stroke-width="1.3" stroke-linejoin="round"/><rect x="13" y="49" width="54" height="7" rx="2" fill="url(#tlg)" stroke="#7A5420" stroke-width="1.2"/><circle cx="40" cy="22" r="3.4" fill="#8E2233"/><circle cx="24" cy="34" r="2.6" fill="#8E2233"/><circle cx="56" cy="34" r="2.6" fill="#8E2233"/><circle cx="40" cy="52.5" r="2" fill="#F4E6C4"/><defs><linearGradient id="tlg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F6E3A6"/><stop offset=".45" stop-color="#C9993F"/><stop offset=".7" stop-color="#8F6527"/><stop offset="1" stop-color="#E6C47A"/></linearGradient></defs></svg>`;
 function taleHTML(t,d,o={}){
  const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const v=k=>(d[k]??"").toString().trim();
- const dt=pd(v("date"),cl),rsH=pd(v("rsvpBy"),cl),bd=pd(v("birthDate"),cl);const nm=esc(v("childName"));const age=parseInt(v("age"))||1;
+ const dt=pd(v("date"),cl),rsH=pd(v("rsvpBy"),cl),bd=pd(v("birthDate"),cl);const nm=esc(v("childName"));
  const g=o.guest;const who=g&&g.source==="personal"?esc(g.name):"";
  const place=[v("venue"),v("address")].filter(Boolean).join(", ");const w=eventWhen(d,dt);
  const gcal=calLink(titleOf(t,d),w,place),maps=place?`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`:"";
  const img=k=>{const u=v(k);return PHOTO_RE.test(u)?u:""};
  const day=x=>cl==="sr"?`${x.d}. ${DATES.sr.monG[x.m-1]} ${x.y}.`:`${DATES.en.mon[x.m-1]} ${x.d}, ${x.y}`;
  const art=(k,c="")=>`<span class="tl-art ${c}" style="--i:var(--a-tl${k})" aria-hidden="true"></span>`;
- const crown=`<svg class="tl-crown" viewBox="0 0 64 40" aria-hidden="true"><path d="M6 34 2 10l16 12L32 2l14 20 16-12-4 24z" fill="#E2C27E" stroke="#A97C3A" stroke-width="1.4" stroke-linejoin="round"/><rect x="6" y="33" width="52" height="5" rx="1.5" fill="#D2AE68" stroke="#A97C3A" stroke-width="1.2"/><circle cx="32" cy="16" r="3" fill="#F3C9CF"/><circle cx="18" cy="24" r="2.2" fill="#F3C9CF"/><circle cx="46" cy="24" r="2.2" fill="#F3C9CF"/></svg>`;
+ const frame=`<span class="tl-fr" aria-hidden="true">${[0,1,2,3].map(i=>`<i class="c${i}">${TL_CRN}</i>`).join("")}</span>`;
  const ch=[1,2,3,4].map(i=>({y:v(`story${i}Year`),t:v(`story${i}Title`),x:v(`story${i}Text`),p:img(`photo${i}`),a:["smile","berry","steps","balloon"][i-1]})).filter(s=>s.t||s.x);
  const stats=[v("birthWeight"),v("birthLength")].filter(Boolean).join(" · ");
- // the right-hand pages, in reading order
- const pages=[`<div class="tl-f cover"><div class="tl-cvi">${crown}<p class="tl-ct tl-gold">${C("Once upon a time","Bila jednom")}</p><p class="tl-cs">${C("there was a little princess","jedna mala princeza")}</p>${nm?`<p class="tl-cn tl-gold">${nm}</p>`:""}<p class="tl-cb">${C("A storybook of the first year","Bajka o prvoj godini")}</p></div></div>`];
- const pg=(h,c="")=>`<div class="tl-f"><span class="tl-fr"></span><div class="tl-pg ${c}">${h}</div><span class="tl-no">${pages.length}</span></div>`;
- pages.push(pg(`${art("crib")}<p class="tl-lab">${C("Once upon a time","Bila jednom")}</p><p class="tl-tx tl-dc">${C(`In a kingdom full of love there lived a little princess called <b>${nm}</b>.`,`U jednom kraljevstvu punom ljubavi živela je mala princeza po imenu <b>${nm}</b>.`)}</p>${bd||stats?`<div class="tl-born">${bd?`<small>${C("Born","Rođena")}</small><b>${day(bd)}${v("birthTime")?` · ${esc(v("birthTime"))}`:""}</b>`:""}${stats?`<b>${esc(stats)}</b>`:""}</div>`:""}`));
- ch.forEach(s=>pages.push(pg(`${s.y?`<p class="tl-lab">${esc(s.y)}</p>`:""}${s.p?`<figure class="tl-ph"><img src="${esc(s.p)}" alt=""></figure>`:art(s.a)}${s.t?`<h3 class="tl-h">${esc(s.t)}</h3>`:""}${s.x?`<p class="tl-tx">${esc(s.x)}</p>`:""}`)));
- pages.push(pg(`${art("castle","sm")}<p class="tl-lab">${C("The big day","Veliki dan")}</p>${v("message")?`<p class="tl-tx">${br(v("message"))}</p>`:""}${dt?`<div class="tl-when"><small>${esc(dt.wd)}</small><b>${day(dt)}</b>${v("time")?`<span>${C("at","u")} ${esc(v("time"))}${cl==="sr"?" h":""}</span>`:""}</div>`:""}${v("venue")||v("address")?`<p class="tl-where">${esc(v("venue"))}${v("address")?`<small>${esc(v("address"))}</small>`:""}</p>`:""}<div class="tl-acts">${gcal?`<a class="tl-btn" href="${gcal}" target="_blank" rel="noopener">${C("Add to calendar","Dodajte u kalendar")}</a>`:""}${maps?`<a class="tl-btn ghost" href="${maps}" target="_blank" rel="noopener">${C("Map","Mapa")}</a>`:""}</div>`));
- if(w&&w>Date.now())pages.push(pg(`${art("cake")}<p class="tl-lab">${C("Until the ball","Do bala je ostalo")}</p><div class="tl-count" data-w="${w.getTime()}"></div><p class="tl-tx">${C("Every good fairy tale has a cake, and this one has you too!","Svaka dobra bajka ima tortu, a ova ima i vas!")}</p>`));
- pages.push(pg(`${art("friends","wide")}${o.preview?`<div class="rsvp tl-rsvp"><p class="kicker">${C("RSVP","Potvrda dolaska")}</p><h2>${C("Will you come to the ball?","Da li dolazite na bal?")}</h2>${rsH?`<p class="sub">${C(`Please reply by ${rsH.short}`,`Molimo odgovorite do ${rsH.short}`)}</p>`:""}<p class="note-box" style="text-align:center">${L("This is a preview. Your guests will see the reply form here.","Ovo je pregled. Ovde će vaši gosti videti formular za odgovor.")}</p></div>`:`<div class="rsvp tl-rsvp" id="rsvp"></div>`}`,"rs"));
- pages.push(pg(`${art("moon")}<p class="tl-tx">${C("…and they lived happily ever after, and the most beautiful pages of this story are still to be written.","…i živeli su srećno i veselo, a najlepše stranice ove bajke tek će biti napisane.")}</p><p class="tl-end tl-gold">${C("The End","Kraj")}</p>${v("hosts")?`<p class="tl-sig">${esc(v("hosts"))}</p>`:""}${o.preview?"":`<p class="tl-by">${L("Sent with","Poslato preko")} <a href="${API.kind==="local"?"#":"/"}">Poziv na klik</a></p>`}`));
- const N=pages.length;
- // the back of each page is the left-hand page of the next spread (seen on wide screens)
- const Q=[C("Every fairy tale begins with a smile.","Svaka bajka počinje jednim osmehom."),C("Little things make the greatest wonders.","Male stvari čine najveća čuda."),C("Step by step, all the way to the stars.","Korak po korak, sve do zvezda."),C("Love is the strongest magic.","Ljubav je najjača čarolija."),C("The loveliest stories are written together.","Najlepše bajke pišu se zajedno."),C("Make a wish and blow out the candle.","Zamisli želju i duni u svećicu."),C("There is room for everyone at this ball.","Na ovom balu ima mesta za sve."),C("Good night, little princess.","Laku noć, mala princezo.")];
- const back=i=>i===0?`<div class="tl-b endp"><div class="tl-plate"><small>${C("This book belongs to","Ova knjiga pripada")}</small><b>${nm||"♥"}</b></div></div>`:i===N-1?`<div class="tl-b bcov"></div>`:`<div class="tl-b"><span class="tl-fr"></span><div class="tl-q">${TL_ORN}<p>${Q[(i-1)%Q.length]}</p>${TL_ORN}</div></div>`;
- const sp=Array.from({length:16},(_,i)=>`<i style="left:${(i*6.3+4)%96}%;top:${(i*37+11)%92}%;--s:${8+(i*5)%10}px;--t:${(2.4+(i%5)*.5).toFixed(1)}s;--d:${(-(i*.7)%3).toFixed(1)}s"></i>`).join("");
+ // every side of every leaf, in reading order; "land" pages are the left-hand pages of a two-page spread
+ const P=[];let no=0;
+ const page=(id,h,c="")=>{no++;P.push(`<div class="tl-p tl-pp" data-id="${id}">${frame}<div class="tl-pg ${c}">${h}</div><span class="tl-no">${no}</span></div>`)};
+ const verse=(i,h)=>P.push(`<div class="tl-p tl-pp tl-vs" data-id="v${i}" data-land="1">${frame}<div class="tl-q">${TL_ORN}${h}${TL_ORN}</div></div>`);
+ const Q=[C("In a faraway kingdom, where roses bloom all year round…","U jednom dalekom kraljevstvu, gde ruže cvetaju cele godine…"),C("Every fairy tale begins with a smile.","Svaka bajka počinje jednim osmehom."),C("Little things make the greatest wonders.","Male stvari čine najveća čuda."),C("Step by step, all the way to the stars.","Korak po korak, sve do zvezda."),C("Love is the strongest magic.","Ljubav je najjača čarolija."),C("And so the kingdom made ready for a ball…","I tako se kraljevstvo spremilo za bal…"),C("Make a wish and blow out the candle.","Zamisli želju i duni u svećicu."),C("There is a seat for you at this ball.","Na ovom balu čeka i vaše mesto."),C("Good night, little princess.","Laku noć, mala princezo.")];
+ let vi=0;const nextVerse=()=>verse(vi,`<p>${Q[vi++%Q.length]}</p>`);
+ P.push(`<div class="tl-p tl-cov" data-id="cover" data-density="hard"><div class="tl-cvi">${TL_CREST}<p class="tl-ct tl-gold">${C("Once upon a time","Bila jednom")}</p><span class="tl-cl" aria-hidden="true">${TL_ORN}</span><p class="tl-cs">${C("there was a little princess","jedna mala princeza")}</p>${nm?`<p class="tl-cn tl-gold">${nm}</p>`:""}<p class="tl-cb">${C("A royal tale of the first year","Kraljevska bajka o prvoj godini")}</p></div></div>`);
+ P.push(`<div class="tl-p tl-endp" data-id="endp"><div class="tl-plate"><small>${C("This book belongs to","Ova knjiga pripada")}</small><b>${nm||"♥"}</b><span aria-hidden="true">${TL_ORN}</span></div></div>`);
+ page("born",`${art("crib")}<p class="tl-lab">${C("Once upon a time","Bila jednom")}</p><p class="tl-tx tl-dc">${C(`In a kingdom full of love there lived a little princess called <b>${nm}</b>.`,`U jednom kraljevstvu punom ljubavi živela je mala princeza po imenu <b>${nm}</b>.`)}</p>${bd||stats?`<div class="tl-born">${bd?`<small>${C("Born","Rođena")}</small><b>${day(bd)}${v("birthTime")?` · ${esc(v("birthTime"))}`:""}</b>`:""}${stats?`<b>${esc(stats)}</b>`:""}</div>`:""}`);
+ ch.forEach((s,i)=>{nextVerse();page("ch"+i,`${s.y?`<p class="tl-lab">${esc(s.y)}</p>`:""}${s.p?`<figure class="tl-ph"><img src="${esc(s.p)}" alt=""></figure>`:art(s.a)}${s.t?`<h3 class="tl-h">${esc(s.t)}</h3>`:""}${s.x?`<p class="tl-tx">${esc(s.x)}</p>`:""}`)});
+ nextVerse();page("ball",`${art("castle","sm")}<p class="tl-lab">${C("The royal ball","Kraljevski bal")}</p>${v("message")?`<p class="tl-tx">${br(v("message"))}</p>`:""}${dt?`<div class="tl-when"><small>${esc(dt.wd)}</small><b>${day(dt)}</b>${v("time")?`<span>${C("at","u")} ${esc(v("time"))}${cl==="sr"?" h":""}</span>`:""}</div>`:""}${v("venue")||v("address")?`<p class="tl-where">${esc(v("venue"))}${v("address")?`<small>${esc(v("address"))}</small>`:""}</p>`:""}<div class="tl-acts">${gcal?`<a class="tl-btn" href="${gcal}" target="_blank" rel="noopener">${C("Add to calendar","Dodajte u kalendar")}</a>`:""}${maps?`<a class="tl-btn ghost" href="${maps}" target="_blank" rel="noopener">${C("Map","Mapa")}</a>`:""}</div>`);
+ if(w&&w>Date.now()){nextVerse();page("count",`${art("cake")}<p class="tl-lab">${C("Until the ball","Do bala je ostalo")}</p><div class="tl-count" data-w="${w.getTime()}"></div><p class="tl-tx">${C("Every good fairy tale has a cake, and this one has you too!","Svaka dobra bajka ima tortu, a ova ima i vas!")}</p>`)}
+ nextVerse();page("rsvp",`${art("friends","wide")}${o.preview?`<div class="rsvp tl-rsvp"><p class="kicker">${C("RSVP","Potvrda dolaska")}</p><h2>${C("Will you come to the ball?","Da li dolazite na bal?")}</h2>${rsH?`<p class="sub">${C(`Please reply by ${rsH.short}`,`Molimo odgovorite do ${rsH.short}`)}</p>`:""}<p class="note-box" style="text-align:center">${L("This is a preview. Your guests will see the reply form here.","Ovo je pregled. Ovde će vaši gosti videti formular za odgovor.")}</p></div>`:`<div class="rsvp tl-rsvp" id="rsvp"></div>`}`,"rs");
+ nextVerse();page("end",`${art("moon")}<p class="tl-tx">${C("…and they lived happily ever after, and the most beautiful pages of this story are still to be written.","…i živeli su srećno i veselo, a najlepše stranice ove bajke tek će biti napisane.")}</p><p class="tl-end tl-gold">${C("The End","Kraj")}</p>${v("hosts")?`<p class="tl-sig">${esc(v("hosts"))}</p>`:""}${o.preview?"":`<p class="tl-by">${L("Sent with","Poslato preko")} <a href="${API.kind==="local"?"#":"/"}">Poziv na klik</a></p>`}`);
+ P.push(`<div class="tl-p tl-back" data-id="back" data-density="hard"><div class="tl-cvi">${TL_CREST}</div></div>`);
+ const sp=Array.from({length:18},(_,i)=>`<i style="left:${(i*6.3+4)%96}%;top:${(i*37+11)%92}%;--s:${6+(i*5)%9}px;--t:${(2.6+(i%5)*.6).toFixed(1)}s;--d:${(-(i*.7)%3).toFixed(1)}s"></i>`).join("");
  return`<div class="tl${o.preview?" pv":""}" lang="${cl==="sr"?"sr-Latn":"en"}">
  <div class="tl-sp" aria-hidden="true">${sp}</div>
  ${o.preview?"":`<div class="vx-top">${langSwitch()}</div>`}
- <p class="tl-hi">${who?`${C("For","Za")} ${who}`:C("A fairy tale has arrived for you","Stigla vam je jedna bajka")}</p>
- <div class="tl-book" role="group" aria-roledescription="${C("book","knjiga")}" aria-label="${esc(titleOf(t,d))}"><span class="tl-mark" aria-hidden="true"></span><div class="tl-leaves">${pages.map((p,i)=>`<div class="tl-leaf" style="--z:${N-i};--k:${i}">${p}${back(i)}</div>`).join("")}</div></div>
+ <p class="tl-hi">${who?`${C("For","Za")} ${who}`:C("A royal fairy tale has arrived for you","Stigla vam je kraljevska bajka")}</p>
+ <div class="tl-book" role="group" aria-roledescription="${C("book","knjiga")}" aria-label="${esc(titleOf(t,d))}"></div>
+ <div class="tl-park" hidden>${P.join("")}</div>
  <div class="tl-nav"><button class="tl-prev" type="button" aria-label="${C("Previous page","Prethodna strana")}">‹</button><span class="tl-pgn" aria-live="polite"></span><button class="tl-next" type="button" aria-label="${C("Next page","Sledeća strana")}">›</button></div>
  <p class="tl-tip">${C("Tap the book to open it","Dodirnite knjigu da je otvorite")}</p>
  <button class="vx-music tl-music" type="button" aria-pressed="false"><span class="d" aria-hidden="true"></span><span>${C("Music","Muzika")}</span></button>
 </div>`;
 }
+// a soft rustle of paper, made on the fly
+let TL_IMGS=[];let TL_AC=null,TL_RB=[];
+// the sound is prepared ahead of time; a page turn only has to press play
+function tlSoundPrep(){try{TL_AC=TL_AC||new(window.AudioContext||window.webkitAudioContext)();const ac=TL_AC;if(TL_RB.length)return;for(let k=0;k<3;k++){const n=Math.floor(ac.sampleRate*.55),b=ac.createBuffer(1,n,ac.sampleRate),c=b.getChannelData(0);for(let i=0;i<n;i++){const x=i/n;c[i]=(Math.random()*2-1)*Math.pow(1-x,1.6)*(.35+.65*Math.sin(x*Math.PI))*(.6+.4*Math.random())}TL_RB.push(b)}}catch(e){}}
+function tlRustle(){try{if(!TL_AC||!TL_RB.length)return;const ac=TL_AC,s=ac.createBufferSource();s.buffer=TL_RB[Math.floor(Math.random()*TL_RB.length)];const f=ac.createBiquadFilter();f.type="bandpass";f.frequency.value=2200+Math.random()*900;f.Q.value=.6;const gn=ac.createGain();gn.gain.value=.16;s.connect(f).connect(gn).connect(ac.destination);s.start()}catch(e){}}
 function bindTale(root,t,d,o={}){
  const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
- const book=$(".tl-book",root),leaves=$$(".tl-leaf",root),N=leaves.length,tip=$(".tl-tip",root),pgn=$(".tl-pgn",root),mus=$(".tl-music",root);let cur=0;
+ const holder=$(".tl-book",root),park=$(".tl-park",root),all=$$(".tl-p",park),tip=$(".tl-tip",root),pgn=$(".tl-pgn",root),mus=$(".tl-music",root);
+ let pf=null,list=[],cur=0,wide=null,pw=0,lastR=0;
  const setPlay=on=>{root.classList.toggle("playing",on);mus.setAttribute("aria-pressed",on)};
- const play=()=>{try{DiscoBeat.stop()}catch(e){}MBox.use(VX_BARS,.24);MBox.start();setPlay(true)};
+ const play=()=>{try{DiscoBeat.stop()}catch(e){}MBox.use(VX_BARS,.22);MBox.start();setPlay(true)};
  mus.addEventListener("click",()=>{if(root.classList.contains("playing")){MBox.stop();setPlay(false)}else play()});
- function paint(){leaves.forEach((l,i)=>{l.classList.toggle("turned",i<cur);l.classList.toggle("cur",i===cur)});root.classList.toggle("open",cur>0);pgn.textContent=cur?`${cur} / ${N-1}`:"";$(".tl-prev",root).disabled=cur<=0;$(".tl-next",root).disabled=cur>=N-1;
-  leaves.forEach((l,i)=>l.querySelectorAll("a,button,input,textarea,select").forEach(x=>x.tabIndex=i===cur?0:-1))}
- function go(dir){const n=Math.max(0,Math.min(N-1,cur+dir));if(n===cur)return;
-  if(!root.classList.contains("on")){root.classList.add("on");o.onOpen&&o.onOpen();if(!o.opened)play();tip.textContent=C("Swipe, or tap the edge of the page to turn it","Prevucite ili dodirnite ivicu stranice da je okrenete")}
-  cur=n;paint();count()}
- // the right side of the book turns forward, the left side goes back; links, buttons and the form stay usable
- let sx=null,swiped=false;
- book.addEventListener("pointerdown",e=>{sx=e.clientX;swiped=false});
- book.addEventListener("pointerup",e=>{if(sx==null)return;const dx=e.clientX-sx;sx=null;if(Math.abs(dx)>45&&!e.target.closest("input,textarea")){swiped=true;go(dx<0?1:-1)}});
- book.addEventListener("click",e=>{if(swiped){swiped=false;return}if(e.target.closest("a,button,input,textarea,select,label,.rsvp"))return;if(!cur)return go(1);
-  const r=book.getBoundingClientRect(),wide=matchMedia("(min-width:900px)").matches;go(e.clientX<r.left+r.width*(wide?.5:.3)?-1:1)});
- $(".tl-prev",root).addEventListener("click",()=>go(-1));$(".tl-next",root).addEventListener("click",()=>go(1));
- const key=e=>{if(!root.isConnected){document.removeEventListener("keydown",key);return}if(e.target.closest&&e.target.closest("input,textarea"))return;if(e.key==="ArrowRight")go(1);if(e.key==="ArrowLeft")go(-1)};
- document.addEventListener("keydown",key);
+ // the reply form and the buttons on a page must not start a page turn
+ $$(".rsvp,.tl-acts",park).forEach(el=>["mousedown","touchstart"].forEach(ev=>el.addEventListener(ev,e=>e.stopPropagation())));
+ const measure=()=>{const W=root.clientWidth||innerWidth,H=innerHeight,wd=W>=900;const p=Math.floor(wd?Math.min(W*.42,H*.74*.7,520):Math.min(W*.9,H*.68*.7,460));return{wd,p}};
+ // the music and the paper sound start once the cover has finished opening, so the opening stays smooth
+ function opened(){if(root.classList.contains("on"))return;root.classList.add("on");o.onOpen&&o.onOpen();setTimeout(()=>{if(!root.isConnected)return;tlSoundPrep();if(!o.opened)play()},RM?50:1300);tip.textContent=C("Drag a corner or tap the edge of the page to turn it","Povucite ugao ili dodirnite ivicu stranice da je okrenete")}
+ function at(i){cur=i;const last=list.length-1;root.classList.toggle("atcov",i===0);root.classList.toggle("atend",i>=last);
+  [i-1,i,i+1].forEach(k=>list[k]&&list[k].classList.add("seen"));
+  const nos=[list[i],wide?list[i+1]:null,wide?list[i-1]:null].map(p=>p&&p.querySelector(".tl-no")).filter(Boolean).map(x=>+x.textContent);
+  pgn.textContent=nos.length?Math.max(...nos):"";$(".tl-prev",root).disabled=i<=0;$(".tl-next",root).disabled=i>=last;count()}
+ function build(keepId){
+  const m=measure();wide=m.wd;pw=m.p;const ph=Math.round(pw/.7);
+  if(pf){all.forEach(p=>park.appendChild(p));try{pf.destroy()}catch(e){}pf=null}
+  holder.innerHTML="";list=all.filter(p=>wide||!p.dataset.land);
+  list.forEach((p,i)=>{p.classList.toggle("lf",wide&&i%2===1);p.classList.toggle("rt",!wide||i%2===0)});
+  holder.style.width=(wide?2*pw:pw)+"px";holder.style.setProperty("--pw",pw+"px");
+  const blk=document.createElement("div");blk.className="tl-blk";holder.appendChild(blk);
+  const start=keepId?Math.max(0,list.findIndex(p=>p.dataset.id===keepId)):0;
+  pf=new PageFlip(blk,{width:pw,height:ph,size:"fixed",autoSize:true,usePortrait:!wide,showCover:true,maxShadowOpacity:.6,flippingTime:RM?250:1150,startPage:start,mobileScrollSupport:true,swipeDistance:26,showPageCorners:true});
+  pf.loadFromHTML(list);
+  pf.on("flip",e=>at(e.data));
+  pf.on("changeState",e=>{if(e.data==="flipping"||e.data==="user_fold"){opened();const n=Date.now();if(n-lastR>650&&root.classList.contains("playing")){lastR=n;tlRustle()}}});
+  at(start);
+ }
+ $(".tl-prev",root).addEventListener("click",()=>pf&&pf.flipPrev("bottom"));
+ $(".tl-next",root).addEventListener("click",()=>{if(!pf)return;opened();pf.flipNext("bottom")});
+ const key=e=>{if(!root.isConnected)return;if(e.target.closest&&e.target.closest("input,textarea"))return;if(e.key==="ArrowRight"){opened();pf.flipNext("bottom")}if(e.key==="ArrowLeft")pf.flipPrev("bottom")};
+ let rt=0;const rs=()=>{clearTimeout(rt);rt=setTimeout(()=>{if(!root.isConnected)return;const m=measure();if(m.wd!==wide||Math.abs(m.p-pw)>24)build(list[cur]&&list[cur].dataset.id)},250)};
+ document.addEventListener("keydown",key);addEventListener("resize",rs);
+ const obs=new MutationObserver(()=>{if(!root.isConnected){document.removeEventListener("keydown",key);removeEventListener("resize",rs);try{pf&&pf.destroy()}catch(e){}obs.disconnect()}});obs.observe(document.body,{childList:true,subtree:true});
  let ticking=false;function count(){const el=$(".tl-count",root);if(!el||ticking)return;ticking=true;const w=+el.dataset.w;const tick=()=>{if(!el.isConnected)return;const ms=w-Date.now();if(ms<=0){el.innerHTML="";return}const a=[[Math.floor(ms/864e5),C("Days","Dana")],[Math.floor(ms/36e5)%24,C("Hours","Sati")],[Math.floor(ms/6e4)%60,C("Min","Min")],[Math.floor(ms/1e3)%60,C("Sec","Sek")]];el.innerHTML=a.map(([n,l])=>`<div><b>${String(n).padStart(2,"0")}</b><span>${l}</span></div>`).join("");setTimeout(tick,1000)};tick()}
- if(RM)leaves.forEach(l=>l.style.transition="none");
- if(o.opened){root.classList.add("on");cur=1;tip.textContent=C("Swipe, or tap the edge of the page to turn it","Prevucite ili dodirnite ivicu stranice da je okrenete");count()}
- paint();
+ // decode every picture up front, so the first turn onto a new page never stutters
+ const cs=getComputedStyle(document.documentElement);TL_IMGS=["tlparch","tlleather","tlmarble","tllib","tlcrib","tlsmile","tlberry","tlsteps","tlballoon","tlcastle","tlcake","tlfriends","tlmoon"].map(k=>{const m=/url\(["']?([^"')]+)/.exec(cs.getPropertyValue("--a-"+k));if(!m)return null;const im=new Image();im.src=m[1];im.decode&&im.decode().catch(()=>{});return im}).concat($$("img",park).map(x=>{x.decode&&x.decode().catch(()=>{});return x}));
+ // and load every font the book uses before the first page is turned
+ if(document.fonts)["400 20px 'Cinzel Decorative'","700 20px 'Cinzel Decorative'","600 20px 'Cinzel'","400 20px 'Pinyon Script'","italic 500 20px 'Cormorant Garamond'","500 20px 'Cormorant Garamond'","600 20px 'Cormorant Garamond'","700 20px 'Cormorant Garamond'"].forEach(f=>document.fonts.load(f,"Ačćđšž").catch(()=>{}));
+ // pages are laid out once while hidden, so showing one for the first time costs nothing
+ const warm=()=>{const m=measure();park.hidden=false;park.style.cssText=`position:fixed;left:0;top:0;width:${m.p}px;visibility:hidden;pointer-events:none;z-index:-1`;all.forEach(p=>{p.style.width=m.p+"px";p.style.height=Math.round(m.p/.7)+"px";p.style.position="relative";p.style.display="block"});void park.offsetHeight;all.forEach(p=>{p.style.width=p.style.height=p.style.position=p.style.display=""});park.hidden=true;park.style.cssText=""};
+ // build once the page has its final size
+ requestAnimationFrame(()=>{warm();build(o.opened?"born":null);if(o.opened){root.classList.add("on");tip.textContent=C("Drag a corner or tap the edge of the page to turn it","Povucite ugao ili dodirnite ivicu stranice da je okrenete")}});
 }
 
 /* ---------- Rođendanske novine: a newspaper that spins in like an old film headline ---------- */

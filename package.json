@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@netlify/blobs": "^8.2.0",
+    "page-flip": "^2.0.7",
     "pg": "^8.23.1",
     "three": "^0.186.1"
   },

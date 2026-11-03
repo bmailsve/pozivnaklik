@@ -1,147 +1,140 @@
-/* Bila jednom · premium first birthday told as a storybook: the book opens and every page turns like paper */
-.tl{--pw:min(86vw,calc(68svh * .7),460px);--ph:calc(var(--pw) / .7);--gold:#B88A4A;--rose:#B5707A;--ink:#5B4636;position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:70px 0 26px;box-sizing:border-box;overflow:hidden;color:var(--ink);font-family:'Cormorant Garamond',serif;background:radial-gradient(120% 90% at 50% 40%,rgba(251,244,238,.6),rgba(240,222,214,.95)),var(--a-tlend) 0 0/340px repeat,#F7EDE8}
+/* Bila jednom · premium first birthday told as a royal storybook: a leather-bound book whose paper pages bend and turn */
+.tl{--tl-bg:var(--a-tllib);--tl-leather:var(--a-tlleather);--tl-marble:var(--a-tlmarble);--gold:#B58A3E;--gold2:#E7CB86;--wine:#7C1E2D;--ink:#3E2B1E;--rose:#8E3346;position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:66px 0 24px;box-sizing:border-box;overflow:hidden;color:var(--ink);font-family:'Cormorant Garamond',serif;
+ background:radial-gradient(60% 46% at 50% 44%,rgba(255,196,120,.22),transparent 70%),radial-gradient(130% 100% at 50% 40%,transparent 40%,rgba(0,0,0,.75)),var(--tl-bg,none) center/cover no-repeat,repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px),#2A0E14}
 .view:has(> .tl){transform:none!important;animation:none!important;opacity:1!important}
 .tl .vx-top{position:absolute;top:12px;right:12px;z-index:61}
 .tl.pv{min-height:100svh}
-@media (min-width:900px){.tl{--pw:min(40vw,calc(72svh * .7),500px)}}
-.tl-hi{margin:0;font:600 12px 'Cormorant Garamond',serif;letter-spacing:.3em;text-transform:uppercase;color:#8a6d55;text-align:center;padding:0 16px;transition:opacity .5s ease;margin-bottom:14px}
+.tl-hi{margin:0 0 6px;font:600 12px 'Cinzel',serif;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);text-align:center;padding:0 16px;text-shadow:0 2px 8px rgba(0,0,0,.7);transition:opacity .5s ease}
 .tl.on .tl-hi{opacity:0}
 .tl-sp{position:absolute;inset:0;pointer-events:none}
-.tl-sp i{position:absolute;width:var(--s);aspect-ratio:1;background:radial-gradient(circle,#fff6dc 0 18%,rgba(226,190,120,.6) 32%,transparent 70%);animation:twk var(--t) ease-in-out var(--d) infinite}
+.tl-sp i{position:absolute;width:var(--s);aspect-ratio:1;background:radial-gradient(circle,#fff3cf 0 18%,rgba(230,190,110,.55) 34%,transparent 70%);animation:twk var(--t) ease-in-out var(--d) infinite}
 
 /* ---------- the book ---------- */
-.tl-book{position:relative;width:var(--pw);height:var(--ph);perspective:2400px;translate:var(--sx,0) 0;rotate:var(--rot,0deg);transition:translate .9s cubic-bezier(.4,0,.2,1),rotate .9s cubic-bezier(.4,0,.2,1);touch-action:pan-y;-webkit-tap-highlight-color:transparent;cursor:pointer}
-.tl:not(.on) .tl-book{--rot:-3deg;animation:tlIdle 4.6s ease-in-out infinite alternate}
-@media (min-width:900px){
- .tl-book{width:calc(var(--pw) * 2)}
- .tl-leaves,.tl-book::before{left:50%!important}
- .tl:not(.open) .tl-book{--sx:calc(var(--pw) * -.5)}
- .tl.open .tl-book::after{opacity:1}
-}
-@keyframes tlIdle{to{translate:var(--sx,0) -8px}}
-/* the stacked page edges under the open page, and the pages already read on the left */
-.tl-book::before,.tl-book::after{content:"";position:absolute;top:0;bottom:0;left:0;width:var(--pw);border-radius:0 6px 6px 0;background:#FBF5EA;box-shadow:3px 3px 0 #EFE3D0,6px 6px 0 #E6D7C1,9px 9px 0 #DCCBB2,0 34px 60px -24px rgba(90,60,40,.55)}
-.tl-book::after{left:0;border-radius:6px 0 0 6px;box-shadow:-3px 3px 0 #EFE3D0,-6px 6px 0 #E6D7C1,-9px 9px 0 #DCCBB2,0 34px 60px -24px rgba(90,60,40,.55);opacity:0;transition:opacity .4s ease .5s}
-.tl:not(.open) .tl-book::before{box-shadow:4px 4px 0 #C98A8C,0 34px 60px -24px rgba(90,60,40,.55);background:#E7C9C6}
-.tl-leaves{position:absolute;top:0;left:0;width:var(--pw);height:100%;transform-style:preserve-3d;z-index:2}
-.tl-leaf{position:absolute;inset:0;z-index:var(--z);transform-origin:0 50%;transform-style:preserve-3d;transition:transform 1.15s cubic-bezier(.55,.05,.3,1),z-index 0s .57s}
-.tl-leaf.turned{transform:rotateY(-180deg);z-index:calc(var(--k) + 1)}
-@media (max-width:899px){.tl-leaf.turned{visibility:hidden;transition:transform 1.15s cubic-bezier(.55,.05,.3,1),z-index 0s .57s,visibility 0s 1.15s}}
-.tl-f,.tl-b{position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;container-type:inline-size;background:var(--a-tlpaper) 0 0/100% repeat,#FBF5EA}
-.tl-f{border-radius:0 6px 6px 0;box-shadow:inset 14px 0 22px -14px rgba(90,60,40,.38)}
-.tl-b{transform:rotateY(180deg);border-radius:6px 0 0 6px;box-shadow:inset -14px 0 22px -14px rgba(90,60,40,.38)}
-/* a little shadow sweeps over the paper as it turns */
-.tl-f::after,.tl-b::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(80,50,30,0) 30%,rgba(80,50,30,.22));opacity:0;transition:opacity .57s ease}
-.tl-b::after{background:linear-gradient(270deg,rgba(80,50,30,0) 30%,rgba(80,50,30,.22));opacity:1}
-.tl-leaf.turned .tl-f::after{opacity:1}.tl-leaf.turned .tl-b::after{opacity:0;transition-delay:.57s}
-/* the corner of the page lifts a little, inviting you to turn it */
-.tl-leaf.cur:not(:last-child) .tl-f:not(.cover)::before{content:"";position:absolute;right:0;bottom:0;z-index:5;width:11cqw;height:11cqw;background:linear-gradient(135deg,transparent 50%,#EADBC4 50%,#FFF9EF 72%,#E4D3BA);box-shadow:-3px -3px 8px -2px rgba(90,60,40,.25);border-radius:0 0 6px 0;transform-origin:100% 100%;animation:tlCurl 2.8s ease-in-out 1.4s infinite}
-@keyframes tlCurl{0%,60%,100%{transform:scale(.55)}30%{transform:scale(1)}}
-.tl-mark{position:absolute;right:20%;bottom:-8%;z-index:1;width:5.4%;height:18%;background:linear-gradient(90deg,#C98A90,#E5AEB2 50%,#C98A90);clip-path:polygon(0 0,100% 0,100% 100%,50% 84%,0 100%);box-shadow:0 4px 8px rgba(90,40,40,.25)}
-@media (min-width:900px){.tl-mark{right:10%}}
+.tl-book{position:relative;flex:none;max-width:100%;translate:var(--sx,0) 0;transition:translate .9s cubic-bezier(.4,0,.2,1);-webkit-tap-highlight-color:transparent}
+.tl.atcov .tl-book{--sx:0px}
+@media (min-width:900px){.tl.atcov .tl-book{--sx:calc(var(--pw) * -.5)}.tl.atend .tl-book{--sx:calc(var(--pw) * .5)}}
+.tl:not(.on) .tl-book{animation:tlIdle 4.6s ease-in-out infinite alternate}
+@keyframes tlIdle{to{transform:translateY(-8px)}}
+.tl .stf__wrapper{position:relative;width:100%}
+/* the shadow under the book is its own layer, so turning pages never repaints it */
+.tl-book::before{content:"";position:absolute;left:4%;right:4%;bottom:-2%;height:12%;border-radius:50%;background:rgba(0,0,0,.6);filter:blur(22px);pointer-events:none}
+.tl-p{overflow:hidden;container-type:inline-size;box-sizing:border-box}
+.tl-pp{background:radial-gradient(130% 110% at 50% 50%,transparent 55%,rgba(120,80,30,.28)),radial-gradient(circle at 18% 22%,rgba(150,100,40,.10) 0 2%,transparent 6%),radial-gradient(circle at 82% 74%,rgba(150,100,40,.09) 0 3%,transparent 8%),radial-gradient(circle at 70% 12%,rgba(150,100,40,.07) 0 1.5%,transparent 5%),var(--a-tlparch) center/100% 100%,#F1E3C4}
+/* the gutter: paper darkens toward the spine */
+.tl-pp.rt{box-shadow:inset 18px 0 26px -16px rgba(70,40,15,.5)}
+.tl-pp.lf{box-shadow:inset -18px 0 26px -16px rgba(70,40,15,.5)}
+.tl-pp::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(255,255,255,.0),rgba(255,248,230,.18))}
 
-/* ---------- the cover ---------- */
-/* sizes inside are measured against the whole cover, so the padding sits on an inner layer */
-.tl-cvi{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12cqw 10cqw;box-sizing:border-box}
-.tl-f.cover{background:radial-gradient(90% 70% at 50% 45%,rgba(255,255,255,.14),transparent 70%),var(--a-tlcloth) 0 0/70cqw repeat,#C98E8E;box-shadow:inset 16px 0 20px -12px rgba(60,20,20,.45),inset -3px 0 0 rgba(255,255,255,.2)}
-.tl-f.cover::before{content:"";position:absolute;inset:5cqw;border:.5cqw solid #E2C27E;outline:.25cqw solid #E2C27E;outline-offset:-2cqw;border-radius:1.4cqw;opacity:.9;pointer-events:none}
-.tl-gold{background:linear-gradient(170deg,#F6E2A8,#D9B067 40%,#A97C3A 58%,#E8C985 78%,#C99A50);-webkit-background-clip:text;background-clip:text;color:transparent!important;filter:drop-shadow(0 .4cqw .3cqw rgba(80,30,30,.35))}
-.tl-crown{width:18cqw;margin-bottom:3cqw;filter:drop-shadow(0 .4cqw .3cqw rgba(80,30,30,.35))}
-.tl-ct{margin:0;font:400 12.5cqw/1 'Cinzel Decorative',serif}
-.tl-cs{margin:2cqw 0 0;font:400 9cqw/1.1 'Great Vibes',cursive;color:#FBEFE6;text-shadow:0 .4cqw .8cqw rgba(80,30,30,.35)}
-.tl-cn{margin:5cqw 0 0;font:700 10cqw/1.05 'Cinzel Decorative',serif;letter-spacing:.02em}
-.tl-cb{margin:6cqw 0 0;font:600 3.4cqw/1.3 'Cormorant Garamond',serif;letter-spacing:.3em;text-transform:uppercase;color:#FBEFE6}
-.tl:not(.on) .tl-f.cover .tl-gold{background-size:220% 100%;animation:tlFoil 3.6s ease-in-out infinite}
+/* ---------- the covers: burgundy leather with gold tooling ---------- */
+.tl-cov,.tl-back{background:radial-gradient(90% 70% at 40% 35%,rgba(255,255,255,.10),transparent 60%),radial-gradient(130% 110% at 50% 50%,transparent 55%,rgba(0,0,0,.45)),var(--tl-leather,none) center/cover,repeating-radial-gradient(circle at 30% 40%,rgba(0,0,0,.05) 0 1px,transparent 1px 3px),#6E1826;box-shadow:inset 0 0 0 1px rgba(0,0,0,.4)}
+.tl-cov{border-radius:0 1.6cqw 1.6cqw 0;box-shadow:inset 7px 0 10px -4px rgba(0,0,0,.6),inset 11px 0 0 -9px rgba(231,203,134,.35)}
+.tl-back{border-radius:1.6cqw 0 0 1.6cqw;box-shadow:inset -7px 0 10px -4px rgba(0,0,0,.6)}
+.tl-cvi{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14cqw 12cqw;box-sizing:border-box}
+.tl-cvi::before{content:"";position:absolute;inset:6cqw;border:.7cqw double var(--gold2);border-radius:1cqw;opacity:.85;pointer-events:none}
+.tl-cvi::after{content:"";position:absolute;inset:8.4cqw;border:.25cqw solid rgba(231,203,134,.55);border-radius:.6cqw;pointer-events:none}
+.tl-cvi>svg{width:20cqw;margin-bottom:3cqw;filter:drop-shadow(0 .4cqw .3cqw rgba(0,0,0,.45))}
+.tl-back .tl-cvi>svg{width:14cqw;opacity:.85}
+.tl-gold{background:linear-gradient(170deg,#F8E7B0,#D7AE5E 40%,#9C7130 58%,#EDD08E 78%,#C69A4E);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent!important;filter:drop-shadow(0 .35cqw .25cqw rgba(0,0,0,.45))}
+.tl-ct{margin:0;font:400 11cqw/1.02 'Cinzel Decorative',serif}
+.tl-cl{display:block;width:40cqw;margin:2.6cqw 0;color:var(--gold2)}
+.tl-cl svg{display:block;width:100%}
+.tl-cs{margin:0;font:400 8.4cqw/1.1 'Pinyon Script',cursive;color:#F4E2C2;text-shadow:0 .4cqw .8cqw rgba(0,0,0,.5)}
+.tl-cn{margin:4cqw 0 0;font:700 10.5cqw/1.05 'Cinzel Decorative',serif}
+.tl-cb{margin:5cqw 0 0;font:600 3cqw/1.3 'Cinzel',serif;letter-spacing:.24em;text-transform:uppercase;color:#E9D3A4}
+.tl:not(.on) .tl-cov .tl-gold{animation:tlFoil 4s ease-in-out infinite}
 @keyframes tlFoil{50%{background-position:100% 0}}
 
+/* ---------- endpaper ---------- */
+.tl-endp{background:radial-gradient(130% 110% at 50% 50%,transparent 55%,rgba(40,5,10,.45)),var(--tl-marble) 0 0/90cqw repeat,#7C2A36;box-shadow:inset -18px 0 26px -16px rgba(30,5,10,.6)}
+.tl-plate{position:absolute;left:50%;top:50%;translate:-50% -50%;width:64cqw;padding:9cqw 6cqw 7cqw;box-sizing:border-box;border-radius:50%/42%;background:var(--a-tlpaper) center/cover,#F4E8CC;border:.6cqw solid var(--gold);outline:.3cqw solid var(--gold2);outline-offset:1.6cqw;text-align:center;box-shadow:0 3cqw 6cqw -2cqw rgba(0,0,0,.55)}
+.tl-plate small{display:block;font:600 3cqw/1.3 'Cinzel',serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.tl-plate b{display:block;margin:2cqw 0 1cqw;font:400 11cqw/1.1 'Pinyon Script',cursive;color:var(--wine)}
+.tl-plate span{display:block;width:30cqw;margin:0 auto;color:var(--gold)}
+
+/* ---------- gold frame with corner flourishes ---------- */
+.tl-fr{position:absolute;inset:4.2cqw;border:.25cqw solid rgba(181,138,62,.7);pointer-events:none;color:var(--gold)}
+.tl-fr::before{content:"";position:absolute;inset:1.3cqw;border:.12cqw solid rgba(181,138,62,.5)}
+.tl-fr i{position:absolute;width:13cqw;height:13cqw}
+.tl-fr i svg{display:block;width:100%;height:100%}
+.tl-fr .c0{left:-1.4cqw;top:-1.4cqw}.tl-fr .c1{right:-1.4cqw;top:-1.4cqw;transform:scaleX(-1)}.tl-fr .c2{left:-1.4cqw;bottom:-1.4cqw;transform:scaleY(-1)}.tl-fr .c3{right:-1.4cqw;bottom:-1.4cqw;transform:scale(-1)}
+
 /* ---------- inside pages ---------- */
-.tl-pg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6cqw;padding:9cqw 10cqw 12cqw;box-sizing:border-box;text-align:center;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}
+.tl-pg{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6cqw;padding:12cqw 12cqw 14cqw;box-sizing:border-box;text-align:center;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}
 .tl-pg::-webkit-scrollbar{display:none}
-.tl-f>.tl-fr,.tl-b>.tl-fr{position:absolute;inset:3.6cqw;border:.22cqw solid rgba(184,138,74,.55);border-radius:1cqw;pointer-events:none}
-.tl-fr::after{content:"";position:absolute;inset:1.2cqw;border:.14cqw solid rgba(184,138,74,.35);border-radius:.6cqw}
-.tl-lab{display:flex;align-items:center;gap:2.6cqw;margin:0;font:600 3.2cqw/1.2 'Cinzel',serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-.tl-lab::before,.tl-lab::after{content:"";width:8cqw;height:.2cqw;background:currentColor;opacity:.6}
-.tl-art{display:block;flex:none;width:60cqw;aspect-ratio:1;background:var(--i) center/contain no-repeat}
-.tl-art.sm{width:46cqw}.tl-art.wide{width:72cqw;aspect-ratio:4/3}
-.tl-ph{flex:none;margin:1cqw 0;width:50cqw;aspect-ratio:.82;border-radius:50%;overflow:hidden;border:1.6cqw solid #FFFDF8;box-shadow:0 0 0 .5cqw #D8B47A,0 3cqw 5cqw -2cqw rgba(90,60,40,.4)}
-.tl-ph img{width:100%;height:100%;object-fit:cover;display:block}
-.tl-h{margin:0;font:400 11cqw/1.1 'Great Vibes',cursive;color:var(--rose)}
-.tl-tx{margin:0;font:italic 500 5.3cqw/1.45 'Cormorant Garamond',serif;color:var(--ink)}
-.tl-tx b{font-style:normal;font-weight:700;color:var(--rose)}
-.tl-dc::first-letter{float:left;margin:1.4cqw 2cqw 0 0;font:400 15cqw/.8 'Cinzel Decorative',serif;font-style:normal;color:var(--gold)}
+.tl-lab{display:flex;align-items:center;gap:2.6cqw;margin:0;font:600 3.1cqw/1.2 'Cinzel',serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.tl-lab::before,.tl-lab::after{content:"❦";font-size:3.4cqw;letter-spacing:0;color:var(--wine);opacity:.7}
+.tl-lab::before{transform:scaleX(-1)}
+/* the pictures are printed onto the old paper */
+.tl-art{display:block;flex:none;width:56cqw;aspect-ratio:1;background:var(--i) center/contain no-repeat;filter:sepia(.12) saturate(.92)}
+.tl-art.sm{width:44cqw}.tl-art.wide{width:66cqw;aspect-ratio:4/3}
+.tl-ph{flex:none;margin:1cqw 0;width:48cqw;aspect-ratio:.8;border-radius:50%;overflow:hidden;border:1.4cqw solid #F6EBD2;box-shadow:0 0 0 .55cqw var(--gold),0 0 0 1.3cqw #F6EBD2,0 0 0 1.6cqw rgba(181,138,62,.6),0 3cqw 5cqw -2cqw rgba(70,40,15,.5)}
+.tl-ph img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(.3) contrast(1.05)}
+.tl-h{margin:0;font:400 10.6cqw/1.1 'Pinyon Script',cursive;color:var(--wine)}
+.tl-tx{margin:0;font:italic 500 5.2cqw/1.45 'Cormorant Garamond',serif;color:var(--ink)}
+.tl-tx b{font-style:normal;font-weight:700;color:var(--wine)}
+/* an illuminated first letter, like in old manuscripts */
 .tl-dc{text-align:left}
-.tl-born{display:flex;flex-direction:column;gap:1cqw;margin-top:2cqw;padding:3cqw 6cqw;border:.3cqw solid rgba(184,138,74,.6);border-radius:6cqw;background:rgba(255,253,248,.7)}
+.tl-dc::first-letter{float:left;margin:1cqw 2.4cqw 0 0;padding:1.6cqw 2.2cqw 1cqw;font:400 12cqw/.82 'Cinzel Decorative',serif;font-style:normal;color:#F6E3A6;background:radial-gradient(circle at 30% 30%,#A23347,#6A1626);border:.5cqw solid var(--gold);outline:.2cqw solid var(--gold2);outline-offset:-1.3cqw;text-shadow:0 .3cqw .3cqw rgba(0,0,0,.4)}
+.tl-born{display:flex;flex-direction:column;gap:1cqw;margin-top:2cqw;padding:3cqw 7cqw;border:.3cqw solid rgba(181,138,62,.75);outline:.15cqw solid rgba(181,138,62,.5);outline-offset:-1.2cqw;background:rgba(255,250,236,.45)}
 .tl-born small{font:600 2.8cqw/1.2 'Cinzel',serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-.tl-born b{font:600 5cqw/1.2 'Cormorant Garamond',serif;color:var(--ink)}
-.tl-no{position:absolute;left:0;right:0;bottom:5.4cqw;display:flex;justify-content:center;align-items:center;gap:2cqw;font:600 3cqw/1 'Cinzel',serif;color:var(--gold)}
-.tl-no::before,.tl-no::after{content:"";width:5cqw;height:.18cqw;background:currentColor;opacity:.5}
+.tl-born b{font:600 4.8cqw/1.2 'Cormorant Garamond',serif;color:var(--ink)}
+.tl-no{position:absolute;left:0;right:0;bottom:6.2cqw;display:flex;justify-content:center;align-items:center;gap:2cqw;font:600 3cqw/1 'Cinzel',serif;color:var(--gold)}
+.tl-no::before,.tl-no::after{content:"";width:5cqw;height:.18cqw;background:currentColor;opacity:.55}
 .tl-when{display:flex;flex-direction:column;align-items:center;gap:.6cqw;margin-top:1cqw}
-.tl-when small{font:600 3.2cqw/1.2 'Cinzel',serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-.tl-when b{font:400 7cqw/1.1 'Cinzel Decorative',serif;color:var(--ink)}
-.tl-when span{font:italic 500 5.2cqw/1.2 'Cormorant Garamond',serif}
+.tl-when small{font:600 3.1cqw/1.2 'Cinzel',serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.tl-when b{font:400 6.6cqw/1.1 'Cinzel Decorative',serif;color:var(--wine)}
+.tl-when span{font:italic 500 5cqw/1.2 'Cormorant Garamond',serif}
 .tl-where{margin:1.4cqw 0 0;font:600 5cqw/1.25 'Cormorant Garamond',serif}
-.tl-where small{display:block;font:italic 500 4.3cqw/1.3 'Cormorant Garamond',serif;opacity:.85}
+.tl-where small{display:block;font:italic 500 4.2cqw/1.3 'Cormorant Garamond',serif;opacity:.85}
 .tl-acts{display:flex;gap:2.4cqw;flex-wrap:wrap;justify-content:center;margin-top:2cqw}
-.tl-btn{display:inline-flex;align-items:center;padding:2.6cqw 4.6cqw;border-radius:999px;background:var(--rose);color:#fff!important;text-decoration:none!important;font:600 3.6cqw/1 'Cormorant Garamond',serif;letter-spacing:.06em;box-shadow:0 2cqw 3cqw -1.6cqw rgba(120,60,60,.6)}
-.tl-btn.ghost{background:transparent;color:var(--rose)!important;border:.3cqw solid var(--rose);box-shadow:none}
+.tl-btn{display:inline-flex;align-items:center;padding:2.4cqw 4.6cqw;background:var(--wine);color:#F6E3A6!important;text-decoration:none!important;font:600 3.2cqw/1 'Cinzel',serif;letter-spacing:.1em;border:.3cqw solid var(--gold);box-shadow:0 2cqw 3cqw -1.6cqw rgba(60,20,20,.6)}
+.tl-btn.ghost{background:transparent;color:var(--wine)!important}
 .tl-count{display:flex;gap:2cqw;margin-top:1cqw}
-.tl-count div{display:flex;flex-direction:column;align-items:center;width:15cqw;padding:2.6cqw 0 2cqw;border-radius:50% 50% 12% 12%/40% 40% 12% 12%;background:#FFFDF8;border:.3cqw solid rgba(184,138,74,.55)}
-.tl-count b{font:400 6.4cqw/1 'Cinzel Decorative',serif;color:var(--ink)}
-.tl-count span{margin-top:1cqw;font:600 2.4cqw/1 'Cinzel',serif;letter-spacing:.1em;color:var(--gold)}
+.tl-count div{display:flex;flex-direction:column;align-items:center;width:14.6cqw;padding:2.6cqw 0 2cqw;background:rgba(255,250,236,.6);border:.3cqw solid var(--gold);outline:.15cqw solid rgba(181,138,62,.5);outline-offset:-1cqw}
+.tl-count b{font:400 6.2cqw/1 'Cinzel Decorative',serif;color:var(--wine)}
+.tl-count span{margin-top:1cqw;font:600 2.3cqw/1 'Cinzel',serif;letter-spacing:.1em;color:var(--gold)}
 .tl-end{margin:1cqw 0 0;font:400 13cqw/1 'Cinzel Decorative',serif}
-.tl-sig{margin:0;font:400 8cqw/1.1 'Great Vibes',cursive;color:var(--rose)}
-.tl-by{margin:2cqw 0 0;font:500 3.2cqw/1.3 'Cormorant Garamond',serif;opacity:.75}
-.tl-by a{color:var(--rose)}
+.tl-sig{margin:0;font:400 8cqw/1.1 'Pinyon Script',cursive;color:var(--wine)}
+.tl-by{margin:2cqw 0 0;font:500 3.1cqw/1.3 'Cormorant Garamond',serif;opacity:.75}
+.tl-by a{color:var(--wine)}
+/* the left-hand verse pages */
+.tl-q{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5cqw;padding:18cqw;box-sizing:border-box;text-align:center;color:var(--gold)}
+.tl-q svg{width:36cqw}
+.tl-q p{margin:0;font:400 9cqw/1.3 'Pinyon Script',cursive;color:var(--wine)}
 /* the reply form, written into the book */
-.tl-pg.rs{justify-content:flex-start;padding-top:8cqw}
-.tl-pg.rs .tl-art.wide{width:50cqw}
-.tl-pg.rs+.tl-no{display:none}
-.tl .tl-rsvp{width:100%;padding:0;background:none;border:0;box-shadow:none;text-align:left;font-size:max(14px,3.8cqw)}
+.tl-pg.rs{justify-content:flex-start;padding-top:11cqw}
+.tl-pg.rs .tl-art.wide{width:46cqw}
+.tl .tl-rsvp{width:100%;padding:0;background:none;border:0;box-shadow:none;text-align:left;font-size:max(14px,3.7cqw)}
 .tl .tl-rsvp .kicker{display:block;text-align:center;color:var(--gold);font-family:'Cinzel',serif;letter-spacing:.2em}
-.tl .tl-rsvp h2{text-align:center;margin:.4em 0 .2em!important;font-family:'Great Vibes',cursive!important;font-weight:400!important;font-size:max(30px,10cqw)!important;line-height:1.1!important;color:var(--rose)}
+.tl .tl-rsvp h2{text-align:center;margin:.3em 0 .2em!important;font-family:'Pinyon Script',cursive!important;font-weight:400!important;font-size:max(30px,9.6cqw)!important;line-height:1.1!important;color:var(--wine)}
 .tl .tl-rsvp .sub{display:block;text-align:center;color:var(--ink);opacity:.8}
 .tl .tl-rsvp .form{gap:10px}
-.tl .tl-rsvp :is(input,textarea){background:#FFFDF8;border-color:rgba(184,138,74,.5);border-radius:12px}
-.tl .tl-rsvp textarea{min-height:64px}
-.tl .tl-rsvp .choice button{border-radius:999px;border-color:rgba(184,138,74,.5);background:#FFFDF8}
-.tl .tl-rsvp .choice button.on,.tl .tl-rsvp .choice button.on.y{background:var(--rose);border-color:var(--rose);color:#fff}
-.tl .tl-rsvp .btn,.tl .tl-rsvp button[type=submit]{background:var(--rose)!important;color:#fff!important;border-radius:999px!important}
+.tl .tl-rsvp :is(input,textarea){background:rgba(255,251,240,.75);border-color:rgba(181,138,62,.6);border-radius:2px}
+.tl .tl-rsvp textarea{min-height:60px}
+.tl .tl-rsvp .choice button{border-radius:2px;border-color:rgba(181,138,62,.6);background:rgba(255,251,240,.7)}
+.tl .tl-rsvp .choice button.on,.tl .tl-rsvp .choice button.on.y{background:var(--wine);border-color:var(--gold);color:#F6E3A6}
+.tl .tl-rsvp .btn,.tl .tl-rsvp button[type=submit]{background:var(--wine)!important;color:#F6E3A6!important;border-radius:2px!important;border:1px solid var(--gold)!important}
 .tl .tl-rsvp .thanks{text-align:center}
+.tl-pg.rs~.tl-no{display:none}
 
-/* ---------- the left-hand pages (seen on wide screens) ---------- */
-.tl-q{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4cqw;padding:16cqw;box-sizing:border-box;text-align:center}
-.tl-q svg{width:34cqw;color:var(--gold)}
-.tl-q p{margin:0;font:400 9.4cqw/1.25 'Great Vibes',cursive;color:var(--rose)}
-.tl-q .tl-art{width:44cqw;opacity:.9}
-.tl-b.endp{background:var(--a-tlend) 0 0/46cqw repeat,#F8E1E1}
-.tl-plate{position:absolute;left:50%;top:50%;translate:-50% -50%;width:62cqw;padding:8cqw 6cqw;border-radius:50%;background:#FFFBF4;border:.5cqw solid #D8B47A;outline:.25cqw solid #D8B47A;outline-offset:1.4cqw;text-align:center;box-shadow:0 2cqw 5cqw -2cqw rgba(90,60,40,.4)}
-.tl-plate small{display:block;font:600 3.2cqw/1.3 'Cinzel',serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-.tl-plate b{display:block;margin-top:2cqw;font:400 10cqw/1.1 'Great Vibes',cursive;color:var(--rose)}
-.tl-b.bcov{background:var(--a-tlcloth) 0 0/70cqw repeat,#C98E8E}
-
-/* ---------- what is on the page you are reading comes alive ---------- */
-.tl-leaf.cur .tl-pg>*{animation:tlIn .8s cubic-bezier(.2,.7,.2,1) both}
-.tl-leaf.cur .tl-pg>:nth-child(2){animation-delay:.55s}.tl-leaf.cur .tl-pg>:nth-child(3){animation-delay:.68s}.tl-leaf.cur .tl-pg>:nth-child(4){animation-delay:.81s}.tl-leaf.cur .tl-pg>:nth-child(5){animation-delay:.94s}.tl-leaf.cur .tl-pg>:nth-child(n+6){animation-delay:1.07s}
-.tl-leaf.cur .tl-pg>:first-child{animation-delay:.45s}
-.tl-leaf.cur .tl-art{animation:tlIn .8s cubic-bezier(.2,.7,.2,1) .45s both,tlFloat 4.2s ease-in-out 1.3s infinite alternate}
-.tl-leaf.cur .tl-pg.rs>*{animation:none}
-@keyframes tlIn{from{opacity:0;transform:translateY(3cqw)}}
-@keyframes tlFloat{to{transform:translateY(-1.6cqw) rotate(1deg)}}
+/* the illustration on the open page breathes gently (no fading, so a turned page is never blank) */
+.tl-p.seen .tl-art{animation:tlBob 5s ease-in-out .4s infinite alternate}
+@keyframes tlBob{to{transform:translateY(-1.2cqw)}}
 
 /* ---------- under the book ---------- */
 .tl-nav{display:flex;align-items:center;gap:18px;opacity:0;transition:opacity .6s ease .6s}
 .tl.on .tl-nav{opacity:1}
-.tl-nav button{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(184,138,74,.6);background:rgba(255,251,244,.9);color:var(--rose);font:400 30px/1 'Cormorant Garamond',serif;cursor:pointer;box-shadow:0 8px 16px -10px rgba(90,60,40,.5)}
+.tl-nav button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--gold);background:radial-gradient(circle at 35% 30%,#8E2A3B,#5A1220);color:var(--gold2);font:400 30px/1 'Cormorant Garamond',serif;cursor:pointer;box-shadow:0 8px 16px -8px rgba(0,0,0,.7)}
 .tl-nav button:disabled{opacity:.35;cursor:default}
-.tl-pgn{min-width:64px;text-align:center;font:600 14px 'Cinzel',serif;letter-spacing:.14em;color:var(--gold)}
-.tl-tip{margin:0;padding:0 16px;text-align:center;font:400 clamp(24px,6.4vw,30px)/1.2 'Great Vibes',cursive;color:var(--rose);animation:pqPulse 2.8s ease-in-out 1.6s infinite}
-.tl.on .tl-tip{font-size:clamp(20px,5vw,24px);animation:none;opacity:.85}
-.tl-music{position:fixed;left:14px;right:auto;bottom:14px;z-index:40;display:inline-flex!important;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1.5px solid rgba(184,138,74,.6);background:rgba(255,251,244,.94);color:var(--ink);font:700 13px 'Cormorant Garamond',serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
-.tl-music .d{width:11px;height:11px;border-radius:50%;background:var(--rose)}
+.tl-pgn{min-width:40px;text-align:center;font:600 15px 'Cinzel',serif;letter-spacing:.14em;color:var(--gold2)}
+.tl-tip{margin:0;padding:0 16px;text-align:center;font:400 clamp(24px,6.4vw,30px)/1.2 'Pinyon Script',cursive;color:var(--gold2);text-shadow:0 2px 8px rgba(0,0,0,.6);animation:pqPulse 2.8s ease-in-out 1.6s infinite}
+.tl.on .tl-tip{font-size:clamp(19px,4.8vw,23px);animation:none;opacity:.8}
+.tl-music{position:fixed;left:14px;right:auto;bottom:14px;z-index:40;display:inline-flex!important;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1.5px solid var(--gold);background:rgba(60,14,22,.9);color:var(--gold2);font:600 12px 'Cinzel',serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.tl-music .d{width:10px;height:10px;border-radius:50%;background:var(--gold2)}
 .tl.playing .tl-music .d{animation:bwBeat 1s ease-in-out infinite}
 .tl:not(.on) .tl-music{display:none!important}
 .tl.pv .tl-music{position:absolute;top:14px;bottom:auto}
-@media (prefers-reduced-motion:reduce){.tl-leaf{transition:none!important}.tl-book,.tl-tip,.tl-art,.tl-pg>*,.tl-f::before{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.tl-book,.tl-tip,.tl-p *{animation:none!important}}
 
 /* ---------- the gallery card: a storybook title page ---------- */
 .tid-p_tale .inv-body{color:#5B4636}
@@ -171,3 +164,5 @@
 .tid-p_tale.animate .tc-t :is(span,b){background-size:240% 100%;animation:tcFoil 4s ease-in-out 1.6s infinite}
 @keyframes tcRib{from{opacity:0;transform:scaleX(.2)}to{opacity:1;transform:none}}
 @keyframes tcFoil{50%{background-position:100% 0}}
+.tl .tl-rsvp .vx-stamp{font-family:'Cinzel',serif!important;color:var(--wine)!important;border-color:var(--wine)!important;letter-spacing:.16em}
+.tl .tl-rsvp .thanks .big{font-family:'Pinyon Script',cursive;font-size:max(30px,9cqw);color:var(--wine)}
