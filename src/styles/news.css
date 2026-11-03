@@ -1,5 +1,5 @@
 /* Rođendanske novine · premium birthday newspaper: the paper spins in like an old film headline, then the special edition reads like a newspaper */
-.nz{--ink:#141414;--grey:#4a4744;--red:#B3221E;--paper:#EFE9DD;--cw:min(88vw,430px,calc(68svh * .667));position:relative;color:var(--ink);background:linear-gradient(rgba(239,233,221,.55),rgba(239,233,221,.55)),var(--a-nzpaper) 0 0/560px repeat,var(--paper);font-family:'Lora',serif;overflow-x:clip;min-height:100svh}
+.nz{--ink:#141414;--grey:#4a4744;--red:#B3221E;--paper:#FAFAF9;--cw:min(88vw,430px,calc(68svh * .667));position:relative;color:var(--ink);background:linear-gradient(rgba(255,255,255,.62),rgba(255,255,255,.62)),var(--a-nzpaper) 0 0/560px repeat,var(--paper);font-family:'Lora',serif;overflow-x:clip;min-height:100svh}
 .view:has(> .nz){transform:none!important;animation:none!important;opacity:1!important}
 .nz .vx-top{position:absolute;top:12px;right:12px;z-index:61}
 /* the page is laid out (hidden) while the paper spins in, so it appears without a stall; the card waits to animate until then */
@@ -55,7 +55,7 @@
 .nz-lead b{font-weight:700}
 .nz-by{margin:18px auto 0;max-width:620px;text-align:right;font:italic 400 15px 'Lora',serif;color:var(--grey)}
 .nz-by b{font-style:normal;font-weight:700;color:var(--ink)}
-.nz-ad{position:relative;max-width:520px;margin:0 auto;padding:34px 22px 30px;background:#F7F3EA;border:3px solid var(--ink);outline:1px solid var(--ink);outline-offset:-9px;box-shadow:8px 8px 0 var(--ink)}
+.nz-ad{position:relative;max-width:520px;margin:0 auto;padding:34px 22px 30px;background:#FFFFFF;border:3px solid var(--ink);outline:1px solid var(--ink);outline-offset:-9px;box-shadow:8px 8px 0 var(--ink)}
 .nz-adk{display:inline-block;margin:0 0 12px;padding:5px 12px;background:var(--ink);color:#f3ece0;font:400 15px/1 'Bebas Neue',sans-serif;letter-spacing:.24em}
 .nz-ad h3{margin:0 0 14px;font:700 clamp(30px,7.6vw,40px)/1.05 'Playfair Display',serif}
 .nz-wd{margin:0;font:400 18px/1 'Bebas Neue',sans-serif;letter-spacing:.24em;color:var(--red)}
@@ -74,16 +74,16 @@
 .nz-fash{max-width:520px;margin:0 auto;padding:28px 22px;border-block:3px double var(--ink)}
 .nz-dc{margin:4px 0 0;font:italic 500 clamp(24px,6.6vw,32px)/1.25 'Playfair Display',serif}
 .nz-gal{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
-.nz-gal figure{margin:0;padding:10px 10px 8px;background:#F7F3EA;box-shadow:0 14px 26px -16px rgba(0,0,0,.55);rotate:-1.6deg}
+.nz-gal figure{margin:0;padding:10px 10px 8px;background:#FFFFFF;box-shadow:0 14px 26px -16px rgba(0,0,0,.55);rotate:-1.6deg}
 .nz-gal figure:nth-child(2){rotate:1.8deg;translate:0 18px}
 .nz-gal span{position:relative;display:block;aspect-ratio:4/5;background:#222 center/cover no-repeat;filter:grayscale(1) contrast(1.12)}
 .nz-gal span::after{content:"";position:absolute;inset:0;background:radial-gradient(rgba(0,0,0,.18) 30%,transparent 33%) 0 0/4px 4px;mix-blend-mode:multiply;opacity:.55}
 .nz-gal figcaption{margin-top:8px;text-align:left;font:italic 400 13px 'Lora',serif;color:var(--grey)}
 .nz-count{display:flex;justify-content:center;gap:10px;margin-top:16px}
-.nz-count>div{flex:1;max-width:96px;padding:14px 4px 12px;background:#F7F3EA;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.nz-count>div{flex:1;max-width:96px;padding:14px 4px 12px;background:#FFFFFF;border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
 .nz-count b{display:block;font:500 clamp(28px,7.6vw,38px)/1 'Bodoni Moda',serif;font-variant-numeric:tabular-nums}
 .nz-count span{display:block;margin-top:6px;font:400 13px/1 'Bebas Neue',sans-serif;letter-spacing:.18em;color:var(--red)}
-.nz .nz-rsvp{max-width:560px;margin:0 auto;text-align:left;background:#F7F3EA;border:3px solid var(--ink);border-radius:0;box-shadow:8px 8px 0 var(--ink)}
+.nz .nz-rsvp{max-width:560px;margin:0 auto;text-align:left;background:#FFFFFF;border:3px solid var(--ink);border-radius:0;box-shadow:8px 8px 0 var(--ink)}
 .nz .nz-rsvp .kicker{color:var(--red);font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.26em}
 .nz .nz-rsvp h2{font-family:'Playfair Display',serif;font-weight:700;color:var(--ink)}
 .nz .nz-rsvp :is(input,textarea){border-radius:0;border-color:rgba(20,20,20,.4);background:#fff}
@@ -99,7 +99,7 @@
 .nz.io .rv.in{opacity:1;transform:none}
 .nz.io :is(.nz-plan,.nz-gal) .rv{transition-delay:calc(var(--i,0)*120ms)}
 .nz.io .nz-gal figure.rv:nth-child(2).in{transform:none}
-.nz-music{position:fixed;left:14px;right:auto;bottom:14px;z-index:40;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:2px solid var(--ink);border-radius:0;background:rgba(247,243,234,.94);color:var(--ink);font:400 16px/1 'Bebas Neue',sans-serif;letter-spacing:.14em;cursor:pointer;box-shadow:4px 4px 0 var(--ink)}
+.nz-music{position:fixed;left:14px;right:auto;bottom:14px;z-index:40;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:2px solid var(--ink);border-radius:0;background:rgba(255,255,255,.95);color:var(--ink);font:400 16px/1 'Bebas Neue',sans-serif;letter-spacing:.14em;cursor:pointer;box-shadow:4px 4px 0 var(--ink)}
 .nz-music .d{width:11px;height:11px;border-radius:50%;background:var(--red)}
 .nz.playing .nz-music .d{animation:bwBeat 1s ease-in-out infinite}
 .nz.pv .nz-music{position:absolute;top:14px;bottom:auto}
@@ -107,6 +107,7 @@
 @media (prefers-reduced-motion:reduce){.nz-paper,.nz-go,.nz-tick>div{animation:none!important}}
 
 /* ---------- the front-page card ---------- */
+.inv.tid-p_news{background:linear-gradient(rgba(255,255,255,.68),rgba(255,255,255,.68)),var(--a-nzpaper) 0 0/70cqw repeat,#FBFBFA}
 .tid-p_news .inv-body{justify-content:flex-start!important;align-items:stretch!important;color:#141414}
 .tid-p_news .nc-mast{display:block}
 .tid-p_news .nc-mast>i{display:block;height:1.1cqw;border-top:.75cqw solid #141414;border-bottom:.22cqw solid #141414}
