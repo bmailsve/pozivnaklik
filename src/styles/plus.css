@@ -641,3 +641,102 @@
 .pq-d-e_emerald .zf-turn{border-color:rgba(201,164,87,.65);background:rgba(8,32,24,.55);color:#E8CF8A}
 .pq-d-e_emerald .zf-turn:hover{background:#C9A457;color:#0F2A22}
 .pq-d-e_emerald .pq-rsvp .btn-line{border-radius:0;background:transparent;border:1px solid #B8913F;color:#1E3A2F!important;font-family:'Cinzel',serif;font-weight:400;letter-spacing:.12em}
+
+/* ---------- Roze mašnica: a pink polka-dot gift tied with a satin bow ---------- */
+.pq-t-gift{--pat:var(--a-rbdots);--patsz:300px;--wash:rgba(255,244,247,.62);--pgc:#F9DCE5;--on:#7A3B52}
+.pq-t-gift .pq-open{background:var(--a-rbroom) center/cover no-repeat,#F9DCE5}
+.pq-t-gift .pq-open .pq-to{color:#8A4560;text-shadow:0 1px 10px rgba(255,245,248,.95)}
+.pq-t-gift .pq-open .pq-hint{font-family:'Parisienne',cursive;font-size:clamp(28px,7.6vw,38px);color:#C9457A;text-shadow:0 2px 12px rgba(255,245,248,.95)}
+.pq-gift{--ar:.667}
+.pq-gift .gb-sh{left:6%;right:6%;bottom:-2.5cqw;height:7cqw;border-radius:50%;background:radial-gradient(closest-side,rgba(150,60,90,.38),transparent);transition:opacity .8s ease 1.6s}
+.pq-gift .gb-card{left:13cqw;right:13cqw;bottom:3cqw;z-index:1;transform:scale(.72);transform-origin:50% 100%;transition:transform 1.5s cubic-bezier(.22,.8,.25,1) 1.15s}
+.pq-gift .gb-card .inv-c{width:100%}
+.pq-gift .gb-card .inv{box-shadow:0 1.6cqw 4cqw -1.4cqw rgba(140,50,80,.45)}
+.pq-gift :is(.gb-bal,.gb-one){z-index:2;background:center/contain no-repeat;transition:transform 2.6s cubic-bezier(.35,.1,.3,1) .75s,opacity .8s ease 2.4s}
+.pq-gift .gb-bal{left:10cqw;bottom:8cqw;width:38cqw;aspect-ratio:.57;background-image:var(--a-rbbal)}
+.pq-gift .gb-one{right:14cqw;bottom:9cqw;width:19cqw;aspect-ratio:.323;background-image:var(--a-rbone)}
+/* the box: polka-dot paper, shaded at the sides, a satin ribbon crossing the front */
+.pq-gift .gb-body{left:3cqw;right:3cqw;top:73cqw;bottom:0;z-index:3;border-radius:0 0 1.6cqw 1.6cqw;background:linear-gradient(90deg,rgba(120,40,70,.16),transparent 16%,transparent 84%,rgba(120,40,70,.2)),linear-gradient(180deg,rgba(120,40,70,.22),transparent 14%),var(--a-rbdots) 0 0/44cqw,#F7C9D6;box-shadow:inset 0 -1.2cqw 2cqw -1cqw rgba(120,40,70,.25);transition:transform 1s cubic-bezier(.5,0,.75,.4) 1.55s,opacity .6s ease 1.9s}
+.pq-gift .gb-lid{left:0;right:0;top:61cqw;height:15cqw;z-index:4;border-radius:1.4cqw;background:linear-gradient(180deg,rgba(255,255,255,.35),transparent 40%,rgba(120,40,70,.18)),linear-gradient(90deg,rgba(120,40,70,.14),transparent 14%,transparent 86%,rgba(120,40,70,.18)),var(--a-rbdots) 0 0/44cqw,#F8CDD9;box-shadow:0 1.6cqw 2cqw -1cqw rgba(120,40,70,.45);transition:transform 1.1s cubic-bezier(.3,.6,.3,1) .55s,opacity .7s ease .85s}
+.pq-gift :is(.gb-body,.gb-lid)>i{position:absolute;display:block;background:linear-gradient(90deg,#d9668b,#f3a9c0 30%,#fde3ec 50%,#f3a7be 68%,#d6628a);box-shadow:inset .3cqw 0 0 rgba(255,255,255,.35),inset -.3cqw 0 0 rgba(150,40,80,.25)}
+.pq-gift .gb-rv{left:calc(50% - 6cqw);width:12cqw;top:0;bottom:0}
+.pq-gift .gb-body .gb-rh{left:0;right:0;top:34%;height:10cqw;background:linear-gradient(180deg,#d9668b,#f3a9c0 30%,#fde3ec 50%,#f3a7be 68%,#d6628a)}
+.pq-gift .gb-bow{left:calc(50% - 30cqw);top:38cqw;width:60cqw;aspect-ratio:.864;z-index:5;background:var(--a-rbbow) center/contain no-repeat;filter:drop-shadow(0 1.4cqw 1.6cqw rgba(140,40,80,.35));transform-origin:50% 32%;animation:gbWiggle 3.2s ease-in-out 1.6s infinite;transition:transform .9s cubic-bezier(.4,0,.6,1) .1s,opacity .5s ease .55s}
+@keyframes gbWiggle{0%,78%,100%{rotate:0deg}84%{rotate:-4deg}90%{rotate:3.5deg}95%{rotate:-1.5deg}}
+.pq-gift:not(.open):hover .gb-bow{scale:1.04}
+.pq-gift .gb-cf{left:50%;top:62cqw;z-index:6;width:0;height:0}
+.pq-gift .gb-cf i{position:absolute;left:-.9cqw;top:-.6cqw;width:1.8cqw;height:1.2cqw;border-radius:.3cqw;background:var(--c);opacity:0}
+.pq-gift .gb-cf i:nth-child(3n){border-radius:50%;width:1.5cqw;height:1.5cqw}
+/* opening: the bow is pulled off, the lid lifts away, balloons float out, the card rises from the box */
+.pq-gift.open .gb-bow{animation:none;transform:translateY(-70cqw) rotate(14deg) scale(1.12);opacity:0}
+.pq-gift.open .gb-lid{transform:translate(-26cqw,-78cqw) rotate(-24deg);opacity:0}
+.pq-gift.open .gb-bal{transform:translate(-8cqw,-190cqw) rotate(-6deg);opacity:0}
+.pq-gift.open .gb-one{transform:translate(6cqw,-200cqw) rotate(8deg);opacity:0}
+.pq-gift.open .gb-card{transform:translateY(-37cqw) scale(1)}
+.pq-gift.open .gb-body{transform:translateY(46cqw);opacity:0}
+.pq-gift.open .gb-sh{opacity:0}
+.pq-gift.open .gb-cf i{animation:gbConf 1.6s cubic-bezier(.2,.7,.3,1) calc(.35s + var(--d)) both}
+@keyframes gbConf{0%{opacity:0;transform:rotate(var(--a)) translateX(0) rotate(0)}15%{opacity:1}100%{opacity:0;transform:rotate(var(--a)) translateX(var(--r)) translateY(14cqw) rotate(220deg)}}
+@media (prefers-reduced-motion:reduce){.pq-gift .gb-bow{animation:none}}
+
+/* ---------- Roze mašnica card: watercolour pink, a bubbly name and a balloon "1" ---------- */
+.tid-e_rosebow.has-art::before{background-size:cover!important}
+.inv.tid-e_rosebow .inv-body{padding:25cqw 12cqw 40cqw!important;justify-content:center!important;gap:0!important;background:radial-gradient(ellipse 62% 44% at 50% 46%,rgba(255,246,249,.78),rgba(255,246,249,.35) 60%,transparent 80%)!important;color:#6B3A4C}
+.inv.tid-e_rosebow .inv-body :is(p,span,b,h2,div){text-shadow:none!important}
+.tid-e_rosebow .inv-body>:is(.rb-h,.rb-s){position:absolute;left:29cqw;right:29cqw;margin:0!important;text-align:center!important;text-align-last:center!important}
+.tid-e_rosebow .rb-k{margin:0!important;font:700 2.6cqw/1.3 'Quicksand',sans-serif;letter-spacing:.32em!important;text-transform:uppercase;color:#C9577F}
+.tid-e_rosebow .rb-n{margin:1cqw 0 0!important;font-family:'Fredoka',sans-serif!important;font-weight:600!important;line-height:1.05!important;color:#E05A85;text-shadow:0 .5cqw 0 #fff,0 .9cqw 1.6cqw rgba(200,80,120,.3)!important;padding:0 .1em}
+.tid-e_rosebow .rb-age{display:flex;align-items:center;justify-content:center;gap:2.4cqw;margin:1.4cqw 0 3.4cqw!important}
+.tid-e_rosebow .rb-one{display:block;width:8.6cqw;aspect-ratio:.323;margin:-3cqw 0 -4cqw;background:var(--a-rbone) center/contain no-repeat;filter:drop-shadow(0 .8cqw .8cqw rgba(180,60,100,.3));transform-origin:50% 90%;pointer-events:auto;cursor:pointer}
+.tid-e_rosebow .rb-age span{font:400 8.4cqw/1.1 'Parisienne',cursive;color:#B8476F;padding:0 .15em .1em}
+.tid-e_rosebow .rb-d{font:700 3.4cqw/1.35 'Quicksand',sans-serif;color:#6B3A4C}
+.tid-e_rosebow .rb-v{margin-top:2.6cqw!important;font:600 3cqw/1.35 'Quicksand',sans-serif;color:#875466}
+.tid-e_rosebow .rb-v b{display:block;font:700 4cqw/1.25 'Fredoka',sans-serif;color:#D45A82}
+.tid-e_rosebow .rb-m{margin-top:3cqw!important;font:600 3cqw/1.45 'Quicksand',sans-serif;color:#7A4A5C;max-width:66cqw}
+.tid-e_rosebow .rb-h{bottom:11.5cqw;font:400 4.8cqw/1.12 'Parisienne',cursive;color:#C9457A;text-shadow:0 0 1.2cqw #FFF6F9,0 0 2.4cqw #FFF6F9!important}
+.tid-e_rosebow .rb-s{bottom:5.5cqw;text-shadow:0 0 1cqw #FFF6F9!important;font:600 2.3cqw/1.4 'Quicksand',sans-serif;color:#8A5566}
+.tid-e_rosebow .ru-spark{background:radial-gradient(circle,#fff 0 20%,rgba(240,120,160,.9) 45%,transparent 70%)!important}
+/* motion: the balloon "1" bobs, the name pops in */
+:is(.pq .tid-e_rosebow,.tid-e_rosebow.animate) .rb-one{animation:rbBob 3.2s ease-in-out infinite}
+@keyframes rbBob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-1.4cqw) rotate(3deg)}}
+:is(.pq.read .tid-e_rosebow,.tid-e_rosebow.animate) .rb-n{animation:rbPop .9s cubic-bezier(.3,1.6,.5,1) .4s both}
+@keyframes rbPop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.tid-e_rosebow *{animation:none!important}}
+
+/* the page and the back of the card: pink polka dots, a stitched frame, the bow as the signature */
+.pq-card:has(.tid-e_rosebow){width:min(88vw,420px,calc(64svh * .667))}
+.pq-d-e_rosebow{--acc:#D45A82}
+.pq-d-e_rosebow :is(.pq-k){font-family:'Quicksand',sans-serif;font-weight:700;letter-spacing:.32em;color:#B8476F}
+.pq-d-e_rosebow .zf{--zf-acc:#D45A82;--zf-ink:#6B3A4C;--zf-ink2:#875466;--zf-bg:#FFF6F8;--zf-fd:'Fredoka',sans-serif;--zf-fi:'Quicksand',sans-serif;--zf-fs:'Parisienne',cursive;--zf-paper:linear-gradient(rgba(255,247,250,.88),rgba(255,247,250,.88)),var(--a-rbdots) 0 0/40cqw,#FFF6F8;--zf-mark:var(--a-rbbow)}
+.pq-d-e_rosebow .zf-bi{border-radius:3cqw;padding:12cqw 8cqw 8cqw}
+.pq-d-e_rosebow .zf-bi::before{inset:3cqw;border:.45cqw dashed rgba(212,90,130,.55);border-radius:2cqw}
+.pq-d-e_rosebow .zf-bi :is(.zf-k,.zf-wd,.zf-mo,.zf-sk){font-family:'Quicksand',sans-serif;font-weight:700}
+.pq-d-e_rosebow .zf-msg{font:600 clamp(16px,4.6cqw,20px)/1.5 'Quicksand',sans-serif;font-style:normal}
+.pq-d-e_rosebow .zf-bi .zf-day{font:600 34cqw/1 'Fredoka',sans-serif;color:#E05A85;text-shadow:0 1.2cqw 0 #fff,0 2cqw 3cqw rgba(200,80,120,.25)}
+.pq-d-e_rosebow .zf-bi .zf-tm{font:700 clamp(17px,5.2cqw,23px)/1 'Quicksand',sans-serif;font-style:normal}
+.pq-d-e_rosebow .zf-v{font:600 clamp(19px,6cqw,27px)/1.2 'Fredoka',sans-serif;font-style:normal}
+.pq-d-e_rosebow .zf-bi .zf-a{font:600 clamp(14px,3.9cqw,17px)/1.35 'Quicksand',sans-serif}
+.pq-d-e_rosebow .zf-plan span{font:600 clamp(15px,4.3cqw,19px)/1.3 'Quicksand',sans-serif;font-style:normal}
+.pq-d-e_rosebow .zf-btn{border-radius:999px;font-family:'Quicksand',sans-serif;font-weight:700;letter-spacing:.1em}
+.pq-d-e_rosebow .zf-btn:first-child{background:#E05A85;border-color:#E05A85;color:#fff!important}
+.pq-d-e_rosebow .zf-btn:hover{background:#B8476F;border-color:#B8476F;color:#fff!important}
+.pq-d-e_rosebow .zf-ph{border-radius:50%;aspect-ratio:1;box-shadow:0 0 0 1.4cqw #fff,0 0 0 2cqw #F4A9BF,0 2cqw 3cqw -1cqw rgba(200,80,120,.4)}
+.pq-d-e_rosebow .zf-cd{margin:0;gap:2cqw}
+.pq-d-e_rosebow .zf-cd div{border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;padding:0;background:#fff;outline:0;box-shadow:0 0 0 .5cqw #F7C6D4,0 1.6cqw 2.4cqw -1.4cqw rgba(200,80,120,.5)}
+.pq-d-e_rosebow .zf-cd b{font:600 clamp(20px,7cqw,32px)/1 'Fredoka',sans-serif;color:#E05A85}
+.pq-d-e_rosebow .zf-cd span{font:700 clamp(7.5px,2cqw,9px) 'Quicksand',sans-serif;letter-spacing:.1em;color:#B8476F}
+.pq-d-e_rosebow .zf-rsvp{padding:0!important;margin:0;background:none!important;box-shadow:none!important;outline:0!important;max-width:none}
+.pq-d-e_rosebow .zf-rsvp h2{font-family:'Parisienne',cursive!important;font-size:clamp(34px,10.5cqw,48px)!important;color:#C9457A}
+.pq-d-e_rosebow .pq-rsvp :is(input,textarea){border-radius:14px;background:#fff;border-color:#F4BFCF}
+.pq-d-e_rosebow .pq-rsvp .choice button{border-radius:999px;background:#fff;border-color:#F4BFCF}
+.pq-d-e_rosebow .pq-rsvp .choice button.on{background:#E05A85!important;border-color:#E05A85!important;color:#fff!important}
+.pq-d-e_rosebow .pq-rsvp :is(.btn-ink,button[type=submit]){border-radius:999px;background:#E05A85;color:#fff;font-family:'Fredoka',sans-serif;font-weight:600;letter-spacing:.04em}
+.pq-d-e_rosebow .pq-rsvp .btn-line{border-radius:999px;border:1px solid #E05A85;color:#C9457A!important;background:#fff}
+.pq-d-e_rosebow .pq-rsvp .vx-stamp{border-color:#E05A85;color:#E05A85}
+.pq-d-e_rosebow .zf-sig span{font-size:clamp(40px,13cqw,58px);color:#C9457A}
+.pq-d-e_rosebow .zf-bi .zf-sig{flex-direction:column-reverse;gap:0}
+.pq-d-e_rosebow .zf-sig i{width:16cqw;aspect-ratio:.864;rotate:0deg;filter:drop-shadow(0 .8cqw 1cqw rgba(200,80,120,.3))}
+.pq-d-e_rosebow .zf-turn{border-radius:999px;border-color:#E9A0B8;background:rgba(255,255,255,.82);color:#C9457A;font-family:'Quicksand',sans-serif;font-weight:700}
+.pq-d-e_rosebow .zf-turn:hover{background:#E05A85;color:#fff}
+.pq-d-e_rosebow .vx-by a{color:#C9457A}
+.tid-e_rosebow .inv-body>.rb-s{left:22cqw;right:22cqw}
