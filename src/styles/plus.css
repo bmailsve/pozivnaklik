@@ -497,9 +497,12 @@
 .tid-e_thirty .zd-age{top:11cqw;left:-3cqw!important;right:-3cqw!important;display:flex;justify-content:center;font:400 calc(var(--k) * -26cqw + 150cqw)/.78 'Bodoni Moda',serif;letter-spacing:-.05em;color:#8B1A22}
 .tid-e_thirty .zd-age i{display:block;font-style:normal;overflow:hidden;padding:0 .01em .06em}
 .tid-e_thirty .zd-age b{display:block;font-weight:400}
-.tid-e_thirty .zd-n{top:39cqw;display:flex;justify-content:center;font-family:'Mrs Saint Delafield','Great Vibes',cursive;font-weight:400;line-height:1.1!important;color:#8B1A22;rotate:-8deg}
-/* a thin line of card shows around the handwriting where it crosses the number */
-.tid-e_thirty .zd-n span{display:inline-block;padding:.05em .25em .32em;text-shadow:.035em 0 0 #F6F0E6,-.035em 0 0 #F6F0E6,0 .035em 0 #F6F0E6,0 -.035em 0 #F6F0E6,.025em .025em 0 #F6F0E6,-.025em .025em 0 #F6F0E6,.025em -.025em 0 #F6F0E6,-.025em -.025em 0 #F6F0E6!important}
+.tid-e_thirty .zd-n{top:39cqw;display:grid;justify-items:center;font-family:'Mrs Saint Delafield','Great Vibes',cursive;font-weight:400;line-height:1.1!important;color:#8B1A22}
+.tid-e_thirty .zd-n span{grid-area:1/1;display:inline-block;padding:.05em .25em .32em;rotate:-8deg;text-shadow:none!important}
+/* the handwriting cuts through the number: a card-coloured copy under it carves a clear gap in the digits */
+.tid-e_thirty .zd-n .zd-cut{color:#E6DCC7;-webkit-text-stroke:.11em #E6DCC7;mix-blend-mode:lighten;pointer-events:none}
+/* the copy blends with the card itself, so it only shows where it crosses a digit */
+.tid-e_thirty .inv-body{z-index:auto!important}
 .tid-e_thirty .zd-objs{top:auto;bottom:6cqw;left:4cqw!important;right:auto!important;width:94cqw;aspect-ratio:1;background:var(--a-zdobjs) center/contain no-repeat;pointer-events:none}
 .tid-e_thirty .zd-flame{position:absolute;left:72.6%;top:9.4%;width:7cqw;height:9cqw;margin:-4.5cqw 0 0 -3.5cqw;border-radius:50%;background:radial-gradient(closest-side,rgba(255,236,170,.95),rgba(255,190,90,.45) 45%,transparent);mix-blend-mode:screen}
 .tid-e_thirty .zd-glint{position:absolute;left:24%;top:33%;width:40%;height:16%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.85) 50%,transparent 60%) -120% 0/250% 100% no-repeat;mix-blend-mode:screen;opacity:.8}
@@ -545,3 +548,54 @@
 .pq-d-e_thirty .pq-rsvp .choice button.on{background:#8B1A22!important;border-color:#8B1A22!important;color:#fff!important}
 .tid-e_thirty .zd-d [data-f=time]{text-transform:none}
 .pq-d-e_thirty .pq-msg{text-align:center!important;text-align-last:center}
+
+/* Zdravica: no long page. The card turns over, and its back holds the details, the countdown and the reply */
+.zf{gap:16px}
+.zf-card{position:relative;width:min(88vw,420px,calc(66svh * .667));perspective:1800px}
+.zf-in{position:relative;transform-style:preserve-3d}
+.zf-card.back .zf-in{transform:rotateY(180deg)}
+.zf-f,.zf-b{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.zf-f{cursor:pointer;outline-offset:6px}
+.zf-b{position:absolute;inset:0 0 auto;visibility:hidden;transform:rotateY(180deg);container-type:inline-size;max-height:0;overflow:hidden}
+.zf-card.back .zf-f{position:absolute;inset:0 0 auto;visibility:hidden}
+.zf-card.back .zf-b{position:relative;visibility:visible;max-height:none;overflow:visible}
+/* until the guest turns it, the card now and then lifts its edge a little */
+.pq.read .zf-card:not(.seen) .zf-in{animation:zfNudge 4.6s ease-in-out 2.6s infinite}
+@keyframes zfNudge{0%,74%,100%{transform:none}84%{transform:rotateY(-16deg)}92%{transform:rotateY(5deg)}}
+.zf-bi{position:relative;padding:11cqw 8cqw 6cqw;text-align:center;color:#3A2A24;border-radius:inherit;background:radial-gradient(75% 40% at 50% 28%,rgba(250,246,238,.75),transparent 80%),var(--a-zdcard) center/cover no-repeat,#F3ECDF;box-shadow:0 40px 70px -30px rgba(0,0,0,.6),0 4px 12px rgba(0,0,0,.18)}
+.zf-bi::before{content:"";position:absolute;inset:3.2cqw;border:1px solid rgba(139,26,34,.28);pointer-events:none}
+.zf-bi p{margin:0;text-align:center!important;text-align-last:center}
+.zf-msg{font:italic 400 clamp(16px,4.7cqw,21px)/1.5 'Bodoni Moda',serif;color:#3A2A24}
+.zf-rule{display:flex;align-items:center;justify-content:center;width:46%;height:1px;margin:7cqw auto;background:linear-gradient(90deg,transparent,rgba(139,26,34,.55),transparent)}
+.zf-rule i{width:1.5cqw;height:1.5cqw;background:#8B1A22;rotate:45deg}
+.zf-bi .zf-k{margin-bottom:4cqw;font:600 clamp(10px,2.7cqw,12px)/1 'Cormorant Garamond',serif;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;color:#8B1A22}
+.zf-wd{font:600 clamp(11px,3cqw,13px)/1 'Cormorant Garamond',serif;letter-spacing:.34em;text-indent:.34em;text-transform:uppercase}
+.zf-bi .zf-day{margin-top:1.5cqw;font:400 36cqw/.84 'Bodoni Moda',serif;letter-spacing:-.03em;color:#8B1A22}
+.zf-bi .zf-mo{margin-top:2cqw;font:600 clamp(11px,3.2cqw,14px)/1 'Cormorant Garamond',serif;letter-spacing:.34em;text-indent:.34em;text-transform:uppercase}
+.zf-bi .zf-tm{margin-top:4.5cqw;font:italic 400 clamp(18px,5.8cqw,26px)/1 'Bodoni Moda',serif;color:#8B1A22}
+.zf-pl{margin-top:5.5cqw}
+.zf-v{font:italic 400 clamp(19px,6.2cqw,28px)/1.2 'Bodoni Moda',serif;color:#3A2A24}
+.zf-bi .zf-a{margin-top:1.6cqw;font:500 clamp(14px,3.9cqw,17px)/1.35 'Cormorant Garamond',serif;letter-spacing:.03em;color:#5A1A1E}
+.zf-bi .zf-dc{margin-top:4.5cqw;font:italic 500 clamp(14px,3.9cqw,17px)/1.35 'Cormorant Garamond',serif;color:#5A1A1E}
+.zf-dc small{display:block;margin-bottom:1.2cqw;font:normal 600 clamp(9px,2.4cqw,11px)/1 'Cormorant Garamond',serif;letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;color:#8B1A22}
+.zf-links{display:flex;justify-content:center;flex-wrap:wrap;gap:2cqw;margin-top:6cqw}
+.zf-btn{display:inline-flex;align-items:center;padding:2.8cqw 3cqw;border:1px solid #8B1A22;font:600 clamp(9.5px,2.5cqw,12px)/1 'Cormorant Garamond',serif;letter-spacing:.16em;text-transform:uppercase;color:#8B1A22!important;text-decoration:none;transition:background .2s,color .2s}
+.zf-btn:hover{background:#8B1A22;color:#F6F0E6!important}
+.pq-d-e_thirty .zf-cd{margin:0;gap:0}
+.pq-d-e_thirty .zf-cd div{padding:1cqw 0 .5cqw}
+.pq-d-e_thirty .zf-cd b{font-size:clamp(28px,9.5cqw,44px)}
+.pq-d-e_thirty .zf-cd span{font-size:clamp(8px,2.3cqw,10px);letter-spacing:.2em}
+.pq-d-e_thirty .zf-rsvp{padding:0!important;margin:0;border-block:0!important;max-width:none}
+.pq-d-e_thirty .pq-rsvp .btn-line{background:transparent!important;border:1px solid #8B1A22;color:#8B1A22!important}
+.pq-d-e_thirty .zf-rsvp h2{font-size:clamp(36px,11cqw,50px)!important;color:#8B1A22}
+.zf-bi .zf-sig{display:flex;align-items:center;justify-content:center;gap:1cqw;margin-top:9cqw}
+.zf-sig span{padding:0 .15em .15em;font:400 clamp(42px,14cqw,62px)/1 'Mrs Saint Delafield','Great Vibes',cursive;color:#8B1A22}
+.zf-sig i{width:10cqw;aspect-ratio:1;background:var(--a-zdcherry) center/contain no-repeat;rotate:14deg;filter:drop-shadow(0 .8cqw .8cqw rgba(80,10,10,.3))}
+.zf-turn{display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border:1px solid rgba(139,26,34,.5);background:rgba(250,246,238,.75);font:600 12px/1 'Cormorant Garamond',serif;letter-spacing:.28em;text-transform:uppercase;color:#8B1A22;cursor:pointer;transition:background .2s,color .2s}
+.zf-turn:hover{background:#8B1A22;color:#F6F0E6}
+.zf-turn em{font-style:normal}
+.zf-turn span{display:inline-block;font-size:17px;line-height:1;animation:zfSpin 4.6s ease-in-out 2.6s infinite}
+.zf-card.seen~.zf-turn span{animation:none}
+@keyframes zfSpin{0%,74%{transform:none}92%,100%{transform:rotate(360deg)}}
+.zf .vx-by{margin:4px 0 0}
+@media (prefers-reduced-motion:reduce){.zf-card .zf-in,.zf-turn span{animation:none!important}}
