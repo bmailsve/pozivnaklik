@@ -1820,7 +1820,7 @@ function bindTale(root,t,d,o={}){
      const st=(n>1?(n-1-k)/(n-1):0)*.25,u=clamp((dd-.12-st*.4)/(.7-st*.4));const uu=u*u;
      el.style.opacity=(1-clamp(u*1.5)).toFixed(3);el.style.transform=`translate3d(${(side*uu*H*.04).toFixed(1)}px,${(-uu*H*.2).toFixed(1)}px,0) scale(${(1+uu*.12).toFixed(3)})`}})});
   const ci=Math.round(clamp(shown/(N-1))*(N-1));dots.forEach((x,k)=>x.classList.toggle("on",k===ci));
-  root.classList.toggle("atend",ci>=N-1);root.classList.toggle("moved",target>.4);
+  root.classList.toggle("atend",ci>=N-1);root.classList.toggle("moved",target>.4);root.classList.toggle("reading",shown>.5);
   if(shown!==target)raf=requestAnimationFrame(frame);else last=0}
  const kick=()=>{if(!raf&&live)raf=requestAnimationFrame(frame)};
  root.addEventListener("scroll",()=>{if(!live)return;target=root.scrollTop/H;kick()},{passive:true});

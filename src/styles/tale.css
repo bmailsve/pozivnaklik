@@ -13,6 +13,9 @@
 /* the film of the scene: a still, the opening, and the living loop on top of each other */
 .lv-still,.lv-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
 .lv-vid{opacity:0}
+/* while the story is told, the scene behind it goes softly out of focus so the words stand out */
+.lv-still,.lv-vid{transition:filter .9s ease,transform .9s ease}
+.lv.reading :is(.lv-still,.lv-vid){filter:blur(2.5px);transform:scale(1.02)}
 .lv.playop .lv-vid.op{opacity:1}
 .lv.looping .lv-vid.lp{opacity:1}
 .lv.gone .lv-vid.op{display:none}
@@ -21,6 +24,7 @@
 /* a soft light over the sky, so the floating words read well */
 .lv-wash{position:absolute;inset:0;pointer-events:none;background:radial-gradient(85% 42% at 50% 30%,rgba(255,246,232,.55),transparent 75%);opacity:0;transition:opacity 1.2s ease}
 .lv.live .lv-wash{opacity:1}
+.lv.reading .lv-wash{background:radial-gradient(80% 34% at 50% 30%,rgba(255,247,236,.38),rgba(255,247,236,.1) 70%,transparent 90%)}
 .lv-flash{position:absolute;inset:0;background:radial-gradient(circle at 50% 74%,#fff,rgba(255,236,205,.9) 35%,rgba(255,220,200,.3) 75%);opacity:0;pointer-events:none;z-index:8}
 .lv.flash .lv-flash{animation:mbFlash 1.2s ease-out}
 @keyframes mbFlash{0%{opacity:0}30%{opacity:.95}100%{opacity:0}}
