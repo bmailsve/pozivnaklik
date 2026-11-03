@@ -7,7 +7,7 @@ import { mediaStore, keyOk } from "./media.js";
 
 /* ---------- catalogue ---------- */
 // Package of each template that is on sale. Older templates stay valid for existing invitations.
-export const TEMPLATE_TIERS = { b_olive: "basic", b_bunny: "basic", b_balloon: "basic", b_gold: "basic", b_euca: "basic", b_bless: "basic", b_dino: "basic", b_champ: "basic", b_ruby: "basic",
+export const TEMPLATE_TIERS = { b_jungle: "basic", b_olive: "basic", b_bunny: "basic", b_balloon: "basic", b_gold: "basic", b_euca: "basic", b_bless: "basic", b_dino: "basic", b_champ: "basic", b_ruby: "basic",
   e_peony: "envelope", e_disco: "envelope", e_kiss: "envelope", e_cherry: "envelope", e_rosebow: "envelope", e_emerald: "envelope", e_thirty: "envelope", vinyl: "premium", p_disco: "premium", p_bow: "premium", p_news: "premium", p_tale: "premium", p_honey: "premium", p_dino: "premium", p_plane: "premium", p_bloom: "premium", p_rip: "premium", b_ilija: "basic", b_sea: "basic", b_esp: "basic", e_estate: "envelope", e_lemon: "envelope", e_rouge: "envelope", p_letter: "premium", p_sky: "premium", p_balloon: "premium", p_gold: "premium" };
 // Premium is on sale: regular price 3490 RSD · 30 €
 export const PRICES = { basic: { eur: 10, rsd: 1190 }, envelope: { eur: 19, rsd: 2190 }, premium: { eur: 26, rsd: 3090 } };
