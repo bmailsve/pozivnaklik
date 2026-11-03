@@ -431,9 +431,7 @@
 .tid-e_cherry .ch-bow.b{right:-11cqw;top:60cqw;width:36cqw;transform:rotate(20deg)}
 .tid-e_cherry .ch-lips{--x:var(--a-chlips);aspect-ratio:1}
 .tid-e_cherry .ch-lips.a{right:2cqw;top:2cqw;width:23cqw;transform:rotate(10deg)}
-.tid-e_cherry .ch-lips.b{left:6cqw;top:42cqw;width:20cqw;transform:rotate(-8deg)}
 .tid-e_cherry .ch-lips.c{left:-4cqw;bottom:14cqw;width:27cqw;transform:rotate(6deg);filter:blur(.45cqw);opacity:.55}
-.tid-e_cherry .ch-cher{--x:var(--a-chcher);right:-1cqw;top:24cqw;width:23cqw;aspect-ratio:1}
 .tid-e_cherry .ch-mart{--x:var(--a-chmart);aspect-ratio:2/3}
 .tid-e_cherry .ch-mart.a{left:-6cqw;top:61cqw;width:31cqw;transform:rotate(-4deg)}
 .tid-e_cherry .ch-mart.b{--x:var(--a-chmart2);right:-6cqw;bottom:3cqw;width:29cqw;transform:rotate(7deg)}
@@ -465,16 +463,13 @@
 :is(.pq.read .tid-e_cherry,.tid-e_cherry.animate) .ks-it{animation:ksPop .8s cubic-bezier(.3,1.6,.5,1) var(--dl,300ms) both}
 :is(.pq.read .tid-e_cherry,.tid-e_cherry.animate) .ch-bow{animation:ksPop .8s cubic-bezier(.3,1.6,.5,1) var(--dl) both,chSway 5s ease-in-out 1.2s infinite alternate}
 :is(.pq.read .tid-e_cherry,.tid-e_cherry.animate) .ch-bow.b{animation-delay:var(--dl),-2.4s}
-:is(.pq.read .tid-e_cherry,.tid-e_cherry.animate) .ch-cher{transform-origin:62% 6%;animation:ksPop .8s cubic-bezier(.3,1.6,.5,1) var(--dl) both,chSwing 2.8s ease-in-out 1.4s infinite alternate}
 :is(.pq.read .tid-e_cherry,.tid-e_cherry.animate) .ch-mart{animation:ksPop .8s cubic-bezier(.3,1.6,.5,1) var(--dl) both,ksBob 4.2s ease-in-out 1.4s infinite alternate}
 :is(.pq.read .tid-e_cherry,.tid-e_cherry.animate) .ch-mart.b{animation-delay:var(--dl),-2s}
 :is(.pq.read .tid-e_cherry,.tid-e_cherry.animate) .ch-lips:not(.c){animation:ksPop .8s cubic-bezier(.3,1.6,.5,1) var(--dl) both,chKiss 3.8s ease-in-out 2s infinite}
-:is(.pq.read .tid-e_cherry,.tid-e_cherry.animate) .ch-lips.b{animation-delay:var(--dl),3.9s}
 :is(.pq.read .tid-e_cherry,.tid-e_cherry.animate) .ch-w{-webkit-mask:linear-gradient(90deg,#000 46%,transparent 54%) 100% 0/215% 100% no-repeat;mask:linear-gradient(90deg,#000 46%,transparent 54%) 100% 0/215% 100% no-repeat;animation:chWrite 1.25s cubic-bezier(.45,.05,.55,.95) calc(.9s + var(--wd,0) * 1.15s) forwards}
 :is(.pq.read .tid-e_cherry,.tid-e_cherry.animate) .ch-frame{animation:chFrame 1.4s ease .1s both}
 @keyframes chWrite{to{-webkit-mask-position:0 0;mask-position:0 0}}
 @keyframes chSway{from{rotate:-3deg;translate:0 0}to{rotate:3deg;translate:0 -.8cqw}}
-@keyframes chSwing{from{rotate:-7deg}to{rotate:6deg}}
 @keyframes chKiss{0%,100%{scale:1;filter:brightness(1)}12%{scale:1.1;filter:brightness(1.35)}24%{scale:.98;filter:brightness(1)}}
 @keyframes chFrame{from{opacity:0;inset:6cqw}}
 @media (prefers-reduced-motion:reduce){.tid-e_cherry *,.tid-e_cherry *::after{animation:none!important;-webkit-mask:none!important;mask:none!important}}
