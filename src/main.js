@@ -1743,8 +1743,8 @@ function bindDino(root,t,d,o={}){
  if(o.opened){done=true;root.dataset.crack=3;root.classList.add("hatched");show()}
 }
 
-/* ---------- Bila jednom: a story that rises out of a magic book ---------- */
-// the book stays on the table; the castle, the unicorns and every page of the story float up out of it
+/* ---------- Bila jednom: a living fairy-tale scene; the words and things of the story rise out of the book ---------- */
+const LV_OPEN=new URL("./art/lvopen.mp4",import.meta.url).href,LV_LOOP=new URL("./art/lvloop.mp4",import.meta.url).href;
 function taleHTML(t,d,o={}){
  const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const v=k=>(d[k]??"").toString().trim();
  const dt=pd(v("date"),cl),rsH=pd(v("rsvpBy"),cl),bd=pd(v("birthDate"),cl);const nm=esc(v("childName"));
@@ -1753,75 +1753,96 @@ function taleHTML(t,d,o={}){
  const gcal=calLink(titleOf(t,d),w,place),maps=place?`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place)}`:"";
  const img=k=>{const u=v(k);return PHOTO_RE.test(u)?u:""};
  const day=x=>cl==="sr"?`${x.d}. ${DATES.sr.monG[x.m-1]} ${x.y}.`:`${DATES.en.mon[x.m-1]} ${x.d}, ${x.y}`;
- const art=(k,c="")=>`<span class="mb-art ${c}" style="--i:var(--a-mbv${k})" aria-hidden="true"></span>`;
- const ch=[1,2,3,4].map(i=>({y:v(`story${i}Year`),t:v(`story${i}Title`),x:v(`story${i}Text`),p:img(`photo${i}`),a:["smile","berry","steps","balloon"][i-1]})).filter(s=>s.t||s.x);
+ // every piece of a scene is its own element (e), so each one can fly out of the book on its own path
+ const e=(h,c="")=>`<div class="lv-e ${c}">${h}</div>`;
+ const thing=k=>e(`<span class="lv-obj" style="--i:var(--a-lv${k})"></span>`,"ob");
+ const lines=x=>br(x).split("<br>").map(l=>l.trim()).filter(Boolean);
+ const ch=[1,2,3,4].map(i=>({y:v(`story${i}Year`),t:v(`story${i}Title`),x:v(`story${i}Text`),p:img(`photo${i}`),a:["teddy","berry","shoes","balloon"][i-1]})).filter(x=>x.t||x.x);
  const stats=[v("birthWeight"),v("birthLength")].filter(Boolean).join(" · ");
- const P=[];const page=(id,h,c="")=>P.push(`<section class="mb-pg ${c}" data-id="${id}" inert><div class="mb-in">${h}</div></section>`);
- page("title",`<p class="mb-t1">${C("Once upon a time","Bila jednom")}</p><p class="mb-t2">${C("there was a little princess","jedna mala princeza")}</p>${nm?`<p class="mb-t3">${nm}</p>`:""}<button class="mb-read" type="button">${C("Read the fairy tale","Pročitajte bajku")}</button>`,"ttl");
- page("born",`${art("crib")}<p class="mb-lab">${C("Once upon a time","Bila jednom")}</p><p class="mb-tx mb-dc">${C(`In a kingdom full of love there lived a little princess called <b>${nm}</b>.`,`U jednom kraljevstvu punom ljubavi živela je mala princeza po imenu <b>${nm}</b>.`)}</p>${bd||stats?`<div class="mb-born">${bd?`<small>${C("Born","Rođena")}</small><b>${day(bd)}${v("birthTime")?` · ${esc(v("birthTime"))}`:""}</b>`:""}${stats?`<b>${esc(stats)}</b>`:""}</div>`:""}`);
- ch.forEach((x,i)=>page("ch"+i,`${x.y?`<p class="mb-lab">${esc(x.y)}</p>`:""}${x.p?`<figure class="mb-ph"><img src="${esc(x.p)}" alt=""></figure>`:art(x.a)}${x.t?`<h3 class="mb-h">${esc(x.t)}</h3>`:""}${x.x?`<p class="mb-tx">${esc(x.x)}</p>`:""}`));
- page("ball",`${art("castle","sm")}<p class="mb-lab">${C("The birthday ball","Rođendanski bal")}</p>${v("message")?`<p class="mb-tx">${br(v("message"))}</p>`:""}${dt?`<div class="mb-when"><small>${esc(dt.wd)}</small><b>${day(dt)}</b>${v("time")?`<span>${C("at","u")} ${esc(v("time"))}${cl==="sr"?" h":""}</span>`:""}</div>`:""}${v("venue")||v("address")?`<p class="mb-where">${esc(v("venue"))}${v("address")?`<small>${esc(v("address"))}</small>`:""}</p>`:""}<div class="mb-acts">${gcal?`<a class="mb-btn" href="${gcal}" target="_blank" rel="noopener">${C("Add to calendar","Dodajte u kalendar")}</a>`:""}${maps?`<a class="mb-btn ghost" href="${maps}" target="_blank" rel="noopener">${C("Map","Mapa")}</a>`:""}</div>`);
- if(w&&w>Date.now())page("count",`${art("cake")}<p class="mb-lab">${C("Until the ball","Do bala je ostalo")}</p><div class="mb-count" data-w="${w.getTime()}"></div><p class="mb-tx">${C("Every good fairy tale has a cake, and this one has you too!","Svaka dobra bajka ima tortu, a ova ima i vas!")}</p>`);
- page("rsvp",`${art("friends","wide")}${o.preview?`<div class="rsvp mb-rsvp"><p class="kicker">${C("RSVP","Potvrda dolaska")}</p><h2>${C("Will you come to the ball?","Da li dolazite na bal?")}</h2>${rsH?`<p class="sub">${C(`Please reply by ${rsH.short}`,`Molimo odgovorite do ${rsH.short}`)}</p>`:""}<p class="note-box" style="text-align:center">${L("This is a preview. Your guests will see the reply form here.","Ovo je pregled. Ovde će vaši gosti videti formular za odgovor.")}</p></div>`:`<div class="rsvp mb-rsvp" id="rsvp"></div>`}`,"rs");
- page("end",`${art("moon","sm")}<p class="mb-tx">${C("…and they lived happily ever after, and the most beautiful pages of this story are still to be written.","…i živeli su srećno i veselo, a najlepše stranice ove bajke tek će biti napisane.")}</p><p class="mb-end">${C("The End","Kraj")}</p>${v("hosts")?`<p class="mb-sig">${esc(v("hosts"))}</p>`:""}${o.preview?"":`<p class="mb-by">${L("Sent with","Poslato preko")} <a href="${API.kind==="local"?"#":"/"}">Poziv na klik</a></p>`}`);
- const R=(n,f)=>Array.from({length:n},(_,i)=>f(i)).join("");
- const fall=R(26,i=>`<i style="--x:${((i*37)%23-11)*.55}svh;--t:${(2.4+(i%5)*.45).toFixed(2)}s;--d:${(-(i*.29)%2.6).toFixed(2)}s;--r:${(i*67)%360}deg;--s:${(.9+(i%4)*.3).toFixed(1)}svh"></i>`);
- const rise=R(16,i=>`<i style="--x:${((i*53)%31-15)*1.4}svh;--t:${(6+(i%6)*1.1).toFixed(1)}s;--d:${(-(i*.83)%7).toFixed(2)}s;--r:${(i*97)%360}deg;--s:${(.8+(i%3)*.35).toFixed(1)}svh"></i>`);
- const spark=R(30,i=>`<b style="left:${(i*31+7)%96}%;top:${(i*17+3)%66}%;--t:${(2+(i%5)*.6).toFixed(1)}s;--d:${(-(i*.41)%3).toFixed(2)}s;--s:${4+(i*7)%7}px"></b>`);
- return`<div class="tl${o.preview?" pv":""}" lang="${cl==="sr"?"sr-Latn":"en"}">
- <div class="mb-blur" aria-hidden="true"></div>
- <div class="mb-stage">
-  <div class="mb-bg op" aria-hidden="true"></div><div class="mb-bg cl" aria-hidden="true"></div>
-  <span class="mb-glow" aria-hidden="true"></span>
-  <div class="mb-air" aria-hidden="true">${spark}</div>
-  <span class="mb-uni a" aria-hidden="true"><i></i></span><span class="mb-uni b" aria-hidden="true"><i></i></span>
-  <span class="mb-castle" aria-hidden="true"></span>
-  <div class="mb-rise" aria-hidden="true">${rise}</div>
-  <div class="mb-fall" aria-hidden="true">${fall}</div>
-  <button class="mb-book" type="button" aria-label="${C("Open the book","Otvorite knjigu")}"><span class="mb-ct">${C("Once upon a time","Bila jednom")}</span>${nm?`<span class="mb-cn">${nm}</span>`:""}</button>
-  <div class="mb-pages">${P.join("")}</div>
-  <span class="mb-flash" aria-hidden="true"></span>
-  <p class="mb-hi">${who?`${C("For","Za")} ${who}`:C("A fairy tale has arrived for you","Stigla vam je jedna bajka")}</p>
-  <div class="mb-nav"><button class="mb-prev" type="button" aria-label="${C("Previous page","Prethodna strana")}">‹</button><span class="mb-dots" aria-hidden="true">${R(P.length,()=>"<i></i>")}</span><button class="mb-next" type="button" aria-label="${C("Next page","Sledeća strana")}">›</button></div>
-  <p class="mb-tip">${C("Tap the book to open it","Dodirnite knjigu da je otvorite")}</p>
+ const S=[];const scene=(id,h,c="")=>S.push(`<section class="lv-sc ${c}" data-id="${id}">${h}</section>`);
+ scene("title",`${e(C("Once upon a time","Bila jednom"),"t1")}${e(C("there was a little princess","jedna mala princeza"),"t2")}${nm?e(nm,"t3"):""}`,"ttl");
+ scene("born",`${thing("crib")}${e(C("Once upon a time","Bila jednom"),"lab")}${lines(C(`In a kingdom full of love\na little princess was born,\nand her name was ${v("childName")}.`,`U jednom kraljevstvu punom ljubavi\nrodila se mala princeza\npo imenu ${v("childName")}.`)).map(l=>e(l,"tx")).join("")}${bd?e(`${day(bd)}${v("birthTime")?` · ${esc(v("birthTime"))}`:""}`,"chip"):""}${stats?e(esc(stats),"chip"):""}`);
+ ch.forEach((x,i)=>scene("ch"+i,`${x.p?e(`<span class="lv-ph"><img src="${esc(x.p)}" alt=""></span>`,"ob"):thing(x.a)}${x.y?e(esc(x.y),"lab"):""}${x.t?e(esc(x.t),"h"):""}${x.x?e(esc(x.x),"tx"):""}`));
+ scene("ball",`${thing("crown")}${e(C("The birthday ball","Rođendanski bal"),"lab")}${v("message")?e(br(v("message")),"tx"):""}${dt?e(`<small>${esc(dt.wd)}</small>${day(dt)}`,"date"):""}${v("time")?e(`${C("at","u")} ${esc(v("time"))}${cl==="sr"?" h":""}`,"tx b"):""}${v("venue")||v("address")?e(`<b>${esc(v("venue"))}</b>${v("address")?`<span>${esc(v("address"))}</span>`:""}`,"where"):""}${gcal||maps?e(`${gcal?`<a class="lv-btn" href="${gcal}" target="_blank" rel="noopener">${C("Add to calendar","Dodajte u kalendar")}</a>`:""}${maps?`<a class="lv-btn ghost" href="${maps}" target="_blank" rel="noopener">${C("Map","Mapa")}</a>`:""}`,"acts"):""}`);
+ if(w&&w>Date.now())scene("count",`${thing("cake")}${e(C("Until the ball","Do bala je ostalo"),"lab")}${e(`<div class="lv-count" data-w="${w.getTime()}"></div>`,"cnt")}${e(C("Every good fairy tale has a cake,<br>and this one has you too!","Svaka dobra bajka ima tortu,<br>a ova ima i vas!"),"tx")}`);
+ scene("rsvp",e(o.preview?`<div class="rsvp lv-rsvp"><p class="kicker">${C("RSVP","Potvrda dolaska")}</p><h2>${C("Will you come to the ball?","Da li dolazite na bal?")}</h2>${rsH?`<p class="sub">${C(`Please reply by ${rsH.short}`,`Molimo odgovorite do ${rsH.short}`)}</p>`:""}<p class="note-box" style="text-align:center">${L("This is a preview. Your guests will see the reply form here.","Ovo je pregled. Ovde će vaši gosti videti formular za odgovor.")}</p></div>`:`<div class="rsvp lv-rsvp" id="rsvp"></div>`,"form"),"rs");
+ scene("end",`${thing("moon")}${lines(C("…and they lived happily ever after,\nand the most beautiful pages of this story\nare still to be written.","…i živeli su srećno i veselo,\na najlepše stranice ove bajke\ntek će biti napisane.")).map(l=>e(l,"tx")).join("")}${e(C("The End","Kraj"),"t1 end")}${v("hosts")?e(esc(v("hosts")),"h"):""}${o.preview?"":e(`${L("Sent with","Poslato preko")} <a href="${API.kind==="local"?"#":"/"}">Poziv na klik</a>`,"by")}`);
+ const N=S.length,R=(n,f)=>Array.from({length:n},(_,i)=>f(i)).join("");
+ const dust=R(34,i=>`<i style="--x:${((i*53)%41-20)*.9}%;--t:${(3.2+(i%7)*.55).toFixed(2)}s;--d:${(-(i*.47)%4).toFixed(2)}s;--s:${3+(i*7)%6}px"></i>`);
+ return`<div class="tl lv${o.preview?" pv":""}" lang="${cl==="sr"?"sr-Latn":"en"}" style="--n:${N}">
+ <div class="lv-blur" aria-hidden="true"></div>
+ <div class="lv-stage">
+  <img class="lv-still op" src="" alt="" aria-hidden="true"><img class="lv-still cl" alt="" aria-hidden="true">
+  <video class="lv-vid op" muted playsinline preload="auto" aria-hidden="true"></video>
+  <video class="lv-vid lp" muted playsinline loop preload="auto" aria-hidden="true"></video>
+  <span class="lv-wash" aria-hidden="true"></span>
+  <div class="lv-dust" aria-hidden="true">${dust}</div>
+  <div class="lv-scenes">${S.join("")}</div>
+  <button class="lv-book" type="button" aria-label="${C("Open the book","Otvorite knjigu")}"></button>
+  <span class="lv-flash" aria-hidden="true"></span>
+  <p class="lv-hi">${who?`${C("For","Za")} ${who}`:C("A fairy tale has arrived for you","Stigla vam je jedna bajka")}</p>
+  <p class="lv-tip">${C("Tap the book to open it","Dodirnite knjigu da je otvorite")}</p>
+  <span class="lv-more" aria-hidden="true">${C("Swipe up","Prevucite nagore")}<i></i></span>
+  <div class="lv-dots" aria-hidden="true">${R(N,()=>"<i></i>")}</div>
  </div>
+ <div class="lv-track" aria-hidden="true">${R(N,()=>"<i></i>")}</div>
  ${o.preview?"":`<div class="vx-top">${langSwitch()}</div>`}
- <button class="vx-music mb-music" type="button" aria-pressed="false"><span class="d" aria-hidden="true"></span><span>${C("Music","Muzika")}</span></button>
+ <button class="vx-music lv-music" type="button" aria-pressed="false"><span class="d" aria-hidden="true"></span><span>${C("Music","Muzika")}</span></button>
 </div>`;
 }
 function bindTale(root,t,d,o={}){
  const cl=d.lang||LANG,C=(en,sr)=>cl==="sr"?sr:en;const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
- const pgs=$$(".mb-pg",root),N=pgs.length,mus=$(".mb-music",root),tip=$(".mb-tip",root),dots=$$(".mb-dots i",root),stage=$(".mb-stage",root);let cur=-1,lock=0;
+ const stage=$(".lv-stage",root),scs=$$(".lv-sc",root),N=scs.length,dots=$$(".lv-dots i",root),mus=$(".lv-music",root);
+ const vOp=$(".lv-vid.op",root),vLp=$(".lv-vid.lp",root),cs=getComputedStyle(document.documentElement);
+ const urlOf=k=>(/url\(["']?([^"')]+)/.exec(cs.getPropertyValue("--a-"+k))||[])[1]||"";
+ $(".lv-still.op",root).src=urlOf("lvkey");$(".lv-still.cl",root).src=urlOf("lvclosed");
+ if(!RM){vLp.src=LV_LOOP;if(!o.opened)vOp.src=LV_OPEN}
  const setPlay=on=>{root.classList.toggle("playing",on);mus.setAttribute("aria-pressed",on)};
  const play=()=>{try{DiscoBeat.stop()}catch(e){}MBox.use(VX_BARS,.22);MBox.start();setPlay(true)};
  mus.addEventListener("click",()=>{if(root.classList.contains("playing")){MBox.stop();setPlay(false)}else play()});
- // one page floats in the air at a time: going on, it drifts up and away and the next one rises out of the book
- function show(i,dir){const prev=pgs[cur];cur=i;const p=pgs[i];
-  if(prev){prev.inert=true;prev.classList.remove("on","in-up","in-down");void prev.offsetWidth;prev.classList.add(dir>0?"out-up":"out-down");setTimeout(()=>prev.classList.remove("out-up","out-down"),1000)}
-  p.classList.remove("out-up","out-down");void p.offsetWidth;p.classList.add("on",dir<0?"in-down":"in-up");p.inert=false;
-  root.classList.toggle("big",p.dataset.id==="title"||p.dataset.id==="end");
-  dots.forEach((x,k)=>x.classList.toggle("on",k===i));$(".mb-prev",root).disabled=i<=0;$(".mb-next",root).disabled=i>=N-1;
-  root.classList.remove("puff");void root.offsetWidth;root.classList.add("puff");
-  if(i>0)tip.textContent=C("Tap the page or swipe to read on","Dodirnite stranicu ili prevucite za dalje");count()}
- function go(dir){if(!root.classList.contains("risen"))return;const n=cur+dir;if(n<0||n>=N||Date.now()<lock)return;lock=Date.now()+750;show(n,dir)}
- function open(anim){if(root.classList.contains("open"))return;root.classList.add("open");o.onOpen&&o.onOpen();tip.textContent="";
-  if(!anim||RM){root.classList.add("risen");show(0,1);return}
-  // a flash of light, the book lies open, the castle rises and the first words appear in the air
-  root.classList.add("opening");setTimeout(()=>root.classList.add("risen"),650);setTimeout(()=>{if(root.isConnected)show(0,1)},1750);setTimeout(()=>{if(root.isConnected&&!o.opened)play()},2200)}
- $(".mb-book",root).addEventListener("click",()=>open(true));
- $(".mb-read",root).addEventListener("click",()=>go(1));
- $(".mb-prev",root).addEventListener("click",()=>go(-1));$(".mb-next",root).addEventListener("click",()=>go(1));
- // swipe either way, or tap the page itself; links, buttons and the reply form keep working
- let sx=0,sy=0,moved=false;
- stage.addEventListener("pointerdown",e=>{sx=e.clientX;sy=e.clientY;moved=false});
- stage.addEventListener("pointerup",e=>{const dx=e.clientX-sx,dy=e.clientY-sy;if(e.target.closest("input,textarea,select,.rsvp"))return;if(Math.max(Math.abs(dx),Math.abs(dy))>45){moved=true;go(Math.abs(dx)>Math.abs(dy)?(dx<0?1:-1):(dy<0?1:-1))}});
- stage.addEventListener("click",e=>{if(moved)return;if(e.target.closest("a,button,input,textarea,select,label,.rsvp"))return;if(e.target.closest(".mb-pg.on:not(.ttl)"))go(1)});
- const key=e=>{if(!root.isConnected){document.removeEventListener("keydown",key);return}if(e.target.closest&&e.target.closest("input,textarea"))return;if(e.key==="ArrowRight"||e.key==="ArrowDown")go(1);if(e.key==="ArrowLeft"||e.key==="ArrowUp")go(-1);if((e.key==="Enter"||e.key===" ")&&!root.classList.contains("open")&&document.activeElement===$(".mb-book",root))open(true)};
+ // where the magic comes out of the book, and where each piece of each scene ends up
+ let H=1,BX=0,BY=0,els=[];
+ function measure(){const r=stage.getBoundingClientRect();H=root.clientHeight||innerHeight;BX=r.width/2;BY=r.height*.74;
+  els=scs.map(sc=>{const was=sc.style.cssText;sc.style.visibility="hidden";sc.style.opacity="1";const it=$$(".lv-e",sc).map((el,k)=>{el.style.transform="";const q=el.getBoundingClientRect();return{el,k,dx:BX-(q.left-r.left+q.width/2),dy:BY-(q.top-r.top+q.height/2),side:k%2?1:-1}});sc.style.cssText=was;return it})}
+ // s is the story position: 0 = the title, 1 = the next scene… It follows the scroll softly, so everything flows
+ let target=0,shown=-1.2,raf=0,live=false,last=0;
+ const ease=x=>x<0?0:x>1?1:1-Math.pow(1-x,3),clamp=x=>x<0?0:x>1?1:x;
+ function frame(now){raf=0;const dt=last?Math.min(80,now-last):16;last=now;shown+=(target-shown)*(RM?1:1-Math.exp(-dt/300));if(Math.abs(target-shown)<.0008)shown=target;
+  const flow=Math.min(1,Math.abs(target-shown)*3);stage.style.setProperty("--flow",flow.toFixed(3));
+  scs.forEach((sc,i)=>{const dd=shown-i,act=Math.abs(dd)<.5;sc.classList.toggle("on",act&&Math.abs(dd)<.12);
+   if(dd<=-1||dd>=1){if(sc.style.visibility!=="hidden"){sc.style.visibility="hidden"}return}sc.style.visibility="visible";
+   const it=els[i]||[],n=it.length;
+   it.forEach(({el,k,dx,dy,side})=>{
+    if(dd<0){// rising out of the book: each piece leaves a little after the one before, on its own curve
+     const st=(n>1?k/(n-1):0)*.38,u=ease(clamp((dd+1-st)/(.88-st)));const arc=Math.sin(u*Math.PI)*side*H*.05;
+     el.style.opacity=clamp(u*1.6).toFixed(3);el.style.transform=`translate3d(${(dx*(1-u)+arc).toFixed(1)}px,${(dy*(1-u)).toFixed(1)}px,0) scale(${(.18+.82*u).toFixed(3)}) rotate(${((1-u)*side*14).toFixed(1)}deg)`}
+    else{// drifting up and away, dissolving into the light
+     const st=(n>1?(n-1-k)/(n-1):0)*.25,u=clamp((dd-.12-st*.4)/(.7-st*.4));const uu=u*u;
+     el.style.opacity=(1-clamp(u*1.5)).toFixed(3);el.style.transform=`translate3d(${(side*uu*H*.04).toFixed(1)}px,${(-uu*H*.2).toFixed(1)}px,0) scale(${(1+uu*.12).toFixed(3)})`}})});
+  const ci=Math.round(clamp(shown/(N-1))*(N-1));dots.forEach((x,k)=>x.classList.toggle("on",k===ci));
+  root.classList.toggle("atend",ci>=N-1);root.classList.toggle("moved",target>.4);
+  if(shown!==target)raf=requestAnimationFrame(frame);else last=0}
+ const kick=()=>{if(!raf&&live)raf=requestAnimationFrame(frame)};
+ root.addEventListener("scroll",()=>{if(!live)return;target=root.scrollTop/H;kick()},{passive:true});
+ // the opening: the closed book opens by itself, light bursts out and the castle grows; then the title rises from the pages
+ function begin(){live=true;root.classList.add("live");measure();target=root.scrollTop/H;shown=Math.min(shown,target-1);kick();count()}
+ function open(anim){if(root.classList.contains("open"))return;root.classList.add("open");o.onOpen&&o.onOpen();
+  if(!anim||RM){root.classList.add("looping");vLp.play().catch(()=>{});begin();return}
+  let done=false;const toLoop=()=>{if(done)return;done=true;vLp.currentTime=0;const go=()=>{root.classList.add("looping");setTimeout(()=>root.classList.add("gone"),400)};vLp.play().then(go,go);begin()};
+  root.classList.add("opening");play();
+  vOp.play().then(()=>{root.classList.add("playop");vOp.addEventListener("timeupdate",()=>{if(vOp.duration&&vOp.currentTime>vOp.duration-.35)toLoop()});vOp.addEventListener("ended",toLoop)},()=>{root.classList.add("flash");setTimeout(toLoop,500)});
+  setTimeout(toLoop,9000)}
+ $(".lv-book",root).addEventListener("click",()=>open(true));
+ const key=e=>{if(!root.isConnected){document.removeEventListener("keydown",key);return}if(e.target.closest&&e.target.closest("input,textarea,select"))return;if(!live)return;if(["ArrowDown","PageDown","ArrowRight"].includes(e.key)){e.preventDefault();root.scrollBy({top:H,behavior:"smooth"})}if(["ArrowUp","PageUp","ArrowLeft"].includes(e.key)){e.preventDefault();root.scrollBy({top:-H,behavior:"smooth"})}};
  document.addEventListener("keydown",key);
- let ticking=false;function count(){const el=$(".mb-count",root);if(!el||ticking)return;ticking=true;const w=+el.dataset.w;const tick=()=>{if(!el.isConnected)return;const ms=w-Date.now();if(ms<=0){el.innerHTML="";return}const a=[[Math.floor(ms/864e5),C("Days","Dana")],[Math.floor(ms/36e5)%24,C("Hours","Sati")],[Math.floor(ms/6e4)%60,C("Min","Min")],[Math.floor(ms/1e3)%60,C("Sec","Sek")]];el.innerHTML=a.map(([n,l])=>`<div><b>${String(n).padStart(2,"0")}</b><span>${l}</span></div>`).join("");setTimeout(tick,1000)};tick()}
- // after a reply the page shows the thank-you from the top
- const rv=$("#rsvp",root);if(rv)new MutationObserver(()=>{const m=rv.closest(".mb-in");if(m)m.scrollTop=0}).observe(rv,{childList:true});
- if(o.opened)open(false);
+ dots.forEach((x,k)=>x.addEventListener("click",()=>root.scrollTo({top:k*H,behavior:"smooth"})));
+ let rt=0;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(()=>{if(root.isConnected&&live){measure();target=root.scrollTop/H;kick()}},200)});
+ // after a reply the thank-you is measured again so it rises from the book like everything else
+ const rv=$("#rsvp",root);if(rv)new MutationObserver(()=>{if(live)measure()}).observe(rv,{childList:true});
+ const obs=new MutationObserver(()=>{if(!root.isConnected){vOp.pause();vLp.pause();obs.disconnect()}});obs.observe(document.body,{childList:true,subtree:true});
+ let ticking=false;function count(){const el=$(".lv-count",root);if(!el||ticking)return;ticking=true;const w=+el.dataset.w;const tick=()=>{if(!el.isConnected)return;const ms=w-Date.now();if(ms<=0){el.innerHTML="";return}const a=[[Math.floor(ms/864e5),C("Days","Dana")],[Math.floor(ms/36e5)%24,C("Hours","Sati")],[Math.floor(ms/6e4)%60,C("Min","Min")],[Math.floor(ms/1e3)%60,C("Sec","Sek")]];el.innerHTML=a.map(([n,l])=>`<div><b>${String(n).padStart(2,"0")}</b><span>${l}</span></div>`).join("");setTimeout(tick,1000)};tick()}
+ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(live)measure()});
+ if(o.opened)requestAnimationFrame(()=>open(false));
 }
 
 /* ---------- Rođendanske novine: a newspaper that spins in like an old film headline ---------- */
