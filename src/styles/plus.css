@@ -15,6 +15,10 @@
 .pq-t-lace{--pat:var(--a-lace);--patsz:420px;--wash:rgba(72,17,28,.86);--pgc:#4E1420}
 .pq-t-tinsel{--wash:rgba(13,13,15,.88);--pgc:#0d0d0f;--on:#eceef2}
 .pq-t-kiss{--wash:rgba(247,241,230,.35);--patsz:560px;--pgc:#F2EBDF}
+.pq-t-toast{--wash:rgba(250,246,238,.55);--patsz:520px;--pgc:#F6F0E6;--on:#5A1A1E}
+.pq-t-toast .pq-open{background:var(--a-zdtable) center/cover no-repeat,#EDE3D3}
+.pq-t-toast .pq-open .pq-to{color:#6B4A3A}
+.pq-t-toast .pq-open .pq-hint{font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(20px,5.4vw,26px);color:#8B1A22}
 /* the envelope lies on silver sequin fabric; the fabric fades away with the opening scene */
 .pq-t-kiss .pq-open{background:radial-gradient(120% 80% at 50% 45%,rgba(20,18,20,.05),rgba(20,18,20,.55)),var(--a-kssequin) 0 0/280px repeat,#8d9097}
 .pq-t-kiss .pq-open :is(.pq-to,.pq-hint){color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.65),0 0 2px rgba(0,0,0,.5)}
@@ -287,6 +291,46 @@
 .pq-kiss.v-e_cherry .k-seal{width:44cqw;rotate:0deg;filter:drop-shadow(0 1cqw 1.2cqw rgba(0,0,0,.6))}
 .pq-kiss.v-e_cherry .k-sp{background:radial-gradient(circle,#ffd9d4 0 20%,rgba(190,30,30,.8) 40%,transparent 70%)}
 
+/* Zdravica: an empty crystal coupe on a sunlit table; tapped, champagne pours in, bubbles rise and a cherry drops in */
+.pq-toast{--ar:.664;overflow:visible;cursor:pointer}
+.pq-toast .z-glass{inset:0;background:center/100% 100% no-repeat}
+.pq-toast .z-glass.e{background-image:var(--a-zdempty)}
+.pq-toast .z-glass.f{background-image:var(--a-zdfull);clip-path:inset(37.5% 0 0 0)}
+.pq-toast .z-shadow{left:22%;right:22%;bottom:-1.5%;height:5%;border-radius:50%;background:radial-gradient(closest-side,rgba(90,60,40,.32),transparent)}
+.pq-toast .z-surf{left:41%;right:41%;top:37%;height:2.2%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,250,225,.95),rgba(255,236,170,.5) 60%,transparent);opacity:0}
+.pq-toast .z-pour{left:48.6%;width:2.8%;bottom:63%;height:0;border-radius:2cqw 2cqw 40% 40%;background:linear-gradient(90deg,rgba(220,175,80,.5),rgba(255,236,170,.95) 45%,rgba(214,166,70,.65)),repeating-linear-gradient(180deg,rgba(255,255,255,.5) 0 3cqw,transparent 3cqw 8cqw);background-size:100% 100%,100% 16cqw;opacity:.95;transform-origin:50% 0}
+.pq-toast .z-bub{left:16%;right:16%;top:14%;height:23%;overflow:hidden;opacity:0;-webkit-mask:radial-gradient(70% 100% at 50% 0,#000 70%,transparent 100%);mask:radial-gradient(70% 100% at 50% 0,#000 70%,transparent 100%)}
+.pq-toast .z-bub i{position:absolute;left:var(--x);bottom:-6%;width:var(--s);aspect-ratio:1;border-radius:50%;border:.25cqw solid rgba(255,255,255,.8);background:rgba(255,255,255,.25)}
+.pq-toast .z-cherry{left:35%;top:-60%;width:30%;aspect-ratio:1;background:var(--a-zdcherry) center/contain no-repeat;opacity:0;filter:drop-shadow(0 1cqw 1cqw rgba(80,10,10,.3))}
+.pq-toast .z-drop{left:50%;top:14%;width:0;height:0}
+.pq-toast .z-drop i{position:absolute;width:2.6cqw;aspect-ratio:1;border-radius:50%;margin:-1.3cqw;background:radial-gradient(circle at 35% 35%,#fff,rgba(255,228,150,.9) 50%,rgba(210,160,60,.6));opacity:0}
+.pq-toast .z-glow{left:-30%;right:-30%;top:-12%;height:60%;border-radius:50%;background:radial-gradient(closest-side,rgba(255,246,214,.9),rgba(255,226,160,.35) 50%,transparent);opacity:0;pointer-events:none}
+.pq-toast:not(.open) .z-glass.e{animation:zIdle 3.6s ease-in-out infinite}
+@keyframes zIdle{0%,100%{filter:none}50%{filter:brightness(1.08) drop-shadow(0 0 3cqw rgba(255,236,190,.8))}}
+/* the pour */
+.pq-toast.open .z-pour{animation:zPour 2s cubic-bezier(.3,0,.4,1) forwards,zStream .35s linear infinite}
+@keyframes zPour{0%{height:0;bottom:63%;top:auto;opacity:1}12%{height:140%;bottom:63%}78%{height:140%;bottom:86%;opacity:1}100%{height:0;bottom:180%;opacity:0}}
+@keyframes zStream{to{background-position:0 0,0 16cqw}}
+.pq-toast.open .z-glass.f{animation:zFill 1.75s cubic-bezier(.35,.1,.3,1) .25s forwards}
+@keyframes zFill{from{clip-path:inset(37.5% 0 0 0)}to{clip-path:inset(12.8% 0 0 0)}}
+.pq-toast.open .z-surf{animation:zSurf 1.75s cubic-bezier(.35,.1,.3,1) .25s forwards,zShim .6s ease-in-out 2s 3 alternate}
+@keyframes zSurf{0%{opacity:.9;top:37%;left:40%;right:40%}100%{opacity:.9;top:12.2%;left:13.5%;right:13.5%}}
+@keyframes zShim{to{opacity:.45}}
+.pq-toast.open .z-bub{animation:zBubShow .4s ease .9s forwards}
+@keyframes zBubShow{to{opacity:1}}
+.pq-toast.open .z-bub i{animation:zBub var(--t) ease-in var(--d) infinite}
+@keyframes zBub{0%{transform:translateY(0) scale(.5);opacity:0}20%{opacity:1}100%{transform:translateY(-110cqw) scale(1);opacity:0}}
+/* the cherry drops in and bobs; the part under the champagne goes soft and golden */
+.pq-toast.open .z-cherry{animation:zCherry .9s cubic-bezier(.55,0,.8,.45) 2s forwards,zBob 1.6s ease-in-out 3.05s infinite alternate}
+@keyframes zCherry{0%{top:-60%;opacity:1;transform:rotate(-20deg)}72%{top:2.5%;transform:rotate(6deg)}86%{top:-.5%;transform:rotate(-3deg)}100%{top:.8%;opacity:1;transform:none}}
+@keyframes zBob{from{translate:0 0}to{translate:0 .8cqw}}
+.pq-toast.open .z-cherry{-webkit-mask:linear-gradient(180deg,#000 58%,rgba(0,0,0,.5) 70%);mask:linear-gradient(180deg,#000 58%,rgba(0,0,0,.5) 70%)}
+.pq-toast.open .z-drop i{animation:zDrop .9s cubic-bezier(.2,.6,.4,1) 2.62s forwards}
+@keyframes zDrop{0%{opacity:1;transform:rotate(var(--a)) translateY(0)}55%{opacity:1;transform:rotate(var(--a)) translateY(calc(var(--r) * -1))}100%{opacity:0;transform:rotate(var(--a)) translateY(calc(var(--r) * -.4)) scale(.4)}}
+.pq-toast.open .z-glow{animation:zGlow 1.2s ease-out 2.6s forwards}
+@keyframes zGlow{0%{opacity:0;transform:scale(.6)}40%{opacity:1}100%{opacity:0;transform:scale(1.6)}}
+@media (prefers-reduced-motion:reduce){.pq-toast *{animation:none!important}.pq-toast.open .z-glass.f{clip-path:inset(12.8% 0 0 0)}.pq-toast.open .z-cherry{top:0;opacity:1}}
+
 /* ---------- the invitation page ---------- */
 .pq-main{position:relative;z-index:2}
 /* the page is laid out (hidden) while the opening plays, so it appears without a stall */
@@ -473,3 +517,59 @@
 @keyframes chKiss{0%,100%{scale:1;filter:brightness(1)}12%{scale:1.1;filter:brightness(1.35)}24%{scale:.98;filter:brightness(1)}}
 @keyframes chFrame{from{opacity:0;inset:6cqw}}
 @media (prefers-reduced-motion:reduce){.tid-e_cherry *,.tid-e_cherry *::after{animation:none!important;-webkit-mask:none!important;mask:none!important}}
+
+/* ---------- Zdravica card: a huge burgundy age number, the name written across it, a toast in front ---------- */
+.tid-e_thirty.has-art::before{background-size:cover!important}
+.tid-e_thirty .inv-body>*{position:absolute;left:0;right:0;margin:0!important}
+.tid-e_thirty .zd-k{top:6.4cqw;font:500 2.5cqw/1 'Cormorant Garamond',serif;letter-spacing:.42em!important;text-transform:uppercase;padding-left:.42em;color:#3A2A24}
+.tid-e_thirty .zd-age{top:11cqw;left:-3cqw!important;right:-3cqw!important;display:flex;justify-content:center;font:400 calc(var(--k) * -26cqw + 150cqw)/.78 'Bodoni Moda',serif;letter-spacing:-.05em;color:#8B1A22}
+.tid-e_thirty .zd-age i{display:block;font-style:normal;overflow:hidden;padding:0 .01em .06em}
+.tid-e_thirty .zd-age b{display:block;font-weight:400}
+.tid-e_thirty .zd-n{top:39cqw;display:flex;justify-content:center;font-family:'Mrs Saint Delafield','Great Vibes',cursive;font-weight:400;line-height:1.1!important;color:#8B1A22;rotate:-8deg}
+/* a thin line of card shows around the handwriting where it crosses the number */
+.tid-e_thirty .zd-n span{display:inline-block;padding:.05em .25em .32em;text-shadow:.035em 0 0 #F6F0E6,-.035em 0 0 #F6F0E6,0 .035em 0 #F6F0E6,0 -.035em 0 #F6F0E6,.025em .025em 0 #F6F0E6,-.025em .025em 0 #F6F0E6,.025em -.025em 0 #F6F0E6,-.025em -.025em 0 #F6F0E6!important}
+.tid-e_thirty .zd-objs{top:auto;bottom:6cqw;left:4cqw!important;right:auto!important;width:94cqw;aspect-ratio:1;background:var(--a-zdobjs) center/contain no-repeat;pointer-events:none}
+.tid-e_thirty .zd-flame{position:absolute;left:72.6%;top:9.4%;width:7cqw;height:9cqw;margin:-4.5cqw 0 0 -3.5cqw;border-radius:50%;background:radial-gradient(closest-side,rgba(255,236,170,.95),rgba(255,190,90,.45) 45%,transparent);mix-blend-mode:screen}
+.tid-e_thirty .zd-glint{position:absolute;left:24%;top:33%;width:40%;height:16%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.85) 50%,transparent 60%) -120% 0/250% 100% no-repeat;mix-blend-mode:screen;opacity:.8}
+.tid-e_thirty .zd-d{bottom:7.4cqw;top:auto;display:flex;justify-content:center;align-items:center;gap:2cqw;font:600 2.4cqw/1 'Cormorant Garamond',serif;letter-spacing:.24em!important;text-transform:uppercase;color:#3A2A24}
+.tid-e_thirty .zd-d i{width:1cqw;height:1cqw;border-radius:50%;background:#8B1A22}
+.tid-e_thirty .zd-v{bottom:3.4cqw;top:auto;font:italic 500 2.9cqw/1 'Cormorant Garamond',serif;letter-spacing:.04em;color:#5A1A1E}
+/* motion: the digits rise up like ink, the name is written by hand, the candle flickers and light runs over the glass */
+:is(.pq.read .tid-e_thirty,.tid-e_thirty.animate) .zd-age b{animation:zdRise 1.3s cubic-bezier(.2,.75,.25,1) calc(.15s + var(--i) * .18s) both}
+@keyframes zdRise{from{transform:translateY(80%)}}
+:is(.pq.read .tid-e_thirty,.tid-e_thirty.animate) .zd-n span{-webkit-mask:linear-gradient(100deg,#000 46%,transparent 54%) 100% 0/215% 100% no-repeat;mask:linear-gradient(100deg,#000 46%,transparent 54%) 100% 0/215% 100% no-repeat;animation:zdWrite 1.9s cubic-bezier(.45,.05,.55,.95) 1s forwards}
+@keyframes zdWrite{to{-webkit-mask-position:0 0;mask-position:0 0}}
+:is(.pq.read .tid-e_thirty,.tid-e_thirty.animate) .zd-objs{animation:zdIn 1.1s cubic-bezier(.2,.75,.25,1) .5s both}
+@keyframes zdIn{from{opacity:0;transform:translateY(5cqw)}}
+.pq .tid-e_thirty .zd-flame,.tid-e_thirty.animate .zd-flame{animation:zdFlame 1.8s ease-in-out infinite alternate}
+@keyframes zdFlame{0%{opacity:.55;transform:scale(.9)}35%{opacity:.95;transform:scale(1.08) translateX(.2cqw)}70%{opacity:.7;transform:scale(.96) translateX(-.2cqw)}100%{opacity:1;transform:scale(1.05)}}
+:is(.pq.read .tid-e_thirty,.tid-e_thirty.animate) .zd-glint{animation:zdGlint 5.5s ease-in-out 2.6s infinite}
+@keyframes zdGlint{0%,60%{background-position:-120% 0}85%,100%{background-position:220% 0}}
+@media (prefers-reduced-motion:reduce){.tid-e_thirty *{animation:none!important;-webkit-mask:none!important;mask:none!important}}
+
+/* ---------- Zdravica page: an editorial look, thin burgundy rules instead of boxes ---------- */
+.pq-d-e_thirty{--acc:#8B1A22;--pink:#3A2A24}
+.pq-d-e_thirty .pq-panel{background:transparent;box-shadow:none;outline:0;border-radius:0;border-block:1px solid rgba(139,26,34,.45);padding-inline:6px}
+.pq-d-e_thirty .pq-kk{font:600 12px 'Cormorant Garamond',serif;letter-spacing:.42em;color:#8B1A22}
+.pq-d-e_thirty .pq-h{font:italic 400 clamp(40px,11vw,64px)/1.05 'Bodoni Moda',serif;color:#3A2A24}
+.pq-d-e_thirty .pq-orn{color:#8B1A22}
+.pq-d-e_thirty .pq-orn i{width:90px}
+.pq-d-e_thirty .pq-date{font:400 clamp(110px,34vw,170px)/.82 'Bodoni Moda',serif;color:#8B1A22;letter-spacing:-.04em}
+.pq-d-e_thirty .pq-date span{font:600 13px 'Cormorant Garamond',serif;letter-spacing:.34em;color:#3A2A24;margin-top:14px}
+.pq-d-e_thirty .pq-msg{font:italic 400 clamp(22px,5.8vw,28px)/1.45 'Bodoni Moda',serif;color:#3A2A24}
+.pq-d-e_thirty .pq-sig,.pq-d-e_thirty .pq-sig2{font-family:'Mrs Saint Delafield','Great Vibes',cursive;font-size:clamp(46px,12vw,64px);color:#8B1A22}
+.pq-d-e_thirty .pq-wax{width:66px}
+.pq-d-e_thirty .pq-plan::before{background:rgba(139,26,34,.35)}
+.pq-d-e_thirty .pq-plan li::before{background:#8B1A22;box-shadow:none;border-radius:0;transform:rotate(45deg) scale(.8)}
+.pq-d-e_thirty .pq-plan b{font:500 20px 'Bodoni Moda',serif;color:#8B1A22}
+.pq-d-e_thirty .pq-btn{border-radius:0;background:#8B1A22;color:#F6F0E6!important;font:600 13px 'Cormorant Garamond',serif;letter-spacing:.24em;text-transform:uppercase;box-shadow:none}
+.pq-d-e_thirty .pq-btn.ln{background:transparent;color:#8B1A22!important;border:1px solid #8B1A22}
+.pq-d-e_thirty .pq-count div{background:transparent;outline:0;box-shadow:none;border-left:1px solid rgba(139,26,34,.35);border-radius:0}
+.pq-d-e_thirty .pq-count div:first-child{border-left:0}
+.pq-d-e_thirty .pq-count b{font:400 clamp(40px,11vw,56px)/1 'Bodoni Moda',serif;color:#8B1A22}
+.pq-d-e_thirty .pq-rsvp{background:transparent!important;box-shadow:none!important;border-block:1px solid rgba(139,26,34,.45)!important}
+.pq-d-e_thirty .pq-rsvp :is(input,textarea),.pq-d-e_thirty .pq-rsvp .choice button{border-radius:0;background:rgba(255,255,255,.6)}
+.pq-d-e_thirty .pq-rsvp .btn,.pq-d-e_thirty .pq-rsvp button[type=submit]{border-radius:0!important;background:#8B1A22!important;letter-spacing:.2em;text-transform:uppercase}
+.pq-d-e_thirty .pq-rsvp .choice button.on{background:#8B1A22!important;border-color:#8B1A22!important;color:#fff!important}
+.tid-e_thirty .zd-d [data-f=time]{text-transform:none}
+.pq-d-e_thirty .pq-msg{text-align:center!important;text-align-last:center}
