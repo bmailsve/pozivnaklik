@@ -542,7 +542,7 @@ const BAS={
   ${a?`<div ${S("zd-age","age",`--k:${a.length}`)} aria-hidden="true">${[...a].map((x,i)=>`<i style="--i:${i}"><b>${x}</b></i>`).join("")}</div>`:""}
   ${v("name")?`<h2 ${S("zd-n","name",`font-size:${bsFit(25,150,v("name"))}cqw`)}><span class="zd-cut" aria-hidden="true">${esc(v("name"))}</span><span>${esc(v("name"))}</span></h2>`:""}
   <span class="zd-objs" aria-hidden="true"><i class="zd-flame"></i><i class="zd-glint"></i></span>
-  ${dt?`<p ${Q("zd-d","date")}><span>${esc(dt.wd)}</span><i></i><span>${cl==="sr"?`${dt.d}. ${esc(bsMon(dt,cl))}`:`${esc(dt.mon)} ${dt.d}`}</span>${v("time")?`<i></i><span data-f="time">${esc(v("time"))}${cl==="sr"?" h":""}</span>`:""}</p>`:""}
+  ${dt?`<p ${Q("zd-d","date")}><span>${esc(dt.wd)}</span><i></i><span>${cl==="sr"?`${dt.d}. ${esc(DATES.sr.mon[dt.m-1])}`:`${esc(dt.mon)} ${dt.d}`}</span>${v("time")?`<i></i><span data-f="time">${esc(v("time"))}${cl==="sr"?" h":""}</span>`:""}</p>`:""}
   ${v("venue")?`<p ${Q("zd-v","venue")}>${esc(v("venue"))}</p>`:""}`},
  e_cherry:({v,dt,rs,cl,C,Q,S})=>{const w=v("name").split(/\s+/).filter(Boolean);const nm=w.length>2?[w[0],w.slice(1).join(" ")]:w;
   const it=(c,dl)=>`<span class="ks-it ${c}" style="--dl:${dl}ms" aria-hidden="true"></span>`;
@@ -2205,7 +2205,7 @@ function zfMain(t,d,o,{C,v,dt,rsH,stops,gcal,maps,w,names,g,cl}){
  const back=`<div class="zf-bi">
   ${v("backMsg")?`<p class="zf-msg">${br(v("backMsg"))}</p><span class="zf-rule" aria-hidden="true"><i></i></span>`:""}
   <p class="zf-k">${C("Where and when","Gde i kada")}</p>
-  ${dt?`<p class="zf-wd">${esc(dt.wd)}</p><p class="zf-day">${dt.d}</p><p class="zf-mo">${esc(cl==="sr"?DATES.sr.monG[dt.m-1]:dt.mon)} ${dt.y}.</p>`:""}
+  ${dt?`<p class="zf-wd">${esc(dt.wd)}</p><p class="zf-day">${dt.d}</p><p class="zf-mo">${esc(cl==="sr"?DATES.sr.mon[dt.m-1]:dt.mon)} ${dt.y}.</p>`:""}
   ${st[1]?`<p class="zf-tm">${C("at","u")} ${esc(st[1])}${cl==="sr"?" h":""}</p>`:""}
   ${st[2]||v("address")?`<div class="zf-pl">${st[2]?`<p class="zf-v">${esc(st[2])}</p>`:""}${v("address")?`<p class="zf-a">${esc(v("address"))}</p>`:""}</div>`:""}
   ${v("dressCode")?`<p class="zf-dc"><small>Dress code</small>${esc(v("dressCode"))}</p>`:""}
