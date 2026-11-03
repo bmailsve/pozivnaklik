@@ -1,5 +1,5 @@
 /* Bila jednom · premium first birthday told as a royal storybook: a leather-bound book whose paper pages bend and turn */
-.tl{--tl-bg:var(--a-tllib);--tl-leather:var(--a-tlleather);--tl-marble:var(--a-tlmarble);--gold:#B58A3E;--gold2:#E7CB86;--wine:#7C1E2D;--ink:#3E2B1E;--rose:#8E3346;position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:66px 0 24px;box-sizing:border-box;overflow:hidden;color:var(--ink);font-family:'Cormorant Garamond',serif;
+.tl{--tl-bg:var(--a-tllib);--tl-leather:var(--a-tlleather);--gold:#B58A3E;--gold2:#E7CB86;--wine:#7C1E2D;--ink:#3E2B1E;--rose:#8E3346;position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:66px 0 24px;box-sizing:border-box;overflow:hidden;color:var(--ink);font-family:'Cormorant Garamond',serif;
  background:radial-gradient(60% 46% at 50% 44%,rgba(255,196,120,.22),transparent 70%),radial-gradient(130% 100% at 50% 40%,transparent 40%,rgba(0,0,0,.75)),var(--tl-bg,none) center/cover no-repeat,repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px),#2A0E14}
 .view:has(> .tl){transform:none!important;animation:none!important;opacity:1!important}
 .tl .vx-top{position:absolute;top:12px;right:12px;z-index:61}
@@ -45,11 +45,12 @@
 @keyframes tlFoil{50%{background-position:100% 0}}
 
 /* ---------- endpaper ---------- */
-.tl-endp{background:radial-gradient(130% 110% at 50% 50%,transparent 55%,rgba(40,5,10,.45)),var(--tl-marble) 0 0/90cqw repeat,#7C2A36;box-shadow:inset -18px 0 26px -16px rgba(30,5,10,.6)}
-.tl-plate{position:absolute;left:50%;top:50%;translate:-50% -50%;width:64cqw;padding:9cqw 6cqw 7cqw;box-sizing:border-box;border-radius:50%/42%;background:var(--a-tlpaper) center/cover,#F4E8CC;border:.6cqw solid var(--gold);outline:.3cqw solid var(--gold2);outline-offset:1.6cqw;text-align:center;box-shadow:0 3cqw 6cqw -2cqw rgba(0,0,0,.55)}
-.tl-plate small{display:block;font:600 3cqw/1.3 'Cinzel',serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-.tl-plate b{display:block;margin:2cqw 0 1cqw;font:400 11cqw/1.1 'Pinyon Script',cursive;color:var(--wine)}
-.tl-plate span{display:block;width:30cqw;margin:0 auto;color:var(--gold)}
+/* the inside cover matches the invitation card: cream paper, a rose wreath with a pink bow, and the owner's name inside */
+.tl-endp{background:var(--a-tlwreath) center/100% 100% no-repeat,#FBF5E8;box-shadow:inset -18px 0 26px -16px rgba(90,60,30,.35)}
+.tl-plate{position:absolute;left:50%;top:51%;translate:-50% -50%;width:44cqw;text-align:center}
+.tl-plate small{display:block;font:600 2.9cqw/1.4 'Cinzel',serif;letter-spacing:.2em;text-transform:uppercase;color:#A8803F}
+.tl-plate b{display:block;margin:2.4cqw 0 1.6cqw;font:400 11.5cqw/1.05 'Pinyon Script',cursive;color:#9A4A58}
+.tl-plate span{display:block;width:26cqw;margin:0 auto;color:#B88A4A}
 
 /* ---------- gold frame with corner flourishes ---------- */
 .tl-fr{position:absolute;inset:4.2cqw;border:.25cqw solid rgba(181,138,62,.7);pointer-events:none;color:var(--gold)}
