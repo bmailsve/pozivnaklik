@@ -8,7 +8,7 @@ import { mediaStore, keyOk } from "./media.js";
 /* ---------- catalogue ---------- */
 // Package of each template that is on sale. Older templates stay valid for existing invitations.
 export const TEMPLATE_TIERS = { b_rose: "basic", b_olive: "basic", b_bunny: "basic", b_balloon: "basic", b_gold: "basic", b_dove: "basic", b_lav: "basic", b_euca: "basic", b_bless: "basic", b_dino: "basic", b_champ: "basic", b_ruby: "basic",
-  e_peony: "envelope", e_night: "envelope", e_lamb: "envelope", e_picnic: "envelope", e_lace: "envelope", e_disco: "envelope", vinyl: "premium", p_disco: "premium", p_bow: "premium", p_honey: "premium", p_dino: "premium", p_plane: "premium", p_bloom: "premium", p_rip: "premium", b_ilija: "basic", b_sea: "basic", b_esp: "basic", e_estate: "envelope", e_lemon: "envelope", e_rouge: "envelope", p_letter: "premium", p_sky: "premium", p_balloon: "premium", p_gold: "premium" };
+  e_peony: "envelope", e_night: "envelope", e_lamb: "envelope", e_picnic: "envelope", e_lace: "envelope", e_disco: "envelope", e_kiss: "envelope", vinyl: "premium", p_disco: "premium", p_bow: "premium", p_honey: "premium", p_dino: "premium", p_plane: "premium", p_bloom: "premium", p_rip: "premium", b_ilija: "basic", b_sea: "basic", b_esp: "basic", e_estate: "envelope", e_lemon: "envelope", e_rouge: "envelope", p_letter: "premium", p_sky: "premium", p_balloon: "premium", p_gold: "premium" };
 // Premium is on sale: regular price 3490 RSD · 30 €
 export const PRICES = { basic: { eur: 10, rsd: 1190 }, envelope: { eur: 19, rsd: 2190 }, premium: { eur: 26, rsd: 3090 } };
 const TEMPLATE_IDS = new Set([...Object.keys(TEMPLATE_TIERS), "storybook", "cherry", "era", "jungle", "castle", "princess", "blossom", "cars", "noir", "champagne", "emerald", "marble", "starlit", "garden", "olive", "ivory", "gatsby", "dustyblue", "christening", "celebration"]);
@@ -428,7 +428,7 @@ export function createApp(cfg) {
 
   /* ---------- guest links: the page with the invitation's own title, picture and colour ---------- */
   // page colour of each premium design, so a guest link opens straight on the invitation's own background
-  const PAGE_BG = { p_dino: "#F3F0E2", e_estate: "#F3EEE1", e_lemon: "#F7F8FA", e_rouge: "#3A0C16", e_peony: "#F8F1EC", e_night: "#0B1024", e_lamb: "#EAF2FA", e_picnic: "#FBF5E6", e_lace: "#4E1420", e_disco: "#0D0D0F", p_gold: "#1C0D10", p_balloon: "#FFF3F0", p_sky: "#060914", p_rip: "#0B0A0A", p_bloom: "#FBF3EE", p_plane: "#E3EEF6", p_letter: "#1B120C", p_disco: "#09090A", vinyl: "#F1E8D8", p_bow: "#F3EFE7", p_honey: "#FBF4E3" };
+  const PAGE_BG = { e_kiss: "#F2EBDF", p_dino: "#F3F0E2", e_estate: "#F3EEE1", e_lemon: "#F7F8FA", e_rouge: "#3A0C16", e_peony: "#F8F1EC", e_night: "#0B1024", e_lamb: "#EAF2FA", e_picnic: "#FBF5E6", e_lace: "#4E1420", e_disco: "#0D0D0F", p_gold: "#1C0D10", p_balloon: "#FFF3F0", p_sky: "#060914", p_rip: "#0B0A0A", p_bloom: "#FBF3EE", p_plane: "#E3EEF6", p_letter: "#1B120C", p_disco: "#09090A", vinyl: "#F1E8D8", p_bow: "#F3EFE7", p_honey: "#FBF4E3" };
   const escAttr = v => String(v ?? "").replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   // designs whose 3D code (three.js) the guest page should start downloading straight away
   const DESIGN_CODE = { p_sky: "designs/sky.js", p_balloon: "designs/balloons.js", p_gold: "designs/record.js", p_disco: "designs/mirrorball.js" };

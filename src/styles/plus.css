@@ -14,6 +14,10 @@
 .pq-t-napkin{--wash:rgba(253,249,238,.72)}
 .pq-t-lace{--pat:var(--a-lace);--patsz:420px;--wash:rgba(72,17,28,.86);--pgc:#4E1420}
 .pq-t-tinsel{--wash:rgba(13,13,15,.88);--pgc:#0d0d0f;--on:#eceef2}
+.pq-t-kiss{--wash:rgba(247,241,230,.35);--patsz:560px;--pgc:#F2EBDF}
+/* the envelope lies on silver sequin fabric; the fabric fades away with the opening scene */
+.pq-t-kiss .pq-open{background:radial-gradient(120% 80% at 50% 45%,rgba(20,18,20,.05),rgba(20,18,20,.55)),var(--a-kssequin) 0 0/280px repeat,#8d9097}
+.pq-t-kiss .pq-open :is(.pq-to,.pq-hint){color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.65),0 0 2px rgba(0,0,0,.5)}
 .pq-t-tinsel :is(.pq-hint,.pq-kk,.pq-orn,.pq-plan b,.vx-by a){color:#c9ccd3}
 .pq-t-tinsel .pq-plan li::before{background:#c9ccd3;box-shadow:0 0 0 4px rgba(201,204,211,.2)}
 
@@ -232,6 +236,45 @@
 .pq-tinsel.open .t-cur.r{transform:translateX(102%) skewX(-6deg)}
 .pq-tinsel.open .t-seal{transform:scale(1.4);opacity:0}
 
+/* Disko poljubac: a cream paper envelope lined with silver sequins, sealed with a lipstick kiss */
+.pq-kiss{--ar:.72;perspective:1400px;transition:translate 1s cubic-bezier(.4,0,.2,1) 1.05s;animation:pqIn 1.1s cubic-bezier(.2,.8,.25,1) both,ksFloat 5s ease-in-out 1.2s infinite alternate}
+.pq-kiss::before{content:"";position:absolute;inset:4% 2% -2%;border-radius:1.6cqw;box-shadow:0 36px 50px -20px rgba(0,0,0,.75);transition:opacity .5s ease 1.2s}
+.pq-kiss .k-back{inset:0;z-index:1;border-radius:1.6cqw;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.05) 40%),var(--a-kssequin) 0 0/34cqw repeat}
+.pq-kiss .k-card{left:5%;right:5%;top:3.5%;z-index:2;transition:transform 1.15s cubic-bezier(.25,.8,.25,1) 1.05s}
+.pq-kiss .k-card .inv-c{width:100%}
+.pq-kiss .k-card .inv{box-shadow:0 10px 24px -10px rgba(60,40,30,.5)}
+.pq-kiss .k-pocket{inset:0;z-index:3;border-radius:1.6cqw;clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%);background:linear-gradient(150deg,transparent 49.4%,rgba(120,95,70,.22) 50%,transparent 51.5%),linear-gradient(210deg,transparent 49.4%,rgba(120,95,70,.22) 50%,transparent 51.5%),var(--a-kspaper) 0 0/60cqw repeat,#F3ECDF;box-shadow:inset 0 -2cqw 4cqw rgba(120,95,70,.15)}
+.pq-kiss .k-flap{left:0;right:0;top:0;height:62%;z-index:4;transform-origin:50% 0;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.5,0,.3,1) .35s,z-index 0s .8s}
+.pq-kiss .k-flap>i{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,50% 100%);backface-visibility:hidden}
+.pq-kiss .k-out{border-radius:1.6cqw 1.6cqw 0 0;background:linear-gradient(180deg,transparent 50%,rgba(120,95,70,.26)),var(--a-kspaper) 0 0/60cqw repeat,#F6F0E4}
+/* the flap's shadow on the pocket (a filter on the flap itself would flatten its 3D turn) */
+.pq-kiss .k-fsh{left:0;right:0;top:1.6%;height:62%;z-index:4;filter:blur(1.1cqw);transition:opacity .3s ease .3s}
+.pq-kiss .k-fsh i{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,50% 100%);background:rgba(50,30,20,.42)}
+.pq-kiss.open .k-fsh{opacity:0}
+/* the lining is drawn upside down, because it is seen from behind once the flap turns over */
+.pq-kiss .k-lin{clip-path:polygon(0 100%,100% 100%,50% 0)!important;transform:rotateX(180deg);background:linear-gradient(0deg,rgba(0,0,0,.25),transparent 60%),var(--a-kssequin) 0 0/34cqw repeat}
+.pq-kiss .k-seal{left:50%;top:62%;z-index:6;width:34cqw;aspect-ratio:1;translate:-50% -50%;rotate:-7deg;background:var(--a-kslips) center/contain no-repeat;filter:drop-shadow(0 .5cqw .6cqw rgba(90,10,10,.3));animation:ksSeal 2.4s ease-in-out 1.4s infinite;transition:transform .5s cubic-bezier(.3,1.5,.5,1),opacity .35s ease .15s}
+.pq-kiss .k-st{z-index:6;aspect-ratio:1;background:center/contain no-repeat;animation:ksTw 4s ease-in-out infinite alternate}
+.pq-kiss .k-st.r{right:4%;bottom:5%;width:17cqw;background-image:var(--a-ksrstar);rotate:12deg}
+.pq-kiss .k-st.s{left:-5%;top:-5%;width:15cqw;background-image:var(--a-kssstar);rotate:-14deg;animation-delay:-2s}
+.pq-kiss .k-ball{left:3%;bottom:3%;z-index:6;width:18cqw;aspect-ratio:1;background:var(--a-ksball) center/contain no-repeat;animation:ksTw 5s ease-in-out -1s infinite alternate}
+.pq-kiss .k-age{right:-5%;top:3%;z-index:7;display:flex;--w:min(15cqw,32cqw / var(--k));transition:transform .8s cubic-bezier(.4,0,.2,1) .2s,opacity .6s ease .2s}
+.pq-kiss .k-age i{display:block;width:var(--w);aspect-ratio:300/452;background:var(--d) center/contain no-repeat;filter:drop-shadow(0 1cqw 1cqw rgba(40,30,30,.3));transform:rotate(calc(-8deg + var(--i) * 16deg)) translateY(calc(var(--i) * 5cqw));margin-left:calc(var(--i) * -3cqw);animation:ksBob 3.2s ease-in-out calc(var(--i) * -1.2s) infinite alternate}
+.pq-kiss.open .k-age{transform:translate(14cqw,-40cqw) rotate(12deg);opacity:0}
+.pq-kiss .k-sp{left:50%;top:62%;z-index:7;width:3cqw;aspect-ratio:1;margin:-1.5cqw;border-radius:50%;background:radial-gradient(circle,#fff 0 20%,rgba(210,214,222,.8) 40%,transparent 70%);opacity:0}
+.pq-kiss .k-sp:nth-of-type(odd){background:radial-gradient(circle,#ffd9d4 0 20%,rgba(190,30,30,.8) 40%,transparent 70%)}
+.pq-kiss.open{translate:0 20%;animation:none}
+.pq-kiss.open::before{opacity:0}
+.pq-kiss.open .k-seal{animation:none;transform:scale(1.35) translateY(-5cqw);opacity:0}
+.pq-kiss.open .k-sp{animation:ksBurst .9s cubic-bezier(.15,.7,.3,1) var(--d) both}
+.pq-kiss.open .k-flap{transform:rotateX(180deg);z-index:1}
+.pq-kiss.open .k-card{transform:translateY(-54%) rotate(-1.5deg) scale(1.03)}
+@keyframes ksFloat{to{translate:0 -1.2cqw;rotate:.6deg}}
+@keyframes ksSeal{0%,100%{scale:1}10%{scale:1.1}20%{scale:.98}30%{scale:1.05}}
+@keyframes ksTw{to{scale:1.08;rotate:var(--r2,4deg)}}
+@keyframes ksBurst{0%{opacity:0;transform:rotate(var(--a)) translateX(0)}15%{opacity:1}100%{opacity:0;transform:rotate(var(--a)) translateX(26cqw) scale(.4)}}
+@media (prefers-reduced-motion:reduce){.pq-kiss,.pq-kiss .k-seal,.pq-kiss .k-st,.pq-kiss .k-ball{animation:none!important}}
+
 /* ---------- the invitation page ---------- */
 .pq-main{position:relative;z-index:2}
 /* the page is laid out (hidden) while the opening plays, so it appears without a stall */
@@ -315,3 +358,53 @@
 .view:has(> .pq){transform:none!important;animation:none!important;opacity:1!important}
 @media (max-width:420px){.pq-plan::before{left:69px}.pq-plan li{grid-template-columns:54px 1fr;gap:30px}.pq-plan li::before{left:64px}.pq-plan b{font-size:16px}}
 @media (prefers-reduced-motion:reduce){.pq *,.pq *::before,.pq *::after{animation:none!important;transition:none!important}}
+
+/* ---------- Disko poljubac card: a cut-and-paste collage on cream paper ---------- */
+.tid-e_kiss .inv-body{justify-content:flex-start!important;color:#8B1A14}
+.tid-e_kiss .ks-it{position:absolute;display:block;background:var(--x) center/contain no-repeat;pointer-events:auto}
+.tid-e_kiss .ks-mart{--x:var(--a-ksmart);left:12cqw;top:2cqw;width:21cqw;aspect-ratio:380/572;transform:rotate(-5deg)}
+.tid-e_kiss .ks-sst{--x:var(--a-kssstar);left:33cqw;top:4cqw;width:12cqw;aspect-ratio:1}
+.tid-e_kiss .ks-lips{--x:var(--a-kslips);left:-7cqw;top:26cqw;width:40cqw;aspect-ratio:1;transform:rotate(-8deg)}
+.tid-e_kiss .ks-rst{--x:var(--a-ksrstar);left:3cqw;top:72cqw;width:15cqw;aspect-ratio:1}
+.tid-e_kiss .ks-ball2{--x:var(--a-ksball);right:-6cqw;top:45cqw;width:16cqw;aspect-ratio:1}
+.tid-e_kiss .ks-ball{--x:var(--a-ksball);left:9cqw;bottom:-9cqw;width:40cqw;aspect-ratio:1}
+.tid-e_kiss .ks-hearts{--x:var(--a-kshearts);left:-6cqw;bottom:3cqw;width:29cqw;aspect-ratio:560/844}
+.tid-e_kiss .ks-age{position:absolute;right:9cqw;top:8cqw;display:flex;--w:min(22cqw,48cqw / var(--k));pointer-events:auto}
+.tid-e_kiss .ks-age i{display:block;width:var(--w);aspect-ratio:300/452;background:var(--d) center/contain no-repeat;filter:drop-shadow(0 1cqw 1cqw rgba(40,30,30,.3));transform:rotate(calc(-10deg + var(--i) * 18deg)) translateY(calc(var(--i) * 8cqw));margin-left:calc(var(--i) * -4cqw)}
+.tid-e_kiss .ks-me{position:absolute;right:-1cqw;bottom:-3cqw;width:40cqw;height:44cqw;pointer-events:auto}
+.tid-e_kiss .ks-me img{position:absolute;inset:7cqw 2cqw 0 2cqw;width:calc(100% - 4cqw);height:calc(100% - 7cqw);object-fit:cover;filter:grayscale(1) contrast(1.12) brightness(1.04);border:1.4cqw solid #fbf8f2;border-bottom-width:5cqw;box-shadow:0 1.2cqw 2.4cqw rgba(60,40,30,.3);transform:rotate(4deg)}
+.tid-e_kiss .ks-hat{position:absolute;display:block;left:9cqw;top:-8cqw;width:24cqw;aspect-ratio:1;background:var(--a-kshat) center/contain no-repeat;transform:rotate(12deg);filter:drop-shadow(0 .8cqw .8cqw rgba(60,10,10,.25))}
+.tid-e_kiss .ks-me:not(.has) .ks-hat{left:6cqw;top:6cqw;width:32cqw;transform:rotate(10deg)}
+.tid-e_kiss .ks-n{margin:0!important;font-family:'Playfair Display',serif;font-weight:800;line-height:1!important;letter-spacing:-.01em!important;color:#8B1A14}
+.tid-e_kiss .ks-sc{margin:-.6cqw 0 0!important;font:400 10cqw/1.15 'Great Vibes',cursive;color:#8B1A14}
+.tid-e_kiss .ks-d{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:3cqw;width:66cqw;margin:2.6cqw 0 0!important}
+.tid-e_kiss .ks-d>span{margin-top:2.6cqw;padding:.7cqw 0 .5cqw;border-block:.3cqw solid #8B1A14;font:500 4.3cqw/1.2 'Lora',serif;text-transform:capitalize}
+.tid-e_kiss .ks-d b{font:500 14cqw/.86 'Playfair Display',serif;color:#8B1A14}
+.tid-e_kiss .ks-d small{display:block;margin-top:.6cqw;font:500 4.2cqw/1 'Lora',serif;text-transform:capitalize}
+.tid-e_kiss .ks-v{display:flex;align-items:center;gap:2cqw;margin:3cqw 0 0!important}
+.tid-e_kiss .ks-v svg{flex:none;width:4.6cqw;fill:none;stroke:#8B1A14;stroke-width:1.3;stroke-linecap:round}
+.tid-e_kiss .ks-v p{display:flex;flex-direction:column;align-items:center}
+.tid-e_kiss .ks-v b{font:500 3.6cqw/1.2 'Lora',serif}
+.tid-e_kiss .ks-v span{font:500 3.1cqw/1.25 'Lora',serif}
+.tid-e_kiss .ks-s{max-width:52cqw;margin-top:2.4cqw!important;font:500 2.9cqw/1.3 'Lora',serif}
+.ks-spark.red{background:radial-gradient(circle,#ffd9d4 0 22%,rgba(190,30,30,.8) 42%,transparent 72%)}
+
+/* motion: on the open invitation the collage pops in piece by piece, then everything keeps gently moving */
+:is(.pq.read .tid-e_kiss,.tid-e_kiss.animate) :is(.ks-it,.ks-age,.ks-me){animation:ksPop .8s cubic-bezier(.3,1.6,.5,1) var(--dl,300ms) both}
+:is(.pq.read .tid-e_kiss,.tid-e_kiss.animate) .ks-age{--dl:150ms}
+:is(.pq.read .tid-e_kiss,.tid-e_kiss.animate) .ks-me{--dl:800ms}
+:is(.pq.read .tid-e_kiss,.tid-e_kiss.animate) .ks-age i{animation:ksBob 3.4s ease-in-out calc(var(--i) * -1.3s) infinite alternate}
+:is(.pq.read .tid-e_kiss,.tid-e_kiss.animate) .ks-hearts{transform-origin:50% 100%;animation:ksPop .8s cubic-bezier(.3,1.6,.5,1) var(--dl) both,ksSway 4.6s ease-in-out 1s infinite alternate}
+:is(.pq.read .tid-e_kiss,.tid-e_kiss.animate) :is(.ks-sst,.ks-rst){animation:ksPop .8s cubic-bezier(.3,1.6,.5,1) var(--dl) both,ksSpin 3.2s ease-in-out 1.6s infinite alternate}
+:is(.pq.read .tid-e_kiss,.tid-e_kiss.animate) .ks-mart{transform-origin:50% 95%;animation:ksPop .8s cubic-bezier(.3,1.6,.5,1) var(--dl) both,ksSway 5.4s ease-in-out 1s infinite alternate}
+:is(.pq.read .tid-e_kiss,.tid-e_kiss.animate) .ks-lips{animation:ksPop .8s cubic-bezier(.3,1.6,.5,1) var(--dl) both,ksSeal 3.6s ease-in-out 2s infinite}
+:is(.pq.read .tid-e_kiss,.tid-e_kiss.animate) .ks-hat{transform-origin:50% 100%;animation:ksHat 2.8s ease-in-out 1.6s infinite alternate}
+:is(.pq.read .tid-e_kiss,.tid-e_kiss.animate) :is(.ks-ball,.ks-ball2)::after{content:"";position:absolute;left:30%;top:26%;width:22%;aspect-ratio:1;background:radial-gradient(circle,#fff 0 6%,transparent 20%),conic-gradient(from 0deg,transparent 0 22%,rgba(255,255,255,.95) 25%,transparent 28% 47%,rgba(255,255,255,.95) 50%,transparent 53% 72%,rgba(255,255,255,.95) 75%,transparent 78% 97%,rgba(255,255,255,.95) 100%);-webkit-mask:radial-gradient(circle,#000 18%,transparent 62%);mask:radial-gradient(circle,#000 18%,transparent 62%);animation:ksGlint 2.6s ease-in-out infinite}
+:is(.pq.read .tid-e_kiss,.tid-e_kiss.animate) .ks-ball2::after{left:52%;top:30%;animation-delay:-1.3s}
+@keyframes ksPop{from{scale:0;opacity:0}to{scale:1;opacity:1}}
+@keyframes ksBob{from{translate:0 0}to{translate:0 -1.8cqw}}
+@keyframes ksSway{from{rotate:-2.5deg}to{rotate:2.5deg}}
+@keyframes ksSpin{from{rotate:-8deg}to{rotate:10deg;scale:1.08}}
+@keyframes ksHat{from{rotate:-3deg}to{rotate:4deg}}
+@keyframes ksGlint{0%,100%{opacity:0;scale:.3;rotate:0deg}45%{opacity:1;scale:1;rotate:45deg}60%{opacity:0;scale:.6}}
+@media (prefers-reduced-motion:reduce){.tid-e_kiss *,.tid-e_kiss *::after{animation:none!important}}
