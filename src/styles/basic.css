@@ -302,3 +302,49 @@
 @keyframes unFlap{from{scale:1 1}to{scale:.45 1}}
 @keyframes unPath{0%,100%{translate:0 0;rotate:10deg}22%{translate:-1cqw -14cqw;rotate:-8deg}45%{translate:72cqw -6cqw;rotate:14deg}62%{translate:76cqw 20cqw;rotate:-12deg}82%{translate:6cqw 16cqw;rotate:8deg}}
 @media (prefers-reduced-motion:reduce){.tid-b_unicorn *{animation:none!important}}
+
+/* --- Bašta leptira: butterflies with really beating wings over a wildflower meadow, the age in a daisy --- */
+.inv.tid-b_fly .inv-body{background:none!important;color:#38505A}
+.tid-b_fly .bf{position:absolute;display:block;left:var(--l);top:var(--u);width:var(--w);aspect-ratio:1.41;rotate:var(--r);perspective:30cqw;pointer-events:auto;cursor:pointer}
+.tid-b_fly .bf b{position:absolute;top:0;bottom:0;width:50%;background:var(--x) no-repeat;background-size:200% 100%}
+.tid-b_fly .bf b:first-child{left:0;background-position:0 0;transform-origin:100% 50%}
+.tid-b_fly .bf b:last-child{right:0;background-position:100% 0;transform-origin:0 50%}
+.tid-b_fly .inv-body>.bf-sign{position:absolute;left:calc(50% - 9.5cqw);top:4cqw;width:19cqw}
+.tid-b_fly .bf-dai{position:relative;display:block;width:100%;aspect-ratio:.927;pointer-events:auto;cursor:pointer}
+.tid-b_fly .bf-dai::before{content:"";position:absolute;inset:0;background:var(--a-bfdai) center/contain no-repeat;filter:drop-shadow(0 .6cqw .8cqw rgba(90,90,50,.25))}
+.tid-b_fly .bf-dai b{position:absolute;inset:0;display:grid;place-items:center;font:600 7.6cqw/1 'Fredoka',sans-serif;color:#B5651D;text-shadow:0 .2cqw 0 rgba(255,248,210,.9)}
+.tid-b_fly .inv-body>:is(.bf-k,.bf-h,.bf-s){position:absolute;margin:0!important;text-align:center!important;text-align-last:center!important}
+.tid-b_fly .bf-k{left:16cqw;right:16cqw;top:24.5cqw;font:600 2.7cqw/1.25 'Cormorant Garamond',serif;letter-spacing:.16em!important;text-transform:uppercase;color:#C9564F}
+.tid-b_fly .inv-body>:is(.bf-n,.bf-t,.bf-d,.bf-v,.bf-m){position:relative}
+.tid-b_fly .bf-n{margin:0!important;font-family:'Fredoka',sans-serif!important;font-weight:600!important;line-height:1.05!important;color:#E2586B;text-shadow:0 .5cqw 0 #fff,0 1cqw 1.6cqw rgba(226,88,107,.28)!important}
+.tid-b_fly .bf-t{margin-top:.6cqw!important;font:500 6cqw/1.1 'Fredoka',sans-serif;color:#2E8CA6}
+.tid-b_fly .bf-d{margin-top:3.8cqw!important;font:600 4.1cqw/1.25 'Cormorant Garamond',serif;font-variant-numeric:lining-nums;color:#38505A}
+.tid-b_fly .bf-v{margin-top:3.2cqw!important;font:600 3.6cqw/1.25 'Cormorant Garamond',serif;font-variant-numeric:lining-nums;color:#4A5F66}
+.tid-b_fly .bf-v b{display:block;font:600 5cqw/1.15 'Cormorant Garamond',serif;color:#2E8CA6}
+.tid-b_fly .bf-m{margin-top:3.4cqw!important;font:italic 500 3.8cqw/1.3 'Cormorant Garamond',serif;color:#4A5F66;max-width:58cqw}
+.tid-b_fly .bf-h{left:20cqw;right:20cqw;top:93.5cqw;font:400 5.4cqw/1.12 'Parisienne',cursive;color:#D94E63;text-shadow:0 0 1.2cqw #FFFBF2,0 0 2.2cqw #FFFBF2!important}
+.tid-b_fly .bf-s{left:22cqw;right:22cqw;top:100.5cqw;font:600 2.9cqw/1.25 'Cormorant Garamond',serif;font-variant-numeric:lining-nums;color:#4A5F66;text-shadow:0 0 1cqw #FFFBF2!important}
+/* a long message may shrink the text to fit, never the pictures */
+.tid-b_fly .inv-body.fit>:is(.bf,.bf-sign,.bf-k,.bf-h,.bf-s){zoom:1}
+.tid-b_fly .ru-spark{background:radial-gradient(circle,#fff 0 20%,rgba(246,190,80,.95) 45%,transparent 70%)!important}
+/* wings: quick beats in the air, slow opening and closing for those resting on a flower */
+.tid-b_fly.animate .bf b:first-child{animation:bfL var(--f) ease-in-out infinite alternate}
+.tid-b_fly.animate .bf b:last-child{animation:bfR var(--f) ease-in-out infinite alternate}
+.tid-b_fly.animate .bf.rest b:first-child{animation:bfRestL var(--f) ease-in-out infinite}
+.tid-b_fly.animate .bf.rest b:last-child{animation:bfRestR var(--f) ease-in-out infinite}
+@keyframes bfL{from{transform:rotateY(4deg)}to{transform:rotateY(66deg)}}
+@keyframes bfR{from{transform:rotateY(-4deg)}to{transform:rotateY(-66deg)}}
+@keyframes bfRestL{0%,50%,100%{transform:rotateY(4deg)}72%{transform:rotateY(60deg)}}
+@keyframes bfRestR{0%,50%,100%{transform:rotateY(-4deg)}72%{transform:rotateY(-60deg)}}
+/* they fly in one by one and stay near the text, one keeps wandering around the whole card */
+.tid-b_fly.animate .bf{animation:bfIn 1.7s cubic-bezier(.22,.8,.3,1) calc(.2s + var(--i) * .22s) both,bfHover var(--h) ease-in-out calc(1.9s + var(--i) * .22s) infinite alternate}
+.tid-b_fly.animate .bf.rest{animation:bfIn 1.7s cubic-bezier(.22,.8,.3,1) calc(.2s + var(--i) * .22s) both}
+.tid-b_fly.animate .bf.walk{animation:bfIn 1.7s cubic-bezier(.22,.8,.3,1) calc(.2s + var(--i) * .22s) both,bfWalk 19s ease-in-out 2.4s infinite}
+@keyframes bfIn{from{opacity:0;translate:var(--sx) var(--sy)}25%{opacity:1}to{opacity:1;translate:0 0}}
+@keyframes bfHover{from{translate:0 0}to{translate:var(--dx) var(--dy)}}
+@keyframes bfWalk{0%,100%{translate:0 0;rotate:18deg}20%{translate:66cqw -12cqw;rotate:-14deg}40%{translate:72cqw 26cqw;rotate:22deg}62%{translate:30cqw 46cqw;rotate:-20deg}82%{translate:-4cqw 22cqw;rotate:12deg}}
+.tid-b_fly.animate .bf-sign .bf-dai{animation:bfPop .8s cubic-bezier(.3,1.6,.5,1) .15s both}
+.tid-b_fly.animate .bf-dai::before{animation:bfTurn 6s ease-in-out infinite alternate}
+@keyframes bfPop{from{opacity:0;scale:.3}to{opacity:1;scale:1}}
+@keyframes bfTurn{from{rotate:-5deg}to{rotate:5deg}}
+@media (prefers-reduced-motion:reduce){.tid-b_fly *{animation:none!important}.tid-b_fly *::before{animation:none!important}}
