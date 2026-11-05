@@ -250,3 +250,55 @@
 @keyframes jgBreathe{0%,100%{scale:1 1}50%{scale:1.025 .985}}
 @keyframes jgStep{0%,100%{rotate:0deg}30%{rotate:-1.6deg}60%{rotate:1deg}}
 @media (prefers-reduced-motion:reduce){.tid-b_jungle *{animation:none!important}}
+
+/* --- Mali jednorog: a dreamy lilac sky, a prancing unicorn, the age on a hanging gold star --- */
+.inv.tid-b_unicorn .inv-body{background:none!important;color:#4E3A63}
+.tid-b_unicorn .un-a{position:absolute;display:block;background:var(--x) center/contain no-repeat;pointer-events:auto;cursor:pointer}
+.tid-b_unicorn .un-c{position:absolute;display:block;background:var(--a-uncloud) center/contain no-repeat;aspect-ratio:1.614;pointer-events:none}
+.tid-b_unicorn .un-c1{left:-8cqw;top:15cqw;width:30cqw;opacity:.9}
+.tid-b_unicorn .un-c2{right:-9cqw;top:66cqw;width:27cqw;opacity:.8}
+.tid-b_unicorn .un-uni{--x:var(--a-ununi);left:3cqw;bottom:5cqw;width:47cqw;aspect-ratio:.928;transform-origin:45% 100%}
+.tid-b_unicorn .un-cake{--x:var(--a-uncake);right:5cqw;bottom:4cqw;width:31cqw;aspect-ratio:1.021;transform-origin:50% 100%}
+.tid-b_unicorn .un-cake i{position:absolute;left:50%;top:-1%;width:9cqw;height:9cqw;margin-left:-4.5cqw;border-radius:50%;background:radial-gradient(closest-side,rgba(255,226,150,.9),rgba(255,200,110,.35) 50%,transparent);mix-blend-mode:screen}
+.tid-b_unicorn .un-fly{--x:var(--a-unfly);left:7cqw;top:44cqw;width:9cqw;aspect-ratio:1.403}
+.tid-b_unicorn .inv-body>.un-sign{position:absolute;left:77cqw;top:-1cqw;width:16cqw}
+.tid-b_unicorn .un-star{--x:var(--a-unstar);position:relative;width:100%;aspect-ratio:.523;transform-origin:50% 0}
+.tid-b_unicorn .un-star b{position:absolute;left:0;right:0;top:57%;bottom:9%;display:grid;place-items:center;font:600 7.4cqw/1 'Fredoka',sans-serif;color:#A9722A;text-shadow:0 .2cqw 0 rgba(255,244,205,.9)}
+.tid-b_unicorn .inv-body>:is(.un-k,.un-h,.un-s){position:absolute;margin:0!important;text-align:center!important;text-align-last:center!important}
+.tid-b_unicorn .un-k{left:18cqw;right:22cqw;top:19.5cqw;font:600 2.7cqw/1.25 'Cormorant Garamond',serif;letter-spacing:.12em!important;text-transform:uppercase;color:#9A4F9E}
+.tid-b_unicorn .inv-body>:is(.un-n,.un-t,.un-d,.un-v,.un-m){position:relative}
+.tid-b_unicorn .un-n{margin:0!important;font-family:'Fredoka',sans-serif!important;font-weight:600!important;line-height:1.05!important;color:#8E54B8;text-shadow:0 .5cqw 0 #fff,0 1cqw 1.6cqw rgba(140,90,180,.28)!important}
+.tid-b_unicorn .un-t{margin-top:.6cqw!important;font:500 6cqw/1.1 'Fredoka',sans-serif;color:#D9629C}
+.tid-b_unicorn .un-d{margin-top:3.8cqw!important;font:600 4.1cqw/1.25 'Cormorant Garamond',serif;font-variant-numeric:lining-nums;color:#4E3A63}
+.tid-b_unicorn .un-v{margin-top:3.2cqw!important;font:600 3.6cqw/1.25 'Cormorant Garamond',serif;font-variant-numeric:lining-nums;color:#6A5480}
+.tid-b_unicorn .un-v b{display:block;font:600 5cqw/1.15 'Cormorant Garamond',serif;color:#8E54B8}
+.tid-b_unicorn .un-m{margin-top:3.4cqw!important;font:italic 500 3.8cqw/1.3 'Cormorant Garamond',serif;color:#5C4872;max-width:58cqw}
+.tid-b_unicorn .un-h{left:48cqw;right:3cqw;top:94cqw;font:400 5.2cqw/1.12 'Parisienne',cursive;color:#C4518F;text-shadow:0 0 1.2cqw #FBF3FB,0 0 2.2cqw #FBF3FB!important}
+.tid-b_unicorn .un-s{left:50cqw;right:5cqw;top:101.5cqw;font:600 2.9cqw/1.25 'Cormorant Garamond',serif;font-variant-numeric:lining-nums;color:#5C4872;text-shadow:0 0 1cqw #FBF3FB!important}
+/* a long message may shrink the text to fit, never the pictures */
+.tid-b_unicorn .inv-body.fit>:is(.un-a,.un-c,.un-sign,.un-fall,.un-k,.un-h,.un-s){zoom:1}
+.tid-b_unicorn .ru-spark{background:radial-gradient(circle,#fff 0 20%,rgba(226,130,200,.95) 45%,transparent 70%)!important}
+.tid-b_unicorn .ru-spark:nth-of-type(3n){background:radial-gradient(circle,#fff 0 20%,rgba(245,200,90,.95) 45%,transparent 70%)!important}
+/* little stars fall through the sky */
+.tid-b_unicorn .un-fall{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.tid-b_unicorn .un-fall i{position:absolute;top:-4cqw;left:var(--l);width:2.4cqw;height:2.4cqw;background:var(--c);clip-path:polygon(50% 0,62% 36%,100% 38%,70% 60%,80% 100%,50% 76%,20% 100%,30% 60%,0 38%,38% 36%);opacity:0}
+.tid-b_unicorn.animate .un-fall i{animation:unFall var(--t) linear var(--d) infinite}
+@keyframes unFall{0%{opacity:0;transform:translate(0,0) rotate(0)}8%{opacity:.9}50%{transform:translate(3cqw,76cqw) rotate(180deg)}90%{opacity:.75}100%{opacity:0;transform:translate(-1cqw,130cqw) rotate(360deg)}}
+/* everything arrives in turn: the star on its ribbon, the unicorn trotting in, then the cake */
+.tid-b_unicorn.animate .un-star{animation:unDrop 1s cubic-bezier(.3,1.3,.5,1) .2s both,unSwing 4.2s ease-in-out 1.2s infinite}
+.tid-b_unicorn.animate .un-uni{animation:unTrot 1.5s cubic-bezier(.25,.85,.3,1) .7s both,unPrance 2.8s ease-in-out 2.2s infinite}
+.tid-b_unicorn.animate .un-cake{animation:unPop .7s cubic-bezier(.3,1.5,.5,1) 1.7s both}
+.tid-b_unicorn.animate .un-cake i{animation:unFlame 1.5s ease-in-out infinite alternate}
+.tid-b_unicorn.animate .un-c1{animation:unDrift 11s ease-in-out infinite alternate}
+.tid-b_unicorn.animate .un-c2{animation:unDrift 14s ease-in-out -4s infinite alternate-reverse}
+.tid-b_unicorn.animate .un-fly{animation:unPath 16s ease-in-out 1s infinite,unFlap .34s ease-in-out infinite alternate}
+@keyframes unDrop{from{opacity:0;translate:0 -50cqw}to{opacity:1;translate:0 0}}
+@keyframes unTrot{0%{opacity:0;translate:-55cqw 0}70%{translate:2cqw -1.4cqw}100%{opacity:1;translate:0 0}}
+@keyframes unPop{from{opacity:0;scale:.5}to{opacity:1;scale:1}}
+@keyframes unSwing{0%,100%{rotate:3deg}50%{rotate:-3deg}}
+@keyframes unPrance{0%,100%{rotate:0deg;translate:0 0}50%{rotate:-1.6deg;translate:0 -.9cqw}}
+@keyframes unFlame{from{opacity:.55;scale:.9}to{opacity:1;scale:1.1}}
+@keyframes unDrift{from{translate:-2cqw 0}to{translate:5cqw -.8cqw}}
+@keyframes unFlap{from{scale:1 1}to{scale:.45 1}}
+@keyframes unPath{0%,100%{translate:0 0;rotate:10deg}22%{translate:-1cqw -14cqw;rotate:-8deg}45%{translate:72cqw -6cqw;rotate:14deg}62%{translate:76cqw 20cqw;rotate:-12deg}82%{translate:6cqw 16cqw;rotate:8deg}}
+@media (prefers-reduced-motion:reduce){.tid-b_unicorn *{animation:none!important}}
